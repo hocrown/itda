@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+.questionBox {
+	position: absolute;
+	width: 362px;
+	height: 174px;
+	left: 15px;
+	top: 661px;
+	background-image: url( "../image/questionBox.png" );
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.questionText {
+	width: 340px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 24px;
+	display: inline-block;
+	align-items: center;
+	text-align: center;
+	letter-spacing: 0.06em;
+	color: #22242E;
+	word-wrap: break-word;
+}
+
+.mainListToggle {
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	left: 30px;
+	top: 87px;
+}
+
+.dailyTextBox {
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	left: 35px;
+	top: 220px;
+	background: rgba(177, 125, 90, 0.1);
+	border-radius: 20px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	letter-spacing: 0.05em;
+	color: #2A221D;
+}
+
+.whisperTextBox {
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	left: 208px;
+	top: 220px;
+	background: rgba(177, 125, 90, 0.1);
+	border-radius: 20px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	letter-spacing: 0.05em;
+	color: #2A221D;
+}
+
+.whisperText1 {
+	position: absolute;
+	top: 35%;
+}
+
+.whisperText2 {
+	position: absolute;
+	top: 52%;
+}
+
+.bucketTextBox {
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	left: 35px;
+	top: 396px;
+	background: rgba(177, 125, 90, 0.1);
+	border-radius: 20px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	letter-spacing: 0.05em;
+	color: #2A221D;
+}
+
+.timelineTextBox {
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	left: 209px;
+	top: 396px;
+	background: rgba(177, 125, 90, 0.1);
+	border-radius: 20px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	letter-spacing: 0.05em;
+	color: #2A221D;
+}

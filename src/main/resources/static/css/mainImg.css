@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+.questionBox {
+	position: absolute;
+	width: 362px;
+	height: 174px;
+	left: 15px;
+	top: 661px;
+	background-image: url( "../image/questionBox.png" );
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.questionText {
+	width: 340px; font-family : 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 24px;
+	display: inline-block;
+	align-items: center;
+	text-align: center;
+	letter-spacing: 0.06em;
+	color: #22242E;
+	word-wrap: break-word;
+	font-family: 'Bookk Myungjo';
+}
+
+.mainImgToggle {
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	left: 30px;
+	top: 87px;
+}

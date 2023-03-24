@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+.ourFamilyDailyDiaryText {
+	position: absolute;
+	width: 139px;
+	height: 26px;
+	left: 127px;
+	top: 81px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	letter-spacing: 0.06em;
+	color: #9D9690;
+}
+
+.AnswerStickerBox {
+	position: absolute;
+	height: 43px;
+	width: 100%;
+	top: 133px;
+	text-align: center;
+}
+
+.AnswerSticker {
+	margin-left: 1px;
+	margin-right: 1px;
+}
+
+.question {
+	position: absolute;
+	width: 301px;
+	height: 65px;
+	left: 30px;
+	top: 218px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 30px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.06em;
+	color: #000000;
+}
+
+.numberOfQuestion {
+	position: absolute;
+	width: 121px;
+	height: 26px;
+	left: 30px;
+	top: 289px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.06em;
+	color: #9D9690;
+}
+
+.questionDate {
+	position: absolute;
+	width: 121px;
+	height: 26px;
+	left: 125px;
+	top: 289px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.06em;
+	color: #9D9690;
+}
+
+.answerContainer {
+	margin-left: 10%;
+	margin-top: 340px;
+	width: 80%;
+}
+
+.memberText {
+	margin-bottom: 5px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 25px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.05em;
+	color: #9D9690; /* 답변안했을 때 */
+	/* color: #2A221D; */ /* 답변했을 때 */
+}
+
+.notYetAnswer {
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.05em;
+	color: #9D9690;
+	word-wrap: break-word;
+}
+
+.memberAnswerBox{
+	margin-bottom: 50px;
+}
+
+.kokBtn{
+width: 81px;
+height: 29px;
+background: rgba(177, 125, 90, 0.1);
+border-radius: 20px;
+border: 0;
+outline: 0;
+}

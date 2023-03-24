@@ -1,0 +1,333 @@
+@charset "UTF-8";
+
+.whoareyouText {
+	position: absolute;
+	width: 283px;
+	height: 57px;
+	left: 34px;
+	top: 94px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 25px;
+	line-height: 25px;
+	display: flex;
+	align-items: center;
+	color: #3E4359;
+}
+
+.iWonderText {
+	position: absolute;
+	width: 283px;
+	height: 57px;
+	left: 34px;
+	top: 123px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 25px;
+	line-height: 25px;
+	display: flex;
+	align-items: center;
+	color: #3E4359;
+}
+
+.maybeLikeText {
+	position: absolute;
+	width: 295px;
+	height: 63px;
+	left: 34px;
+	top: 170px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	color: #393C4A;
+}
+
+.giveContentText {
+	position: absolute;
+	width: 295px;
+	height: 63px;
+	left: 34px;
+	top: 190px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	color: #393C4A;
+}
+
+.addressText {
+	position: absolute;
+	width: 98px;
+	height: 45px;
+	left: 45px;
+	top: 316px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 18px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #2A2E3D;
+}
+.addressBtn{
+	position: absolute;
+width: 81px;
+height: 29px;
+left: 260px;
+top: 352px;
+border:none;
+outline:none;
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 15px;
+line-height: 15px;
+color: #2A221D;
+
+background: rgba(177, 125, 90, 0.1);
+border-radius: 20px;
+}
+
+.addressBar {
+	position: absolute;
+	left: 44px;
+	width: 300px;
+	top: 384px;
+}
+
+.phoneNumberText {
+	position: absolute;
+	width: 98px;
+	height: 45px;
+	left: 45px;
+	top: 417px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 18px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #2A2E3D;
+}
+
+.notes {
+	position: absolute;
+	width: 200px;
+	height: 35px;
+	left: 47px;
+	top: 350px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 18px;
+	display: flex;
+	align-items: center;
+	text-align: left;
+	border: none;
+	outline: none;
+	background-color: #F8F8F5;
+	color: #979797;
+}
+
+.notes1 {
+	position: absolute;
+	width: 80px;
+	height: 40px;
+	left: 45px;
+	top: 448px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 18px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	border: none;
+	outline: none;
+	background-color: #F8F8F5;
+	color: #979797;
+}
+
+.notes2 {
+	position: absolute;
+	width: 70px;
+	height: 40px;
+	left: 161px;
+	top: 448px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 18px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	border: none;
+	outline: none;
+	background-color: #F8F8F5;
+	color: #979797;
+}
+
+.notes3 {
+	position: absolute;
+	width: 70px;
+	height: 40px;
+	left: 272px;
+	top: 448px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 18px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	border: none;
+	outline: none;
+	background-color: #F8F8F5;
+	color: #979797;
+}
+
+.finishBtn {
+	position: absolute;
+	width: 320px;
+	height: 42px;
+	left: 36px;
+	top: 755px;
+	border-radius: 15px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 15px;
+	line-height: 15px;
+	letter-spacing: 0.03em;
+	color: #FFFFFF;
+	background: rgba(177, 125, 90, 0.9);
+	outline: none;
+	border: none;
+}
+
+.yearText {
+position: absolute;
+width: 23px;
+height: 45px;
+left: 136px;
+top: 447px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 15px;
+line-height: 15px;
+display: flex;
+align-items: center;
+
+color: #393C4A;
+}
+
+.monthText {
+position: absolute;
+width: 23px;
+height: 45px;
+left: 252px;
+top: 447px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 15px;
+line-height: 15px;
+display: flex;
+align-items: center;
+
+color: #393C4A;
+}
+
+
+.bar1 {
+position: absolute;
+width: 83px;
+height: 7.14px;
+left: 42px;
+top: 485px;
+}
+
+.bar2 {
+position: absolute;
+width: 83px;
+height: 7.14px;
+left: 158px;
+top: 485px;
+
+}
+
+.bar3 {
+position: absolute;
+width: 83px;
+height: 7.14px;
+left: 269px;
+top: 485px;
+
+}
+
+
+.emailText{
+	position: absolute;
+width: 98px;
+height: 45px;
+left: 45px;
+top: 525px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+line-height: 18px;
+display: flex;
+align-items: center;
+
+color: #2A221D;
+}
+
+.emailBar{
+	position: absolute;
+width: 310px;
+height: 8px;
+left: 42px;
+top: 592px;
+	
+}
+.notesEmail{
+		position: absolute;
+	width: 300px;
+	height: 35px;
+	left: 47px;
+	top: 558px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 18px;
+	display: flex;
+	align-items: center;
+	text-align: left;
+	border: none;
+	outline: none;
+	background-color: #F8F8F5;
+	color: #979797;
+}

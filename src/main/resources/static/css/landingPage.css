@@ -1,0 +1,52 @@
+.layout {
+	position: relative;
+	width: 393px;
+	height: 851px;
+	background: #F8F8F5;
+}
+
+.identityText {
+	position: absolute;
+	width: 176px;
+	height: 57px;
+	left: 22px;
+	top: 279px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 25px;
+	line-height: 25px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #6C4A32;
+}
+
+.logoImg {
+	position: absolute;
+	width: 375px;
+	height: 171px;
+	left: 9px;
+	top: 336px;
+}
+
+.startGroup {
+	position: absolute;
+	width: 320px;
+	height: 42px;
+	left: 36px;
+	top: 636px;
+	border: none;
+	background: rgba(177, 125, 90, 0.1);
+	border-radius: 23px;
+}
+
+.startText {
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 18px;
+	letter-spacing: 0.03em;
+	color: #b2b2b2;
+}

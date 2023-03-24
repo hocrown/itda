@@ -1,0 +1,205 @@
+
+.hi {
+	position: absolute;
+	width: 283px;
+	height: 57px;
+	left: 34px;
+	top: 138px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 25px;
+	line-height: 25px;
+	display: flex;
+	align-items: center;
+	color: #3E4359;
+}
+
+.weritda {
+	position: absolute;
+	width: 283px;
+	height: 57px;
+	left: 34px;
+	top: 167px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 25px;
+	line-height: 25px;
+	display: flex;
+	align-items: center;
+	color: #3E4359;
+}
+
+.waiting {
+	position: absolute;
+	width: 295px;
+	height: 63px;
+	left: 36px;
+	top: 218px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	color: #393C4A;
+}
+
+.idText {
+	position: absolute;
+	width: 98px;
+	height: 45px;
+	left: 45px;
+	top: 340px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 18px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #2A2E3D;
+}
+
+.idBar {
+	position: absolute;
+	left: 44px;
+	width: 300px;
+	top: 408px;
+}
+
+.pwdText {
+	position: absolute;
+	width: 98px;
+	height: 45px;
+	left: 45px;
+	top: 436px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 18px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #2A2E3D;
+}
+
+.pwdBar {
+	position: absolute;
+	width: 300px;
+	left: 41px;
+	top: 504px;
+}
+
+.notes {
+	position: absolute;
+	width: 311px;
+	height: 35px;
+	left: 47px;
+	top: 374px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 18px;
+	display: flex;
+	align-items: center;
+	text-align: left;
+	border: none;
+	outline: none;
+	background-color: #F8F8F5;
+	color: #979797;
+}
+
+.notes2 {
+	position: absolute;
+	width: 311px;
+	height: 40px;
+	left: 45px;
+	top: 470px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 18px;
+	display: flex;
+	align-items: center;
+	text-align: left;
+	border: none;
+	outline: none;
+	background-color: #F8F8F5;
+	color: #979797;
+}
+
+.eye {
+	position: absolute;
+	width: 26px;
+	height: 26px;
+	left: 312px;
+	top: 475px;
+	outline: none;
+	border: none; background : url(../image/eye.png);
+	transform: matrix(1, 0, 0, -1, 0, 0);
+	background: url(../../image/eye.png);
+}
+
+.loginBtn {
+	position: absolute;
+	width: 320px;
+	height: 42px;
+	left: 36px;
+	top: 664px;
+	border-radius: 15px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 15px;
+	line-height: 15px;
+	letter-spacing: 0.03em;
+	color: #FFFFFF;
+	background: rgba(177, 125, 90, 0.9);
+	outline: none;
+	border: none;
+}
+
+.signupBtn {
+	position: absolute;
+	width: 320px;
+	height: 42px;
+	left: 36px;
+	top: 720px;
+	border-radius: 15px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 15px;
+	line-height: 15px;
+	letter-spacing: 0.03em;
+	color: #22242E;
+	background: rgba(177, 125, 90, 0.1);
+	outline: none;
+	border: none;
+}
+
+.hoxy {
+	position: absolute;
+	width: 194px;
+	height: 30px;
+	left: 99px;
+	top: 783px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #4176FF;
+	text-decoration: underline;
+	text-underline-offset: 5px;
+}

@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="css/figmatest.css">
 </head>
 <body>
-    Hello, Spring Boot App jsp
+    Hello, Spring Boot App jsp Hi JUno 
     <form action="<c:url value='/user/insert'/>" method="post" id="joinForm" name="joinForm" class="form-horizontal">
     <input class="btn btn-primary" type="submit"  style="margin: 2 0 2 0;" width=70%  value="가입">
     </form>

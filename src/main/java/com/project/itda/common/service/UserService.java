@@ -1,5 +1,7 @@
 package com.project.itda.common.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,4 +18,18 @@ public class UserService implements IUserService {
 	public void insertUser(UserModel user) {
 		userRepository.insertUser(user);
 	}
+
+	@Override
+	public int countByUserId(String userId) {
+
+		return 0;
+	}
+
+	@Override
+	public boolean isUserIdDuplicated(String userId) {
+		int count = userRepository.countByUserId(userId);
+		return count>0;
+	}
+	
 }
+	

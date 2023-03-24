@@ -115,7 +115,7 @@ CREATE TABLE BucketList(
     userId VARCHAR2(15),
     regDate DATE,
     title VARCHAR2(1000),
-    familybucketContents CLOB,
+	bucketContents CLOB,
     goalDate date,
     type VARCHAR2(10),
     FOREIGN KEY (userId) REFERENCES itda_user(userId)

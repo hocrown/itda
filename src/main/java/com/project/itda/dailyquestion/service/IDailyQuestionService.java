@@ -1,5 +1,9 @@
 package com.project.itda.dailyquestion.service;
 
-public interface IDailyQuestionService {
+import com.project.itda.dailyquestion.model.DailyQuestionModel;
 
+public interface IDailyQuestionService {
+	
+	void insertQuestion(DailyQuestionModel dailyquestion);
+	DailyQuestionModel fetchDailyQuestion();
 }

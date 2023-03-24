@@ -11,4 +11,8 @@
 			(#{userId}, familySeq.nexv_val, #{userPw}, #{userName}, #{userAge}, #{userSex}, #{userAddress}, #{userPhone}, #{approve})
 	]]>
 	</insert>
+	
+	<select id="countByUserId" parameterType="String" resultType="int">
+    	SELECT COUNT(*) FROM itda_user WHERE user_id = #{userId}
+  	</select>
 </mapper>

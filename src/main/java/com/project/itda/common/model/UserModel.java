@@ -1,5 +1,6 @@
 package com.project.itda.common.model;
 
+
 import lombok.Data;
 
 @Data
@@ -13,4 +14,5 @@ public class UserModel {
 	private String userAddress;
 	private int userPhone;
 	private String approve;
+	private String email;
 }

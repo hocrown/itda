@@ -1,0 +1,152 @@
+@charset "UTF-8";
+
+.outboxText {
+	position: absolute;
+	width: 162px;
+	height: 39px;
+	left: 30px;
+	top: 99px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 25px;
+	line-height: 25px;
+	display: flex;
+	align-items: center;
+	color: #2A221D;
+}
+
+
+
+
+.cardFrame {
+	position: absolute;
+	width: 307px;
+	height: 139px;
+	left: 43px;
+	top: 184px;
+}
+
+.toPersonText {
+	position: absolute;
+	height: 33px;
+	left: 63px;
+	top: 192px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 9px;
+	line-height: 9px;
+	display: flex;
+	align-items: center;
+	color: #2A221D;
+}
+
+.toPersonName {
+	position: absolute;
+	width: 103px;
+	height: 33px;
+	left: 63px;
+	top: 211px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	color: #2A221D;
+}
+
+.toPersonLine {
+	position: absolute;
+	width: 112px;
+	height: 0px;
+	left: 63px;
+	top: 241px;
+	border: 1px solid #BBB3AB;
+}
+
+.sendDateText {
+	position: absolute;
+	width: 52px;
+	height: 19px;
+	left: 238px;
+	top: 199px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 10px;
+	line-height: 10px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	letter-spacing: 0.05em;
+	color: #9D9690;
+}
+
+.sendDate {
+	position: absolute;
+	width: 49px;
+	height: 33px;
+	left: 283px;
+	top: 192px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 10px;
+	line-height: 10px;
+	display: flex;
+	align-items: center;
+	text-align: right;
+	color: #9D9690;
+}
+
+.inboxCardStamp {
+	position: absolute;
+	width: 63px;
+	height: 63px;
+	left: 271px;
+	top: 208px;
+}
+
+.fromPersonText {
+	position: absolute;
+	width: 63px;
+	height: 33px;
+	left: 219px;
+	top: 254px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 9px;
+	line-height: 9px;
+	display: flex;
+	align-items: center;
+	color: #2A221D;
+}
+
+.fromPersonName {
+	position: absolute;
+	width: 83px;
+	height: 33px;
+	left: 219px;
+	top: 273px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	color: #2A221D;
+}
+
+.fromPersonLine {
+	position: absolute;
+	width: 112px;
+	height: 0px;
+	left: 219px;
+	top: 303px;
+	border: 1px solid #BBB3AB;
+}

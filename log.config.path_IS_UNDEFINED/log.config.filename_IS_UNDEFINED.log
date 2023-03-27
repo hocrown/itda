@@ -241,3 +241,24 @@ INFO  23-03-24 15:20:17[http-nio-8080-exec-1] [DispatcherServlet:547] - Complete
 INFO  23-03-24 15:20:17[restartedMain] [TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
 INFO  23-03-24 15:20:17[restartedMain] [ItdaApplication:61] - Started ItdaApplication in 1.129 seconds (JVM running for 506.982)
 INFO  23-03-24 15:20:17[restartedMain] [ConditionEvaluationDeltaLoggingListener:63] - Condition evaluation unchanged
+INFO  23-03-27 09:11:46[File Watcher] [LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener:211] - Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+INFO  23-03-27 09:11:46[Thread-7] [Http11NioProtocol:173] - Pausing ProtocolHandler ["http-nio-8080"]
+INFO  23-03-27 09:11:46[Thread-7] [StandardService:173] - Stopping service [Tomcat]
+INFO  23-03-27 09:11:46[Thread-7] [[/]:173] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+INFO  23-03-27 09:11:46[Thread-7] [Http11NioProtocol:173] - Stopping ProtocolHandler ["http-nio-8080"]
+INFO  23-03-27 09:11:46[Thread-7] [Http11NioProtocol:173] - Destroying ProtocolHandler ["http-nio-8080"]
+INFO  23-03-27 09:11:47[restartedMain] [ItdaApplication:55] - Starting ItdaApplication using Java 17.0.6 on DESKTOP-8DKD9M3 with PID 30736 (C:\labs\itda\target\classes started by jhmon in C:\labs\itda)
+INFO  23-03-27 09:11:47[restartedMain] [ItdaApplication:631] - No active profile set, falling back to 1 default profile: "default"
+INFO  23-03-27 09:11:48[restartedMain] [TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+INFO  23-03-27 09:11:48[restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+INFO  23-03-27 09:11:48[restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  23-03-27 09:11:48[restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.71]
+INFO  23-03-27 09:11:48[restartedMain] [TldScanner:173] - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+INFO  23-03-27 09:11:48[restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  23-03-27 09:11:48[restartedMain] [ServletWebServerApplicationContext:292] - Root WebApplicationContext: initialization completed in 1099 ms
+INFO  23-03-27 09:11:48[restartedMain] [WelcomePageHandlerMapping:57] - Adding welcome page template: index
+INFO  23-03-27 09:11:48[restartedMain] [OptionalLiveReloadServer:59] - LiveReload server is running on port 35729
+INFO  23-03-27 09:11:48[restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+INFO  23-03-27 09:11:48[restartedMain] [TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+INFO  23-03-27 09:11:49[restartedMain] [ItdaApplication:61] - Started ItdaApplication in 1.761 seconds (JVM running for 237599.791)
+INFO  23-03-27 09:11:49[restartedMain] [ConditionEvaluationDeltaLoggingListener:63] - Condition evaluation unchanged

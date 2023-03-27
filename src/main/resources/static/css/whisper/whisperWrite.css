@@ -1,0 +1,257 @@
+@charset "UTF-8";
+
+.whisperSendText {
+	position: absolute;
+	width: 162px;
+	height: 39px;
+	left: 30px;
+	top: 99px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 25px;
+	line-height: 25px;
+	display: flex;
+	align-items: center;
+	color: #2A221D;
+}
+
+.itdaCarryText {
+	position: absolute;
+	width: 295px;
+	height: 33px;
+	left: 32px;
+	top: 149px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	color: #2A221D;
+}
+
+.toText {
+	position: absolute;
+	width: 84px;
+	height: 33px;
+	left: 30px;
+	top: 219px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 18px;
+	display: flex;
+	align-items: center;
+	color: #2A221D;
+}
+
+select:required:invalid {
+	color: #9D9690;
+}
+
+select option[value=""][disabled] {
+	display: none;
+}
+
+.selectCss {
+	position: absolute;
+	left: 114px;
+	top: 217px;
+	width: 251px;
+	height: 38.3px;
+	background: rgba(177, 125, 90, 0.1);
+	border-radius: 20px;
+	text-align: center;
+	border: none;
+	outline: none;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	color: #2A221D;
+	appearance: none;
+}
+
+.whisperTextareaBox {
+	position: absolute;
+	left: 32px;
+	top: 268px;
+	width: 333px;
+	height: 216px;
+	background: rgba(177, 125, 90, 0.1);
+	border-radius: 20px;
+	top: 268px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.whisperTextarea {
+	width: 90%;
+	height: 90%;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 22px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.05em;
+	color: #2A221D;
+	outline: none;
+	resize: none;
+	background: none;
+	border: none;
+	resize: none;
+}
+
+.whisperCharacterCount {
+	position: absolute;
+	width: 50px;
+	height: 26px;
+	left: 314px;
+	top: 486px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.06em;
+	color: #9D9690;
+}
+
+.fromText {
+	position: absolute;
+	width: 100px;
+	height: 33px;
+	left: 30px;
+	top: 525px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 18px;
+	display: flex;
+	align-items: center;
+	color: #2A221D;
+}
+
+.fromInput {
+	position: absolute;
+	width: 224px;
+	height: 38.3px;
+	left: 141px;
+	top: 523px;
+	border: none;
+	outline: none;
+	text-align: center;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.05em;
+	background: rgba(177, 125, 90, 0.1);
+	border-radius: 20px;
+}
+
+.sendOption {
+	position: absolute;
+	height: 33px;
+	left: 30px;
+	top: 595px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 18px;
+	display: flex;
+	align-items: center;
+	color: #2A221D;
+	height: 33px;
+}
+
+.directOptionEllipse {
+	position: absolute;
+	width: 22px;
+	height: 22px;
+	left: 32px;
+	top: 641px;
+	background: rgba(176, 151, 144, 0.4);
+	border-radius: 20px;
+}
+
+.directOptionText {
+	position: absolute;
+	width: 295px;
+	height: 33px;
+	left: 63px;
+	top: 636px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	color: #2A221D;
+}
+
+.bombOptionEllipse {
+	position: absolute;
+	width: 22px;
+	height: 22px;
+	left: 32px;
+	top: 677px;
+	background: rgba(176, 151, 144, 0.4);
+	border-radius: 20px;
+}
+
+.bombOptionText {
+	position: absolute;
+	width: 295px;
+	height: 33px;
+	left: 63px;
+	top: 672px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	color: #2A221D;
+}
+
+.reservationOptionEllipse {
+	position: absolute;
+	width: 22px;
+	height: 22px;
+	left: 32px;
+	top: 713px;
+	background: rgba(176, 151, 144, 0.3);
+	border-radius: 20px;
+}
+
+.reservationOptionText {
+	position: absolute;
+	width: 295px;
+	height: 33px;
+	left: 63px;
+	top: 707px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	color: #2A221D;
+}

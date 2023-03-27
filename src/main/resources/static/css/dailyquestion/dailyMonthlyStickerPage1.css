@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+.putTogetherText {
+	position: absolute;
+	width: 301px;
+	height: 65px;
+	left: 26px;
+	top: 92px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 23px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.06em;
+	color: #2A221D;
+}
+
+.monthlyPageLine {
+	position: absolute;
+	width: 356px;
+	height: 11px;
+	left: 18px;
+	top: 191px;
+	transform: matrix(1, 0, 0, -1, 0, 0);
+}
+
+.monthlyPageLine2 {
+	position: absolute;
+	width: 356px;
+	height: 11px;
+	left: 19px;
+	top: 261px;
+	transform: matrix(1, 0, 0, -1, 0, 0);
+}
+
+.monthlyPageVector {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	left: 39px;
+	top: 224px;
+}
+
+.monthlyPageVector2 {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	left: 345px;
+	top: 224px;
+	transform: rotate(-180deg);
+}
+
+.yearText {
+	position: absolute;
+	left: 178.3px;
+	top: 207px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	letter-spacing: 0.06em;
+	color: #000000;
+}
+
+.monthText {
+	position: absolute;
+	left: 180.4px;
+	top: 232px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 20px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	letter-spacing: 0.06em;
+	color: #2A221D;
+}
+
+.yearMonthBox {
+	position: absolute;
+	width: 100%;
+	height: 65px;
+	top: 196.5px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	letter-spacing: 0.06em;
+	color: #2A221D;
+}

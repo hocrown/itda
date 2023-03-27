@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+.inboxText {
+	position: absolute;
+	width: 162px;
+	height: 39px;
+	left: 30px;
+	top: 99px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 25px;
+	line-height: 25px;
+	display: flex;
+	align-items: center;
+	color: #2A221D;
+}
+
+.whisperArriveText {
+	position: absolute;
+	width: 295px;
+	height: 33px;
+	left: 32px;
+	top: 149px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	color: #2A221D;
+}
+
+.whisperImgContainer {
+	position: absolute;
+	top: 242px;
+}
+
+.whisperImgBox {
+	margin-left: 20px;
+	margin-right: 20px;
+	text-align: center;
+}
+
+.whisperImgCommon {
+	margin-bottom: 34px;
+}
+
+.whisperInboxImgToggle {
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	left: 320px;
+	top: 103px;
+}

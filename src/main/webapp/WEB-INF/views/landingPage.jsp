@@ -13,8 +13,9 @@
 		<span class="identityText">
 		하지 못한 말,
 		</span>
-		<img class="logoImg" src="../image/itdaLogo.png"> 
-	
+		<div>
+			<img class="logoImg" src="../image/itdaLogo.png" > 
+		</div>
 	</div>
 	<button class="startGroup">
 	<span class="startText">시작하기</span>

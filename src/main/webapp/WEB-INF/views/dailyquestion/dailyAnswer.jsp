@@ -5,7 +5,7 @@
 <head>
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../css/dailyquestion/dailyMain.css">
+<link rel="stylesheet" type="text/css" href="../css/dailyquestion/dailyAnswer.css">
 
 </head>
 <body>
@@ -13,25 +13,20 @@
 	<div class="layout">
 		<div class="headBox"><img class="vector" src="../image/vector.png">
 			하루를 잇다
-			<img class="stickerPageLink" src="../image/stickerPageLink.png">
-			<img class="menuBtn" src="../image/menuBtn.png">	
+			<img class="finishBtn" src="../image/finishBtn.png">
 		</div>
 		
-		<span class="ourFamilyDailyDiaryText">우리 가족 하루 일기</span>
 		
-			
-		<div class="AnswerStickerBox">
-			<img class="AnswerSticker" src="../image/dailyquestionYesAnswer.png">
-			<img class="AnswerSticker" src="../image/dailyquestionYesAnswer.png">
-			<img class="AnswerSticker" src="../image/dailyquestionNoAnswer.png">
-			<img class="AnswerSticker" src="../image/dailyquestionNoAnswer.png">						
+		<span class="question2">오늘 하루동안 가장<br>행복했던 일은 무엇인가요?</span>
+		<span class="numberOfQuestion2">#1번째 질문</span>
+		<span class="questionDate2">2023.04.28</span>
+		
+		<div class="answerBox">
+			<textarea spellcheck="false" placeholder="답변을 입력해주세요." class="answerTextarea"></textarea>
 		</div>
 		
-		<span class="question">오늘 하루동안 가장<br>행복했던 일은 무엇인가요?</span>
-		<span class="numberOfQuestion">#1번째 질문</span>
-		<span class="questionDate">2023.04.28</span>
-		
-		<div class="answerContainer">
+		<span class="characterCount">0/100</span>
+		<!-- <div class="answerContainer">
 		
 			<div class="memberAnswerBox">
 				<span class="memberText">아빠</span>
@@ -48,7 +43,7 @@
 			
 			
 			
-		</div>		
+		</div>		 -->
 		
 	</div>
 	

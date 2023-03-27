@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+.question2 {
+	position: absolute;
+	width: 301px;
+	height: 65px;
+	left: 30px;
+	top: 232px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 30px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.06em;
+	color: #000000;
+}
+
+.numberOfQuestion2 {
+	position: absolute;
+	width: 121px;
+	height: 26px;
+	left: 30px;
+	top: 303px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.06em;
+	color: #9D9690;
+}
+
+.questionDate2 {
+	position: absolute;
+	width: 121px;
+	height: 26px;
+	left: 125px;
+	top: 303px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.06em;
+	color: #9D9690;
+}
+
+.answerBox {
+	position: absolute;
+	width: 333px;
+	height: 201.2px;
+	left: 30px;
+	top: 364px;
+	background: rgba(177, 125, 90, 0.1);
+	border-radius: 20px;
+}
+
+.answerTextarea {
+	position: absolute;
+	width: 293px;
+	height: 161.2px;
+	left: 20px;
+	top: 20px; font-family : 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 22px;
+	display: flex;
+	letter-spacing: 0.05em;
+	border: none;
+	background: none;
+	outline: none;
+	resize: none;
+	color: #000000;
+}
+
+.characterCount {
+	position: absolute;
+	width: 50px;
+	height: 26px;
+	left: 312px;
+	top: 565px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.06em;
+	color: #9D9690;
+}
+

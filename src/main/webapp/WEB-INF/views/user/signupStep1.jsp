@@ -23,18 +23,22 @@
 		<span class="idText">아이디</span>
 		
 		<input type="text" class="notes">
-		<button class="doubleChkBtn">중복확인</button>
 		<img class="idBar" src="../image/underline.png">
 
 		<span class="pwdText">비밀번호</span>
 		<input type="password" class="notes2">
 		<img class="pwdBar" src="../image/underline.png">
-		<button class="eye"></button>
+		<button class="eye" title="비밀번호 표시/숨기기"><i class="far fa-eye"></i></button>
+		
+		<div class="alert"></div>
 		
 		<button class="nextBtn">다음</button>
 
 	</div>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
+    <!-- signupStep1.js 스크립트 추가 -->
+    <script type="text/javascript" src="/js/signupStep1.js"></script>
 
 </body>
 </html>

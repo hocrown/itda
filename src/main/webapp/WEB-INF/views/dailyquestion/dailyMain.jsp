@@ -35,13 +35,15 @@
 		
 			<div class="memberAnswerBox">
 				<span class="memberText">아빠</span>
-				<span class="notYetAnswer">아직 응답하지 않았어요.</span>
-				<button class="kokBtn">콕 찌르기!</button>
+				<span class="answerContents">아직 응답하지 않았어요.</span>
+				<div style="text-align: center; margin-top: 20px;">
+					<button class="kokBtn">콕 찌르기!</button>
+				</div>
 			</div>
 			
 			<div class="memberAnswerBox">
-				<span class="memberText">엄마</span>
-				<span class="notYetAnswer">아직 응답하지 않았어요.</span>
+				<span class="memberText" style="color: #2A221D;">엄마</span>
+				<span class="answerContents" style="color: #2A221D;">날씨가 너무 좋아서 요새는 창문만 열어놓아도 너무 행복해</span>
 			</div>
 			
 			

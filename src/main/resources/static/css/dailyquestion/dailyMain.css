@@ -102,7 +102,7 @@
 	/* color: #2A221D; */ /* 답변했을 때 */
 }
 
-.notYetAnswer {
+.answerContents {
 	font-family: 'Bookk Myungjo';
 	font-style: normal;
 	font-weight: 300;
@@ -111,7 +111,8 @@
 	display: flex;
 	align-items: center;
 	letter-spacing: 0.05em;
-	color: #9D9690;
+	color: #9D9690; /* 답변안했을 때 */
+	/* color: #2A221D; */ /* 답변했을 때 */
 	word-wrap: break-word;
 }
 

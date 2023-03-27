@@ -16,7 +16,7 @@
 			<img class="myImg" src="/image/myImg.png">		
 		</div>
 
-		<img class="mainListToggle" src="/image/mainListToggle.png">
+		<img class="mainListToggle" src="/image/listToggle.png">
 		
 		<div class="dailyTextBox">하루 질문</div>
 		<div class="whisperTextBox"><span class="whisperText1">속마음</span><span class="whisperText2">전하기</span></div>

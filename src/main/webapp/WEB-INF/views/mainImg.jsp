@@ -16,7 +16,7 @@
 			<img class="myImg" src="/image/myImg.png">		
 		</div>
 
-		<img class="mainImgToggle" src="/image/mainImgToggle.png">
+		<img class="mainImgToggle" src="/image/imgToggle.png">
 
 		<div class="questionBox">
 			<span class="questionText">오늘 하루동안 가장<br>행복했던 일은 무엇인가요?</span>

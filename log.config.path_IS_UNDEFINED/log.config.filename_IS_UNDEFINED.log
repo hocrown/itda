@@ -125,3 +125,6 @@ INFO  23-03-27 08:59:44[restartedMain] [OptionalLiveReloadServer:59] - LiveReloa
 INFO  23-03-27 08:59:44[restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
 INFO  23-03-27 08:59:44[restartedMain] [TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
 INFO  23-03-27 08:59:44[restartedMain] [ItdaApplication:61] - Started ItdaApplication in 3.002 seconds (JVM running for 3.471)
+INFO  23-03-27 09:18:09[http-nio-8080-exec-1] [[/]:173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO  23-03-27 09:18:09[http-nio-8080-exec-1] [DispatcherServlet:525] - Initializing Servlet 'dispatcherServlet'
+INFO  23-03-27 09:18:09[http-nio-8080-exec-1] [DispatcherServlet:547] - Completed initialization in 1 ms

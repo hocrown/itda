@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.itda.dailyquestion.dao.IDailyAnswerRepository">
+    <insert id="insert">
+        INSERT INTO dailyAnswer(dailyAnswerSeq, userId, familyQuestionSeq, familySeq, answer, ans_date)
+        VALUES (daily_answer_seq.nextval, #{userId}, #{familyQuestionSeq}, #{familySeq}, #{answer}, #{answerDate})
+    </insert>
+</mapper>

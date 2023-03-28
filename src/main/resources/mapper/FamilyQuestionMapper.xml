@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.itda.dailyquestion.dao.IFamilyQuestionRepository">
+    <insert id="insert">
+        INSERT INTO familyQuestion(familyQuestionSeq, familySeq, dailyQuestionSeq, answer, askedDate)
+        VALUES (family_question_seq.nextval, #{familySeq}, #{dailyQuestionSeq}, #{answer}, SYSDATE)
+    </insert>
+    
+    <select id="selectByFamilySeqAndDailyQuestionSeq" resultType="FamilyQuestionModel">
+        SELECT familyQuestionSeq, familySeq, dailyQuestionSeq, answer, askedDate FROM familyQuestion
+        WHERE familySeq = #{familySeq} AND dailyQuestionSeq = #{dailyQuestionSeq}
+    </select>
+    
+    <select id="selectByFamilyQuestionSeq" resultType="FamilyQuestionModel">
+        SELECT familyQuestionSeq, familySeq, dailyQuestionSeq, answer, askedDate FROM familyQuestion
+        WHERE familyQuestionSeq = #{familyQuestionSeq}
+    </select>
+</mapper>

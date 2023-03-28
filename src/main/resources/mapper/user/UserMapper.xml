@@ -15,7 +15,7 @@
 		INSERT INTO 
 			itdauser (userId, familySeq, userPw, userName, userAge, userGender, userAddress, userAddressDetail, userPhone, approve, userBirth, email) 
 		VALUES 
-			(#{userId}, #{familySeq}, #{userPw}, #{userName}, #{userAge}, #{userGender}, #{userAddress}, #{userPhone}, #{userAddressDetail}, #{approve}, #{userBirth}, #{email})
+			(#{userId}, #{familySeq}, #{userPw}, #{userName}, #{userAge}, #{userGender}, #{userAddress}, #{userAddressDetail}, #{userPhone}, #{approve}, #{userBirth}, #{email})
 	]]>
 	</insert>
 	
@@ -30,9 +30,14 @@
 	<![CDATA[
 		SELECT familySeq 
 		FROM family 
-		WHERE familyOwner = #{userId}
+		WHERE famCode = #{famCode}
 		AND ROWNUM<=1
 	]]>
 	</select>
 	
+ 	<select id="selectUser" resultType="com.project.itda.common.model.UserModel">
+    <![CDATA[
+    	SELECT * FROM itdauser WHERE userId=#{userId} AND userPw=#{userPw}
+    ]]>
+  	</select>	
 </mapper>

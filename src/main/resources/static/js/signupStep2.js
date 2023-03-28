@@ -32,14 +32,14 @@ $(document).ready(function() {
     }
   });
 
-  $(".radioLabelFemail").click(function() {
-    $("#femailSmallEllipse, #mailSmallEllipse").removeClass("radioClickEllipse");
-    $("#femailSmallEllipse").addClass("radioClickEllipse");
+  $(".radioLabelFemale").click(function() {
+    $("#femaleSmallEllipse, #maleSmallEllipse").removeClass("radioClickEllipse");
+    $("#femaleSmallEllipse").addClass("radioClickEllipse");
   });
 
-  $(".radioLabelMail").click(function() {
-    $("#femailSmallEllipse, #mailSmallEllipse").removeClass("radioClickEllipse");
-    $("#mailSmallEllipse").addClass("radioClickEllipse");
+  $(".radioLabelMale").click(function() {
+    $("#femaleSmallEllipse, #maleSmallEllipse").removeClass("radioClickEllipse");
+    $("#maleSmallEllipse").addClass("radioClickEllipse");
   });
   
   // 입력값이 변경될 때마다 다음 버튼의 활성화 여부 확인

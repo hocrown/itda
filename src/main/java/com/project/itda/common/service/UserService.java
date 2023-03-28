@@ -25,8 +25,8 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public int selectFamilySeq(String userId) {
-		Integer familySeq = userRepository.selectFamilySeq(userId);
+	public int selectFamilySeq(String famCode) {
+		Integer familySeq = userRepository.selectFamilySeq(famCode);
 		return familySeq != null ? familySeq : 0;
 	}
 
@@ -39,6 +39,12 @@ public class UserService implements IUserService {
 	public int checkUserId(String userId) {
 		int checkUserId = userRepository.checkUserId(userId);
 		return checkUserId;
+	}
+
+	@Override
+	public UserModel selectUser(String userId, String userPw) {
+		UserModel user = userRepository.selectUser(userId, userPw);
+		return user;
 	}
 	
 	

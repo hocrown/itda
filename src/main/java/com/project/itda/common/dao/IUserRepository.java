@@ -12,6 +12,7 @@ import com.project.itda.common.model.UserModel;
 public interface IUserRepository {
 	void insertFamily(String userId, String famCode);
 	void insertUser(UserModel user);
-	int selectFamilySeq(String userId);
+	int selectFamilySeq(String famCode);
 	int checkUserId(String userId);
+	UserModel selectUser(String userId, String userPw);
 }

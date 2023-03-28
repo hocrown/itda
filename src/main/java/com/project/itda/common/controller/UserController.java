@@ -10,8 +10,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,12 +41,28 @@ public class UserController {
 	}
 	
 	@PostMapping("/user/login")
-	public String userLogin(Model model) {
+	@ResponseBody
+	public Map<String,Object> login(@RequestBody UserModel user, HttpSession session, Model model) {
+		Map<String, Object> map = new HashMap<>();
 		
-		
-		return "user/login";
-		
+	    System.out.println(user.getUserId());
+	    System.out.println(user.getUserPw());
+	    try {
+	    	UserModel loginUser = userService.selectUser(user.getUserId(), user.getUserPw());
+		    if (loginUser.getUserId() != null) {
+		        session.setAttribute("userId", loginUser.getUserId());
+		        session.setAttribute("loginUser", loginUser);
+		        map.put("result", "success");
+		    } else {
+		    	map.put("result", "fail");
+		    }
+	    }catch (Exception e) {
+			e.printStackTrace();
+			map.put("result", "error");
+		}
+	    return map;
 	}
+
 	
 	@GetMapping("/user/signupfamcode")
 	public String signupFamCode(Model model) {
@@ -133,31 +151,30 @@ public class UserController {
 	        LocalDate birthdate = LocalDate.of(user.getYear(), user.getMonth(), user.getDay());
 	        LocalDate today = LocalDate.now();
 	        int age = Period.between(birthdate, today).getYears();
-	        System.out.println(age);
 	        user.setUserAge(age);
 	        user.setUserBirth(birthdate);
 	        // insertFamily 메소드로 family 테이블에 데이터를 입력합니다.
 	        String userId = user.getUserId();
-	        System.out.println(userId);
-	        System.out.println(user.getFamCode());
 	        String famCode = user.getFamCode();
+	        if(user.getApprove() == "yes") {
 	        userService.insertFamily(userId, famCode);
-	        System.out.println("insertFam 성공");
-	        int famSeq = userService.selectFamilySeq(userId); 
-	        System.out.println("selectFamSeq"+famSeq);
+	        }
+	        int famSeq = userService.selectFamilySeq(famCode);
+	        System.out.println(user.getUserBirth());
+	        System.out.println(famSeq);
 	        // insertUser 메소드로 itda_user 테이블에 데이터를 입력합니다.
 	        user.setFamilySeq(famSeq);
-	        System.out.println(user.getFamilySeq());
 	        userService.insertUser(user);
-	        System.out.println("insertUser성공");
 	        // 데이터 입력에 성공하면 "success" 문자열을 반환합니다.
 	        return "success";
 	    } catch (DuplicateKeyException e) {
 	        // 중복된 데이터 입력 시 "duplicate" 문자열을 반환합니다.
+	    	 TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
 	        return "duplicate";
 	    } catch (Exception e) {
 	    	e.printStackTrace();
 	        // 기타 예외 발생 시 "fail" 문자열을 반환합니다.
+	    	 TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
 	        return "fail";
 	    }
 	}

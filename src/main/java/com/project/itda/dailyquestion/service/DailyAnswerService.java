@@ -10,4 +10,5 @@ public class DailyAnswerService implements IDailyAnswerService {
 
 	@Autowired
 	IDailyAnswerRepository dailyAnswerDao;
+	
 }

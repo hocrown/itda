@@ -51,4 +51,3 @@ function generateCode() {
   return code;
 }
 
-

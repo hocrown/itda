@@ -53,16 +53,15 @@ $(document).ready(function() {
       sessionStorage.setItem('year', $('.notesYear').val());
       sessionStorage.setItem('month', $('.notesMonth').val());
       sessionStorage.setItem('day', $('.notesDay').val());
-      sessionStorage.setItem('gender', $('.radioGenderInput'));
+      sessionStorage.setItem('gender', $('.radioGenderInput:checked').val());
           
       window.location.href = "/user/signupstep3";
     }
   });
-    $(".headBox img").click(function(){
-    sessionStorage.setItem("id", $(".notes").val());
-    sessionStorage.setItem("password", $(".notes2").val());
-    location.href = "signupStep1.jsp";
-  });
-  
+$(".headBox img").click(function(){
+    var id = sessionStorage.getItem("userId");
+    location.href = "/user/back1?id=" + id;
+});
+
 
 });

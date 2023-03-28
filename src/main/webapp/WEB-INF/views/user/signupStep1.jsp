@@ -22,7 +22,7 @@
 		
 		<span class="idText">아이디</span>
 		
-		<input type="text" class="notes">
+		<input type="text" class="notes" value="${id}">
 		<img class="idBar" src="../image/underline.png">
 
 		<span class="pwdText">비밀번호</span>

@@ -21,7 +21,7 @@
 		<span class="createCodeText">가족 코드를 생성해주세요.</span>
 		
 		<span class="famCodeText">가족초대코드</span>
-		<input type="text" class="notes">
+		<input type="text" class="notes" value="${famCode}">
 		<img class="codeBar" src="../image/underline.png">
 		<button class="createBtn">생성하기</button>
 		

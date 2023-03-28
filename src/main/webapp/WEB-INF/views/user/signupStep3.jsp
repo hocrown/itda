@@ -6,7 +6,7 @@
 <%@ include file="../head.jsp"%>
 <title>잇다</title>
 <link rel="stylesheet" type="text/css" href="../css/user/signupStep3.css">
-<script type="text/javascript" src="/js/signupStep3.js"></script>
+
 </head>
 <body>
 	<div class="layout">
@@ -27,16 +27,17 @@
 		<button class="addressBtn" id="searchBtn">주소 찾기</button>
 		
 		<span class="phoneNumberText">연락처</span>
-				
-		<input type="number" class="notes1">
+
+
+		<input type="text" class="notes1" maxlength="3">
 		<span class="yearText">-</span>
 		<img class="bar1" src="../image/smallBar1.png">
-		
-		<input type="number" class="notes2">
+
+		<input type="text" class="notes2" maxlength="4">
 		<span class="monthText">-</span>
 		<img class="bar2" src="../image/smallBar2.png">
-		
-		<input type="number" class="notes3">
+
+		<input type="text" class="notes3" maxlength="4">
 		<img class="bar3" src="../image/smallBar3.png">
 		
 		<span class="emailText">이메일</span>
@@ -54,6 +55,7 @@
 	</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="/js/signupStep3.js"></script>
 
 </body>
 </html>

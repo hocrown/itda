@@ -29,9 +29,11 @@
 		</form>
 		
 		
-		<button class="signupBtn">회원가입</button>
+		<button class="signupBtn" onclick="location.href='/user/signupfamcode'">회원가입</button>
 		<span class="hoxy">혹시 비밀번호를 잊으셨나요?</span>
 	</div>
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+	<script type="text/javascript" src="/js/login.js"></script>
 	
 	
 </body>

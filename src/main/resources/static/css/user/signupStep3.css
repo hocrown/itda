@@ -331,3 +331,9 @@ top: 592px;
 	background-color: #F8F8F5;
 	color: #979797;
 }
+
+.notesEmail ~ select {
+  position: absolute;
+  left: 360px;
+  top: 558px;
+}

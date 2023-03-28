@@ -4,7 +4,7 @@
 <html>
 <head>
 <%@ include file="../head.jsp"%>
-<title>Insert title here</title>
+<title>잇다</title>
 <link rel="stylesheet" type="text/css" href="../css/user/signupStep3.css">
 
 </head>
@@ -20,35 +20,42 @@
 		<span class="maybeLikeText">당신이 좋아할 만한</span>
 		<span class="giveContentText">콘텐츠를 추천해드리고 싶어요.</span>
 
-
 		<span class="addressText">주소</span>
-		<input type="text" class="notes">
+		<input type="hidden" class="notes" id="address_kakao">
+		<input type="text" class="notes" name="address_detail">
 		<img class="addressBar" src="../image/underline.png">
-		<button class="addressBtn">주소 찾기</button>
+		<button class="addressBtn" id="searchBtn">주소 찾기</button>
 		
 		<span class="phoneNumberText">연락처</span>
-				
-		<input type="number" class="notes1">
+
+
+		<input type="text" class="notes1" maxlength="3">
 		<span class="yearText">-</span>
 		<img class="bar1" src="../image/smallBar1.png">
-		
-		<input type="number" class="notes2">
+
+		<input type="text" class="notes2" maxlength="4">
 		<span class="monthText">-</span>
 		<img class="bar2" src="../image/smallBar2.png">
-		
-		<input type="number" class="notes3">
+
+		<input type="text" class="notes3" maxlength="4">
 		<img class="bar3" src="../image/smallBar3.png">
 		
 		<span class="emailText">이메일</span>
-		<input type="email" class="notesEmail">
+		<input type="text" class="notesEmail" id="email_id">
+		<select name="email_domain" onchange="updateEmail()">
+		  <option value="">직접 입력</option>
+		  <option value="@naver.com">@naver.com</option>
+		  <option value="@daum.net">@daum.net</option>
+		  <option value="@gmail.com">@gmail.com</option>
+		</select>
 		<img class="emailBar" src="../image/underline.png">
-		
 		
 		<button id="finishBtn" class="finishBtn">가입 완료</button>
 
 	</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="/js/signupStep3.js"></script>
 
 </body>
 </html>

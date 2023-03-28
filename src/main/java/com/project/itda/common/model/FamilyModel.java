@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class FamilyModel {
 	private int familySeq;
-	private String inviteCode;
+	private String famCode;
 	private String familyOwner;
 }

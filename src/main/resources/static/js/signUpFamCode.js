@@ -2,20 +2,28 @@
  * 
  */
 $(document).ready(function() {
+	sessionStorage.setItem("approve", 'no');
   $(".createBtn").click(function() {
     var code = generateCode(); // 코드 생성
     $(".notes").val(code); // 생성한 코드를 입력란에 표시
      sessionStorage.setItem("famCode", code);
+     sessionStorage.setItem("approve", 'yes');
   });
   
   $(".nextBtn").click(function() {
-    var notesValue = $(".notes").val(); // 입력된 값 가져오기
-    if (notesValue === "") { // 입력된 값이 비어있으면
+    var codeValue = $(".notes").val(); // 입력된 값 가져오기
+    if (codeValue === "") { // 입력된 값이 비어있으면
       $(".notes").focus(); // 입력란에 포커스 맞추기
       return false; // 버튼 클릭 이벤트 취소
     }
+    sessionStorage.setItem("famCode", codeValue);
     location.href = "/user/signupstep1"; // 다음 페이지로 이동
   });
+  
+  $(".headBox img").click(function(){
+	sessionStorage.clear();
+    location.href = "/user/login";
+});
 });
 
 function generateCode() {

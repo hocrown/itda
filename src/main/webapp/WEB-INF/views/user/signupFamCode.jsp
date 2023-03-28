@@ -6,8 +6,8 @@
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/user/signupFamCode.css">
-
-
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="../js/signupFamCode.js"></script>
 </head>
 <body>
 	<div class="layout">
@@ -21,7 +21,7 @@
 		<span class="createCodeText">가족 코드를 생성해주세요.</span>
 		
 		<span class="famCodeText">가족초대코드</span>
-		<input type="text" class="notes">
+		<input type="text" class="notes" value="${famCode}">
 		<img class="codeBar" src="../image/underline.png">
 		<button class="createBtn">생성하기</button>
 		

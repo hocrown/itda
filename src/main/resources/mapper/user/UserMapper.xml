@@ -3,12 +3,36 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="com.project.itda.common.dao.IUserRepository">
+
+	<select id="checkUserId" parameterType="String" resultType="int">
+		<![CDATA[
+		SELECT COUNT(*) FROM itdauser WHERE userId = #{userId}
+		]]>
+	</select>
+	
 	<insert id="insertUser" parameterType="com.project.itda.common.model.UserModel">
 	<![CDATA[
 		INSERT INTO 
-			itda_user (userId, familySeq, userPw, userName, userAge, userSex, userAddress, userPhone, approve) 
+			itdauser (userId, familySeq, userPw, userName, userAge, userGender, userAddress, userAddressDetail, userPhone, approve, userBirth, email) 
 		VALUES 
-			(#{userId}, familySeq.nexv_val, #{userPw}, #{userName}, #{userAge}, #{userSex}, #{userAddress}, #{userPhone}, #{approve})
+			(#{userId}, #{familySeq}, #{userPw}, #{userName}, #{userAge}, #{userGender}, #{userAddress}, #{userPhone}, #{userAddressDetail}, #{approve}, #{userBirth}, #{email})
 	]]>
 	</insert>
+	
+	<insert id="insertFamily" parameterType="com.project.itda.common.model.FamilyModel">
+	    <![CDATA[
+	        INSERT INTO family (familySeq, famCode, familyOwner)
+	        VALUES (familySeq.nextval, #{famCode}, #{userId})
+	    ]]>
+	</insert>
+	
+	<select id="selectFamilySeq" parameterType="String" resultType="int">
+	<![CDATA[
+		SELECT familySeq 
+		FROM family 
+		WHERE familyOwner = #{userId}
+		AND ROWNUM<=1
+	]]>
+	</select>
+	
 </mapper>

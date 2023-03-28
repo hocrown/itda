@@ -5,8 +5,11 @@
 <head>
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/user/signupStep2.css">
-
+<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/js/signupStep2.js"></script>
 </head>
 <body>
 	<div class="layout">
@@ -27,7 +30,7 @@
 
 		<span class="birthdayText">생년월일</span>
 		
-		<input type="number" class="notesYear">
+		<input type="text" class="notesYear" id="datepicker">
 		<span class="yearText">년</span>
 		<img class="bar1" src="../image/smallBar1.png">
 		
@@ -59,25 +62,10 @@
 			</div>
 			<span class="femailText">여자</span>
 		</label>		
-
-
 		
 		<button class="nextBtn">다음</button>
 
 	</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script>
-	$(document).ready(function() {
-	  $(".radioLabelFemail").click(function() {
-	    $("#femailSmallEllipse, #mailSmallEllipse").removeClass("radioClickEllipse");
-	    $("#femailSmallEllipse").addClass("radioClickEllipse");
-	  });
-	  $(".radioLabelMail").click(function() {
-		    $("#femailSmallEllipse, #mailSmallEllipse").removeClass("radioClickEllipse");
-		    $("#mailSmallEllipse").addClass("radioClickEllipse");
-		  });
-	});
-</script>
 
 </body>
 </html>

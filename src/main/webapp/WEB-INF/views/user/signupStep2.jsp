@@ -44,13 +44,13 @@
 		
 		<span class="genderText">성별</span>
 		
-		<input class="radioGenderInput" type="radio" id="Male" name="gender" value="Male">
-		<label class="radioLabelMale" for="Male">
+		<input class="radioGenderInput" type="radio" id="male" name="gender" value="male">
+		<label class="radioLabelMale" for="male">
 			<div class="ellipseMale">
 				<div id="MaleSmallEllipse">
 				</div>
 			</div>
-			<span class="MaleText">남자</span>
+			<span class="maleText">남자</span>
 		</label>
 		
 		

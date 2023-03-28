@@ -44,23 +44,23 @@
 		
 		<span class="genderText">성별</span>
 		
-		<input class="radioGenderInput" type="radio" id="mail" name="gender" value="mail">
-		<label class="radioLabelMail" for="mail">
-			<div class="ellipseMail">
-				<div id="mailSmallEllipse">
+		<input class="radioGenderInput" type="radio" id="Male" name="gender" value="Male">
+		<label class="radioLabelMale" for="Male">
+			<div class="ellipseMale">
+				<div id="MaleSmallEllipse">
 				</div>
 			</div>
-			<span class="mailText">남자</span>
+			<span class="MaleText">남자</span>
 		</label>
 		
 		
-		<input class="radioGenderInput" type="radio" id="femail" name="gender" value="femail">
-		<label class="radioLabelFemail" for="femail" >
-			<div class="ellipseFemail">
-				<div id="femailSmallEllipse">
+		<input class="radioGenderInput" type="radio" id="female" name="gender" value="female">
+		<label class="radioLabelFemale" for="female" >
+			<div class="ellipseFemale">
+				<div id="femaleSmallEllipse">
 				</div>
 			</div>
-			<span class="femailText">여자</span>
+			<span class="femaleText">여자</span>
 		</label>		
 		
 		<button class="nextBtn">다음</button>

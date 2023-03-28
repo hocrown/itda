@@ -124,6 +124,11 @@
 	background-color: #F8F8F5;
 	color: #979797;
 }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
 .notesYear {
 	position: absolute;

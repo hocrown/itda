@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,6 +31,16 @@
 		<div id='ellipse4' class='ellipse4'></div>
 		<div id='ellipse6' class='ellipse6'></div>
 	</div>
+  <thead>
+    <tr>
+    </tr>
+  </thead>
+  <tbody>
+    <c:forEach items="${bucketlist}" var="bucket">
+        <div>${bucket.title}</div>
+    </c:forEach>
+  </tbody>
+	
 
 </body>
 </html>

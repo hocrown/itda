@@ -13,7 +13,7 @@ public class UserModel {
 	private String userName;
 	private int userAge;
 	private String userGender;
-	private int userPhone;
+	private String userPhone;
 	private String approve;
 	private String email;
 	private LocalDate userBirth;

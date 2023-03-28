@@ -1,5 +1,9 @@
 package com.project.itda.bucketlist.service;
 
+import java.util.List;
+
+import com.project.itda.bucketlist.model.BucketListModel;
+
 /**
  * 
  * @author 윤준호
@@ -8,5 +12,6 @@ package com.project.itda.bucketlist.service;
  *
  */
 public interface IBucketListService {
-
+	List<BucketListModel> getPersonalBucket();
+	List<BucketListModel> getFamilyBucket();
 }

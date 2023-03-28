@@ -25,8 +25,8 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public int selectFamilySeq(String userId) {
-		Integer familySeq = userRepository.selectFamilySeq(userId);
+	public int selectFamilySeq(String famCode) {
+		Integer familySeq = userRepository.selectFamilySeq(famCode);
 		return familySeq != null ? familySeq : 0;
 	}
 

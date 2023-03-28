@@ -129,9 +129,9 @@ public class UserController {
 	        System.out.println(userId);
 	        System.out.println(user.getFamCode());
 	        String famCode = user.getFamCode();
-	        userService.insertFamily(userId, famCode);
+	        if(user.getApprove() == "yes")
 	        System.out.println("insertFam 성공");
-	        int famSeq = userService.selectFamilySeq(userId); 
+	        int famSeq = userService.selectFamilySeq(famCode); 
 	        System.out.println("selectFamSeq"+famSeq);
 	        // insertUser 메소드로 itda_user 테이블에 데이터를 입력합니다.
 	        user.setFamilySeq(famSeq);

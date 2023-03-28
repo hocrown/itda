@@ -30,7 +30,7 @@
 	<![CDATA[
 		SELECT familySeq 
 		FROM family 
-		WHERE familyOwner = #{userId}
+		WHERE FAMCODE = #{FAMCODE}
 		AND ROWNUM<=1
 	]]>
 	</select>

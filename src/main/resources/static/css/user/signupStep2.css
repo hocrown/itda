@@ -292,7 +292,7 @@
 	color: #2A221D;
 }
 
-.radioLabelMail {
+.radioLabelMale {
 	position: absolute;
 	width: 151px;
 	height: 42px;
@@ -305,7 +305,7 @@
 	align-items: center;
 }
 
-.radioLabelFemail {
+.radioLabelFemale {
 	position: absolute;
 	width: 151px;
 	height: 42px;
@@ -322,7 +322,7 @@
 	display: none;
 }
 
-.ellipseMail {
+.ellipseMale {
 	margin-left: 10%;
 	width: 22px;
 	height: 22px;
@@ -333,7 +333,7 @@
 	align-items: center;
 }
 
-.ellipseFemail {
+.ellipseFemale {
 	margin-left: 10%;
 	width: 22px;
 	height: 22px;
@@ -345,7 +345,7 @@
 	align-items: center;
 }
 
-.mailText {
+.maleText {
 	margin-left: 25%;
 	font-family: 'Bookk Myungjo';
 	font-style: normal;
@@ -355,7 +355,7 @@
 	color: #2A221D;
 }
 
-.femailText {
+.femaleText {
 	margin-left: 25%;
 	font-family: 'Bookk Myungjo';
 	font-style: normal;

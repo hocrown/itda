@@ -40,7 +40,9 @@ public class UserController {
 	
 	@PostMapping("/user/login")
 	public String userLogin(Model model) {
-		return null;
+		
+		
+		return "user/login";
 		
 	}
 	
@@ -83,7 +85,13 @@ public class UserController {
 	public String backStep2(Model model) {
 		return "user/signupStep2";
 	}
-
+	
+	/**
+	 * @author 윤준호
+	 * @since 2023-03-27
+	 * @param userId
+	 * @return map 유저의 id가 중복된 값인지 검증하여, 결과문을 result에 담아서 넘겨준다.
+	 */
 	@RequestMapping(value="/user/checkid", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String,Object> checkId(@RequestParam("userId") String userId){
@@ -104,7 +112,11 @@ public class UserController {
 	}
 	
 	
-	
+	/**
+	 * @author 윤준호
+	 * @param famCode 생성된 가족 코드
+	 * @return ajax 요청에 대한 응답으로 success 를 전달한다.
+	 */
 	@RequestMapping(value="/user/approve", method=RequestMethod.PUT)
 	@ResponseBody
 	public String approveFamCode(@RequestParam String famCode) {

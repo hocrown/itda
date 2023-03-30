@@ -52,6 +52,7 @@ public class UserController {
 			if (loginUser.getUserId() != null) {
 				session.setAttribute("userId", loginUser.getUserId());
 				session.setAttribute("loginUser", loginUser);
+				session.setAttribute("famSeq", loginUser.getFamilySeq());
 				map.put("result", "success");
 			} else {
 				map.put("result", "fail");
@@ -155,7 +156,7 @@ public class UserController {
 			// insertFamily 메소드로 family 테이블에 데이터를 입력합니다.
 			String userId = user.getUserId();
 			String famCode = user.getFamCode();
-			if (user.getApprove() == "yes") {
+			if ("yes".equals(user.getApprove())) {
 				userService.insertFamily(userId, famCode);
 			}
 			int famSeq = userService.selectFamilySeq(famCode);

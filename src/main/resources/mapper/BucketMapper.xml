@@ -7,11 +7,37 @@
 	<select id="getFamilyBucket"
 		resultType="com.project.itda.bucketlist.model.BucketListModel">
 		select * from BUCKETLIST
+		where FAMILYSEQ = #{familySeq}
+		and TYPE = 'Family'
+	</select>
+	
+	<select id="getOneFamilyBucket"
+		resultType="com.project.itda.bucketlist.model.BucketListModel">
+		select * from
+		BUCKETLIST where BUCKETSEQ = #{bucketSeq}
 	</select>
 	
 	<select id="getPersonalBucket"
 		resultType="com.project.itda.bucketlist.model.BucketListModel">
 		select * from BUCKETLIST
 	</select>
+	
+	<select id="getBucketReply"
+		resultType="com.project.itda.bucketlist.model.BucketReplyModel">
+		select * from BUCKETREPLY
+		where BUCKETSEQ = #{bucketSeq}
+	</select>
+	
+	<insert id="insertFamily"
+		parameterType="com.project.itda.bucketlist.model.BucketListModel">
+			INSERT INTO BUCKETLIST (bucketSeq ,userId, regDate, title, contents, goalDate, type, familySeq)
+               VALUES (bucketSeq.NEXTVAL, #{userId}, SYSDATE, #{title}, #{contents}, SYSDATE, 'Family', #{familySeq})
+	</insert>
+	
+	<insert id="insertPersonal"
+		parameterType="com.project.itda.bucketlist.model.BucketListModel">
+			INSERT INTO BUCKETLIST (bucketSeq ,userId, regDate, title, contents, goalDate, type, familySeq)
+               VALUES (bucketSeq.NEXTVAL, #{userId}, SYSDATE, #{title}, #{contents}, SYSDATE, 'Personal', 1)
+	</insert>
 	
 </mapper>

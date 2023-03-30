@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+a{
+	text-decoration: none;
+}
+
+.bucketTextBox {
+	
+}
+
+.bucketTitle {
+	margin-top: 15px;
+	margin-left: 16.5px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 20px;
+	color: #2A221D;
+}
+
+.bucketTextBox {
+	width: 100%;
+}
+
+.bucketRegDate {
+	margin-top: 15px; margin-left : 16.5px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	letter-spacing: 0.06em;
+	color: #9D9690;
+	margin-bottom: 20px;
+}
+

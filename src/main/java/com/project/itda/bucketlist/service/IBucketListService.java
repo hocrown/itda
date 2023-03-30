@@ -3,6 +3,7 @@ package com.project.itda.bucketlist.service;
 import java.util.List;
 
 import com.project.itda.bucketlist.model.BucketListModel;
+import com.project.itda.bucketlist.model.BucketReplyModel;
 
 /**
  * 
@@ -13,5 +14,7 @@ import com.project.itda.bucketlist.model.BucketListModel;
  */
 public interface IBucketListService {
 	List<BucketListModel> getPersonalBucket();
-	List<BucketListModel> getFamilyBucket();
+	List<BucketListModel> getFamilyBucket(int familySeq);
+	List<BucketReplyModel> getBucketReply(int bucketSeq);
+	
 }

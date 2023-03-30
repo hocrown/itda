@@ -83,7 +83,6 @@ select option[value=""][disabled] {
 	height: 216px;
 	background: rgba(177, 125, 90, 0.1);
 	border-radius: 20px;
-	top: 268px;
 	text-align: center;
 	display: flex;
 	align-items: center;

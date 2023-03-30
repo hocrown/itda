@@ -9,7 +9,10 @@ public class BucketListModel {
 	private String userId;
 	private Date regDate;
 	private String title;
-	private String familyBucketContents;
+	private String contents;
 	private Date goalDate;
 	private String type;
+	private int familySeq;
+	private String filename;
+	private String filepath;
 }

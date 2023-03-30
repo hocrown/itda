@@ -12,6 +12,4 @@ public interface IDailyQuestionRepository {
 
 	DailyQuestionModel getRandomQuestion(int familySeq, String todayStr);
 
-	DailyQuestionModel getQuestionByDailyQuestionSeq(int dailyQuestionSeq);
-
 }

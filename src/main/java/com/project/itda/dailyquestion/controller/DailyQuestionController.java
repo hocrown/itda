@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.itda.common.model.FamilyModel;
+import com.project.itda.common.model.UserModel;
 import com.project.itda.common.service.UserService;
 import com.project.itda.dailyquestion.model.DailyAnswerModel;
 import com.project.itda.dailyquestion.model.DailyQuestionModel;
 import com.project.itda.dailyquestion.model.FamilyAnswerModel;
 import com.project.itda.dailyquestion.model.FamilyQuestionModel;
-import com.project.itda.dailyquestion.model.FamilyQuestionView;
 import com.project.itda.dailyquestion.service.DailyAnswerService;
 import com.project.itda.dailyquestion.service.DailyQuestionService;
 import com.project.itda.dailyquestion.service.FamilyQuestionService;
@@ -41,19 +41,6 @@ public class DailyQuestionController {
     @Autowired
     private UserService userService;
 	
-//	@GetMapping("/dailymain")
-//	public String dailyMain(Model model, HttpSession session) {
-//	    String userId = (String) session.getAttribute("userId");
-//	    FamilyQuestionModel familyQuestion = (FamilyQuestionModel) session.getAttribute("todayFamilyQuestion"); 
-//	    int questionSeq = familyQuestion.getDailyQuestionSeq();
-//	    DailyAnswerModel dailyAnswer = dailyAnswerService.getDailyAnswerByUserId(questionSeq, userId);
-//	    if (dailyAnswer == null) {
-//	    	
-//	    }
-//	    model.addAttribute("dailyAnswer", dailyAnswer);
-//		return "dailyquestion/dailyMain";
-//	}
-	
 	@GetMapping("/dailyquestion/answerform")
 	public String dailyAnswer(Model model) {
 	
@@ -61,9 +48,41 @@ public class DailyQuestionController {
 	}
 	
 	@GetMapping("/dailyquestion/dailylist")
-	public String dailyList(Model model) {
-	
+	public String dailyList(Model model, HttpSession session) {
+		int familySeq = (Integer) session.getAttribute("famSeq");
+		List<FamilyQuestionModel> familyQuestions =  familyQuestionService.getQuestionAndAskedDateByFamilySeq(familySeq);
+		
+	    for (FamilyQuestionModel question : familyQuestions) {
+	        int dailyQuestionSeq = question.getDailyQuestionSeq();
+	        int answeredCount = dailyAnswerService.countAnsweredFamilyMember(familySeq, dailyQuestionSeq);
+	        int familyMemberCount = userService.countFamilyMember(familySeq);
+
+	        boolean allAnswered = answeredCount == familyMemberCount;
+
+	        question.setAllAnswered(allAnswered);
+	        question.setAnsweredCount(answeredCount);
+	        question.setFamilyMemberCount(familyMemberCount);
+	    }
+		model.addAttribute("familyQuestions", familyQuestions);
 		return "dailyquestion/dailyList";
+	}
+	
+	@GetMapping("/dailyquestion/familybylist")
+	public String familyDailyQuestionByList(@RequestParam("dailyQuestionSeq") int dailyQuestionSeq, 
+			@RequestParam("familySeq") int familySeq, 
+			@RequestParam("questionOrder") int questionOrder, Model model, HttpSession session) {
+		FamilyQuestionModel getFamilyQuestion =  familyQuestionService.familyDailyQuestionByQuestionOrder(familySeq, questionOrder);
+		List<FamilyAnswerModel> familyAnswers = dailyAnswerService.getFamilyAnswers(familySeq, dailyQuestionSeq);
+	    int answeredCount = dailyAnswerService.countAnsweredFamilyMember(familySeq, dailyQuestionSeq);
+	    int familyMemberCount = userService.countFamilyMember(familySeq);
+	    
+	    
+		model.addAttribute("familyQuestion", getFamilyQuestion);
+		model.addAttribute("familyAnswers", familyAnswers);
+	    model.addAttribute("answeredCount", answeredCount);
+	    model.addAttribute("familyMemberCount", familyMemberCount);
+		
+		return "dailyquestion/dailyDay";
 	}
 	
 	@GetMapping("/dailyquestion/monthlypage1")
@@ -71,33 +90,38 @@ public class DailyQuestionController {
 	
 		return "dailyquestion/dailyMonthlyStickerPage1";
 	}
+	
 	@GetMapping("/dailymain")
 	public String dailyQuestionPage(Model model, HttpSession session) {
 	    int familySeq = (Integer) session.getAttribute("famSeq");
 	    String userId = (String) session.getAttribute("userId");
-
 	    List<FamilyQuestionModel> getFamilyQuestion =  familyQuestionService.getQuestionAndAskedDateByFamilySeq(familySeq);
 
 	    FamilyQuestionModel latestFamilyQuestion = getFamilyQuestion.get(0);
 	    int dailyQuestionSeq = latestFamilyQuestion.getDailyQuestionSeq();
+	    int answeredCount = dailyAnswerService.countAnsweredFamilyMember(familySeq, dailyQuestionSeq);
+	    int familyMemberCount = userService.countFamilyMember(familySeq);
 
 	    List<FamilyAnswerModel> familyAnswers = dailyAnswerService.getFamilyAnswers(familySeq, dailyQuestionSeq);
 
-	    model.addAttribute("familyQuestions", getFamilyQuestion);
-	    model.addAttribute("familyAnswers", familyAnswers);
-
+	    
 	    FamilyQuestionModel familyQuestion = (FamilyQuestionModel) session.getAttribute("todayFamilyQuestion"); 
 	    int questionSeq = familyQuestion.getDailyQuestionSeq();
 	    DailyAnswerModel dailyAnswer = dailyAnswerService.getDailyAnswerByUserId(questionSeq, userId);
+	    
 	    if (dailyAnswer == null) {
 
 	    }
+	    //출력할 내용들 모델에 담음.
+	    model.addAttribute("familyQuestions", getFamilyQuestion);
+	    model.addAttribute("familyAnswers", familyAnswers);
+	    model.addAttribute("answeredCount", answeredCount);
+	    model.addAttribute("familyMemberCount", familyMemberCount);
 	    model.addAttribute("dailyAnswer", dailyAnswer);
 
 	    return "dailyquestion/dailyMain";
 	}
 
-	
 	@GetMapping("/get-question")
 	public void getDailyQuestion(@RequestParam String userId, HttpSession session) {
 	        

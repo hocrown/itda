@@ -1,8 +1,6 @@
 package com.project.itda.common.service;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.project.itda.common.dao.IUserRepository;
 import com.project.itda.common.model.FamilyModel;
 import com.project.itda.common.model.UserModel;
-import com.project.itda.dailyquestion.model.FamilyQuestionView;
 
 @Service
 public class UserService implements IUserService {
@@ -57,6 +54,16 @@ public class UserService implements IUserService {
 		return family;
 	}
 
+	@Override
+	public int countFamilyMember(int familySeq) {
+		int countAnsweredFamilyMember = userRepository.countFamilyMember(familySeq);
+		return countAnsweredFamilyMember;
+	}
+
+	@Override
+    public List<UserModel> getFamilyMembers(int familySeq) {
+        return userRepository.selectFamilyMembers(familySeq);
+    }
 	
 	
 }

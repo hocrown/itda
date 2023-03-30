@@ -26,11 +26,15 @@
 .finishCount {
 	font-style: normal;
 	font-weight: 700;
-	font-size: 10px;
+	font-size: 8px;
 	line-height: 10px;
 	display: flex;
 	align-items: center;
 	text-align: center;
 	color: #E16646;
 	font-family: 'Bookk Myungjo';
+}
+
+.listNum {
+	width:25px;
 }

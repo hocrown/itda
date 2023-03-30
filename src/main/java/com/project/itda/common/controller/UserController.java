@@ -15,7 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,15 +23,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.project.itda.common.model.FamilyModel;
 import com.project.itda.common.model.UserModel;
 import com.project.itda.common.service.IUserService;
+import com.project.itda.dailyquestion.controller.DailyQuestionController;
 
 @Controller
 public class UserController {
 
 	@Autowired
 	IUserService userService;
+	
+	@Autowired
+	DailyQuestionController dailyQuestionController;
 
 	@GetMapping("/user/login")
 	public String login(Model model) {
@@ -45,14 +47,16 @@ public class UserController {
 	public Map<String, Object> login(@RequestBody UserModel user, HttpSession session, Model model) {
 		Map<String, Object> map = new HashMap<>();
 
-		System.out.println(user.getUserId());
-		System.out.println(user.getUserPw());
 		try {
 			UserModel loginUser = userService.selectUser(user.getUserId(), user.getUserPw());
 			if (loginUser.getUserId() != null) {
 				session.setAttribute("userId", loginUser.getUserId());
 				session.setAttribute("loginUser", loginUser);
 				session.setAttribute("famSeq", loginUser.getFamilySeq());
+				 // DailyQuestionController의 getDailyQuestion() 메소드 호출
+	            String userId = loginUser.getUserId();
+	            dailyQuestionController.getDailyQuestion(userId, session);
+				
 				map.put("result", "success");
 			} else {
 				map.put("result", "fail");
@@ -132,6 +136,7 @@ public class UserController {
 
 	/**
 	 * @author 윤준호
+	 * @since 2023-03-27
 	 * @param famCode 생성된 가족 코드
 	 * @return ajax 요청에 대한 응답으로 success 를 전달한다.
 	 */
@@ -142,6 +147,12 @@ public class UserController {
 		return "success";
 	}
 
+	/**
+	 * @author 윤준호
+	 * @since 2023-03-27
+	 * @param user 회원가입 폼에서 작성된 user정보(sessionStorage를 통해 취합 후, ajax로 전달)
+	 * @return ajax 요청에 대한 응답으로 insertUser 성공 시, success를 전달 
+	 */
 	@PostMapping("/user/signup")
 	@ResponseBody
 	@Transactional
@@ -156,6 +167,7 @@ public class UserController {
 			// insertFamily 메소드로 family 테이블에 데이터를 입력합니다.
 			String userId = user.getUserId();
 			String famCode = user.getFamCode();
+			// 가족그룹의 생성자인지 검증
 			if ("yes".equals(user.getApprove())) {
 				userService.insertFamily(userId, famCode);
 			}

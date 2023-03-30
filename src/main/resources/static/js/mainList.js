@@ -8,4 +8,8 @@ $(document).ready(function(){
     $(".dailyTextBox").click(function(){
 		window.location.href = "/dailymain";
 	});
+	
+	$(".questionBox").click(function(){
+		window.location.href="/dailymain";
+	});
 });

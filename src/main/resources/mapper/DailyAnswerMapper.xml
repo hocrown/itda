@@ -2,8 +2,40 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.itda.dailyquestion.dao.IDailyAnswerRepository">
-    <insert id="insert">
-        INSERT INTO dailyAnswer(dailyAnswerSeq, userId, familyQuestionSeq, familySeq, answer, ans_date)
-        VALUES (daily_answer_seq.nextval, #{userId}, #{familyQuestionSeq}, #{familySeq}, #{answer}, #{answerDate})
+    
+    <insert id="saveDailyAnswer" parameterType="com.project.itda.dailyquestion.model.DailyAnswerModel">
+        INSERT INTO dailyAnswer(dailyAnswerSeq, userId, familySeq, answer, ans_date, dailyQuestionSeq)
+        VALUES (dailyAnswerSeq.nextval, #{userId}, #{familySeq}, #{answer}, SYSDATE, #{dailyQuestionSeq} )
     </insert>
+    
+    <select id="getDailyAnswerByUserId" parameterType="map" resultType="com.project.itda.dailyquestion.model.DailyAnswerModel">
+   		<![CDATA[
+   		SELECT * FROM dailyanswer WHERE dailyQuestionSeq = #{questionSeq} AND userId = #{userId}
+   		]]>
+	</select>
+    
+    <select id="getAnswersByFamilySeqAndDailyQuestionSeq" parameterType="map" resultType="com.project.itda.dailyquestion.model.DailyAnswerModel">
+    	<![CDATA[
+        SELECT * FROM dailyAnswer
+        WHERE familySeq = #{familySeq} AND dailyQuestionSeq = #{dailyQuestionSeq}
+    	]]>
+    </select>
+    
+    <select id="getFamilyAnswers" parameterType="map" resultType="com.project.itda.dailyquestion.model.FamilyAnswerModel">
+    <![CDATA[
+		SELECT
+	    u.userId,
+	    u.userName,
+	    da.answer,
+	    da.ans_date
+		FROM
+		    itdaUser u
+		LEFT JOIN
+		    dailyAnswer da ON u.userId = da.userId AND da.dailyQuestionSeq = #{dailyQuestionSeq}
+		WHERE
+		    u.familySeq = #{familySeq}
+		ORDER BY
+		    da.ans_date, u.userId
+    ]]>
+	</select>
 </mapper>

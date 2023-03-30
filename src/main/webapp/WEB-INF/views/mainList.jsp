@@ -26,9 +26,10 @@
 		<div class="timelineTextBox">타임라인</div>
 
 		<div class="questionBox">
-			<span class="questionText">오늘 하루동안 가장<br>행복했던 일은 무엇인가요?</span>
+			<span class="questionText">${todayFamilyQuestion.question}</span>
 		</div>
 
 	</div>
+	
 </body>
 </html>

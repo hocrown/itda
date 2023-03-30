@@ -11,4 +11,6 @@ public class FamilyQuestionModel {
 	private int dailyQuestionSeq;
 	private String answer;
 	private Date askedDate;
+	private String question;
+	private String questionOrder;
 }

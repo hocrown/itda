@@ -6,7 +6,8 @@
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/user/login.css">
-
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+	<script type="text/javascript" src="/js/login.js"></script>
 </head>
 <body>
 
@@ -16,7 +17,7 @@
 		<span class="hi">안녕하세요!</span> <span class="weritda">하지 못한 말,
 			&nbsp;<span style="font-weight: bold;">잇다</span>입니다.
 		</span> <span class="waiting">당신만을 기다리고 있었어요.</span>
-		<form>
+		<form onsubmit="login(); return false;">
 		<span class="idText">아이디</span>
 		<input type="text" class="notes">
 		<img class="idBar" src="../image/underline.png">
@@ -32,8 +33,7 @@
 		<button class="signupBtn" onclick="location.href='/user/signupfamcode'">회원가입</button>
 		<span class="hoxy">혹시 비밀번호를 잊으셨나요?</span>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-	<script type="text/javascript" src="/js/login.js"></script>
+
 	
 	
 </body>

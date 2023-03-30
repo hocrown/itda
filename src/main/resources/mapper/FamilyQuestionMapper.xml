@@ -2,18 +2,60 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.itda.dailyquestion.dao.IFamilyQuestionRepository">
-    <insert id="insert">
-        INSERT INTO familyQuestion(familyQuestionSeq, familySeq, dailyQuestionSeq, answer, askedDate)
-        VALUES (family_question_seq.nextval, #{familySeq}, #{dailyQuestionSeq}, #{answer}, SYSDATE)
-    </insert>
     
-    <select id="selectByFamilySeqAndDailyQuestionSeq" resultType="FamilyQuestionModel">
-        SELECT familyQuestionSeq, familySeq, dailyQuestionSeq, answer, askedDate FROM familyQuestion
-        WHERE familySeq = #{familySeq} AND dailyQuestionSeq = #{dailyQuestionSeq}
-    </select>
+	<select id="selectByFamSeqAndAskedDate" parameterType="map" resultType="int">
+	    <![CDATA[
+	        SELECT NVL(COUNT(*), 0)
+	        FROM familyQuestion
+	        WHERE familySeq = #{familySeq}
+	        AND TO_CHAR(askedDate, 'YYYY-MM-DD') = #{todayStr}
+	    ]]>
+	</select>
     
-    <select id="selectByFamilyQuestionSeq" resultType="FamilyQuestionModel">
-        SELECT familyQuestionSeq, familySeq, dailyQuestionSeq, answer, askedDate FROM familyQuestion
-        WHERE familyQuestionSeq = #{familyQuestionSeq}
+    
+    <insert id="insert" parameterType="com.project.itda.dailyquestion.model.FamilyQuestionModel">
+    	<![CDATA[
+    		INSERT INTO familyquestion (familyQuestionSeq,familyseq, dailyquestionseq, answer, askeddate)
+   			VALUES(familyQuestionSeq.nextval,#{familySeq}, #{dailyQuestionSeq}, #{answer}, SYSDATE)
+   		]]>
+	</insert>
+	
+	<select id="todayFamilyQuestion" parameterType="map" resultType="com.project.itda.dailyquestion.model.FamilyQuestionModel">
+		<![CDATA[
+		SELECT fq.*, dq.question
+		FROM familyQuestion fq
+		INNER JOIN dailyQuestion dq
+		ON fq.dailyQuestionSeq = dq.dailyQuestionSeq
+		WHERE fq.familySeq = #{familySeq}
+		AND TO_CHAR(fq.askedDate, 'YYYY-MM-DD') = #{todayStr}
+		]]>
+	</select>
+	
+    <select id="getDailyQuestionSeqByFamilySeqAndAskedDate" parameterType="map" resultType="int">
+        <![CDATA[
+        SELECT dailyQuestionSeq FROM familyQuestion
+        WHERE familySeq = #{familySeq} AND askedDate = #{today}
+        ]]>
     </select>
+ 
+	 <select id="getQuestionAndAskedDateByFamilySeq" parameterType="int" resultType="com.project.itda.dailyquestion.model.FamilyQuestionModel">
+	    <![CDATA[
+	        WITH today AS (
+	            SELECT 
+	                dq.dailyQuestionSeq,
+	                dq.question, 
+	                fq.askedDate, 
+	                ROW_NUMBER() OVER (PARTITION BY fq.familySeq ORDER BY fq.askedDate) AS questionOrder
+	            FROM dailyQuestion dq
+	            JOIN familyQuestion fq ON dq.dailyQuestionSeq = fq.dailyQuestionSeq
+	            WHERE fq.familySeq = #{familySeq} 
+	        )
+	        SELECT *
+	        FROM today
+	        WHERE questionOrder = (SELECT MAX(questionOrder) FROM today)
+	    ]]>
+	</select>
+
+
+	
 </mapper>

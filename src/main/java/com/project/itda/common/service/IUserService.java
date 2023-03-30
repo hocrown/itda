@@ -1,6 +1,7 @@
 package com.project.itda.common.service;
 
 
+import com.project.itda.common.model.FamilyModel;
 import com.project.itda.common.model.UserModel;
 
 public interface IUserService {
@@ -11,4 +12,5 @@ public interface IUserService {
 	void insertFamily(String userId, String famCode);
 	int checkUserId(String userId);
 	UserModel selectUser(String userId, String userPw);
+	FamilyModel getFamilyByUserId(String userId);
 }

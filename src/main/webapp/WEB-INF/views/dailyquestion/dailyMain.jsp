@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +13,8 @@
 <body>
 
 	<div class="layout">
-		<div class="headBox"><img class="vector" src="../image/vector.png">
+		<div class="headBox">
+			<img class="vector" src="../image/vector.png">
 			하루를 잇다
 			<img class="stickerPageLink" src="../image/stickerPageLink.png">
 			<img class="menuBtn" src="../image/menuBtn.png">	
@@ -27,31 +30,47 @@
 			<img class="AnswerSticker" src="../image/dailyquestionNoAnswer.png">						
 		</div>
 		
-		<span class="question">오늘 하루동안 가장<br>행복했던 일은 무엇인가요?</span>
-		<span class="numberOfQuestion">#1번째 질문</span>
-		<span class="questionDate">2023.04.28</span>
+		<span class="question">${familyQuestions[0].question}</span>
+		<span class="numberOfQuestion">#${familyQuestions[0].questionOrder}번째 질문</span>
+		<span class="questionDate"><fmt:formatDate value="${familyQuestions[0].askedDate}" pattern="yyyy.MM.dd"/></span>
+
 		
 		<div class="answerContainer">
 		
+		<c:forEach items="${familyAnswers}" var="answer">
+		<c:if test="${answer.userId != sessionScope.userId}">
 			<div class="memberAnswerBox">
-				<span class="memberText">아빠</span>
-				<span class="answerContents">아직 응답하지 않았어요.</span>
-				<div style="text-align: center; margin-top: 20px;">
-					<button class="kokBtn">콕 찌르기!</button>
-				</div>
+			    <span class="memberText">${answer.userName}</span>
+				<c:choose>
+					<c:when test="${answer.answer != null}">
+						<span class="answerContents">${answer.answer}</span>
+					</c:when>
+					<c:otherwise>
+					<span class="answerContents">아직 응답하지 않았어요.</span>
+					<div style="text-align: center; margin-top: 20px;">
+					    <button class="kokBtn">콕 찌르기!</button>
+					</div>
+					</c:otherwise>
+				</c:choose>
 			</div>
+		</c:if>
+		</c:forEach>
 			
 			<div class="memberAnswerBox">
-				<span class="memberText" style="color: #2A221D;">엄마</span>
-				<span class="answerContents" style="color: #2A221D;">날씨가 너무 좋아서 요새는 창문만 열어놓아도 너무 행복해</span>
-			</div>
-			
-			
-			
-		</div>		
-		
+				<span class="memberText">나</span>
+				<span class="answerContents" style="color: #2A221D;">
+					<c:choose>
+					    <c:when test="${dailyAnswer != null}">
+					    	${dailyAnswer.answer}
+					    </c:when>
+					    <c:otherwise>
+					    	<a class="answerContents" href="/dailyquestion/answerform">답변 작성하기</a>
+					    </c:otherwise>
+				    </c:choose>
+   				</span>
+			</div>		
 	</div>
-	
-	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/dailyquestion/dailyMain.js"></script>
 </body>
 </html>

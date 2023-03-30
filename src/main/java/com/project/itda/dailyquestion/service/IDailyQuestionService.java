@@ -1,5 +1,10 @@
 package com.project.itda.dailyquestion.service;
 
+import com.project.itda.dailyquestion.model.DailyQuestionModel;
+
 public interface IDailyQuestionService {
-	public void sendDailyQuestion();
+
+	DailyQuestionModel getRandomQuestion(int familySeq, String todayStr);
+	
+	DailyQuestionModel getQuestionByDailyQuestionSeq(int dailyQuestionSeq);
 }

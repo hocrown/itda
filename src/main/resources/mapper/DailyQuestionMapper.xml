@@ -2,10 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.itda.dailyquestion.dao.IDailyQuestionRepository">
-    <select id="selectAll" resultType="DailyQuestionModel">
-        SELECT dailyQuestionSeq, question, type, familySeq FROM dailyQuestion
-    </select>
     
+    
+    <select id="getRandomQuestion" parameterType="map" resultType="com.project.itda.dailyquestion.model.DailyQuestionModel">
+    	<![CDATA[
+    	SELECT dq.*
+		FROM dailyQuestion dq
+		LEFT JOIN familyQuestion fq ON dq.dailyQuestionSeq = fq.dailyQuestionSeq AND fq.familySeq = #{familySeq} AND fq.askedDate = #{todayStr}
+		WHERE fq.dailyQuestionSeq IS NULL
+		ORDER BY dbms_random.value()
+		FETCH FIRST 1 ROW ONLY
+    	]]>
+    </select>
     
     
 </mapper>

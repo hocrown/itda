@@ -1,10 +1,10 @@
 package com.project.itda.common.dao;
 
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import com.project.itda.common.model.FamilyModel;
 import com.project.itda.common.model.UserModel;
 
 @Repository
@@ -15,4 +15,8 @@ public interface IUserRepository {
 	int selectFamilySeq(String famCode);
 	int checkUserId(String userId);
 	UserModel selectUser(String userId, String userPw);
+	
+	FamilyModel getFamilyByUserId(String userId);
+	String getFamCodeByUserId(String userId);
+	
 }

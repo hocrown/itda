@@ -40,4 +40,19 @@
     	SELECT * FROM itdauser WHERE userId=#{userId} AND userPw=#{userPw}
     ]]>
   	</select>	
+  	
+  	<select id="getFamCodeByUserId" parameterType="String" resultType="String">
+  	<![CDATA[
+  		SELECT familySeq
+  		FROM itdauser
+  		WHERE userId=#{userId}
+  	]]>
+  	</select>
+  	
+  	<select id="getFamilyByUserId" parameterType="String" resultType="com.project.itda.common.model.FamilyModel">
+  	<![CDATA[
+  		SELECT * FROM FAMILY WHERE familySeq=#{familySeq}
+  	]]>
+  	</select>
+  	
 </mapper>

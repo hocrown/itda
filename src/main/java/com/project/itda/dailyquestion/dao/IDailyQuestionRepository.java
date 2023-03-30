@@ -1,6 +1,5 @@
 package com.project.itda.dailyquestion.dao;
 
-import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -11,7 +10,8 @@ import com.project.itda.dailyquestion.model.DailyQuestionModel;
 @Mapper
 public interface IDailyQuestionRepository {
 
-	List<DailyQuestionModel> selectAll();
-	void sendDailyQuestion();
+	DailyQuestionModel getRandomQuestion(int familySeq, String todayStr);
+
+	DailyQuestionModel getQuestionByDailyQuestionSeq(int dailyQuestionSeq);
 
 }

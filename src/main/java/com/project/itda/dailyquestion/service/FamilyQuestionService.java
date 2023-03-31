@@ -27,8 +27,8 @@ public class FamilyQuestionService implements IFamilyQuestionService {
 	}
 
 	@Override
-	public FamilyQuestionModel todayFamilyQuestion(int familySeq, String todayStr) {
-		FamilyQuestionModel todayFamilyQuestion = familyQuestionRepository.todayFamilyQuestion(familySeq, todayStr);
+	public FamilyQuestionModel todayFamilyQuestion(int familySeq) {
+		FamilyQuestionModel todayFamilyQuestion = familyQuestionRepository.todayFamilyQuestion(familySeq);
 		return todayFamilyQuestion;
 	}
 

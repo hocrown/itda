@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.project.itda.common.dao.IAlarmRepository">
+  <insert id="insertAlarm" parameterType="com.project.itda.common.model.AlarmModel">
+    INSERT INTO alarm (alarmSeq,receiver, alarm_date, checked, message) VALUES (alarmSeq.nextval,#{userId}, #{alarmDate}, #{checked}, #{message})
+  </insert>
+
+</mapper>

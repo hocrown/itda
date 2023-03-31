@@ -20,14 +20,14 @@
    		]]>
 	</insert>
 	
-	<select id="todayFamilyQuestion" parameterType="map" resultType="com.project.itda.dailyquestion.model.FamilyQuestionModel">
+	<select id="todayFamilyQuestion" parameterType="int" resultType="com.project.itda.dailyquestion.model.FamilyQuestionModel">
 		<![CDATA[
 		SELECT fq.*, dq.question
 		FROM familyQuestion fq
 		INNER JOIN dailyQuestion dq
 		ON fq.dailyQuestionSeq = dq.dailyQuestionSeq
 		WHERE fq.familySeq = #{familySeq}
-		AND TO_CHAR(fq.askedDate, 'YYYY-MM-DD') = #{todayStr}
+		AND TRUNC(fq.askedDate) = TRUNC(SYSDATE)
 		]]>
 	</select>
 	

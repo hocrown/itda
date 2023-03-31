@@ -2,15 +2,7 @@
  * 
  */
 var prevUrl = document.referrer;
-var socket = new SockJS('/websocket');
-var stompClient = Stomp.over(socket);
-stompClient.connect({}, function (frame) {
-    stompClient.subscribe('/user/queue/notifications', function (notification) {
-        // 알림을 받았을 때 처리할 로직을 작성합니다.
-        // 예: 알림 메시지를 화면에 표시하거나 로그를 남기는 등
-        console.log('Received notification: ' + notification.body);
-    });
-});
+
  $(document).ready(function() {
 
     $(".headBox .vector").click(function(){
@@ -33,35 +25,38 @@ stompClient.connect({}, function (frame) {
     location.href = "/dailyquestion/dailylist";	
 	});
 	
+	var socket = new SockJS('/websocket');	
+	var stompClient = Stomp.over(socket);
+	stompClient.connect({}, function (frame) {
+		stompClient.subscribe('/user/queue/notifications', function (notification) {
+    	// 알림을 받았을 때 처리할 로직을 작성합니다.
+    	// 예: 알림 메시지를 화면에 표시하거나 로그를 남기는 등
+    	console.log('받은 알람: ' + notification.body);
+		});
+	});
 	
-	$.ajax({
-    url: '/getSessionUserId',
-    type: 'GET',
-    success: function(data) {
-        var userId = data.userId;
-        console.log(userId);
-    }
-    });
-	
- const userId = userId;
-  const socket = new WebSocket('ws://yourserver.com/notifications');
-
-  socket.addEventListener('message', (event) => {
-    const message = event.data;
-    console.log(`Received notification: ${message}`);
-  });
-
-  socket.addEventListener('open', (event) => {
-    console.log('Connected to the notification server');
-  });
-
-  socket.addEventListener('close', (event) => {
-    console.log('Disconnected from the notification server');
-  });
-
-  $('.kokBtn').click(function () {
+	$('.kokBtn').click(function () {
     var targetUserId = $(this).data('user-id');
     var notification = "질문에 답변해주세요.";
-    socket.send(JSON.stringify({targetUserId: targetUserId, notification: notification}));
+    var currentDate = new Date().toISOString().slice(0, 10);
+    var alarm = {
+        userId: targetUserId,
+        alarmDate: currentDate,
+        checked: 0,
+        message: notification
+    };
+    
+    $.ajax({
+        type: 'POST',
+        url: '/sendAlarm',
+        data: JSON.stringify(alarm),
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+            console.log(`알림 전송 to ${targetUserId}: ${notification}`);
+        },
+        error: function (xhr, status, error) {
+            console.error(error);
+        }
+    });
 });
 });

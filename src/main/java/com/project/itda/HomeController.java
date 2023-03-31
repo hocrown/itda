@@ -24,5 +24,10 @@ public class HomeController {
 		
 		return "mainList";
 	}
+	
+	@GetMapping("/alarm")
+	public String alarm(Model model) {
+		return "alarmList";
+	}
 
 }

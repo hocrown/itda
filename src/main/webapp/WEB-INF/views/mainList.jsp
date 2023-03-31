@@ -6,8 +6,7 @@
 <%@ include file="head.jsp"%>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/mainList.css">
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script type="text/javascript" src="/js/mainList.js"></script>
+
 </head>
 <body>
 	<div class="layout">
@@ -30,6 +29,7 @@
 		</div>
 
 	</div>
-	
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script type="text/javascript" src="/js/mainList.js"></script>
 </body>
 </html>

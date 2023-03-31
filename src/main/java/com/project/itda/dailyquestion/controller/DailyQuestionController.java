@@ -9,6 +9,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,6 +41,9 @@ public class DailyQuestionController {
     
     @Autowired
     private UserService userService;
+    
+	@Autowired
+	private SimpMessagingTemplate messagingTemplate;
 	
 	@GetMapping("/dailyquestion/answerform")
 	public String dailyAnswer(Model model) {
@@ -75,8 +79,16 @@ public class DailyQuestionController {
 		List<FamilyAnswerModel> familyAnswers = dailyAnswerService.getFamilyAnswers(familySeq, dailyQuestionSeq);
 	    int answeredCount = dailyAnswerService.countAnsweredFamilyMember(familySeq, dailyQuestionSeq);
 	    int familyMemberCount = userService.countFamilyMember(familySeq);
+	    int questionSeq = getFamilyQuestion.getDailyQuestionSeq();
+	    String userId = (String) session.getAttribute("userId");
 	    
+	    DailyAnswerModel dailyAnswer = dailyAnswerService.getDailyAnswerByUserId(questionSeq, userId);
 	    
+	    if (dailyAnswer == null) {
+
+	    }
+	    //출력할 내용들 모델에 담음.
+	    model.addAttribute("dailyAnswer", dailyAnswer);
 		model.addAttribute("familyQuestion", getFamilyQuestion);
 		model.addAttribute("familyAnswers", familyAnswers);
 	    model.addAttribute("answeredCount", answeredCount);
@@ -105,7 +117,8 @@ public class DailyQuestionController {
 	    List<FamilyAnswerModel> familyAnswers = dailyAnswerService.getFamilyAnswers(familySeq, dailyQuestionSeq);
 
 	    
-	    FamilyQuestionModel familyQuestion = (FamilyQuestionModel) session.getAttribute("todayFamilyQuestion"); 
+	    FamilyQuestionModel familyQuestion = familyQuestionService.todayFamilyQuestion(familySeq);
+	    
 	    int questionSeq = familyQuestion.getDailyQuestionSeq();
 	    DailyAnswerModel dailyAnswer = dailyAnswerService.getDailyAnswerByUserId(questionSeq, userId);
 	    
@@ -148,10 +161,19 @@ public class DailyQuestionController {
 	        familyQuestion.setAnswer("N");
 	        familyQuestion.setAskedDate(new Date());
 	        familyQuestionService.insert(familyQuestion);
-	        FamilyQuestionModel todayFamilyQuestion = familyQuestionService.todayFamilyQuestion(familySeq, todayStr);
+	        FamilyQuestionModel todayFamilyQuestion = familyQuestionService.todayFamilyQuestion(familySeq);
 	        session.setAttribute("todayFamilyQuestion", todayFamilyQuestion);
+	        
+	        //웹소켓 활용 알림 메시지 전송
+	        
+	        // 해당 familySeq에 해당하는 유저들의 ID 목록을 가져옵니다.
+            List<String> userIds = userService.getFamilyUserIds(familySeq); 
+            String notification = "오늘의 질문이 등록됐어요.";
+            for (String loginUserId : userIds) {
+            	 messagingTemplate.convertAndSendToUser(loginUserId, "/queue/notifications", notification);
+            }
 	    } else {
-	    	FamilyQuestionModel todayFamilyQuestion = familyQuestionService.todayFamilyQuestion(familySeq, todayStr);
+	    	FamilyQuestionModel todayFamilyQuestion = familyQuestionService.todayFamilyQuestion(familySeq);
 	    	session.setAttribute("todayFamilyQuestion", todayFamilyQuestion);
 	    }
     }

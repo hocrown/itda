@@ -67,7 +67,7 @@
     SELECT * FROM itdaUser WHERE familySeq = #{familySeq}
 	</select>
   	
-  	<select id="getFamilyUserIds" parameterType="int">
+  	<select id="getFamilyUserIds" parameterType="int" resultType="java.lang.String">
   	<![CDATA[
   	SELECT userId
   	FROM itdauser

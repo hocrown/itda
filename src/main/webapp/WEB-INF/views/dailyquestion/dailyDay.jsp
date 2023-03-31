@@ -43,40 +43,49 @@
 		
 		<div class="answerContainer">
 		
+<!-- 			세션 유저의 답변 정보를 찾아서 변수에 담기 -->
+		<c:set var="myAnswer" value="${familyAnswers.stream().filter(answer -> answer.userId == sessionScope.userId).findFirst().orElse(null)}" />
+		
+<!-- 		가족 구성원 전체의 답변 정보 출력 -->
 		<c:forEach items="${familyAnswers}" var="answer">
-		<c:if test="${answer.userId != sessionScope.userId}">
-			<div class="memberAnswerBox">
-			    <span class="memberText">${answer.userName}</span>
-				<c:choose>
-					<c:when test="${answer.answer != null}">
-						<span class="answerContents">${answer.answer}</span>
-					</c:when>
-					<c:otherwise>
-					<span class="answerContents">아직 응답하지 않았어요.</span>
-					<div style="text-align: center; margin-top: 20px;">
-					    <button class="kokBtn">콕 찌르기!</button>
-					</div>
-					</c:otherwise>
-				</c:choose>
-			</div>
-		</c:if>
+<!-- 		    세션 유저의 답변 정보인 경우는 출력하지 않음 -->
+		    <c:if test="${answer.userId != sessionScope.userId}">
+		        <div class="memberAnswerBox">
+		            <span class="memberText">${answer.userName}</span>
+		            <c:choose>
+		                <c:when test="${answer.answer != null}">
+		                    <span class="answerContents">${answer.answer}</span>
+		                </c:when>
+		                <c:otherwise>
+		                    <span class="answerContents">아직 응답하지 않았어요.</span>
+		                    <div style="text-align: center; margin-top: 20px;">
+		                        <button class="kokBtn">콕 찌르기!</button>
+		                    </div>
+		                </c:otherwise>
+		            </c:choose>
+		        </div>
+		    </c:if>
 		</c:forEach>
-			
-			<div class="memberAnswerBox">
-				<span class="memberText">나</span>
-				<span class="answerContents" style="color: #2A221D;">
-					<c:choose>
-					    <c:when test="${dailyAnswer != null}">
-					    	${dailyAnswer.answer}
-					    </c:when>
-					    <c:otherwise>
-					    	<a class="answerContents" href="/dailyquestion/answerform">답변 작성하기</a>
-					    </c:otherwise>
-				    </c:choose>
-   				</span>
-			</div>		
+		
+<!-- 		세션 유저의 답변 정보 출력 -->
+		<div class="memberAnswerBox">
+		    <span class="memberText">나</span>
+		    <span class="answerContents" style="color: #2A221D;">
+<!-- 		        세션 유저의 답변 정보가 있는 경우 -->
+		        <c:if test="${myAnswer != null}">
+		            ${myAnswer.answer}
+		        </c:if>
+<!-- 		        세션 유저의 답변 정보가 없는 경우 -->
+		        <c:if test="${myAnswer == null}">
+		            <a class="answerContents" href="/dailyquestion/answerform">답변 작성하기</a>
+		        </c:if>
+		    </span>
+		</div>
+		
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.2/sockjs.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 	<script type="text/javascript" src="/js/dailyquestion/dailyMain.js"></script>
 </body>
 </html>

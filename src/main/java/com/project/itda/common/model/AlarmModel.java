@@ -7,8 +7,9 @@ import lombok.Data;
 @Data
 public class AlarmModel {
 	private int alarmSeq;
-	private String receiver;
+	private String userId;
 	private Date alarmDate;
 	private int checked;
+	private String message;
 
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
@@ -24,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.project.itda.common.NotificationWebSocketHandler;
 import com.project.itda.common.model.UserModel;
 import com.project.itda.common.service.IUserService;
 import com.project.itda.dailyquestion.controller.DailyQuestionController;
@@ -39,8 +39,8 @@ public class UserController {
 	DailyQuestionController dailyQuestionController;
 	
 	@Autowired
-	NotificationWebSocketHandler notificationWebSocketHandler;
-
+	private SimpMessagingTemplate messagingTemplate;
+	
 	@GetMapping("/user/login")
 	public String login(Model model) {
 
@@ -54,20 +54,15 @@ public class UserController {
 
 		try {
 			UserModel loginUser = userService.selectUser(user.getUserId(), user.getUserPw());
-			if (loginUser.getUserId() != null) {
+			if (loginUser != null && loginUser.getUserId() != null) {
 				session.setAttribute("userId", loginUser.getUserId());
 				session.setAttribute("loginUser", loginUser);
 				session.setAttribute("famSeq", loginUser.getFamilySeq());
 				 // DailyQuestionController의 getDailyQuestion() 메소드 호출
 	            String loginUserId = loginUser.getUserId();
-	            int familySeq = loginUser.getFamilySeq();
+
 	            dailyQuestionController.getDailyQuestion(loginUserId, session);
-	            String notification = "오늘의 질문이 등록됐어요.";
-	            // 해당 familySeq에 해당하는 유저들의 ID 목록을 가져옵니다.
-	            List<String> userIds = userService.getFamilyUserIds(familySeq); 
-	            for (String userId : userIds) {
-	                notificationWebSocketHandler.sendNotificationToUser(userId, notification);
-	            }
+	            
 				map.put("result", "success");
 			} else {
 				map.put("result", "fail");

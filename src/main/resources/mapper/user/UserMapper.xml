@@ -55,4 +55,16 @@
   	]]>
   	</select>
   	
+	<select id="countFamilyMember" parameterType="int" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*)
+			FROM itdauser
+			WHERE familySeq = #{familySeq}
+		]]>
+	</select>
+	
+	<select id="selectFamilyMembers" parameterType="int" resultType="com.project.itda.common.model.UserModel">
+    SELECT * FROM itdaUser WHERE familySeq = #{familySeq}
+	</select>
+  	
 </mapper>

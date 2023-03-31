@@ -38,4 +38,15 @@
 		    da.ans_date, u.userId
     ]]>
 	</select>
+	
+	<select id="countAnsweredFamilyMember" parameterType="int" resultType="int">
+		<![CDATA[
+			SELECT COUNT(DISTINCT userId)
+			FROM dailyAnswer
+			WHERE familySeq = #{familySeq} AND dailyQuestionSeq = #{dailyQuestionSeq}
+		]]>
+	</select>
+	
+	
+	
 </mapper>

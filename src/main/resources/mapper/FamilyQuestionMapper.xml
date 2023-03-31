@@ -31,31 +31,41 @@
 		]]>
 	</select>
 	
-    <select id="getDailyQuestionSeqByFamilySeqAndAskedDate" parameterType="map" resultType="int">
-        <![CDATA[
-        SELECT dailyQuestionSeq FROM familyQuestion
-        WHERE familySeq = #{familySeq} AND askedDate = #{today}
-        ]]>
-    </select>
- 
 	 <select id="getQuestionAndAskedDateByFamilySeq" parameterType="int" resultType="com.project.itda.dailyquestion.model.FamilyQuestionModel">
 	    <![CDATA[
-	        WITH today AS (
 	            SELECT 
 	                dq.dailyQuestionSeq,
 	                dq.question, 
-	                fq.askedDate, 
+	                fq.askedDate,
+	                fq.familySeq,
 	                ROW_NUMBER() OVER (PARTITION BY fq.familySeq ORDER BY fq.askedDate) AS questionOrder
 	            FROM dailyQuestion dq
 	            JOIN familyQuestion fq ON dq.dailyQuestionSeq = fq.dailyQuestionSeq
 	            WHERE fq.familySeq = #{familySeq} 
-	        )
-	        SELECT *
-	        FROM today
-	        WHERE questionOrder = (SELECT MAX(questionOrder) FROM today)
+	     		ORDER BY Questionorder DESC
 	    ]]>
+	</select>
+	
+	<select id="familyDailyQuestionByQuestionOrder" parameterType="int" resultType="com.project.itda.dailyquestion.model.FamilyQuestionModel">
+		<![CDATA[
+	        SELECT 
+			    dq.dailyQuestionSeq,
+			    dq.question, 
+			    fq.askedDate
+			FROM dailyQuestion dq
+			JOIN (
+			    SELECT 
+			        familySeq, 
+			        dailyQuestionSeq, 
+			        askedDate, 
+			        ROW_NUMBER() OVER (PARTITION BY familySeq ORDER BY askedDate) AS questionOrder
+			    FROM familyQuestion 
+			    WHERE familySeq = #{familySeq}
+			) fq ON dq.dailyQuestionSeq = fq.dailyQuestionSeq
+			WHERE fq.questionOrder = #{questionOrder}
+			ORDER BY fq.askedDate DESC
+		]]>
 	</select>
 
 
-	
 </mapper>

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.project.itda.dailyquestion.dao.IDailyAnswerRepository;
 import com.project.itda.dailyquestion.model.DailyAnswerModel;
 import com.project.itda.dailyquestion.model.FamilyAnswerModel;
-import com.project.itda.dailyquestion.model.FamilyQuestionView;
 
 @Service
 public class DailyAnswerService implements IDailyAnswerService {
@@ -28,17 +27,16 @@ public class DailyAnswerService implements IDailyAnswerService {
 		return dailyAnswer;
 	}
 
-
-	@Override
-	public List<DailyAnswerModel> getAnswersByFamilySeqAndDailyQuestionSeq(int familySeq, int dailyQuestionSeq) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	@Override
 	public List<FamilyAnswerModel> getFamilyAnswers(int familySeq, int dailyQuestionSeq) {
 		List<FamilyAnswerModel> getFamilyAnswers = dailyAnswerRepository.getFamilyAnswers(familySeq, dailyQuestionSeq);
 		return getFamilyAnswers;
+	}
+	
+	@Override
+	public int countAnsweredFamilyMember(int familySeq, int dailyQuestionSeq) {
+		int answeredFamilyMemberCount = dailyAnswerRepository.countAnsweredFamilyMember(familySeq, dailyQuestionSeq);		
+		return answeredFamilyMemberCount;
 	}
 
 }

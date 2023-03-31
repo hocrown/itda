@@ -6,5 +6,4 @@ public interface IDailyQuestionService {
 
 	DailyQuestionModel getRandomQuestion(int familySeq, String todayStr);
 	
-	DailyQuestionModel getQuestionByDailyQuestionSeq(int dailyQuestionSeq);
 }

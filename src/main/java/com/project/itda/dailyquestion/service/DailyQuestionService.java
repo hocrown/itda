@@ -24,22 +24,9 @@ public class DailyQuestionService implements IDailyQuestionService {
 	IDailyAnswerRepository dailyAnswer;
 	
 	
-
+	@Override
 	public DailyQuestionModel getRandomQuestion(int familySeq, String todayStr) {
 		DailyQuestionModel randomQuestion = dailyQuestionRepository.getRandomQuestion(familySeq, todayStr);
 		return randomQuestion;
-	}
-	
-	public DailyQuestionModel getDailyQuestionData(int familySeq, Date today) {
-        int dailyQuestionSeq = familyQuestion.getDailyQuestionSeqByFamilySeqAndAskedDate(familySeq, today);
-        DailyQuestionModel todayFamilyQuestion = dailyQuestionRepository.getQuestionByDailyQuestionSeq(dailyQuestionSeq);
-        List<DailyAnswerModel> dailyAnswers = dailyAnswer.getAnswersByFamilySeqAndDailyQuestionSeq(familySeq, dailyQuestionSeq);
-        return new DailyQuestionModel(todayFamilyQuestion, dailyAnswers);
-    }
-
-	@Override
-	public DailyQuestionModel getQuestionByDailyQuestionSeq(int dailyQuestionSeq) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

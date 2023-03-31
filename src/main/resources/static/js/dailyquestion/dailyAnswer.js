@@ -27,8 +27,10 @@
 		}
 	});
 	
-	$(".headBox .vector").click(function(){
-    location.href = "/dailymain";	
+var prevUrl = document.referrer;
+
+ 	$(".headBox .vector").click(function(){
+    location.href = prevUrl;
 	});
 
 const textarea = document.querySelector('.answerTextarea');

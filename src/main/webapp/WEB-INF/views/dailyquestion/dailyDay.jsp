@@ -24,21 +24,21 @@
 		
 			
 		<div class="AnswerStickerBox">
-		<c:forEach var="i" begin="1" end="${familyMemberCount}">
-		<c:choose>
-			<c:when test="${i le answeredCount}">
-				<img class="AnswerSticker" src="../image/dailyquestionYesAnswer.png">
-			</c:when>
-			<c:otherwise>
-				<img class="AnswerSticker" src="../image/dailyquestionNoAnswer.png">
-			</c:otherwise>
-		</c:choose>
-		</c:forEach>
+			<c:forEach var="i" begin="1" end="${familyMemberCount}">
+				<c:choose>
+					<c:when test="${i le answeredCount}">
+						<img class="AnswerSticker" src="../image/dailyquestionYesAnswer.png">
+					</c:when>
+					<c:otherwise>
+						<img class="AnswerSticker" src="../image/dailyquestionNoAnswer.png">
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
 		</div>
 		
-		<span class="question">${familyQuestions[0].question}</span>
-		<span class="numberOfQuestion">#${familyQuestions[0].questionOrder}번째 질문</span>
-		<span class="questionDate"><fmt:formatDate value="${familyQuestions[0].askedDate}" pattern="yyyy.MM.dd"/></span>
+		<span class="question">${familyQuestion.question}</span>
+		<span class="numberOfQuestion">#${familyQuestion.questionOrder}번째 질문</span>
+		<span class="questionDate"><fmt:formatDate value="${familyQuestion.askedDate}" pattern="yyyy.MM.dd"/></span>
 
 		
 		<div class="answerContainer">

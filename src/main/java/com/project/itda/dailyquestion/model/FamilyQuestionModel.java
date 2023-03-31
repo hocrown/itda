@@ -13,4 +13,7 @@ public class FamilyQuestionModel {
 	private Date askedDate;
 	private String question;
 	private String questionOrder;
+	private boolean allAnswered;
+	private int answeredCount;
+	private int familyMemberCount;
 }

@@ -15,12 +15,16 @@ import org.springframework.web.multipart.MultipartFile;
 import com.project.itda.bucketlist.model.BucketListModel;
 import com.project.itda.bucketlist.model.BucketReplyModel;
 import com.project.itda.bucketlist.service.IBucketListService;
+import com.project.itda.common.service.IUserService;
 
 @Controller
 public class bucketListController {
 
 	@Autowired
 	IBucketListService bucketlistService;
+	
+	@Autowired
+	IUserService userService;
 
 	//가족 버킷리스트 전체 출력
 	@GetMapping("/bucket/familybucket")

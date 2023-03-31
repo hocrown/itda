@@ -64,6 +64,12 @@ public class UserService implements IUserService {
     public List<UserModel> getFamilyMembers(int familySeq) {
         return userRepository.selectFamilyMembers(familySeq);
     }
+
+	@Override
+	public List<String> getFamilyUserIds(int familySeq) {
+		List<String> familyUserIds = userRepository.getFamilyUserIds(familySeq);
+		return familyUserIds;
+	}
 	
 	
 }

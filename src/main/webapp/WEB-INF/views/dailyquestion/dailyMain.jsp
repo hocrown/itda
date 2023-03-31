@@ -24,16 +24,16 @@
 		
 			
 		<div class="AnswerStickerBox">
-		<c:forEach var="i" begin="1" end="${familyMemberCount}">
-		<c:choose>
-			<c:when test="${i le answeredCount}">
-				<img class="AnswerSticker" src="../image/dailyquestionYesAnswer.png">
-			</c:when>
-			<c:otherwise>
-				<img class="AnswerSticker" src="../image/dailyquestionNoAnswer.png">
-			</c:otherwise>
-		</c:choose>
-		</c:forEach>
+			<c:forEach var="i" begin="1" end="${familyMemberCount}">
+				<c:choose>
+					<c:when test="${i le answeredCount}">
+						<img class="AnswerSticker" src="../image/dailyquestionYesAnswer.png">
+					</c:when>
+					<c:otherwise>
+						<img class="AnswerSticker" src="../image/dailyquestionNoAnswer.png">
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
 		</div>
 		
 		<span class="question">${familyQuestions[0].question}</span>
@@ -54,7 +54,7 @@
 					<c:otherwise>
 					<span class="answerContents">아직 응답하지 않았어요.</span>
 					<div style="text-align: center; margin-top: 20px;">
-					    <button class="kokBtn">콕 찌르기!</button>
+					    <button class="kokBtn" data-user-id="${answer.userId}">콕 찌르기!</button>
 					</div>
 					</c:otherwise>
 				</c:choose>
@@ -76,7 +76,10 @@
    				</span>
 			</div>		
 	</div>
+	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/dailyquestion/dailyMain.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.2/sockjs.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 </body>
 </html>

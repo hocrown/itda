@@ -5,7 +5,6 @@ import lombok.Data;
 @Data
 public class DailyQuestionModel {
 
-	
 	private int dailyQuestionSeq;
 	private String question;
 	private String qusetionType;

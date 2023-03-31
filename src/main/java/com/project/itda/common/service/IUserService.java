@@ -20,4 +20,5 @@ public interface IUserService {
 	
 	int countFamilyMember(@Param("familySeq") int familySeq);
 	List<UserModel> getFamilyMembers(int familySeq);
+	List<String> getFamilyUserIds(int familySeq);
 }

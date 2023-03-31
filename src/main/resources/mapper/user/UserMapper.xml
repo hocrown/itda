@@ -67,4 +67,12 @@
     SELECT * FROM itdaUser WHERE familySeq = #{familySeq}
 	</select>
   	
+  	<select id="getFamilyUserIds" parameterType="int">
+  	<![CDATA[
+  	SELECT userId
+  	FROM itdauser
+  	WHERE familySeq = #{familySeq}
+  	]]>
+  	</select>
+  	
 </mapper>

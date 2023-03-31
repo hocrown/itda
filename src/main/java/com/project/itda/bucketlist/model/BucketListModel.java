@@ -13,6 +13,7 @@ public class BucketListModel {
 	private Date goalDate;
 	private String type;
 	private int familySeq;
+	private String visible;
 	private String filename;
 	private String filepath;
 }

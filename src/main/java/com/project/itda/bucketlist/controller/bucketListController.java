@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.project.itda.bucketlist.model.BucketListModel;
 import com.project.itda.bucketlist.model.BucketReplyModel;
@@ -52,6 +54,16 @@ public class bucketListController {
 		return "bucketList/personalBucket";
 	}
 
+
+	
+	@GetMapping("/bucket/invisibleaction")
+	public String invisibleBucketAction(@RequestParam("bucketSeq") int bucketSeq) {
+		System.out.println(bucketSeq);
+		bucketlistService.BucketInvisible(bucketSeq);
+		
+		return "redirect:/bucket/familybucket";
+	}
+	
 	@GetMapping("/bucket/addfamilybucket")
 	public String addBucket(Model model) {
 
@@ -59,7 +71,7 @@ public class bucketListController {
 	}
 
 	@PostMapping("/bucket/addbucketaction")
-	public String addFamilyBucketAction(HttpSession session, BucketListModel bucketListModel) {
+	public String addFamilyBucketAction(HttpSession session, BucketListModel bucketListModel, MultipartFile file) throws Exception {
 
 		String userId = (String) session.getAttribute("userId");
 		int famSeq = (int) session.getAttribute("famSeq");
@@ -67,8 +79,26 @@ public class bucketListController {
 		bucketListModel.setUserId(userId);
 		bucketListModel.setFamilySeq(famSeq);
 
-		bucketlistService.addBucketList(bucketListModel);
+		bucketlistService.addBucketList(bucketListModel, file);
 		return "redirect:/bucket/familybucket";
 	}
+	
+	@GetMapping("/bucket/modifybucket")
+	public String modifyBucket(@RequestParam("bucketSeq") int bucketSeq, Model model) {
+		BucketListModel bucketOne = bucketlistService.getFamilyBucketDetail(bucketSeq);
 
+		model.addAttribute("bucketOne", bucketOne);
+		
+		return "bucketList/modifyBucket";
+	}
+	
+	@PostMapping("/bucket/modifyaction")
+	public String modifyBucketAction(BucketListModel bucketListModel) {
+		
+		bucketlistService.updateBucket(bucketListModel);
+		return "redirect:/bucket/familybucket";
+	}
+	
+
+	
 }

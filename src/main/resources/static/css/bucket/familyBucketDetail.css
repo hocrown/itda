@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+a {
+	text-decoration: none;
+}
+
+.bucketTitle {
+	width: 83%;
+	padding-top: 15px;
+	margin-left: 16.5px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 20px;
+	color: #2A221D;
+	padding-top: 15px;
+}
+
+.bucketTextBox {
+	position: relative;
+	width: 100%;
+}
+
+.bucketRegDate {
+	margin-top: 15px;
+	margin-left: 16.5px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	letter-spacing: 0.06em;
+	color: #9D9690;
+	margin-bottom: 20px;
+}
+
+.layoutz {
+	background-color: white;
+}
+
+.bucketContents {
+	margin: 10px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	color: #2A221D;
+	font-family: 'Bookk Myungjo';
+}
+
+.ellipsis {
+	position: absolute;
+	left: 88%;
+	top: 20%;
+}
+
+.modalBox {
+	position: fixed;
+	height: 210px;
+	bottom: 0px;
+	width: 100%;
+	border-top-left-radius: 50px;
+	border-top-right-radius: 50px;
+	background-color: white;
+	text-align: center;
+	justify-content: center;
+	vertical-align: middle;
+}
+
+.btnBox {
+	height: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+}
+
+.modifyBtn {
+	color: #2A221D;
+}
+
+.deleteBtn {
+	color: #E16646;
+}
+
+.cancelBtn {
+	color: #2A221D;
+}

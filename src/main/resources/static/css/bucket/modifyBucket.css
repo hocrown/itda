@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+.writeTitleBox{
+width: 393px;
+height: 60px;
+justify-content:center;
+display:flex;
+background: #FFFFFF;
+
+}
+
+.writeTitleTextarea{
+	width: 90%;
+	margin-left: 17px;
+	font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+display: flex;
+justify-content:center;
+align-items: center;
+border: none;
+outline: none;
+}
+
+.addImgBox{
+width: 393px;
+height: 187px;
+text-align:center;
+background: #F4F4F4;
+}
+
+.addImgImg{
+	margin-top:17%;
+	margin-bottom: 7px;
+}
+
+.imgAddPlzText{
+	font-family: 'Bookk Myungjo';
+	margin-top: 0px;
+font-style: normal;
+font-weight: 300;
+font-size: 15px;
+align-items: center;
+text-align: center;
+
+color: #9D9690;
+	
+}
+
+.addBucketTextareaBox{
+	height: 470px;
+	background: #FFFFFF;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.addBucketTextarea {
+	width: 90%;
+	height: 90%;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 22px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.05em;
+	color: #2A221D;
+	outline: none;
+	resize: none;
+	background: none;
+	border: none;
+	resize: none;
+}

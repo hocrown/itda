@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,15 +18,17 @@
 		</div>
 
 		<c:forEach items="${bucketlist}" var="bucket">
-			<a href="/bucket/familybucketdetail?bucketSeq=${bucket.bucketSeq }"><div class="bucketBox">
-		        <div style="width:100%; height: 150px; background-color: gray;"></div>
-		        <div class="bucketTextBox">
-			        <div class="bucketTitle">${bucket.title}</div>
-			        <div class="bucketRegDate">등록일 ${bucket.regDate }</div>
-		        </div>
-	        </div></a>
+			<c:if test="${bucket.visible eq 'y' }">
+				<a href="/bucket/familybucketdetail?bucketSeq=${bucket.bucketSeq }">
+				<div class="bucketBox">
+			        <img src="..${bucket.filepath }" style="width:100%; height: 200px;">
+			        <div class="bucketTextBox">
+				        <div class="bucketTitle">${bucket.title}</div>
+				        <div class="bucketRegDate">등록일 <fmt:formatDate value="${bucket.regDate}" pattern="yyyy.MM.dd"/></div>
+			        </div>
+		        </div></a>
+		    </c:if>
 	    </c:forEach>
-		<div style="height: 50px;"></div>
 		
 	</div>	
 	

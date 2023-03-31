@@ -1,9 +1,12 @@
 package com.project.itda.bucketlist.service;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.project.itda.bucketlist.dao.IBucketListRepository;
 import com.project.itda.bucketlist.model.BucketListModel;
@@ -30,7 +33,19 @@ public class BucketListService implements IBucketListService {
 		return reply;
 	}
 	
-	public void addBucketList(BucketListModel bucketListModel) {
+	public void addBucketList(BucketListModel bucketListModel, MultipartFile file) throws Exception {
+		
+		String prjPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files"; 
+		
+		UUID uuid = UUID.randomUUID();
+		
+		String fileName = uuid + "_" + file.getOriginalFilename();
+		
+		File saveFile = new File(prjPath, fileName);
+		
+		file.transferTo(saveFile);
+		bucketListModel.setFilename(fileName);
+		bucketListModel.setFilepath("/files/" + fileName);
 		bucketRepository.insertFamily(bucketListModel);
 	}
 	
@@ -38,4 +53,14 @@ public class BucketListService implements IBucketListService {
 		
 		return bucketRepository.getOneFamilyBucket(bucketSeq);
 	}
+	
+	public void BucketInvisible(int bucketSeq) {
+		
+		bucketRepository.invisible(bucketSeq);
+	}
+	
+	public void updateBucket(BucketListModel bucketListModel) {
+		bucketRepository.update(bucketListModel);
+	}
+	
 }

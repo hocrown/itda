@@ -6,20 +6,20 @@
 <head>
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../css/bucket/addFamilyBucket.css">
+<link rel="stylesheet" type="text/css" href="../css/bucket/modifyBucket.css">
 
 </head>
 <body>
 	<div class="layout">
-		<form class="addBucketForm" action="/bucket/addbucketaction" method="post" enctype="multipart/form-data">
+		<form class="modifyBucketForm" action="/bucket/modifyaction" method="post" enctype="multipart/form-data">
 			<div class="headBox">
 				<img src="../image/vector.png" class="vector">
 				소망을 잇다
-				<input class="finishBtn" type="image" src="../image/finishBtn.png" alt="완료" onclick="document.getElementById('addBucketForm').submit();">
+				<input class="finishBtn" type="image" src="../image/finishBtn.png" alt="완료" onclick="document.getElementById('modifyBucketForm').submit();">
 			</div>
-			
+			<input type="hidden" name="bucketSeq" value="${bucketOne.bucketSeq }">
 			<div class="writeTitleBox">
-				<input class="writeTitleTextarea" name="title" placeholder="제목을 입력해 주세요." spellcheck="false">
+				<input class="writeTitleTextarea" name="title" value="${bucketOne.title }" spellcheck="false">
 			</div>
 			
 			<div class="addImgBox">
@@ -28,7 +28,7 @@
 			</div>
 			
 			<div class="addBucketTextareaBox">
-				<textarea class="addBucketTextarea" name="contents" spellcheck="false" placeholder="내용을 입력해 주세요."></textarea>
+				<textarea class="addBucketTextarea" name="contents" spellcheck="false">${bucketOne.contents }</textarea>
 			</div>
 		</form>
 

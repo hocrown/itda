@@ -3,6 +3,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.itda.dailyquestion.dao.IDailyQuestionRepository">
     
+
     
     <select id="getRandomQuestion" parameterType="map" resultType="com.project.itda.dailyquestion.model.DailyQuestionModel">
     	<![CDATA[

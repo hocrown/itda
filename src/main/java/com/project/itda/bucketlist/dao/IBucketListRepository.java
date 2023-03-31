@@ -17,4 +17,6 @@ public interface IBucketListRepository {
 	void insertFamily(BucketListModel bucketListModel);
 	void insertPersonal(BucketListModel bucketListModel);
 	BucketListModel getOneFamilyBucket(int bucketSeq);
+	void invisible(int bucketSeq);
+	void update(BucketListModel bucketListModel);
 }

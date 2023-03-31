@@ -17,6 +17,13 @@
 		BUCKETLIST where BUCKETSEQ = #{bucketSeq}
 	</select>
 	
+	<update id="invisible"
+		parameterType="com.project.itda.bucketlist.model.BucketListModel">
+		update
+		BUCKETLIST set VISIBLE = 'n'
+		WHERE BUCKETSEQ = #{bucketSeq}
+	</update>
+	
 	<select id="getPersonalBucket"
 		resultType="com.project.itda.bucketlist.model.BucketListModel">
 		select * from BUCKETLIST
@@ -30,8 +37,8 @@
 	
 	<insert id="insertFamily"
 		parameterType="com.project.itda.bucketlist.model.BucketListModel">
-			INSERT INTO BUCKETLIST (bucketSeq ,userId, regDate, title, contents, goalDate, type, familySeq)
-               VALUES (bucketSeq.NEXTVAL, #{userId}, SYSDATE, #{title}, #{contents}, SYSDATE, 'Family', #{familySeq})
+			INSERT INTO BUCKETLIST (bucketSeq ,userId, regDate, title, contents, goalDate, type, familySeq, filename, filepath)
+               VALUES (bucketSeq.NEXTVAL, #{userId}, SYSDATE, #{title}, #{contents}, SYSDATE, 'Family', #{familySeq}, #{filename}, #{filepath})
 	</insert>
 	
 	<insert id="insertPersonal"
@@ -39,5 +46,18 @@
 			INSERT INTO BUCKETLIST (bucketSeq ,userId, regDate, title, contents, goalDate, type, familySeq)
                VALUES (bucketSeq.NEXTVAL, #{userId}, SYSDATE, #{title}, #{contents}, SYSDATE, 'Personal', 1)
 	</insert>
+	
+	<update id="update"
+		parameterType="com.project.itda.bucketlist.model.BucketListModel">
+			update BUCKETLIST set 
+				title = #{title},
+				contents = #{contents},
+				goalDate = SYSDATE
+
+				where bucketSeq = #{bucketSeq}
+				
+	</update>
+	
+	
 	
 </mapper>

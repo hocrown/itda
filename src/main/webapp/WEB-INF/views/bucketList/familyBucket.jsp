@@ -8,13 +8,14 @@
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/bucket/familyBucket.css">
-
+<script type="text/javascript" src="/js/familyBucket.js"></script>
 </head>
 <body>
 	<div class="layout">
 		<div class="headBox">
 			<img src="../image/vector.png" class="vector">
 			소망을 잇다
+			<img src="../image/addBtn.png" class="addBtn">
 		</div>
 
 		<c:forEach items="${bucketlist}" var="bucket">

@@ -18,21 +18,22 @@ public class BucketListService implements IBucketListService {
 	@Autowired
 	IBucketListRepository bucketRepository;
 	
+	@Override
 	public List<BucketListModel> getPersonalBucket(){
 		List<BucketListModel> bucketList = bucketRepository.getPersonalBucket();
 		return bucketList;
 	}
-	
+	@Override
 	public List<BucketListModel> getFamilyBucket(int familySeq){
 		List<BucketListModel> bucketList = bucketRepository.getFamilyBucket(familySeq);
 		return bucketList;
 	}
-	
+	@Override
 	public List<BucketReplyModel> getBucketReply(int bucketSeq){
 		List<BucketReplyModel> reply = bucketRepository.getBucketReply(bucketSeq);
 		return reply;
 	}
-	
+	@Override
 	public void addBucketList(BucketListModel bucketListModel, MultipartFile file) throws Exception {
 		
 		String prjPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files"; 
@@ -48,19 +49,36 @@ public class BucketListService implements IBucketListService {
 		bucketListModel.setFilepath("/files/" + fileName);
 		bucketRepository.insertFamily(bucketListModel);
 	}
-	
+	@Override
 	public BucketListModel getFamilyBucketDetail(int bucketSeq) {
 		
 		return bucketRepository.getOneFamilyBucket(bucketSeq);
 	}
-	
+	@Override
 	public void BucketInvisible(int bucketSeq) {
 		
 		bucketRepository.invisible(bucketSeq);
 	}
-	
+	@Override
 	public void updateBucket(BucketListModel bucketListModel) {
 		bucketRepository.update(bucketListModel);
+	}
+	
+	@Override
+	public void addPersonalBucketList(BucketListModel bucketListModel, MultipartFile file) throws Exception {
+		
+		String prjPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files"; 
+		
+		UUID uuid = UUID.randomUUID();
+		
+		String fileName = uuid + "_" + file.getOriginalFilename();
+		
+		File saveFile = new File(prjPath, fileName);
+		
+		file.transferTo(saveFile);
+		bucketListModel.setFilename(fileName);
+		bucketListModel.setFilepath("/files/" + fileName);
+		bucketRepository.insertPersonal(bucketListModel);
 	}
 	
 }

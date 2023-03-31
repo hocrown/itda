@@ -42,12 +42,14 @@
 		
 		<span class="emailText">이메일</span>
 		<input type="text" class="notesEmail" id="email_id">
-		<select name="email_domain" onchange="updateEmail()">
+		<div class="selectBox">
+		<select name="email_domain" onchange="updateEmail()" class="emailSelect">
 		  <option value="">직접 입력</option>
 		  <option value="@naver.com">@naver.com</option>
 		  <option value="@daum.net">@daum.net</option>
 		  <option value="@gmail.com">@gmail.com</option>
 		</select>
+		</div>
 		<img class="emailBar" src="../image/underline.png">
 		
 		<button id="finishBtn" class="finishBtn">가입 완료</button>
@@ -56,6 +58,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="/js/signupStep3.js"></script>
+
 
 </body>
 </html>

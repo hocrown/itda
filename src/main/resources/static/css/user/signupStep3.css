@@ -332,8 +332,18 @@ top: 592px;
 	color: #979797;
 }
 
-.notesEmail ~ select {
-  position: absolute;
-  left: 360px;
-  top: 558px;
+
+.emailSelect{
+	text-align: center;
+	width: 100px;
+height: 38.3px;
+border:none;
+background: rgba(177, 125, 90, 0.1);
+border-radius: 20px;
+}
+
+.selectBox{
+	position: absolute;
+	top:550px;	
+	left:250px;
 }

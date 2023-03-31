@@ -34,7 +34,9 @@
 
 .whisperImgContainer {
 	position: absolute;
+	display:flex;
 	top: 242px;
+	width: 393px;
 }
 
 .whisperImgBox {

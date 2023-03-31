@@ -2,6 +2,8 @@ package com.project.itda.bucketlist.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.project.itda.bucketlist.model.BucketListModel;
 import com.project.itda.bucketlist.model.BucketReplyModel;
 
@@ -16,5 +18,9 @@ public interface IBucketListService {
 	List<BucketListModel> getPersonalBucket();
 	List<BucketListModel> getFamilyBucket(int familySeq);
 	List<BucketReplyModel> getBucketReply(int bucketSeq);
-	
+	public void addBucketList(BucketListModel bucketListModel, MultipartFile file) throws Exception;
+	public BucketListModel getFamilyBucketDetail(int bucketSeq);
+	public void BucketInvisible(int bucketSeq);
+	public void updateBucket(BucketListModel bucketListModel);
+	public void addPersonalBucketList(BucketListModel bucketListModel, MultipartFile file) throws Exception;
 }

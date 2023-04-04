@@ -19,8 +19,8 @@ public class BucketListService implements IBucketListService {
 	IBucketListRepository bucketRepository;
 	
 	@Override
-	public List<BucketListModel> getPersonalBucket(){
-		List<BucketListModel> bucketList = bucketRepository.getPersonalBucket();
+	public List<BucketListModel> getPersonalBucket(String userId){
+		List<BucketListModel> bucketList = bucketRepository.getPersonalBucket(userId);
 		return bucketList;
 	}
 	@Override

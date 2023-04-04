@@ -17,6 +17,8 @@
 			소망을 잇다
 			<img src="../image/addBtn.png" class="addBtn">
 		</div>
+		
+		
 
 		<c:forEach items="${bucketlist}" var="bucket">
 			<c:if test="${bucket.visible eq 'y' }">

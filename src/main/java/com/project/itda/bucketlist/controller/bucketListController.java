@@ -5,11 +5,14 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.itda.bucketlist.model.BucketListModel;
@@ -35,6 +38,9 @@ public class bucketListController {
 		List<BucketListModel> bucketlist = bucketlistService.getFamilyBucket(familySeq);
 		//담겨진 리스트를 familyBucket.jsp에서 bucketlist라는 이름으로 사용할 수 있게함.
 		model.addAttribute("bucketlist", bucketlist);
+		//--------------------이 밑으론 테스트 코드----------------------------------
+		List<String> myFam = userService.getFamilyUserIds(familySeq);
+		model.addAttribute("myFam", myFam);
 
 		return "bucketList/familyBucket";
 	}
@@ -55,9 +61,9 @@ public class bucketListController {
 	}
 
 	@GetMapping("/bucket/personalbucket")
-	public String personalBucket(Model model) {
+	public String personalBucket(Model model, @RequestParam("userId") String userId) {
 
-		List<BucketListModel> bucketlist = bucketlistService.getPersonalBucket();
+		List<BucketListModel> bucketlist = bucketlistService.getPersonalBucket(userId);
 
 		model.addAttribute("bucketlist", bucketlist);
 
@@ -132,6 +138,41 @@ public class bucketListController {
 		bucketlistService.addPersonalBucketList(bucketListModel, file);
 		return "redirect:/bucket/personalbucket";
 	}
+	
+	//버킷리스트 출력
+	@GetMapping("/bucket/bucketview")
+	public String BucketListView(Model model, HttpSession session) {
+		//세션으로부터 familySeq를 받아옴
+		int 	familySeq = (int) session.getAttribute("famSeq");
+		//받아온 해당 Seq 가족에 대한 버킷리스트를 bucketlist에 담아줌.
+		List<BucketListModel> bucketlist = bucketlistService.getFamilyBucket(familySeq);
+		//담겨진 리스트를 familyBucket.jsp에서 bucketlist라는 이름으로 사용할 수 있게함.
+		model.addAttribute("bucketlist", bucketlist);
+		List<String> myFam = userService.getFamilyUserIds(familySeq);
+		model.addAttribute("myFam", myFam);
 
+		return "bucketList/bucketListView";
+	}
+
+    @GetMapping("/bucket/bucketlistz")
+    @ResponseBody
+    public List<BucketListModel> getBucketListByUserId(@RequestParam String userId) {
+    	System.out.println(userId);
+        // userId를 이용해서 bucketList를 가져오는 로직 구현
+        List<BucketListModel> bucketList = bucketlistService.getPersonalBucket(userId);
+        if (bucketList == null) {
+            throw new BucketListNotFoundException("해당 사용자의 버킷리스트가 없습니다. userId=" + userId);
+        }
+        return bucketList;
+    }
+    
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public class BucketListNotFoundException extends RuntimeException {
+        public BucketListNotFoundException(String message) {
+            super(message);
+        }
+    }
+
+	
 	
 }

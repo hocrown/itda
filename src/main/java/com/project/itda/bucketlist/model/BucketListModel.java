@@ -16,4 +16,5 @@ public class BucketListModel {
 	private String visible;
 	private String filename;
 	private String filepath;
+	private Date finishDate;
 }

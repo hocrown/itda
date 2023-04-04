@@ -15,7 +15,7 @@ import com.project.itda.bucketlist.model.BucketReplyModel;
  *
  */
 public interface IBucketListService {
-	List<BucketListModel> getPersonalBucket();
+	List<BucketListModel> getPersonalBucket(String userId);
 	List<BucketListModel> getFamilyBucket(int familySeq);
 	List<BucketReplyModel> getBucketReply(int bucketSeq);
 	public void addBucketList(BucketListModel bucketListModel, MultipartFile file) throws Exception;

@@ -11,7 +11,7 @@ import com.project.itda.bucketlist.model.BucketReplyModel;
 @Repository
 @Mapper
 public interface IBucketListRepository {
-	List<BucketListModel> getPersonalBucket();
+	List<BucketListModel> getPersonalBucket(String userId);
 	List<BucketListModel> getFamilyBucket(int familySeq);
 	List<BucketReplyModel> getBucketReply(int bucketSeq);
 	void insertFamily(BucketListModel bucketListModel);

@@ -192,5 +192,9 @@ public class DailyQuestionController {
         return "redirect:/dailymain";
     }
     
+    public String monthlyFamilyQuestion(DailyAnswerModel dailyAnswer, HttpSession session) {
+    	return "dailyquestion/dailyMonthlyStickerPage1";
+    }
+    
 
 }

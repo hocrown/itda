@@ -25,12 +25,13 @@
 				<a href="#"><div class="testspan">함께</div></a>
 				<div class="bordermy" style="height: 30px;"></div>
 			</div>
-		<c:forEach items="${myFam }" var="fam" varStatus="status">
-			<div data-member-id="${fam }" onclick="loadData(this)" class="testbox">
-				<button id="sticker${status.index }" class="testspan">${fam }</button>
-				<div class="bordermy" style="height: 30px;"></div>
-			</div>
+		<c:forEach items="${myFam}" var="fam" varStatus="status">
+		  <div data-member-id="${fam}" onclick="loadData(this)" class="testbox">
+		    <button id="sticker${status.index}" class="testspan">${fam}</button>
+		    <div class="bordermy" style="height: 30px;"></div>
+		  </div>
 		</c:forEach>
+
 		</div>
 
 		<div class="listLayout">
@@ -49,68 +50,46 @@
 				</c:forEach>			
 			</div>		
 		</div>
-<!-- 		<img src="../image/bucket/bucketBackground.png" class="imgBack">
- -->		
-		
-<%-- 
-		<c:forEach items="${bucketlist}" var="bucket">
-			<c:if test="${bucket.visible eq 'y' }">
-				<a href="/bucket/familybucketdetail?bucketSeq=${bucket.bucketSeq }">
-				<div class="bucketBox">
-			        <img src="..${bucket.filepath }" style="width:100%; height: 200px;">
-			        <div class="bucketTextBox">
-				        <div class="bucketTitle">${bucket.title}</div>
-				        <div class="bucketRegDate">등록일 <fmt:formatDate value="${bucket.regDate}" pattern="yyyy.MM.dd"/></div>
-			        </div>
-		        </div></a>
-		    </c:if>
-	    </c:forEach>
- --%>		
  	
  
 	</div>	
 
 	
 	<script>
-	$('.testbox').click(function(){
-		const userId= $(this).data('member-id');
-		loadData(userId);
-	});
-		function loadData(div) {
-		  const userId = div.getAttribute('data-member-id'); // 클릭한 버튼의 data-member-id 속성 값을 가져옵니다.
-
-		  $.ajax({
-		    type: 'GET',
-		    url: '/bucket/bucketlistz',
-		    data: { userId: userId },
-		    dataType: 'json',
-		    success: function(response) {
-		      const bucketList = response.bucketList; // 응답 데이터에서 bucketList 배열을 가져옵니다.
-		      let output = '';
-
-		      // bucketList 배열을 순회하며 각 요소의 속성 값을 이용하여 HTML 문자열을 생성합니다.
-		      bucketList.forEach(bucket => {
-		        const { bucketSeq, filepath, title } = bucket; // bucket 객체에서 bucketSeq, bucketListImg, bucketListTitle 속성 값을 가져옵니다.
-
-		        output += `
-		          <a href="/bucket/familybucketdetail?bucketSeq=${bucketSeq}">
-		            <img src="..${filepath}" style="width:100%; height: 155px;">
-		            <div style="position: relative;">
-		              <img src="../image/bucket/chkLine.png" style="width: 100%">
-		              <span class="bucketTitleSpan">${title}</span>            
-		            </div>
-		            <div style="height: 25px;"></div>
-		          </a>
-		        `;
-		      });
-
-		      $('.listContainer').html(output); // HTML을 동적으로 생성하여 listContainer 영역에 적용합니다.
-		    },
-		    error: function(error) {
-		      console.error(error);
-		    }
-		  });
-		}
+	function loadData(div) {
+	  const userId = div.getAttribute('data-member-id'); // 클릭한 버튼의 data-member-id 속성 값을 가져옵니다.
+	
+	  $.ajax({
+	    type: 'GET',
+	    url: '/bucketview',
+	    data: { userId: userId },
+	    dataType: 'json',
+	    success: function(response) {
+	      const bucketList = response.bucketList; // 응답 데이터에서 bucketList 배열을 가져옵니다.
+	      let output = '';
+	
+	      // bucketList 배열을 순회하며 각 요소의 속성 값을 이용하여 HTML 문자열을 생성합니다.
+	      bucketList.forEach(bucket => {
+	        const { bucketSeq, filepath, title } = bucket; // bucket 객체에서 bucketSeq, bucketListImg, bucketListTitle 속성 값을 가져옵니다.
+	
+	        output += `
+	          <a href="/bucket/familybucketdetail?bucketSeq=${bucketSeq}">
+	            <img src="..${filepath}" style="width:100%; height: 155px;">
+	            <div style="position: relative;">
+	              <img src="../image/bucket/chkLine.png" style="width: 100%">
+	              <span class="bucketTitleSpan">${title}</span>            
+	            </div>
+	            <div style="height: 25px;"></div>
+	          </a>
+	        `;
+	      });
+	
+	      $('.listContainer').html(output); // HTML을 동적으로 생성하여 listContainer 영역에 적용합니다.
+	    },
+	    error: function(error) {
+	      console.error(error);
+	    }
+	  });
 	</script>
 	
 	

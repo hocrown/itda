@@ -73,6 +73,11 @@
 	
 	<script>
 	$('.testbox').click(function(){
+	    const userId= $(this).data('member-id');
+	    loadData(this); // Pass the DOM element using 'this' keyword
+	});
+	
+	$('.testbox').click(function(){
 		const userId= $(this).data('member-id');
 		loadData(userId);
 	});
@@ -85,7 +90,7 @@
 		    data: { userId: userId },
 		    dataType: 'json',
 		    success: function(response) {
-		      const bucketList = response.bucketList; // 응답 데이터에서 bucketList 배열을 가져옵니다.
+				const bucketList = response.bucketList || [];  // 응답 데이터에서 bucketList 배열을 가져옵니다.
 		      let output = '';
 
 		      // bucketList 배열을 순회하며 각 요소의 속성 값을 이용하여 HTML 문자열을 생성합니다.

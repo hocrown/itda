@@ -14,7 +14,7 @@ $(document).ready(function(){
 	});
 	
 	$(".bucketTextBox").click(function(){
-		window.location.href="/bucket/familybucket";
+		window.location.href="/bucket/bucketview";
 	});
 	
 	$(".whisperTextBox").click(function(){

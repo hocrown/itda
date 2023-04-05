@@ -9,4 +9,8 @@ $(document).ready(function(){
     $(".send").click(function(){
 		window.location.href = "/whisper/writeform";
 	});
+	
+ 	$(".headBox .vector").click(function(){
+    location.href = "/mainlist";
+	});
 });

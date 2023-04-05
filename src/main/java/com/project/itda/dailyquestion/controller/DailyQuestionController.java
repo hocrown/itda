@@ -192,6 +192,7 @@ public class DailyQuestionController {
         return "redirect:/dailymain";
     }
     
+    @GetMapping("/dailyquestion/monthly")
     public String monthlyFamilyQuestion(DailyAnswerModel dailyAnswer, HttpSession session) {
     	return "dailyquestion/dailyMonthlyStickerPage1";
     }

@@ -7,6 +7,7 @@
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/bucket/addFamilyBucket.css">
+<script type="text/javascript" src="/js/bucketlist/addFamilyBucket.js"></script>
 
 </head>
 <body>

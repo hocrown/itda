@@ -1,5 +1,7 @@
 package com.project.itda.whisper.service;
 
-public interface IWhisperService {
+import com.project.itda.whisper.model.WhisperModel;
 
+public interface IWhisperService {
+	void insertWhisper(WhisperModel whisper);
 }

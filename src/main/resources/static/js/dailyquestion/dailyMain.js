@@ -25,6 +25,11 @@ var prevUrl = document.referrer;
     location.href = "/dailyquestion/dailylist";	
 	});
 	
+	$(".headBox .stickerPageLink").click(function(){
+    location.href = "/dailyquestion/monthly";	
+	});
+	
+	
 	var socket = new SockJS('/websocket');	
 	var stompClient = Stomp.over(socket);
 	stompClient.connect({}, function (frame) {

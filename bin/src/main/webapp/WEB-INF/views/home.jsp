@@ -11,11 +11,12 @@
     <link rel="stylesheet" type="text/css" href="css/figmatest.css">
 </head>
 <body>
-    Hello, Spring Boot App jsp
+    Hello, Spring Boot App jsp Hi JUno 
     <form action="<c:url value='/user/insert'/>" method="post" id="joinForm" name="joinForm" class="form-horizontal">
     <input class="btn btn-primary" type="submit"  style="margin: 2 0 2 0;" width=70%  value="가입">
     </form>
 <button id='button2' class='button2' onClick="location.href='/'">Add</button>
 <button id="button3" class="button3" onClick="location.href='/'">Home</button>
+<span class="test">asdasd</span>
 </body>
 </html>

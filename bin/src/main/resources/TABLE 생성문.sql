@@ -1,24 +1,27 @@
-CREATE table itda_USER(
+CREATE table itdaUSER(
     userId VARCHAR2(15) not null PRIMARY KEY, 
     familySeq NUMBER(10),
     userPw VARCHAR2(20),
     userName VARCHAR2(20),
     userAge NUMBER(3),
-    userSex VARCHAR2(10),
-    userAddress VARCHAR2(20),
-    userPhone NUMBER(12),
-    approve VARCHAR2(2)
+    userGender VARCHAR2(20),
+    userPhone VARCHAR2(20),
+    approve VARCHAR2(5)
+    email VARCHAR2(30),
+    userBirth DATE,
+    userAddress VARCHAR2(50),
+    userAddressDetail VARCHAR2(20)
     )
     
 create table family (
     familySeq NUMBER not null primary KEY,
     inviteCode VARCHAR2(6),
-    family_owner VARCHAR2(15),
-    FOREIGN KEY(family_owner) REFERENCES itda_USER(userId) ON DELETE CASCADE
+    familyowner VARCHAR2(15),
+    FOREIGN KEY(familyowner) REFERENCES itdaUSER(userId) ON DELETE CASCADE
     );
 
 
-alter table itda_USER
+alter table itdaUSER
 ADD CONSTRAINT fk_family foreign KEY(familySeq) REFERENCES family(familySeq); 
 
 CREATE TABLE poking(
@@ -51,12 +54,14 @@ CREATE TABLE familyQuestion(
     familyseq NUMBER, 
     dailyQuestionSeq NUMBER,
     answer VARCHAR2(2),
+    askeddate DATE,
     FOREIGN KEY (familySeq) REFERENCES family(familySeq)
    );
    
 CREATE TABLE dailyAnswer(
     dailyAnswerSeq NUMBER primary key,
     userId VARCHAR2(15),
+    familyQuestionSeq NUMBER,
     familySeq NUMBER,
     answer CLOB NOT NULL,
     ans_date date NOT NULL,

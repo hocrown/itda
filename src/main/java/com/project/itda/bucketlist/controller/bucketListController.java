@@ -1,5 +1,7 @@
 package com.project.itda.bucketlist.controller;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -76,7 +78,7 @@ public class bucketListController {
 	public String invisibleBucketAction(@RequestParam("bucketSeq") int bucketSeq) {
 		bucketlistService.BucketInvisible(bucketSeq);
 		
-		return "redirect:/bucket/familybucket";
+		return "redirect:/bucket/bucketview";
 	}
 	
 	//버킷리스트 등록 페이지
@@ -97,7 +99,7 @@ public class bucketListController {
 		bucketListModel.setFamilySeq(famSeq);
 
 		bucketlistService.addBucketList(bucketListModel, file);
-		return "redirect:/bucket/familybucket";
+		return "redirect:/bucket/bucketview";
 	}
 	
 	//버킷리스트 수정 페이지
@@ -115,7 +117,7 @@ public class bucketListController {
 	public String modifyBucketAction(BucketListModel bucketListModel) {
 		
 		bucketlistService.updateBucket(bucketListModel);
-		return "redirect:/bucket/familybucket";
+		return "redirect:/bucket/bucketview";
 	}
 //--------------------------------------------------------------------------------------------------------
 	//버킷리스트 등록 페이지
@@ -136,7 +138,7 @@ public class bucketListController {
 		bucketListModel.setFamilySeq(famSeq);
 
 		bucketlistService.addPersonalBucketList(bucketListModel, file);
-		return "redirect:/bucket/personalbucket";
+		return "redirect:/bucket/bucketview";
 	}
 	
 	//버킷리스트 출력
@@ -148,6 +150,8 @@ public class bucketListController {
 		List<BucketListModel> bucketlist = bucketlistService.getFamilyBucket(familySeq);
 		//담겨진 리스트를 familyBucket.jsp에서 bucketlist라는 이름으로 사용할 수 있게함.
 		model.addAttribute("bucketlist", bucketlist);
+		Date currentDate = new Date();
+		model.addAttribute("currentDate",currentDate);
 		List<String> myFam = userService.getFamilyUserIds(familySeq);
 		model.addAttribute("myFam", myFam);
 
@@ -160,9 +164,11 @@ public class bucketListController {
     	System.out.println(userId);
         // userId를 이용해서 bucketList를 가져오는 로직 구현
         List<BucketListModel> bucketList = bucketlistService.getPersonalBucket(userId);
-        if (bucketList == null) {
-            throw new BucketListNotFoundException("해당 사용자의 버킷리스트가 없습니다. userId=" + userId);
-        }
+        List<BucketListModel> blank = new ArrayList<>();
+        System.out.println(bucketList);
+//        if (bucketList.size() == 0) {
+//            throw new BucketListNotFoundException("해당 사용자의 버킷리스트가 없습니다. userId=" + userId);
+//        }
         return bucketList;
     }
     
@@ -172,6 +178,13 @@ public class bucketListController {
             super(message);
         }
     }
+    
+    @GetMapping("/bucket/successaction")
+	public String successBucketAction(@RequestParam("bucketSeq") int bucketSeq) {
+		bucketlistService.BucketSuccess(bucketSeq);
+		
+		return "redirect:/bucket/bucketview";
+	}
 
 	
 	

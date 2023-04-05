@@ -28,6 +28,7 @@
 		resultType="com.project.itda.bucketlist.model.BucketListModel">
 		select * from BUCKETLIST
 		where USERID = #{userId}
+		and TYPE = 'Personal'
 	</select>
 	
 	<select id="getBucketReply"
@@ -53,11 +54,21 @@
 			update BUCKETLIST set 
 				title = #{title},
 				contents = #{contents},
+				filepath = #{filepath},
+				filename = #{filename},
 				goalDate = SYSDATE
 
 				where bucketSeq = #{bucketSeq}
-				
 	</update>
+	
+	<update id="success"
+		parameterType="com.project.itda.bucketlist.model.BucketListModel">
+		update
+		BUCKETLIST set FINISHDATE = SYSDATE
+		WHERE BUCKETSEQ = #{bucketSeq}
+	</update>
+		
+	
 	
 	
 	

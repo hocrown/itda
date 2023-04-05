@@ -145,7 +145,7 @@ public class bucketListController {
 	@GetMapping("/bucket/bucketview")
 	public String BucketListView(Model model, HttpSession session) {
 		//세션으로부터 familySeq를 받아옴
-		int 	familySeq = (int) session.getAttribute("famSeq");
+		int familySeq = (int) session.getAttribute("famSeq");
 		//받아온 해당 Seq 가족에 대한 버킷리스트를 bucketlist에 담아줌.
 		List<BucketListModel> bucketlist = bucketlistService.getFamilyBucket(familySeq);
 		//담겨진 리스트를 familyBucket.jsp에서 bucketlist라는 이름으로 사용할 수 있게함.
@@ -158,9 +158,9 @@ public class bucketListController {
 		return "bucketList/bucketListView";
 	}
 
+<<<<<<< HEAD
     @GetMapping("/bucket/bucketlistz")
     @ResponseBody
-    public List<BucketListModel> getBucketListByUserId(@RequestParam String userId) {
     	System.out.println(userId);
         // userId를 이용해서 bucketList를 가져오는 로직 구현
         List<BucketListModel> bucketList = bucketlistService.getPersonalBucket(userId);
@@ -187,5 +187,6 @@ public class bucketListController {
 	}
 
 	
-	
-}
+=======
+	@GetMapping("/bucketview")
+	@ResponseBody

@@ -31,6 +31,7 @@
 				<div class="bordermy" style="height: 30px;"></div>
 			</div>
 		</c:forEach>
+
 		</div>
 
 		<div class="listLayout">
@@ -68,23 +69,6 @@
 				</c:forEach>			
 			</div>		
 		</div>
-<!-- 		<img src="../image/bucket/bucketBackground.png" class="imgBack">
- -->		
-		
-<%-- 
-		<c:forEach items="${bucketlist}" var="bucket">
-			<c:if test="${bucket.visible eq 'y' }">
-				<a href="/bucket/familybucketdetail?bucketSeq=${bucket.bucketSeq }">
-				<div class="bucketBox">
-			        <img src="..${bucket.filepath }" style="width:100%; height: 200px;">
-			        <div class="bucketTextBox">
-				        <div class="bucketTitle">${bucket.title}</div>
-				        <div class="bucketRegDate">등록일 <fmt:formatDate value="${bucket.regDate}" pattern="yyyy.MM.dd"/></div>
-			        </div>
-		        </div></a>
-		    </c:if>
-	    </c:forEach>
- --%>		
  	
  
 	</div>	

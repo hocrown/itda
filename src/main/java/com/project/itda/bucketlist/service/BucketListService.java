@@ -81,4 +81,10 @@ public class BucketListService implements IBucketListService {
 		bucketRepository.insertPersonal(bucketListModel);
 	}
 	
+	@Override
+	public void BucketSuccess(int bucketSeq) {
+		
+		bucketRepository.success(bucketSeq);
+	}
+	
 }

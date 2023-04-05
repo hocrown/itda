@@ -7,7 +7,7 @@
 <head>
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../css/bucket/familyBucketDetail.css">
+<link rel="stylesheet" type="text/css" href="../css/bucket/bucketDetail.css">
 
 </head>
 <body>
@@ -33,6 +33,7 @@
 		        </div>
 		       
 		       	<div class="modalBox"> 
+			        <div class="btnBox"><a class="finishBtnz" href="/bucket/successaction?bucketSeq=${bucketOne.bucketSeq }">완료하기</a></div>		       	
 			        <div class="btnBox"><a class="modifyBtn" href="/bucket/modifybucket?bucketSeq=${bucketOne.bucketSeq }">수정하기</a></div>
 			        <div class="btnBox"><a class="deleteBtn" href="/bucket/invisibleaction?bucketSeq=${bucketOne.bucketSeq }">삭제하기</a></div>
 			        <div class="btnBox">취소</div>

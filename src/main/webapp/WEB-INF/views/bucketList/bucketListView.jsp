@@ -57,39 +57,41 @@
 	
 	<script>
 	function loadData(div) {
-	  const userId = div.getAttribute('data-member-id'); // 클릭한 버튼의 data-member-id 속성 값을 가져옵니다.
-	
-	  $.ajax({
-	    type: 'GET',
-	    url: '/bucketview',
-	    data: { userId: userId },
-	    dataType: 'json',
-	    success: function(response) {
-	      const bucketList = response.bucketList; // 응답 데이터에서 bucketList 배열을 가져옵니다.
-	      let output = '';
-	
-	      // bucketList 배열을 순회하며 각 요소의 속성 값을 이용하여 HTML 문자열을 생성합니다.
-	      bucketList.forEach(bucket => {
-	        const { bucketSeq, filepath, title } = bucket; // bucket 객체에서 bucketSeq, bucketListImg, bucketListTitle 속성 값을 가져옵니다.
-	
-	        output += `
-	          <a href="/bucket/familybucketdetail?bucketSeq=${bucketSeq}">
-	            <img src="..${filepath}" style="width:100%; height: 155px;">
-	            <div style="position: relative;">
-	              <img src="../image/bucket/chkLine.png" style="width: 100%">
-	              <span class="bucketTitleSpan">${title}</span>            
-	            </div>
-	            <div style="height: 25px;"></div>
-	          </a>
-	        `;
-	      });
-	
-	      $('.listContainer').html(output); // HTML을 동적으로 생성하여 listContainer 영역에 적용합니다.
-	    },
-	    error: function(error) {
-	      console.error(error);
-	    }
-	  });
+		  const userId = div.getAttribute('data-member-id');
+
+		  $.ajax({
+		    type: 'GET',
+		    url: '/bucketview',
+		    data: { userId: userId },
+		    dataType: 'json',
+		    success: function(response) {
+		      const bucketList = response.bucketList; // 응답 데이터에서 bucketList 배열을 가져옵니다.
+		      let output = '';
+
+		      if (bucketList == null || bucketList.length === 0) {
+		        output = '<div>데이터가 없습니다.</div>';
+		      } else {
+		        // bucketList 배열을 순회하며 각 요소의 속성 값을 이용하여 HTML 문자열을 생성합니다.
+		        bucketList.forEach(bucket => {
+		          const { bucketSeq, filepath, title } = bucket; // bucket 객체에서 bucketSeq, bucketListImg, bucketListTitle 속성 값을 가져옵니다.
+
+		          output += `
+		            <a href="/bucket/familybucketdetail?bucketSeq=">
+		              <img src=".." style="width:100%; height: 155px;">
+		              <div style="position: relative;">
+		                <img src="../image/bucket/chkLine.png" style="width: 100%">
+		                <span class="bucketTitleSpan"></span>            
+		              </div>
+		              <div style="height: 25px;"></div>
+		            </a>
+		          `;
+		        });
+		      }
+
+		      $('.listContainer').html(output); // HTML을 동적으로 생성하여 listContainer 영역에 적용합니다.
+		    }
+		  });
+		}
 
 	</script>
 	

@@ -17,6 +17,10 @@ $(document).ready(function(){
 		window.location.href="/bucket/familybucket";
 	});
 	
+	$(".whisperTextBox").click(function(){
+		window.location.href="/whisper/main";
+	});
+	
 	var socket = new SockJS('/websocket');	
 	var stompClient = Stomp.over(socket);
 	stompClient.connect({}, function (frame) {

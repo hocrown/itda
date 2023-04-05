@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/whisper/whisperWrite.css">
-
+<script type="text/javascript" src="/js/whisper/whisperWrite.js"></script> 
 </head>
 <body>
 	<div class="layout">
@@ -23,9 +24,9 @@
 		
 		<select class="selectCss" name="" required>
 			<option hidden="" disabled selected value="">받는 사람을 선택해주세요.</option>
-			<option>아빠</option>
-			<option>엄마</option>
-			<option>누나</option>
+			<c:forEach items="${myFamily}" var="familyMember">
+			<option>${familyMember.userName}</option>
+			</c:forEach>
 		</select>
 		
 		<div class="whisperTextareaBox">
@@ -36,7 +37,7 @@
 		
 		<span class="fromText">보내는 사람</span>
 		
-		<input type="text" class="fromInput" placeholder="보내는 사람을 적어주세요." spellcheck="false">
+		<input type="text" class="fromInput" placeholder="${myName}" spellcheck="false">
 		
 		<span class="sendOption">전달 옵션</span>
 		<div class="directOptionEllipse"></div><span class="directOptionText">전송 즉시 전달돼요</span>

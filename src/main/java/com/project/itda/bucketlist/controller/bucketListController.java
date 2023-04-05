@@ -160,25 +160,26 @@ public class bucketListController {
 		return "bucketList/bucketListView";
 	}
 
-	<<<<<<<HEAD @GetMapping("/bucket/bucketlistz")
-
+	@GetMapping("/bucket/bucketlistz")
 	@ResponseBody
-    	System.out.println(userId);
-        // userId를 이용해서 bucketList를 가져오는 로직 구현
-        List<BucketListModel> bucketList = bucketlistService.getPersonalBucket(userId);
-	List<BucketListModel> blank = new ArrayList<>();System.out.println(bucketList);
-	// if (bucketList.size() == 0) {
-	// throw new BucketListNotFoundException("해당 사용자의 버킷리스트가 없습니다. userId=" +
-	// userId);
-	// }
-	return bucketList;
-}
-
-@ResponseStatus(HttpStatus.NOT_FOUND)
-public class BucketListNotFoundException extends RuntimeException {
-	public BucketListNotFoundException(String message) {
-		super(message);
+	public List<BucketListModel> getBucketListByUserId(@RequestParam String userId) {
+		System.out.println(userId);
+		// userId를 이용해서 bucketList를 가져오는 로직 구현
+		List<BucketListModel> bucketList = bucketlistService.getPersonalBucket(userId);
+		List<BucketListModel> blank = new ArrayList<>();
+		System.out.println(bucketList);
+		// if (bucketList.size() == 0) {
+		// throw new BucketListNotFoundException("해당 사용자의 버킷리스트가 없습니다. userId=" +
+		// userId);
+		// }
+		return bucketList;
 	}
+
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public class BucketListNotFoundException extends RuntimeException {
+		public BucketListNotFoundException(String message) {
+			super(message);
+		}
 
 	}
 
@@ -187,7 +188,6 @@ public class BucketListNotFoundException extends RuntimeException {
 		bucketlistService.BucketSuccess(bucketSeq);
 
 		return "redirect:/bucket/bucketview";
-}
+	}
 
-=======@GetMapping("/bucketview")@
-ResponseBody
+}

@@ -24,8 +24,8 @@
 			<img class="logoImg" src="../image/itdaLogo.png" > 
 		</div>
 	</div>
-	<button class="startGroup" id="start-btn">
+	<div class="startGroup" id="start-btn">
 	<span class="startText">시작하기</span>
-	</button>
+	</div>
 </body>
 </html>

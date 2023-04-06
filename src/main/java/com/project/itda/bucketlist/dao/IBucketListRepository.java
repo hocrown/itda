@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.project.itda.bucketlist.model.BucketListModel;
 import com.project.itda.bucketlist.model.BucketReplyModel;

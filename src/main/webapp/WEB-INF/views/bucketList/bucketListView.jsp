@@ -21,16 +21,17 @@
 		
 		<div class="testz">
 		
-			<div class="testbox">
+			<div class="testbox selectedTestbox">
 				<a href="/bucket/bucketview"><div class="testspan">함께</div></a>
 				<div class="bordermy" style="height: 30px;"></div>
 			</div>
 		<c:forEach items="${myFam }" var="fam" varStatus="status">
-			<div data-member-id="${fam }" class="testbox">
-				<button id="sticker${status.index }" class="testspan">${fam }</button>
+			<div data-member-id="${fam.userId }" class="testbox">
+				<button id="sticker${status.index }" class="testspan">${fam.userName }</button>
 				<div class="bordermy" style="height: 30px;"></div>
 			</div>
 		</c:forEach>
+		
 
 		</div>
 
@@ -44,7 +45,7 @@
 							<img src="..${bucket.filepath }" style="width:100%; height: 155px; margin-bottom: 5px; filter: grayscale(70%);">
 							<div style="position: relative;">
 								<img src="../image/bucket/chkLine.png" style="width: 100%">
-								<img src="../image/bucket/successStamp.png" class="successStamp">
+								<img src="../image/bucket/successStamp2.png" class="successStamp">
 								<span class="finishDateText"><fmt:formatDate value="${bucket.finishDate}" pattern="yyyy.MM.dd"/></span>
 								<img src="../image/bucket/greenChk.png" class="greenChk">
 								<span class="bucketTitleSpan">${bucket.title}</span>				
@@ -75,48 +76,26 @@
 
 	
 	<script>
-	function loadData(div) {
-		  const userId = div.getAttribute('data-member-id');
+	const testboxes = document.querySelectorAll('.testbox');
 
-		  $.ajax({
-		    type: 'GET',
-		    url: '/bucketview',
-		    data: { userId: userId },
-		    dataType: 'json',
-		    success: function(response) {
-		      const bucketList = response.bucketList; // 응답 데이터에서 bucketList 배열을 가져옵니다.
-		      let output = '';
-
-		      if (bucketList == null || bucketList.length === 0) {
-		        output = '<div>데이터가 없습니다.</div>';
-		      } else {
-		        // bucketList 배열을 순회하며 각 요소의 속성 값을 이용하여 HTML 문자열을 생성합니다.
-		        bucketList.forEach(bucket => {
-		          const { bucketSeq, filepath, title } = bucket; // bucket 객체에서 bucketSeq, bucketListImg, bucketListTitle 속성 값을 가져옵니다.
-
-		          output += `
-		            <a href="/bucket/familybucketdetail?bucketSeq=">
-		              <img src=".." style="width:100%; height: 155px;">
-		              <div style="position: relative;">
-		                <img src="../image/bucket/chkLine.png" style="width: 100%">
-		                <span class="bucketTitleSpan"></span>            
-		              </div>
-		              <div style="height: 25px;"></div>
-		            </a>
-		          `;
-		        });
-		      }
-
-		      $('.listContainer').html(output); // HTML을 동적으로 생성하여 listContainer 영역에 적용합니다.
-		    }
-		  });
-		}
+	// loop through each testbox and add a click event listener
+	testboxes.forEach(testbox => {
+	  testbox.addEventListener('click', () => {
+	    // remove "selectedTestbox" class from all testboxes
+	    testboxes.forEach(tb => tb.classList.remove('selectedTestbox'));
+	    // add "selectedTestbox" class to clicked testbox
+	    testbox.classList.add('selectedTestbox');
+	  });
+	});
+	
+	
 
 	
 	$('.testbox').click(function(event){
 	    const div = event.currentTarget;
 	    const userId = $(div).data('member-id');
 	    loadData(userId);
+	    
 	});
 		function loadData(userId) {
 //		  const userId = div.getAttribute('data-member-id'); // 클릭한 버튼의 data-member-id 속성 값을 가져옵니다.
@@ -132,7 +111,9 @@
 		      let output = '';
 			
 		      if (Array.isArray(response) && response.length === 0)  {
-	              output = '<div class="noBucketText">등록된 버킷리스트가 없습니다.</div>';
+	              output = `<span class="noBucketText">아직<br>버킷리스트가<br>없어요.</span>
+	              			<img src="../image/bucket/noBucketImg.png" class="noBucketImg">
+	              			`;
 	            } else {
 
 		      // bucketList 배열을 순회하며 각 요소의 속성 값을 이용하여 HTML 문자열을 생성합니다.

@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.project.itda.bucketlist.model.BucketListModel;
 import com.project.itda.bucketlist.model.BucketReplyModel;
 import com.project.itda.bucketlist.service.IBucketListService;
+import com.project.itda.common.model.UserModel;
 import com.project.itda.common.service.IUserService;
 
 @Controller
@@ -114,9 +115,9 @@ public class bucketListController {
 
 	// 버킷리스트 수정 액션
 	@PostMapping("/bucket/modifyaction")
-	public String modifyBucketAction(BucketListModel bucketListModel) {
+	public String modifyBucketAction(BucketListModel bucketListModel, MultipartFile file) throws Exception {
 
-		bucketlistService.updateBucket(bucketListModel);
+		bucketlistService.updateBucket(bucketListModel, file);
 		return "redirect:/bucket/bucketview";
 	}
 
@@ -154,7 +155,7 @@ public class bucketListController {
 		model.addAttribute("bucketlist", bucketlist);
 		Date currentDate = new Date();
 		model.addAttribute("currentDate", currentDate);
-		List<String> myFam = userService.getFamilyUserIds(familySeq);
+		List<UserModel> myFam = userService.getFamilyMembers(familySeq);
 		model.addAttribute("myFam", myFam);
 
 		return "bucketList/bucketListView";

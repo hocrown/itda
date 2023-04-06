@@ -19,18 +19,19 @@ a {
 .bucketTextBox {
 	position: relative;
 	width: 100%;
+	background-image: url("../../image/itdaBackImg.png");
 }
 
 .bucketRegDate {
-	margin-top: 15px;
-	margin-left: 16.5px;
+	padding-top: 15px;
+	padding-left: 16.5px;
 	font-family: 'Bookk Myungjo';
 	font-style: normal;
 	font-weight: 300;
 	font-size: 15px;
 	letter-spacing: 0.06em;
 	color: #9D9690;
-	margin-bottom: 20px;
+	padding-bottom: 20px;
 }
 
 .layoutz {
@@ -38,13 +39,14 @@ a {
 }
 
 .bucketContents {
-	margin: 10px;
+	padding: 10px;
 	font-family: 'Bookk Myungjo';
 	font-style: normal;
 	font-weight: 300;
 	font-size: 16px;
 	color: #2A221D;
 	font-family: 'Bookk Myungjo';
+	background-image: url("../../image/itdaBackImg.png");
 }
 
 .ellipsis {
@@ -91,4 +93,8 @@ a {
 
 .finishBtnz {
 	color: #2A221D;
+}
+
+.detailDisNone{
+	display: none;
 }

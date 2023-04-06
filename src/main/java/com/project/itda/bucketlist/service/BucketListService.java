@@ -59,8 +59,21 @@ public class BucketListService implements IBucketListService {
 		
 		bucketRepository.invisible(bucketSeq);
 	}
+
 	@Override
-	public void updateBucket(BucketListModel bucketListModel) {
+	public void updateBucket(BucketListModel bucketListModel, MultipartFile file) throws Exception {
+		String prjPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
+
+		UUID uuid = UUID.randomUUID();
+
+		String fileName = uuid + "_" + file.getOriginalFilename();
+
+		File saveFile = new File(prjPath, fileName);
+
+		file.transferTo(saveFile);
+		bucketListModel.setFilename(fileName);
+		bucketListModel.setFilepath("/files/" + fileName);
+
 		bucketRepository.update(bucketListModel);
 	}
 	

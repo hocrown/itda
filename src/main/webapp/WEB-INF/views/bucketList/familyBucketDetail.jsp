@@ -32,11 +32,11 @@
 				<div class="bucketContents">${bucketOne.contents }</div>
 		        </div>
 		       
-		       	<div class="modalBox"> 
+		       	<div class="modalBox detailDisNone"> 
 			        <div class="btnBox"><a class="finishBtnz" href="/bucket/successaction?bucketSeq=${bucketOne.bucketSeq }">완료하기</a></div>		       	
 			        <div class="btnBox"><a class="modifyBtn" href="/bucket/modifybucket?bucketSeq=${bucketOne.bucketSeq }">수정하기</a></div>
 			        <div class="btnBox"><a class="deleteBtn" href="/bucket/invisibleaction?bucketSeq=${bucketOne.bucketSeq }">삭제하기</a></div>
-			        <div class="btnBox">취소</div>
+			        <div class="btnBox detailCancelBtn">취소</div>
 		        </div>
 		        
 		        <div>
@@ -51,7 +51,21 @@
 		</div>
 	</div>	
 	
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script type="text/javascript" src="/js/bucketlist/personalbucketlist.js"></script>
+	<script>
+	const ellipsis = document.querySelector('.ellipsis');
+
+	// add a click event listener to the ellipsis image
+	ellipsis.addEventListener('click', () => {
+	  // get the element you want to toggle the class on
+	  const element = document.querySelector('.modalBox');
+	  // toggle the "disNone" class on the element
+	  element.classList.toggle('detailDisNone');
+	});
+	
+	$('.detailCancelBtn').on('click', function() {
+		  $(this).closest('.modalBox').addClass('detailDisNone');
+		});
+	</script>
+
 </body>
 </html>

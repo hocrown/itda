@@ -1,5 +1,7 @@
 @charset "UTF-8";
-
+#previewImage[src="#"] {
+  display: none;
+}
 .writeTitleBox{
 width: 393px;
 height: 60px;
@@ -24,18 +26,22 @@ outline: none;
 }
 
 .addImgBox{
+	position: relative;
 width: 393px;
-height: 187px;
+min-height: 187px;
 text-align:center;
 background: #F4F4F4;
 }
 
 .addImgImg{
-	margin-top:17%;
-	margin-bottom: 7px;
+	width: 100%;
+	height: 100%;
 }
 
 .imgAddPlzText{
+	position: absolute;
+	top: 40%;
+	left: 26%;
 	font-family: 'Bookk Myungjo';
 	margin-top: 0px;
 font-style: normal;

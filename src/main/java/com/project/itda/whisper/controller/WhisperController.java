@@ -12,9 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.itda.common.dao.IUserRepository;
 import com.project.itda.common.model.UserModel;
+import com.project.itda.whisper.dao.IWhisperRepository;
 import com.project.itda.whisper.model.WhisperModel;
 
 @Controller
@@ -22,6 +24,9 @@ public class WhisperController {
 	
 	@Autowired
 	IUserRepository userRepository;
+	
+	@Autowired
+	IWhisperRepository whisperRepository;
 	
 	@GetMapping("/whisper/inboximg")
 	public String whisperInboxImg(Model model) {
@@ -68,25 +73,36 @@ public class WhisperController {
 		return "whisper/whisperInboxImg";
 	}
 	
+	@ResponseBody
 	@PostMapping("/whisper/send")
 	public Map<String, Object> sendWhisper(@RequestParam String receiver, @RequestParam String message, 
-            @RequestParam(defaultValue = "direct") String option, 
-            @RequestParam(required = false) String date, WhisperModel whisper, HttpSession session) {
+            @RequestParam(name="option", defaultValue = "direct") String option, 
+            @RequestParam(required = false) String date,
+            @RequestParam(name="senderNickname") String senderNickname,
+            WhisperModel whisper, HttpSession session) {
 		UserModel loginUser = (UserModel) session.getAttribute("loginUser");
 		String sender = loginUser.getUserId();
 		String whisperType = "";
 		Map<String, Object> map = new HashMap<>();
-		
-		// 옵션 값에 따라 whisperType 설정
-		if (option.equals("bomb")) {
-		whisperType = "bomb";
-		} else if (option.equals("reservation")) {
-		whisperType = "reservation";
-		} else {
-		whisperType = "direct";
+		try {
+			// 옵션 값에 따라 whisperType 설정
+			if (option.equals("bomb")) {
+			whisperType = "bomb";
+			} else if (option.equals("reservation")) {
+			whisperType = "reservation";
+			} else {
+			whisperType = "direct";
+			}
+			
+			whisperRepository.insertWhisper(whisper);
+			map.put("result","success");
+			map.put("message", "속마음이 전송되었습니다.");
+		} catch (Exception e) {
+			e.printStackTrace();
+			map.put("result", "error");
+			map.put("message", "전송 실패. 다시 시도해주세요.");
 		}
-		whisper.setWhisperType(whisperType);
-		whisper.setSender(sender);
+		
 		return map;
 		
 	}

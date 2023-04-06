@@ -13,7 +13,13 @@ import com.project.itda.timeline.model.TimeLineReplyModel;
  */
 
 public interface ITimeLineReplyService {
+	
+	//포스팅 댓글
 	List<TimeLineReplyModel> getPostReply(int timeLineSeq);
+	
+	//댓글 추가하기
 	void insertreply(TimeLineReplyModel timeLineModel);
+	
+	//댓글 삭제하기
 	void deletereply(int timelineSeq);
 }

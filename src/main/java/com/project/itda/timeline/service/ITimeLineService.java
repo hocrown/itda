@@ -13,9 +13,20 @@ import com.project.itda.timeline.model.TimeLineModel;
  */
 
 public interface ITimeLineService {
-	List<TimeLineModel> getList();
+	
+	//게시글 전체 목록
+	List<TimeLineModel> getList(int familySeq);
+	
+	//게시글 내용
 	List<TimeLineModel> getContents(int timeLineSeq);
+	
+	//게시글 추가
 	void insertPost(TimeLineModel timeLineModel);
+	
+	//게시글 수정
 	void updatePost(TimeLineModel timeLineModel);
+	
+	//게시글 삭제
 	void deletePost(int timelineSeq);
-}
+	
+}//end class

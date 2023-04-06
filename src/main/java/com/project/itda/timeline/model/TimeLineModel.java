@@ -1,13 +1,19 @@
 package com.project.itda.timeline.model;
 
-import java.util.Date;
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
 public class TimeLineModel {
-	private int timelineSeq;
-	private String userId;
-	private Date regDate;
-	private String contents;
-	private int familySeq;
+	 private int timeLineSq;
+	 private String content;
+	 private String regDate;
+	 
+	 private int replyNumber;
+	 private int replystep;
+	 
+	 private MultipartFile file;
+	 private int fileSeq;
+ 
 }

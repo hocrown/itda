@@ -12,36 +12,36 @@ import com.project.itda.timeline.model.TimeLineModel;
 public class TimeLineService implements ITimeLineService {
 	
 	@Autowired
-	ITimeLineRepository timeLineDao;
+	ITimeLineRepository timeLineRepository;
+
+//	@Override
+//	public List<TimeLineModel> getList(int familySeq) {
+//		List<TimeLineModel> timeLineList = timeLineRepository.getList();
+//		return timeLineList;
 
 	@Override
-	public List<TimeLineModel> getList() {
-		List<TimeLineModel> timeLineList = timeLineDao.getList();
-		return timeLineList;
+	public List<TimeLineModel> getList(int familySeq) {
+		return timeLineRepository.getList();
 	}
-
+	
 	@Override
 	public List<TimeLineModel> getContents(int timeLineSeq) {
-		// TODO Auto-generated method stub
-		return null;
+		return timeLineRepository.getContents(timeLineSeq);
 	}
 
 	@Override
 	public void insertPost(TimeLineModel timeLineModel) {
-		// TODO Auto-generated method stub
-		
+		timeLineRepository.insertPost(timeLineModel);
 	}
 
 	@Override
 	public void updatePost(TimeLineModel timeLineModel) {
-		// TODO Auto-generated method stub
-		
+		timeLineRepository.updatePost(timeLineModel);
 	}
 	
 	@Override
 	public void deletePost(int timelineSeq) {
-		// TODO Auto-generated method stub
-		
+		timeLineRepository.deletePost(timelineSeq);
 	}
 
-}
+}//end class

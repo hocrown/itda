@@ -14,6 +14,7 @@ public interface ITimeLineReplyRepository {
 	
 	//댓글 출력
 	List<TimeLineReplyModel> getPostReply(int timeLineSeq);
+	
 	//댓글 작성
 	void insertreply(TimeLineModel timeLineModel);
 	

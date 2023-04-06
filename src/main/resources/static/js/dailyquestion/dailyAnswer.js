@@ -32,6 +32,11 @@ var prevUrl = document.referrer;
  	$(".headBox .vector").click(function(){
     location.href = prevUrl;
 	});
+	
+	$(".headBox .stickerPageLink").click(function(){
+    location.href = "/dailyquestion/monthly";	
+	});
+	
 
 const textarea = document.querySelector('.answerTextarea');
 const characterCount = document.querySelector('.characterCount');

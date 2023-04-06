@@ -2,6 +2,12 @@
  * 
  */
 $(document).ready(function() {
+	
+	    
+    $(".headBox .vector").click(function(){
+		window.location.href = "/whisper/inboximg";
+	});
+	
   $('.sendBtn').on('click', function() {
     // 선택된 옵션에 따라 요청 URL 결정
     let option = $('input[name="sendOption"]:checked').val();
@@ -16,12 +22,12 @@ $(document).ready(function() {
     }
 
     // 입력한 내용 가져오기
-    const recipient = $('.selectCss option:selected').text();
-    const whisper = $('.whisperTextarea').val();
+    const reciver = $('.selectCss option:selected').text();
+    const message = $('.whisperTextarea').val();
     const sender = $('.fromInput').val();
 
     // 입력값 유효성 검사
-    if (recipient === '' || whisper === '' || sender === '') {
+    if (reciver === '' || message === '' || sender === '') {
       alert('받는 사람, 내용, 보내는 사람 모두 입력해주세요.');
       return;
     }
@@ -29,10 +35,10 @@ $(document).ready(function() {
     // 서버에 데이터 전송
     $.ajax({
       type: 'POST',
-      url: url,
+      url: "/whisper/send",
       data: {
-        recipient: recipient,
-        whisper: whisper,
+        reciver: reciver,
+        message: message,
         sender: sender
       },
       success: function(response) {

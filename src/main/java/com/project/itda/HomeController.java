@@ -29,5 +29,7 @@ public class HomeController {
 	public String alarm(Model model) {
 		return "alarmList";
 	}
+	
+	
 
 }

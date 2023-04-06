@@ -8,6 +8,7 @@
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/bucket/bucketListView.css">
+<script type="text/javascript" src="/js/bucketlist/bucketListView.js"></script>
 </head>
 <body>
 	<div class="layout">

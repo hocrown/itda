@@ -8,6 +8,5 @@ public class TimeLineReplyModel {
 	private int replySeq;
 	private Date regDate;
 	private String replyContents;
-	private String type;
 	private int timelineSeq;
 }

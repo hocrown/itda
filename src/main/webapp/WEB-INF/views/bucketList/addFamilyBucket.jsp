@@ -23,9 +23,9 @@
 				<input class="writeTitleTextarea" name="title" placeholder="제목을 입력해 주세요." spellcheck="false">
 			</div>
 			
-			<div class="addImgBox">
-			<div><input type="file" name="file"><img src="../image/addImgImg.png" class="addImgImg"></div>
-			<span class="imgAddPlzText">연상되는 사진을 추가해주세요.</span>
+			<div id="fileArea" class="addImgBox">
+				<input style="display: none;" type="file" name="file" id="fileInput"><img src="#" alt="Preview" id="previewImage" class="addImgImg">
+				<span class="imgAddPlzText">연상되는 사진을 추가해주세요.</span>
 			</div>
 			
 			<div class="addBucketTextareaBox">
@@ -36,6 +36,42 @@
 		<div style="height: 50px;"></div>
 		
 	</div>	
+	
+	<script>
+	
+	$('.addImgBox').one('click', function() {
+		  $('#fileInput').click();
+		});
+	
+	
+	const fileInput = document.getElementById('fileInput');
+	const previewImage = document.getElementById('previewImage');
+
+	fileInput.addEventListener('change', () => {
+	  const file = fileInput.files[0];
+	  const reader = new FileReader();
+	  reader.readAsDataURL(file);
+	  reader.onload = () => {
+	    previewImage.src = reader.result;
+	  };
+	});
+	
+	$(document).ready(function() {
+		  $('#previewImage').on('load', function() {
+		    if ($(this).attr('src') !== '#') {
+		      $('.imgAddPlzText').hide();
+		    } else {
+		      $('.imgAddPlzText').show();
+		    }
+		  });
+		  
+		  $('#previewImage').on('error', function() {
+		    $('.imgAddPlzText').show();
+		  });
+		});
+	
+	
+	</script>
 	
 </body>
 </html>

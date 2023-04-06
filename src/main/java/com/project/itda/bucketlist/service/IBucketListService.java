@@ -22,6 +22,6 @@ public interface IBucketListService {
 	public BucketListModel getFamilyBucketDetail(int bucketSeq);
 	public void BucketInvisible(int bucketSeq);
 	public void BucketSuccess(int bucketSeq);
-	public void updateBucket(BucketListModel bucketListModel);
+	public void updateBucket(BucketListModel bucketListModel, MultipartFile file) throws Exception;
 	public void addPersonalBucketList(BucketListModel bucketListModel, MultipartFile file) throws Exception;
 }

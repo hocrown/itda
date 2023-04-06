@@ -50,6 +50,10 @@ a {
 	top: 32px;
 }
 
+.selectedTestbox{
+	top: 7px !important;
+}
+
 .testspan {
 	margin-left: 3px;
 	margin-right: 3px;
@@ -129,9 +133,11 @@ a {
 }
 
 .listContainer {
+	position: reletive;
 	margin-top: 40px;
 	margin-left: 70px;
 	margin-right: 30px;
+	text-align: center;
 }
 
 .bucketTitleSpan {
@@ -151,11 +157,14 @@ a {
 }
 
 .noBucketText{
+	position: absolute;
+	left: 40%;
+	top: 40%;
 	font-family: 'Bookk Myungjo';
 	font-style: normal;
 	font-weight: 300;
 	font-size: 18px;
-	color: #2A221D;
+	color: rgba(157, 150, 144, 1);
 }
 .greenChk{
 	position: absolute;
@@ -179,4 +188,10 @@ font-weight: 700;
 font-size: 20px;
 color: #1D9871;
 transform: rotate(-7.76deg);
+}
+
+.noBucketImg{
+	position: absolute;
+	left: 33%;
+	top: 33%;
 }

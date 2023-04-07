@@ -19,7 +19,6 @@ a {
 .bucketTextBox {
 	position: relative;
 	width: 100%;
-	background-image: url("../../image/itdaBackImg.png");
 }
 
 .bucketRegDate {
@@ -35,7 +34,7 @@ a {
 }
 
 .layoutz {
-	background-color: white;
+	
 }
 
 .bucketContents {
@@ -46,13 +45,12 @@ a {
 	font-size: 16px;
 	color: #2A221D;
 	font-family: 'Bookk Myungjo';
-	background-image: url("../../image/itdaBackImg.png");
 }
 
 .ellipsis {
 	position: absolute;
 	left: 88%;
-	top: 20%;
+	top: 34%;
 }
 
 .modalBox {
@@ -95,6 +93,57 @@ a {
 	color: #2A221D;
 }
 
-.detailDisNone{
+.detailDisNone {
 	display: none;
 }
+
+.bucketDetailContainer {
+	background-image: url("../../image/bucket/bucketDetailBackground.png");
+}
+
+.bucketReplyContainer {
+	position: relative;
+}
+
+.bucketReplyProfile {
+	position: absolute;
+	top: 20px;
+	left: 10px;
+}
+
+.replyTextBox {
+	position: relative;
+	width:320px;
+	left: 60px;
+	top: 15px;
+}
+
+.userNameText {
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	letter-spacing: 0.05em;
+	color: #2A221D;
+		margin-bottom: 5px;
+	
+}
+.replyContentsText {
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	align-items: center;
+	letter-spacing: 0.05em;
+	color: #2A221D;
+		margin-bottom: 5px;
+	
+}
+.replyRegDateText {
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	color: #9D9690;
+}
+

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +33,7 @@
             <span class="toPersonName">${whisper.receiver}</span>
             <div class="toPersonLine"></div>
             <span class="sendDateText">발신일</span>
-            <span class="sendDate">${whisper.sendDate}</span>
+            <span class="sendDate"><fmt:formatDate value="${whisper.sendDate}" pattern="yyyy.MM.dd"/></span>
             <img src="../image/whisperCardStamp.png" class="inboxCardStamp">
             <span class="fromPersonText">보내는 사람</span>
             <span class="fromPersonName">${whisper.senderNickname}</span>

@@ -62,7 +62,8 @@ public class bucketListController {
 		model.addAttribute("reply", reply);
 		List<UserModel> myFam = userService.getFamilyMembers(familySeq);
 		model.addAttribute("myFam", myFam);
-
+		int replyCount = bucketlistService.countBucketOneReply(bucketSeq);
+		model.addAttribute("replyCount", replyCount);
 		return "bucketList/familyBucketDetail";
 	}
 
@@ -86,8 +87,9 @@ public class bucketListController {
 
 	// 버킷리스트 등록 페이지
 	@GetMapping("/bucket/addfamilybucket")
-	public String addBucket(Model model) {
-
+	public String addBucket(HttpSession session, Model model) {
+		String userId = (String) session.getAttribute("userId");
+		
 		return "bucketList/addFamilyBucket";
 	}
 
@@ -195,17 +197,17 @@ public class bucketListController {
 	}
 	
 	// 댓글 등록 액션
-		@PostMapping("/bucket/addbucketreplyaction")
-		public String addBucketReplyAction(HttpSession session , @RequestParam("bucketSeq") int bucketSeq, BucketReplyModel bucketReplyModel) {
+	@PostMapping("/bucket/addbucketreplyaction")
+	public String addBucketReplyAction(HttpSession session , @RequestParam("bucketSeq") int bucketSeq, BucketReplyModel bucketReplyModel) {
 
-			String userId = (String) session.getAttribute("userId");
+		String userId = (String) session.getAttribute("userId");
 
-			bucketReplyModel.setUserId(userId);
-			
-			bucketlistService.addBucketReply(bucketReplyModel);
-			
-			return "redirect:/bucket/bucketDetail?bucketSeq=" + bucketSeq;
-		}
+		bucketReplyModel.setUserId(userId);
+		bucketReplyModel.setBucketSeq(bucketSeq);
+		bucketlistService.addBucketReply(bucketReplyModel);
+		
+		return "redirect:/bucket/familybucketdetail?bucketSeq=" + bucketSeq;
+	}
 		
 		
 

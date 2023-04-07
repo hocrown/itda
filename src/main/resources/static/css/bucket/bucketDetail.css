@@ -7,7 +7,7 @@ a {
 .bucketTitle {
 	width: 83%;
 	padding-top: 15px;
-	margin-left: 16.5px;
+
 	font-family: 'Bookk Myungjo';
 	font-style: normal;
 	font-weight: 300;
@@ -23,7 +23,7 @@ a {
 
 .bucketRegDate {
 	padding-top: 15px;
-	padding-left: 16.5px;
+
 	font-family: 'Bookk Myungjo';
 	font-style: normal;
 	font-weight: 300;
@@ -38,7 +38,7 @@ a {
 }
 
 .bucketContents {
-	padding: 10px;
+
 	font-family: 'Bookk Myungjo';
 	font-style: normal;
 	font-weight: 300;
@@ -55,7 +55,7 @@ a {
 
 .modalBox {
 	position: fixed;
-	height: 280px;
+	height: 350px;
 	bottom: 0px;
 	width: 100%;
 	background-color: white;
@@ -99,6 +99,8 @@ a {
 
 .bucketDetailContainer {
 	background-image: url("../../image/bucket/bucketDetailBackground.png");
+	border-bottom: solid 1px;
+	border-color: #ADADAD;
 }
 
 .bucketReplyContainer {
@@ -113,7 +115,7 @@ a {
 
 .replyTextBox {
 	position: relative;
-	width:320px;
+	width: 320px;
 	left: 60px;
 	top: 15px;
 }
@@ -125,9 +127,9 @@ a {
 	font-size: 16px;
 	letter-spacing: 0.05em;
 	color: #2A221D;
-		margin-bottom: 5px;
-	
+	margin-bottom: 5px;
 }
+
 .replyContentsText {
 	font-family: 'Bookk Myungjo';
 	font-style: normal;
@@ -136,9 +138,9 @@ a {
 	align-items: center;
 	letter-spacing: 0.05em;
 	color: #2A221D;
-		margin-bottom: 5px;
-	
+	padding-bottom: 5px;
 }
+
 .replyRegDateText {
 	font-family: 'Bookk Myungjo';
 	font-style: normal;
@@ -147,3 +149,59 @@ a {
 	color: #9D9690;
 }
 
+.inputReplyBox {
+	position: fixed;
+	width: 393px;
+	height: 67px;
+	background: #FFFFFF;
+	bottom: 0px;
+	display: flex;
+	align-items: center;
+}
+
+.inputReply {
+	position: relative;
+	left: 10px;
+	box-sizing: border-box;
+	background: rgba(255, 255, 255, 0.2);
+	border: 4px solid rgba(177, 125, 90, 0.2);
+	border-radius: 20px;
+	width: 316.08px;
+	height: 47px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	letter-spacing: 0.05em;
+	color: #9D9690;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.replyAddImg {
+	position: relative;
+	left: 25px;
+	background-image: url("../../image/bucket/replyAddImg.png")
+}
+
+.replyCountBox {
+	padding-top: 10px;
+	height: 50px;
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.replyCountImg {
+	position: relative;
+}
+
+.replyCountText {
+	position: relative;
+	left: 12px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	color: #9D9690;
+}

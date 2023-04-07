@@ -106,4 +106,11 @@ public class BucketListService implements IBucketListService {
 		bucketRepository.insertReply(bucketReplyModel);
 	}
 	
+	@Override
+	public int countBucketOneReply(int bucketSeq) {
+		int replyCount = bucketRepository.countBucketOneReply(bucketSeq);
+		
+		return replyCount;
+	}
+	
 }

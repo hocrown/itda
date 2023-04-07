@@ -19,4 +19,5 @@ public interface IBucketListService {
 	public void updateBucket(BucketListModel bucketListModel, MultipartFile file) throws Exception;
 	public void addPersonalBucketList(BucketListModel bucketListModel, MultipartFile file) throws Exception;
 	public void addBucketReply(BucketReplyModel bucketReplyModel);
+	public int countBucketOneReply(int bucketSeq);
 }

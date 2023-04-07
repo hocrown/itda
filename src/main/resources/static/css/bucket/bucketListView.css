@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 a {
 	text-decoration: none;
 }
@@ -41,7 +40,6 @@ a {
 	overflow-x: auto;
 	vertical-align: middle;
 	text-align: right;
-	
 }
 
 .testbox {
@@ -50,7 +48,7 @@ a {
 	top: 32px;
 }
 
-.selectedTestbox{
+.selectedTestbox {
 	top: 7px !important;
 }
 
@@ -99,8 +97,6 @@ a {
 	background-image: url("../../image/bucket/dust.png");
 }
 
-
-
 .imgBack {
 	position: absolute;
 	top: 162.5px;
@@ -128,8 +124,8 @@ a {
 	min-height: 665px;
 	background-image: url("../../image/bucket/bucketBackground2-1.png");
 	border-top: solid 6px;
-	border-image: url( "../../image/bucket/buckeyViewBorderColor.png" ) 1 10 10 repeat;
-	
+	border-image: url( "../../image/bucket/buckeyViewBorderColor.png" ) 1 10
+		10 repeat;
 }
 
 .listContainer {
@@ -143,7 +139,7 @@ a {
 	position: absolute;
 	top: 5px;
 	left: 30px;
-	width:250px;
+	width: 250px;
 	font-family: 'Bookk Myungjo';
 	font-style: normal;
 	font-weight: 300;
@@ -152,10 +148,9 @@ a {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
-	
 }
 
-.noBucketText{
+.noBucketText {
 	position: absolute;
 	left: 40%;
 	top: 40%;
@@ -165,31 +160,32 @@ a {
 	font-size: 18px;
 	color: rgba(157, 150, 144, 1);
 }
-.greenChk{
+
+.greenChk {
 	position: absolute;
-	left:-15px;
-	top:-60px;
+	left: -15px;
+	top: -60px;
 }
 
-.successStamp{
+.successStamp {
 	position: absolute;
-	left:70px;
-	top:-155px;
+	left: 70px;
+	top: -155px;
 }
 
-.finishDateText{
+.finishDateText {
 	position: absolute;
-	left:85px;
-	top:-98px;
+	left: 85px;
+	top: -98px;
 	font-family: 'Bookk Myungjo';
-font-style: normal;
-font-weight: 700;
-font-size: 20px;
-color: #1D9871;
-transform: rotate(-7.76deg);
+	font-style: normal;
+	font-weight: 700;
+	font-size: 20px;
+	color: #1D9871;
+	transform: rotate(-7.76deg);
 }
 
-.noBucketImg{
+.noBucketImg {
 	position: absolute;
 	left: 33%;
 	top: 33%;

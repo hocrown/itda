@@ -37,6 +37,7 @@
 		FROM bucketreply r JOIN itdauser u
 		on r.userId = u.userId
 		WHERE bucketSeq = #{bucketSeq}
+		ORDER BY r.regDate DESC
 	</select>
 	
 	<insert id="insertFamily"
@@ -75,7 +76,13 @@
 			VALUES (bucketReplySeq.NEXTVAL, #{bucketSeq}, SYSDATE, #{replyContents}, #{userId})
 	</insert>
 		
-	
+	<select id="countBucketOneReply" parameterType="int" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*)
+			FROM BUCKETREPLY
+			WHERE bucketSeq = #{bucketSeq}
+		]]>
+	</select>
 	
 	
 	

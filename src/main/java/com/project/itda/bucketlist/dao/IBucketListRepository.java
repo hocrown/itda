@@ -22,4 +22,5 @@ public interface IBucketListRepository {
 	void update(BucketListModel bucketListModel);
 	void success(int bucketSeq);
 	void insertReply(BucketReplyModel bucketReplyModel);
+	int countBucketOneReply(int bucketSeq);
 }

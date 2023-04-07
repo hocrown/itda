@@ -33,8 +33,10 @@
 	
 	<select id="getBucketReply"
 		resultType="com.project.itda.bucketlist.model.BucketReplyModel">
-		select * from BUCKETREPLY
-		where BUCKETSEQ = #{bucketSeq}
+		SELECT u.userName, r.bucketReplySeq, r.bucketSeq, r.regDate, r.replyContents, r.userId
+		FROM bucketreply r JOIN itdauser u
+		on r.userId = u.userId
+		WHERE bucketSeq = #{bucketSeq}
 	</select>
 	
 	<insert id="insertFamily"
@@ -67,6 +69,11 @@
 		BUCKETLIST set FINISHDATE = SYSDATE
 		WHERE BUCKETSEQ = #{bucketSeq}
 	</update>
+	
+	<insert id="insertReply" parameterType="com.project.itda.bucketlist.model.BucketReplyModel">
+		INSERT INTO BUCKETREPLY (bucketReplySeq, bucketSeq, regDate, replyContents, userId)
+			VALUES (bucketReplySeq.NEXTVAL, #{bucketSeq}, SYSDATE, #{replyContents}, #{userId})
+	</insert>
 		
 	
 	

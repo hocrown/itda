@@ -100,4 +100,10 @@ public class BucketListService implements IBucketListService {
 		bucketRepository.success(bucketSeq);
 	}
 	
+	@Override
+	public void addBucketReply(BucketReplyModel bucketReplyModel) {
+		
+		bucketRepository.insertReply(bucketReplyModel);
+	}
+	
 }

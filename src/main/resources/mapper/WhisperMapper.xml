@@ -27,7 +27,7 @@
 	</select>
 	
     <select id="getInboxList" parameterType="String" resultType="com.project.itda.whisper.model.WhisperModel">
-        SELECT *
+        SELECT whisperSeq, sender, receiver, TRUNC(sendDate) AS sendDate, message, whisperType, visible, reserveDate, senderNickName, checked
         FROM whisper
         WHERE receiver = #{userId}
         ORDER BY sendDate DESC

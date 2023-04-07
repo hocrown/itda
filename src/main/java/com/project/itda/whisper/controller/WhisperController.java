@@ -51,12 +51,12 @@ public class WhisperController {
 		String userId = (String) session.getAttribute("userId");
 	    List<WhisperModel> whisperList = whisperRepository.getInboxList(userId);
 	    
-	    Map<String, List<WhisperModel>> whisperByDate = whisperList.stream()
-	        .collect(Collectors.groupingBy(w -> w.getSendDate().toString()));
-	    
+	    Map<Date, List<WhisperModel>> whisperByDate = whisperList.stream()
+	    	    .collect(Collectors.groupingBy(w -> w.getSendDate()));
+
 	    model.addAttribute("whisperByDate", whisperByDate);
 	    
-		return "whisper/whisperInboxList";
+		return "whisper/whisperInboxList";	
 	}
 	
 	@GetMapping("/whisper/detail/{whisperSeq}")

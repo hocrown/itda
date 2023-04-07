@@ -21,13 +21,13 @@
     <span class="inboxText">속마음 보관함</span>
 
     <img src="/image/listToggle.png" class="whisperInboxListToggle">
-
     <c:forEach var="entry" items="${whisperByDate}">
         <div class="dateLine1"></div>
-        <div class="inboxListDate">${entry.key}</div>
+        <div class="inboxListDate"><fmt:formatDate value="${entry.key}" pattern="yyyy.MM.dd"/></div>
         <div class="dateLine2"></div>
 
         <c:forEach var="whisper" items="${entry.value}">
+        <div class="inboxList">
             <img src="/image/whisperCardImg.png" class="cardFrame">
             <span class="toPersonText">받는 사람</span>
             <span class="toPersonName">${whisper.receiver}</span>
@@ -38,6 +38,7 @@
             <span class="fromPersonText">보내는 사람</span>
             <span class="fromPersonName">${whisper.senderNickname}</span>
             <div class="fromPersonLine"></div>
+        </div>
         </c:forEach>
         
     </c:forEach>

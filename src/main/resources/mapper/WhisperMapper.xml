@@ -10,11 +10,27 @@
 		]]>
 	</insert>
 	
-	<select id="getWhisperMessage" parameterType="String" resultType="com.project.itda.whisper.model.WhisperModel">
+	<select id="getWhisperList" parameterType="String" resultType="com.project.itda.whisper.model.WhisperModel">
 		<![CDATA[
 			SELECT * 
 			FROM WHISPER
 			WHERE receiver = #{userId} AND visible = 1
 		]]>
 	</select>    
+	
+	<select id="getWhisperDetail" parameterType="int" resultType="com.project.itda.whisper.model.WhisperModel">
+		<![CDATA[
+			SELECT *
+			FROM WHISPER
+			WHERE WHISPERSEQ = #{whisperSeq}
+		]]>
+	</select>
+	
+    <select id="getInboxList" parameterType="String" resultType="com.project.itda.whisper.model.WhisperModel">
+        SELECT *
+        FROM whisper
+        WHERE receiver = #{userId}
+        ORDER BY sendDate DESC
+    </select>
+	
 </mapper>

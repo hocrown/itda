@@ -7,7 +7,7 @@
 <head>
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../css/dailyquestion/dailyMain.css">
+<link rel="stylesheet" type="text/css" href="/css/dailyquestion/dailyMain.css">
 
 
 </head>
@@ -15,10 +15,10 @@
 
 	<div class="layout">
 		<div class="headBox">
-			<img class="vector" src="../image/vector.png">
+			<img class="vector" src="/image/vector.png">
 			하루를 잇다
-			<img class="stickerPageLink" src="../image/stickerPageLink.png">
-			<img class="menuBtn" src="../image/menuBtn.png" id="dqlist">	
+			<img class="stickerPageLink" src="/image/stickerPageLink.png">
+			<img class="menuBtn" src="/image/menuBtn.png" id="dqlist">	
 		</div>
 		
 		<span class="ourFamilyDailyDiaryText">우리 가족 하루 일기</span>

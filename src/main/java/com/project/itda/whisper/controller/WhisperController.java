@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +16,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,20 +36,33 @@ public class WhisperController {
 	IWhisperRepository whisperRepository;
 	
 	@GetMapping("/whisper/inboximg")
-	public String whisperInboxImg(Model model) {
+	public String whisperInboxImg(HttpSession session, Model model) {
 	
+		String userId = (String) session.getAttribute("userId");
+		List<WhisperModel> whisperList = whisperRepository.getWhisperList(userId);
+		model.addAttribute("whisperList", whisperList);
+		
 		return "whisper/whisperInboxImg";
 	}
 	
-	@GetMapping("/whisper/inboxlist")
-	public String whisperInboxList(Model model) {
 	
+	@GetMapping("/whisper/inboxlist")
+	public String whisperInboxList(HttpSession session, Model model) {
+		String userId = (String) session.getAttribute("userId");
+	    List<WhisperModel> whisperList = whisperRepository.getInboxList(userId);
+	    
+	    Map<String, List<WhisperModel>> whisperByDate = whisperList.stream()
+	        .collect(Collectors.groupingBy(w -> w.getSendDate().toString()));
+	    
+	    model.addAttribute("whisperByDate", whisperByDate);
+	    
 		return "whisper/whisperInboxList";
 	}
 	
-	@GetMapping("/whisper/detail")
-	public String whisperDetail(Model model) {
-	
+	@GetMapping("/whisper/detail/{whisperSeq}")
+	public String whisperDetail(@PathVariable("whisperSeq") int whisperSeq, Model model) {
+		WhisperModel whisperDetail = whisperRepository.getWhisperDetail(whisperSeq);
+		model.addAttribute("whisper", whisperDetail);
 		return "whisper/whisperDetail";
 	}
 	
@@ -73,7 +88,11 @@ public class WhisperController {
 	}
 	
 	@GetMapping("/whisper/main")
-	public String whisperMain() {
+	public String whisperMain(HttpSession session, Model model) {
+		
+		String userId = (String) session.getAttribute("userId");
+		List<WhisperModel> whisperList = whisperRepository.getWhisperList(userId);
+		model.addAttribute("whisperList", whisperList);
 		
 		return "whisper/whisperInboxImg";
 	}

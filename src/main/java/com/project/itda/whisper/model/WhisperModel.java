@@ -15,5 +15,5 @@ public class WhisperModel {
 	private int visible;
 	private Date reserveDate;
 	private String senderNickname;
-	
+	private int checked;
 }

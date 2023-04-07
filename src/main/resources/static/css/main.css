@@ -3,6 +3,9 @@ body {
 	padding: 0;
 }
 
+a{
+	text-decoration: none;
+}
 .layout {
 	min-width: 100%;
 	min-height: 850px;

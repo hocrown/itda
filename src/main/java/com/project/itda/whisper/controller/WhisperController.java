@@ -1,5 +1,9 @@
 package com.project.itda.whisper.controller;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,6 +11,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -76,24 +81,39 @@ public class WhisperController {
 	@ResponseBody
 	@PostMapping("/whisper/send")
 	public Map<String, Object> sendWhisper(@RequestParam String receiver, @RequestParam String message, 
-            @RequestParam(name="option", defaultValue = "direct") String option, 
-            @RequestParam(required = false) String date,
+            @RequestParam(name="option") String option, 
             @RequestParam(name="senderNickname") String senderNickname,
+            @RequestParam(name="date", required = false) String date,
             WhisperModel whisper, HttpSession session) {
 		UserModel loginUser = (UserModel) session.getAttribute("loginUser");
 		String sender = loginUser.getUserId();
 		String whisperType = "";
+		int visible;
 		Map<String, Object> map = new HashMap<>();
 		try {
 			// 옵션 값에 따라 whisperType 설정
 			if (option.equals("bomb")) {
 			whisperType = "bomb";
+			visible = 1;
 			} else if (option.equals("reservation")) {
 			whisperType = "reservation";
+			visible = 0;
 			} else {
 			whisperType = "direct";
+			visible = 1;
 			}
+			whisper.setSender(sender);
+			whisper.setWhisperType(whisperType);
+			whisper.setVisible(visible);
 			
+	        // date 값이 전달되지 않은 경우, 오늘 날짜로 설정
+	        Date reserveDate = null;
+	        if (date == null || date.isEmpty()) {
+	            reserveDate = new Date();
+	        } else {
+	            reserveDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+	        }
+	        whisper.setReserveDate(reserveDate);
 			whisperRepository.insertWhisper(whisper);
 			map.put("result","success");
 			map.put("message", "속마음이 전송되었습니다.");

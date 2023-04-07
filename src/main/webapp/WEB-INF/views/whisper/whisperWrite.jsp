@@ -45,7 +45,7 @@
 		<div class="bombOptionEllipse" data-option="bomb"></div><span class="bombOptionText">확인 후 수신함에서 사라져요</span>
 		<div class="reservationOptionEllipse" data-option="reservation"></div><span class="reservationOptionText">내가 원하는 날짜에 전달돼요</span>
 		<input type="text" class="datepicker" placeholder="원하는 날짜를 선택해주세요" style="display:none;">
-		<input type="hidden" name="sendOption" value="direct">
+		<input type="hidden" name="sendOption" value="">
     	<button type="submit">전송</button>
 		</form>
 	</div>

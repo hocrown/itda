@@ -6,7 +6,15 @@
 	<insert id="insertWhisper" parameterType="com.project.itda.whisper.model.WhisperModel">
 		<![CDATA[
 			INSERT INTO WHISPER (whisperSeq, sender, receiver, sendDate, message, whisperType, visible, RESERVEDATE, SENDERNICKNAME)
-			VALUES (whisperSeq.nextval, #{sender}, #{receiver}, SYSDATE, #{message}, #{whisperType}, 1, #{reserveDate}, #{senderNickname})
+			VALUES (whisperSeq.nextval, #{sender}, #{receiver}, SYSDATE, #{message}, #{whisperType}, #{visible}, #{reserveDate}, #{senderNickname})
 		]]>
-	</insert>    
+	</insert>
+	
+	<select id="getWhisperMessage" parameterType="String" resultType="com.project.itda.whisper.model.WhisperModel">
+		<![CDATA[
+			SELECT * 
+			FROM WHISPER
+			WHERE receiver = #{userId} AND visible = 1
+		]]>
+	</select>    
 </mapper>

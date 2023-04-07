@@ -14,7 +14,7 @@
 	<div class="layout">
 		<form class="addBucketForm" action="/bucket/addbucketaction" method="post" enctype="multipart/form-data">
 			<div class="headBox">
-				<img src="../image/vector.png" class="vector">
+				<a><img src="../image/vector.png" class="vector"></a>
 				소망을 잇다
 				<input class="finishBtn" type="image" src="../image/finishBtn.png" alt="완료" onclick="document.getElementById('addBucketForm').submit();">
 			</div>

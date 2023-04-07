@@ -44,20 +44,26 @@
 		       	
 		        
 		        
-			        <c:forEach items="${reply }" var="reply">
+			        <c:forEach items="${reply }" var="reply" varStatus="status">
 				        <div>
-				        	<div style="position: relative; padding-bottom: 20px;">
+				        	<div style="position: relative; padding-bottom: 20px; border-bottom: solid 1px; border-color: #ADADAD;">
 					        		<img src="../image/bucket/profileDummy.png" style="position: absolute; top:20px; left:10px;">
 						        <div class="replyTextBox">
+						        	<img src="../image/bucket/replyEllipsis.png" class="replyEllipsis replyEachEllipsis${status.index }">
+						        	<div class="replyModal detailDisNone replyEachModal${status.index }">
+						        		<div class="replyModalBtn reMoBtn">수정</div>
+						        		<div class="replyModalBtn">삭제</div>
+						        	</div>
 							        <div class="userNameText">${reply.userName }</div>
 							        <div class="replyContentsText">${reply.replyContents }</div>
 							        <div class="replyRegDateText"><fmt:formatDate value="${reply.regDate}" pattern="yyyy.MM.dd a hh:mm"/></div>
+							        <div style="height: 8px;"></div>
 				        		</div>
 					        </div>
 					    </div>
 			        </c:forEach>
 				
-				<div style="height: 67px;"></div>
+				<div style="height: 87px;"></div>
 		        
 		        <div class="modalBox detailDisNone"> 
 			        <div class="btnBox"><a class="finishBtnz" href="/bucket/successaction?bucketSeq=${bucketOne.bucketSeq }">완료하기</a></div>		       	
@@ -94,6 +100,21 @@
 		  $(this).closest('.modalBox').addClass('detailDisNone');
 		});
 	</script>
+	
+<script>
+  $(document).ready(function() {
+    // 모든 replyEllipsis 요소 가져오기
+    const replyEllipsisElements = $(".replyEllipsis");
+
+    // 각각의 replyEllipsis 요소를 순회하면서 클릭 이벤트 부착
+    replyEllipsisElements.each(function(index) {
+      $(this).on("click", function() {
+        // 동일한 인덱스의 replyEachModal 요소에 대해 detailDisNone 클래스를 토글
+        $(`.replyEachModal${index}`).toggleClass("detailDisNone");
+      });
+    });
+  });
+</script>
 
 </body>
 </html>

@@ -36,4 +36,10 @@ public class WhisperService implements IWhisperService {
 		List<WhisperModel> inboxList = whisperRepository.getInboxList(userId);
 		return inboxList;
 	}
+
+	@Override
+	public List<WhisperModel> getOutboxList(String userId) {
+		List<WhisperModel> outboxList = whisperRepository.getOutboxList(userId);
+		return outboxList;
+	}
 }

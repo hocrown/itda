@@ -67,8 +67,15 @@ public class WhisperController {
 	}
 	
 	@GetMapping("/whisper/outbox")
-	public String whisperOutbox(Model model) {
-	
+	public String whisperOutbox(HttpSession session, Model model) {
+		String userId = (String) session.getAttribute("userId");
+		List<WhisperModel> whisperList = whisperRepository.getOutboxList(userId);
+		
+		Map<Date, List<WhisperModel>> whisperByDate = whisperList.stream()
+				.collect(Collectors.groupingBy(w -> w.getSendDate()));
+		
+		model.addAttribute("whisperByDate", whisperByDate);
+		
 		return "whisper/whisperOutbox";
 	}
 	

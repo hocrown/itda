@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.adminLayout {
+	min-height: 100vh;
+	width: 100%;
+	background-image: url("../../image/itdaBackImg.png");
+}
+
+.adminContainer {
+	text-align: center;
+}
+
+.adminLogo {
+	margin-top: 250px;
+	margin-bottom: 60px;
+}
+
+.adminIdPwdText {
+	width: 240px;
+	display: inline-block;
+	text-align: left;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+
+.adminIdPwdInput {
+	background: rgba(177, 125, 90, 0.1);
+	width: 220px;
+	height: 30px; border : none;
+	outline: none;
+	border: none; outline : none;
+	border-radius: 10px;
+	padding: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.adminLoginBtn{
+	margin-top: 80px;
+	width: 105px;
+	height:40px;
+	border: none;
+	outline: none;
+	color: #FFFFFF;
+	font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+	background: rgba(177, 125, 90, 0.8);
+border-radius: 8px;	
+}
+
+

@@ -1,34 +1,32 @@
 package com.project.itda.timeline.controller;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.project.itda.bucketlist.model.BucketListModel;
-import com.project.itda.bucketlist.model.BucketReplyModel;
 import com.project.itda.common.model.UserModel;
 import com.project.itda.common.service.IUserService;
 import com.project.itda.timeline.model.TimeLineModel;
 import com.project.itda.timeline.model.TimeLineReplyModel;
+import com.project.itda.timeline.service.ITimeLineReplyService;
 import com.project.itda.timeline.service.ITimeLineService;
 
 public class TimeLineController {
 
 	@Autowired
 	ITimeLineService timelineService;
-
+	
+	@Autowired
+	ITimeLineReplyService timelineReplyService;
+	
 	@Autowired
 	IUserService userService;
 	
@@ -103,63 +101,47 @@ public class TimeLineController {
 	}
 	
 	//타임라인 출력
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	// 버킷리스트 출력
-	@GetMapping("/bucket/bucketview")
-	public String BucketListView(Model model, HttpSession session) {
-		// 세션으로부터 familySeq를 받아옴
-		int familySeq = (int) session.getAttribute("famSeq");
-		// 받아온 해당 Seq 가족에 대한 버킷리스트를 bucketlist에 담아줌.
-		List<BucketListModel> bucketlist = bucketlistService.getFamilyBucket(familySeq);
-		// 담겨진 리스트를 familyBucket.jsp에서 bucketlist라는 이름으로 사용할 수 있게함.
-		model.addAttribute("bucketlist", bucketlist);
+	@GetMapping("/familypost/postview")
+	public String PostView(Model model, HttpSession session) {
+		int familySeq = (int) session.getAttribute("famSeq"); // 세션으로부터 familySeq를 받아옴
+		List<TimeLineModel> post = timelineService.getPostList(familySeq); // 받아온 해당 Seq 가족에 대한 게시글을 familypost에 담아줌.
+		model.addAttribute("post", post); // 담겨진 리스트를 post.jsp에서 post라는 이름으로 사용할 수 있게함.
 		Date currentDate = new Date();
 		model.addAttribute("currentDate", currentDate);
 		List<UserModel> myFam = userService.getFamilyMembers(familySeq);
 		model.addAttribute("myFam", myFam);
 
-		return "bucketList/bucketListView";
+		return "post/bucketListView";
 	}
 
-	@GetMapping("/bucket/bucketlistz")
-	@ResponseBody
-	public List<BucketListModel> getBucketListByUserId(@RequestParam String userId) {
-		System.out.println(userId);
-		// userId를 이용해서 bucketList를 가져오는 로직 구현
-		List<BucketListModel> bucketList = bucketlistService.getPersonalBucket(userId);
-		List<BucketListModel> blank = new ArrayList<>();
-		System.out.println(bucketList);
-		// if (bucketList.size() == 0) {
-		// throw new BucketListNotFoundException("해당 사용자의 버킷리스트가 없습니다. userId=" +
-		// userId);
-		// }
-		return bucketList;
+	//댓글 등록 액션
+	@PostMapping("/familypost/insertreplyaction")
+	public String insertReplyAction(HttpSession session , @RequestParam("postSeq") int postSeq, TimeLineReplyModel timeLineReplyModel) {
+
+		String userId = (String) session.getAttribute("userId");
+
+		timeLineReplyModel.setUserId(userId);
+		timeLineReplyModel.setPostSeq(postSeq);
+		timelineReplyService.insertReply(timeLineReplyModel);
+		
+		return "redirect:/post/content?postSeq=" + postSeq;
+	}
+		
+	@PostMapping("/familypost/updatereplyaction")
+	public String updateReplyAction(TimeLineReplyModel timeLineReplyModel, @RequestParam("postSeq") int postSeq) {
+		timelineReplyService.updateReply(timeLineReplyModel);
+		
+		return "redirect:/post/content?postSeq=" + postSeq;
+	}
+	
+	@PostMapping("/familypost/deletereplyaction")
+	public String deleteReplyAction(int postReplySeq, @RequestParam("postSeq") int postSeq) {
+		timelineReplyService.deleteReply(postReplySeq);
+		
+		return "redirect:/post/content?postSeq=" + postSeq;
 	}
 
-	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public class BucketListNotFoundException extends RuntimeException {
-		public BucketListNotFoundException(String message) {
-			super(message);
-		}
-
-	}
 }
+
+
+	

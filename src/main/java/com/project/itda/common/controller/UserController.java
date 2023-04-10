@@ -194,5 +194,22 @@ public class UserController {
 		}
 	}
 	
+	@GetMapping("/user/mypage")
+	public String myPage(Model model) {
+
+		return "user/myPage";
+	}
+	
+	@GetMapping("/user/myinfo")
+	public String myInfo(Model model) {
+
+		return "user/myInfo";
+	}
+	
+	@GetMapping("/user/myfaminfo")
+	public String myFamInfo(Model model) {
+
+		return "user/myFamInfo";
+	}
 	
 }

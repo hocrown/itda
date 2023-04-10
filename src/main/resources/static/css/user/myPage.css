@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+.myPageSmallVector{
+	transform: rotate(-180deg);
+	width: 12px;
+height: 12px;
+position: absolute;
+right: 60px;
+}
+
+.myPageItemText{
+	position: relative;
+	left: 40px;
+}
+
+.myPageItemBox{
+	position: relative;
+	height: 100px;
+	min-width: 393.33px;
+	display: flex;
+	vertical-align: middle;
+	align-items: center;
+	font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 20px;
+
+color: #2A221D;
+	
+}
+
+.myPageLogoutBtn{
+	position:relative;
+	top: 730px;
+	padding: 5px;
+	border-bottom: solid 1px;
+	font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+	
+}
+
+
+
+	

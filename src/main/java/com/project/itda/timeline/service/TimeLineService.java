@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.itda.timeline.dao.ITimeLineRepository;
 import com.project.itda.timeline.model.TimeLineModel;
+import com.project.itda.timeline.model.TimeLineReplyModel;
 
 @Service
 public class TimeLineService implements ITimeLineService {
@@ -26,12 +27,6 @@ public class TimeLineService implements ITimeLineService {
 	@Override
 	public TimeLineModel getContent(int postSeq) {
 		return timeLineRepository.getContent(postSeq);
-	}
-	
-	@Override
-	public List<TimeLineModel> getTimeLineReply(int PostSeq) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -68,7 +63,6 @@ public class TimeLineService implements ITimeLineService {
 		timeLineRepository.updatePost(timeLineModel);
 	}
 		
-	
 	@Override
 	public void deletePost(int postSeq) {
 
@@ -76,9 +70,9 @@ public class TimeLineService implements ITimeLineService {
 	}
 	
 	@Override
-	public void updateRivewCount(String postId) {
-		// TODO Auto-generated method stub
-		
+	public List<TimeLineReplyModel> getPostReply(int postSeq) {
+		List<TimeLineReplyModel> reply = timeLineRepository.getPostReply(postSeq);
+		return reply;
 	}
 
 	@Override

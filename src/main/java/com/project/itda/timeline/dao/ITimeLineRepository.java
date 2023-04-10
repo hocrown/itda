@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.project.itda.timeline.model.TimeLineModel;
+import com.project.itda.timeline.model.TimeLineReplyModel;
 
 @Repository
 @Mapper
@@ -36,5 +37,7 @@ public interface ITimeLineRepository {
 	//작성자 검색 결과
 	List<TimeLineModel> getuserId(@Param("keyword") String keyword);
 	
+	//게시글 댓글 가져오기
+	List<TimeLineReplyModel> getPostReply(int postSeq);
 	
 }//end class

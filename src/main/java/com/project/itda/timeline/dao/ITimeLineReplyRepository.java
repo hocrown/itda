@@ -17,11 +17,15 @@ public interface ITimeLineReplyRepository {
 	List<TimeLineReplyModel> getReplyList(@Param("postSeq") int postSeq);
 	
 	//댓글 작성
-	void insertReply(TimeLineModel timeLineModel);
+	void insertReply(TimeLineReplyModel timeLineReplyModel);
+	
+	//댓글 수정
+	void updateReply(TimeLineReplyModel timeLineReplyModel);
 	
 	//댓글 삭제
-	void deleteReply(int postSeq);
+	void deleteReply(int replySeq);
 	
 	// 특정 게시물의 댓글 수
-	int replyCount(int postSeq);
+	int countPostOneReply(int postSeq);
+	
 }

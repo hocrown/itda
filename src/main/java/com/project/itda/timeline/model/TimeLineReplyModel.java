@@ -6,10 +6,10 @@ import lombok.Data;
 @Data
 public class TimeLineReplyModel {
 	private int replySeq;
-	private String replyContents;
-	private int timelineSeq;
-	private Date regDate;
-	private TimeLineModel post;
-	
+	private String replyContent;
+	private Date replyDate;
+	private int postSeq;
+	private String userId;
+	private int replyCount; //댓글수
 }//end class
 

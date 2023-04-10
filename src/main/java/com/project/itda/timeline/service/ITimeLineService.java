@@ -2,7 +2,11 @@ package com.project.itda.timeline.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.project.itda.timeline.model.TimeLineModel;
+import com.project.itda.timeline.model.TimeLineReplyModel;
 
 /**
  * 
@@ -15,18 +19,37 @@ import com.project.itda.timeline.model.TimeLineModel;
 public interface ITimeLineService {
 	
 	//게시글 전체 목록
-	List<TimeLineModel> getList(int familySeq);
+	List<TimeLineModel> getPostList(int familySeq);
 	
 	//게시글 내용
-	List<TimeLineModel> getContents(int timeLineSeq);
+	TimeLineModel getContent(int postSeq);
+	
+	//댓글
+	List<TimeLineModel> getTimeLineReply(int PostSeq);
 	
 	//게시글 추가
-	void insertPost(TimeLineModel timeLineModel);
+	void insertPost(TimeLineModel timeLineModel, MultipartFile file) throws Exception;
 	
 	//게시글 수정
-	void updatePost(TimeLineModel timeLineModel);
+	void updatePost(TimeLineModel timeLineModel, MultipartFile file) throws Exception;
 	
 	//게시글 삭제
-	void deletePost(int timelineSeq);
+	void deletePost(int postSeq);
+	
+	
+	//댓글 수 업데이트
+	void updateRivewCount(String postId);
+	
+	//게시글 검색
+	TimeLineModel postSearch(String keyword);
+	
+	//내용 검색 결과
+	List<TimeLineModel> getContentSearch(@Param("keyword") String keyword);
+	
+	//작성자 검색 결과
+	List<TimeLineModel> getuserId(@Param("keyword") String keyword);
+
+	List<TimeLineReplyModel> getPostReply(int postSeq);
+	
 	
 }//end class

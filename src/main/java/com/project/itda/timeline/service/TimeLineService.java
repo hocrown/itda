@@ -1,47 +1,102 @@
 package com.project.itda.timeline.service;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.project.itda.timeline.dao.ITimeLineRepository;
 import com.project.itda.timeline.model.TimeLineModel;
 
 @Service
 public class TimeLineService implements ITimeLineService {
-	
+
 	@Autowired
 	ITimeLineRepository timeLineRepository;
-
-//	@Override
-//	public List<TimeLineModel> getList(int familySeq) {
-//		List<TimeLineModel> timeLineList = timeLineRepository.getList();
-//		return timeLineList;
+	
+	@Override
+	public List<TimeLineModel> getPostList(int familySeq) {
+		List<TimeLineModel> postList = timeLineRepository.getPostList(familySeq);
+		return postList;
+	}
 
 	@Override
-	public List<TimeLineModel> getList(int familySeq) {
-		return timeLineRepository.getList();
+	public TimeLineModel getContent(int postSeq) {
+		return timeLineRepository.getContent(postSeq);
 	}
 	
 	@Override
-	public List<TimeLineModel> getContents(int timeLineSeq) {
-		return timeLineRepository.getContents(timeLineSeq);
+	public List<TimeLineModel> getTimeLineReply(int PostSeq) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void insertPost(TimeLineModel timeLineModel) {
+	public void insertPost(TimeLineModel timeLineModel, MultipartFile file) throws Exception {
+
+		String prjPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
+		
+		UUID uuid = UUID.randomUUID();
+		
+		String fileName = uuid + "_" + file.getOriginalFilename();
+		
+		File saveFile = new File(prjPath, fileName);
+			
+		file.transferTo(saveFile);
+		timeLineModel.setFileName(fileName);
+		timeLineModel.setFilePath("/files/" + fileName);
 		timeLineRepository.insertPost(timeLineModel);
 	}
 
 	@Override
-	public void updatePost(TimeLineModel timeLineModel) {
+	public void updatePost(TimeLineModel timeLineModel, MultipartFile file) throws Exception {
+		String prjPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
+		
+		UUID uuid = UUID.randomUUID();
+
+		String fileName = uuid + "_" + file.getOriginalFilename();
+		
+		File saveFile = new File(prjPath, fileName);
+		
+		file.transferTo(saveFile);
+		timeLineModel.setFileName(fileName);
+		timeLineModel.setFilePath("/files/" + fileName);
+
 		timeLineRepository.updatePost(timeLineModel);
+	}
+		
+	
+	@Override
+	public void deletePost(int postSeq) {
+
+		timeLineRepository.deletePost(postSeq);
 	}
 	
 	@Override
-	public void deletePost(int timelineSeq) {
-		timeLineRepository.deletePost(timelineSeq);
+	public void updateRivewCount(String postId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public TimeLineModel postSearch(String keyword) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<TimeLineModel> getContentSearch(String keyword) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<TimeLineModel> getuserId(String keyword) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }//end class

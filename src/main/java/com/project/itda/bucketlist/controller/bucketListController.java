@@ -52,6 +52,7 @@ public class bucketListController {
 	@GetMapping("/bucket/familybucketdetail")
 	public String familyBucketDetail(Model model, HttpSession session, @RequestParam("bucketSeq") int bucketSeq) {
 		// 이전 페이지에서 클릭한 bucket의 Seq를 요청하여 해당 bucket에 대한 상세 정보를 담아둠
+		int familySeq = (int) session.getAttribute("famSeq");
 		BucketListModel bucketOne = bucketlistService.getFamilyBucketDetail(bucketSeq);
 		// 해당 버킷리스트에 달린 댓글들의 정보를 담아둠
 		List<BucketReplyModel> reply = bucketlistService.getBucketReply(bucketSeq);
@@ -59,7 +60,10 @@ public class bucketListController {
 		model.addAttribute("bucketOne", bucketOne);
 		// reply라는 이름으로 전송
 		model.addAttribute("reply", reply);
-
+		List<UserModel> myFam = userService.getFamilyMembers(familySeq);
+		model.addAttribute("myFam", myFam);
+		int replyCount = bucketlistService.countBucketOneReply(bucketSeq);
+		model.addAttribute("replyCount", replyCount);
 		return "bucketList/familyBucketDetail";
 	}
 
@@ -83,8 +87,9 @@ public class bucketListController {
 
 	// 버킷리스트 등록 페이지
 	@GetMapping("/bucket/addfamilybucket")
-	public String addBucket(Model model) {
-
+	public String addBucket(HttpSession session, Model model) {
+		String userId = (String) session.getAttribute("userId");
+		
 		return "bucketList/addFamilyBucket";
 	}
 
@@ -189,6 +194,33 @@ public class bucketListController {
 		bucketlistService.BucketSuccess(bucketSeq);
 
 		return "redirect:/bucket/bucketview";
+	}
+	
+	// 댓글 등록 액션
+	@PostMapping("/bucket/addbucketreplyaction")
+	public String addBucketReplyAction(HttpSession session , @RequestParam("bucketSeq") int bucketSeq, BucketReplyModel bucketReplyModel) {
+
+		String userId = (String) session.getAttribute("userId");
+
+		bucketReplyModel.setUserId(userId);
+		bucketReplyModel.setBucketSeq(bucketSeq);
+		bucketlistService.addBucketReply(bucketReplyModel);
+		
+		return "redirect:/bucket/familybucketdetail?bucketSeq=" + bucketSeq;
+	}
+		
+	@PostMapping("/bucket/modifyreplyaction")
+	public String modifyReplyAction(BucketReplyModel bucketReplyModel, @RequestParam("bucketSeq") int bucketSeq) {
+		bucketlistService.updateReply(bucketReplyModel);
+		
+		return "redirect:/bucket/familybucketdetail?bucketSeq=" + bucketSeq;
+	}
+	
+	@PostMapping("/bucket/deletereplyaction")
+	public String deleteReplyAction(int bucketReplySeq, @RequestParam("bucketSeq") int bucketSeq) {
+		bucketlistService.deleteReply(bucketReplySeq);
+		
+		return "redirect:/bucket/familybucketdetail?bucketSeq=" + bucketSeq;
 	}
 
 }

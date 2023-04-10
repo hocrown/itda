@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,16 +26,24 @@
 		
 		<img src="../image/imgToggle.png" class="whisperInboxImgToggle">
 		
-
 		<div class="whisperImgContainer">
 			<div class="whisperImgBox">
-				<img class="whisperImgCommon" src="../image/noChkWhisperImg.png">
-				<img class="whisperImgCommon" src="../image/whisperImg.png">
-				<img class="whisperImgCommon" src="../image/whisperImg.png">
-				<img class="whisperImgCommon" src="../image/whisperImg.png">
-				<img class="whisperImgCommon" src="../image/whisperImg.png">
-				<img class="whisperImgCommon" src="../image/whisperImg.png">
-				<img class="whisperImgCommon" src="../image/bombWhisperImg.png">
+				<c:forEach var="whisper" items="${whisperList}" varStatus="status">
+					<c:choose>
+						<c:when test="${whisper.checked==0}">
+							<a href="/whisper/detail/${whisper.whisperSeq}">
+							<img class="whisperImgCommon" src="../image/whisperImg.png">
+							</a>
+						</c:when>
+						
+						<c:otherwise>
+							<a href="/whisper/${whisper.whisperSeq}">
+							<img class="whisperImgCommon" src="../image/noChkWhisperImg.png">
+							</a>
+							</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				
 			</div>
 		</div>
 	

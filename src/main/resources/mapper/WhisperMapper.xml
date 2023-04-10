@@ -5,8 +5,43 @@
 
 	<insert id="insertWhisper" parameterType="com.project.itda.whisper.model.WhisperModel">
 		<![CDATA[
-			INSERT INTO WHISPER (whisperSeq, sender, receiver, sendDate, message, whisperType, visible)
-			VALUES (whisperSeq.nextval, ${sender}, ${receiver}, SYSDATE, ${message}, ${whisperType}, 1)
+			INSERT INTO WHISPER (whisperSeq, sender, receiver, sendDate, message, whisperType, visible, RESERVEDATE, SENDERNICKNAME)
+			VALUES (whisperSeq.nextval, #{sender}, #{receiver}, SYSDATE, #{message}, #{whisperType}, #{visible}, #{reserveDate}, #{senderNickname})
 		]]>
-	</insert>    
+	</insert>
+	
+	<select id="getWhisperList" parameterType="String" resultType="com.project.itda.whisper.model.WhisperModel">
+		<![CDATA[
+			SELECT * 
+			FROM WHISPER
+			WHERE receiver = #{userId} AND visible = 1
+		]]>
+	</select>    
+	
+	<select id="getWhisperDetail" parameterType="int" resultType="com.project.itda.whisper.model.WhisperModel">
+		<![CDATA[
+			SELECT *
+			FROM WHISPER
+			WHERE WHISPERSEQ = #{whisperSeq}
+		]]>
+	</select>
+	
+    <select id="getInboxList" parameterType="String" resultType="com.project.itda.whisper.model.WhisperModel">
+		<![CDATA[
+        SELECT whisperSeq, sender, receiver, TRUNC(sendDate) AS sendDate, message, whisperType, visible, reserveDate, senderNickName, checked
+        FROM whisper
+        WHERE receiver = #{userId}
+        ORDER BY sendDate DESC
+		]]>
+    </select>
+    
+    <select id="getOutboxList" parameterType="String" resultType="com.project.itda.whisper.model.WhisperModel">
+    	<![CDATA[
+    	SELECT whisperSeq, sender, receiver, TRUNC(sendDate) AS sendDate, message, whisperType, visible, reserveDate, senderNickName, checked
+    	FROM whisper
+    	WHERE sender = #{userId}
+    	ORDER BY sendDate DESC
+    	]]>
+    </select>
+	
 </mapper>

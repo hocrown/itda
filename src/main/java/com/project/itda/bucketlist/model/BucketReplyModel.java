@@ -10,4 +10,5 @@ public class BucketReplyModel {
 	private Date regDate;
 	private String replyContents;
 	private String userId;
+	private String userName;
 }

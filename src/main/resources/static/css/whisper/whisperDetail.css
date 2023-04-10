@@ -73,27 +73,36 @@ top: 72px;
 	
 }
 
-.detailDeleteBox{
-position: absolute;
-width: 393px;
-height: 73px;
-left: 0px;
-top: 778px;
-text-align: center;
-justify-content: center;
-display: flex;
-background-color: white;
+
+.detailDeleteBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 73px;
+  background-color: white;
 }
 
-.detailDeleteText{
+.detailDeleteText {
+  font-family: 'Bookk Myungjo';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 20px;
+  color: #E16646;
+}
 
-font-family: 'Bookk Myungjo';
-font-style: normal;
-font-weight: 300;
-font-size: 20px;
-line-height: 20px;
-display: flex;
-align-items: center;
+.detailDeleteBox {
+	position: fixed; /* 화면을 기준으로 위치 지정 */
+	left: 0; /* 왼쪽 정렬 */
+	bottom: 0px; /* 처음에는 아래에 위치시켜놓음 */
+	width: 100%; /* 가로폭 100% */
+	text-align: center; /* 가운데 정렬 */
+	transform: translateY(100%); /* 처음에는 아래로 숨겨놓음 */
+	transition: transform 0.3s, bottom 0.3s; /* transform, bottom 속성이 변할 때 애니메이션 효과 적용 */
+}
 
-color: #E16646;
+.detailDeleteBox.active {
+	transform: translateY(0%); /* active 클래스가 추가되면 위로 이동시킴 */
+	bottom: 0; /* bottom 속성 값 변경 */
 }

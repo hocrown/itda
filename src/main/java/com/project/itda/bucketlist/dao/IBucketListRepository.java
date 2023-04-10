@@ -21,4 +21,8 @@ public interface IBucketListRepository {
 	void invisible(int bucketSeq);
 	void update(BucketListModel bucketListModel);
 	void success(int bucketSeq);
+	void insertReply(BucketReplyModel bucketReplyModel);
+	int countBucketOneReply(int bucketSeq);
+	void updateReply(BucketReplyModel bucketReplyModel);
+	void deleteReply(int bucketReplySeq);
 }

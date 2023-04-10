@@ -100,4 +100,26 @@ public class BucketListService implements IBucketListService {
 		bucketRepository.success(bucketSeq);
 	}
 	
+	@Override
+	public void addBucketReply(BucketReplyModel bucketReplyModel) {
+		
+		bucketRepository.insertReply(bucketReplyModel);
+	}
+	
+	@Override
+	public int countBucketOneReply(int bucketSeq) {
+		int replyCount = bucketRepository.countBucketOneReply(bucketSeq);
+		
+		return replyCount;
+	}
+	
+	@Override
+	public void updateReply(BucketReplyModel bucketReplyModel) {
+		bucketRepository.updateReply(bucketReplyModel);
+	}
+	
+	public void deleteReply(int bucketReplySeq) {
+		bucketRepository.deleteReply(bucketReplySeq);
+	}
+	
 }

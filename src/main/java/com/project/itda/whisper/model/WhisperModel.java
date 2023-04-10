@@ -13,5 +13,7 @@ public class WhisperModel {
 	private String message;
 	private String whisperType;
 	private int visible;
-	
+	private Date reserveDate;
+	private String senderNickname;
+	private int checked;
 }

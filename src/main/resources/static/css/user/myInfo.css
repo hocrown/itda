@@ -1,0 +1,466 @@
+@charset "UTF-8";
+
+.myInfoProfileBox{
+	position: absolute;
+width: 333px;
+height: 141px;
+left: 31px;
+top: 90px;
+background: rgba(177, 125, 90, 0.1);
+border-radius: 20px;
+}
+
+.profileImgEllipse{
+	position: absolute;
+width: 107px;
+height: 107px;
+left: 51px;
+top: 106px;
+
+border-radius:100px;
+background: #FFFFFF;
+
+}
+
+.cameraImg{
+	position: absolute;
+width: 24px;
+height: 24px;
+left: 131px;
+top: 186px;
+}
+
+.myInfoNicknameText{
+	position: absolute;
+left: 183px;
+top: 118px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+
+color: #2A221D;
+}
+
+.textEditBtnImg{
+	position: absolute;
+left: 262px;
+top: 118px;
+	
+}
+
+.myInfoUsernameText{
+	position: absolute;
+left: 183px;
+top: 161px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 15px;
+
+color: #9D9690;
+	
+}
+
+.myInfoBirthText{
+	position: absolute;
+left: 236px;
+top: 161px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 15px;
+
+color: #9D9690;
+}
+
+.myInfoIdText{
+	position: absolute;
+left: 35px;
+top: 256px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+
+color: #9D9690;
+}
+
+.myInfoId{
+	position: absolute;
+left: 133px;
+top: 256px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+
+color: #9D9690;
+	
+}
+
+
+.myInfoPwdText{
+	position: absolute;
+left: 35px;
+top: 304px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+
+color: #2A221D;
+}
+
+.myInfoPwd{
+	position: absolute;
+left: 133px;
+top: 310px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+
+color: #2A221D;
+}
+
+.myInfopwdChkBtn{
+	position: absolute;
+left: 331px;
+top: 303px;
+
+transform: matrix(1, 0, 0, -1, 0, 0);
+}
+
+.myInfoRealNameText{
+	position: absolute;
+left: 35px;
+top: 352px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+
+color: #9D9690;
+}
+
+.myInfoRealName{
+	position: absolute;
+left: 133px;
+top: 352px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+
+color: #9D9690;
+}
+
+.myInfoBirthText2{
+	
+position: absolute;
+left: 35px;
+top: 401px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+
+color: #9D9690;
+	
+}
+.myInfoBirth2{
+	position: absolute;
+left: 133px;
+top: 401px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+
+color: #9D9690;
+}
+
+.myInfoGenderText{
+	position: absolute;
+left: 35px;
+top: 454px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+
+color: #9D9690;
+}
+
+.myInfoMaleText{
+	position: absolute;
+left: 170px;
+top: 454px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+color: #9D9690;
+}
+
+.myInfoFemaleText{
+	position: absolute;
+left: 291px;
+top: 454px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+
+color: #9D9690;
+	
+}
+
+.genderText {
+		position: absolute;
+left: 35px;
+top: 454px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+
+color: #9D9690;
+}
+
+.radioLabelMale {
+	position: absolute;
+	width: 151px;
+	height: 42px;
+	left: 118px;
+	top: 446px;
+	border-radius: 20px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+}
+
+.radioLabelFemale {
+	position: absolute;
+	width: 151px;
+	height: 42px;
+	left: 240px;
+	top: 446px;
+	
+	border-radius: 20px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+}
+
+.radioGenderInput {
+	display: none;
+}
+
+.ellipseMale {
+	margin-left: 10%;
+	width: 22px;
+	height: 22px;
+	background: rgba(176, 151, 144, 0.4);
+	border-radius: 20px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+}
+
+.ellipseFemale {
+	margin-left: 10%;
+	width: 22px;
+	height: 22px;
+	background: rgba(176, 151, 144, 0.4);
+	border-radius: 20px;
+	width: 22px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+}
+
+.maleText {
+	margin-left: 15%;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	color: #2A221D;
+}
+
+.femaleText {
+	margin-left: 15%;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	color: #2A221D;
+	font-family: 'Bookk Myungjo';
+}
+
+.radioClickEllipse {
+	width: 16px;
+	height: 16px;
+	background: rgba(176, 151, 144, 0.8);
+	border-radius: 20px;
+	margin: auto;
+	padding: 0;
+}
+
+.myInfoAddressText{
+	position: absolute;
+left: 38px;
+top: 510px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+
+color: #2A221D;
+}
+
+.myInfoAddress{
+	position: absolute;
+width: 213px;
+left: 136px;
+top: 515px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 15px;
+
+color: #2A221D;
+}
+
+.findAddressBtn{
+	position: absolute;
+width: 81px;
+height: 29px;
+left: 132px;
+top: 568px;
+
+background: rgba(177, 125, 90, 0.1);
+border-radius: 20px;
+
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 15px;
+display: flex;
+align-items: center;
+text-align: center;
+justify-content: center;
+color: #2A221D;
+}
+
+.myInfoPhoneText{
+	position: absolute;
+left: 35px;
+top: 620px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+
+color: #2A221D;
+}
+
+.myInfoPhone{
+	position: absolute;
+left: 133px;
+top: 620px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+
+color: #2A221D;
+}
+
+.myInfoEmailText{
+	position: absolute;
+left: 35px;
+top: 672px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+
+color: #2A221D;
+}
+
+.myInfoEmail {
+	position: absolute;
+left: 133px;
+top: 672px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+
+color: #2A221D;
+}
+
+.myInfoModifyBtn{
+	box-sizing: border-box;
+
+position: absolute;
+width: 336px;
+height: 47px;
+left: 28px;
+top: 737px;
+
+background: rgba(255, 255, 255, 0.2);
+border: 4px solid rgba(177, 125, 90, 0.2);
+border-radius: 20px;
+
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+display: flex;
+align-items: center;
+text-align: center;
+justify-content:center;
+color: #2A221D;
+
+
+}
+
+.myInfoUserDeactivate{
+	position: absolute;
+top: 820px;
+left: 165px;
+font-family: 'Bookk Myungjo';
+font-style: normal;
+font-weight: 300;
+font-size: 15px;
+border-bottom: solid 1px;
+color: #2A221D;	
+}

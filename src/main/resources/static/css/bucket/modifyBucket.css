@@ -1,4 +1,7 @@
 @charset "UTF-8";
+#previewImage[src="#"] {
+  display: none;
+}
 
 .writeTitleBox{
 width: 393px;

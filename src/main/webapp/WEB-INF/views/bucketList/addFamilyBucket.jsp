@@ -14,7 +14,7 @@
 	<div class="layout">
 		<form class="addBucketForm" action="/bucket/addbucketaction" method="post" enctype="multipart/form-data">
 			<div class="headBox">
-				<img src="../image/vector.png" class="vector">
+				<a><img src="../image/vector.png" class="vector"></a>
 				소망을 잇다
 				<input class="finishBtn" type="image" src="../image/finishBtn.png" alt="완료" onclick="document.getElementById('addBucketForm').submit();">
 			</div>
@@ -39,8 +39,12 @@
 	
 	<script>
 	
-	$('.addImgBox').one('click', function() {
+	$('.addImgBox').on('click', function() {
 		  $('#fileInput').click();
+		});
+
+		$('#fileInput').on('click', function(event) {
+		  event.stopPropagation(); // 이벤트 전달 중지
 		});
 	
 	
@@ -56,6 +60,7 @@
 	  };
 	});
 	
+	//미리보기 이미지 유무에 따라 이미지 추가안내 텍스트 보이거나 안보이게 설정
 	$(document).ready(function() {
 		  $('#previewImage').on('load', function() {
 		    if ($(this).attr('src') !== '#') {

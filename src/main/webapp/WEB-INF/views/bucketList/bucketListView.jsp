@@ -20,8 +20,9 @@
 
 		<span class="ourBucketText">우리 가족 버킷리스트</span>
 		<div style="position: relative;">
+		<img src="../image/bucket/bucketMemMore.png" style="position:absolute; top:43px; left: 360px;" class="memMoreBtn">
 		<div class="testz">
-			<img src="../image/bucket/bucketMemMore.png" style="position:absolute; top:43px; left: 360px;">
+			
 	
 			<div class="testbox selectedTestbox">
 				<a href="/bucket/bucketview"><div class="testspan">함께</div></a>
@@ -93,14 +94,25 @@
 	  });
 	});
 	
+	document.querySelector('.testz').addEventListener('scroll', function() {
+		  if (this.scrollLeft+1 >= this.scrollWidth - this.clientWidth) {
+			  document.querySelector('.memMoreBtn').style.display = 'none'; 
+		  } else {
+			  document.querySelector('.memMoreBtn').style.display = 'block';
+		  }
+		});
 	
+	
+	$('.memMoreBtn').on('click', function() {
+		  const container = $('.testz');
+		  $('.testz').scrollLeft(container.scrollLeft() + container.width() / 2); // 스크롤 위치를 오른쪽으로 50% 이동시킴
+		});
 
 	
 	$('.testbox').click(function(event){
 	    const div = event.currentTarget;
 	    const userId = $(div).data('member-id');
-	    loadData(userId);
-	    
+	    loadData(userId); 
 	});
 		function loadData(userId) {
 //		  const userId = div.getAttribute('data-member-id'); // 클릭한 버튼의 data-member-id 속성 값을 가져옵니다.

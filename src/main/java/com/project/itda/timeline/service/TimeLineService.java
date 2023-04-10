@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.itda.timeline.dao.ITimeLineRepository;
 import com.project.itda.timeline.model.TimeLineModel;
+import com.project.itda.timeline.model.TimeLineReplyModel;
 
 @Service
 public class TimeLineService implements ITimeLineService {
@@ -95,6 +96,12 @@ public class TimeLineService implements ITimeLineService {
 
 	@Override
 	public List<TimeLineModel> getuserId(String keyword) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<TimeLineReplyModel> getPostReply(int postSeq) {
 		// TODO Auto-generated method stub
 		return null;
 	}

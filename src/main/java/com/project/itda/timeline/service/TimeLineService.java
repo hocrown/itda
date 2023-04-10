@@ -28,12 +28,6 @@ public class TimeLineService implements ITimeLineService {
 	public TimeLineModel getContent(int postSeq) {
 		return timeLineRepository.getContent(postSeq);
 	}
-	
-	@Override
-	public List<TimeLineModel> getTimeLineReply(int PostSeq) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void insertPost(TimeLineModel timeLineModel, MultipartFile file) throws Exception {
@@ -69,7 +63,6 @@ public class TimeLineService implements ITimeLineService {
 		timeLineRepository.updatePost(timeLineModel);
 	}
 		
-	
 	@Override
 	public void deletePost(int postSeq) {
 
@@ -77,9 +70,9 @@ public class TimeLineService implements ITimeLineService {
 	}
 	
 	@Override
-	public void updateRivewCount(String postId) {
-		// TODO Auto-generated method stub
-		
+	public List<TimeLineReplyModel> getPostReply(int postSeq) {
+		List<TimeLineReplyModel> reply = timeLineRepository.getPostReply(postSeq);
+		return reply;
 	}
 
 	@Override
@@ -96,12 +89,6 @@ public class TimeLineService implements ITimeLineService {
 
 	@Override
 	public List<TimeLineModel> getuserId(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<TimeLineReplyModel> getPostReply(int postSeq) {
 		// TODO Auto-generated method stub
 		return null;
 	}

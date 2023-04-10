@@ -11,7 +11,7 @@ import com.project.itda.timeline.model.TimeLineReplyModel;
 /**
  * 
  * @author 박주영
- * @since 2023-04-05
+ * @since 2023-04-10
  * 게시글 정보를 조회/입력/수정/삭제 하기 위한 서비스 클래스 입니다.
  *
  */
@@ -24,9 +24,6 @@ public interface ITimeLineService {
 	//게시글 내용
 	TimeLineModel getContent(int postSeq);
 	
-	//댓글
-	List<TimeLineModel> getTimeLineReply(int PostSeq);
-	
 	//게시글 추가
 	void insertPost(TimeLineModel timeLineModel, MultipartFile file) throws Exception;
 	
@@ -37,8 +34,9 @@ public interface ITimeLineService {
 	void deletePost(int postSeq);
 	
 	
-	//댓글 수 업데이트
-	void updateRivewCount(String postId);
+	//댓글 가져오기
+	List<TimeLineReplyModel> getPostReply(int postSeq);
+	
 	
 	//게시글 검색
 	TimeLineModel postSearch(String keyword);
@@ -49,7 +47,5 @@ public interface ITimeLineService {
 	//작성자 검색 결과
 	List<TimeLineModel> getuserId(@Param("keyword") String keyword);
 
-	List<TimeLineReplyModel> getPostReply(int postSeq);
-	
 	
 }//end class

@@ -16,13 +16,17 @@ import com.project.itda.common.model.UserModel;
 import com.project.itda.common.service.IUserService;
 import com.project.itda.timeline.model.TimeLineModel;
 import com.project.itda.timeline.model.TimeLineReplyModel;
+import com.project.itda.timeline.service.ITimeLineReplyService;
 import com.project.itda.timeline.service.ITimeLineService;
 
 public class TimeLineController {
 
 	@Autowired
 	ITimeLineService timelineService;
-
+	
+	@Autowired
+	ITimeLineReplyService timelineReplyService;
+	
 	@Autowired
 	IUserService userService;
 	
@@ -99,18 +103,42 @@ public class TimeLineController {
 	//타임라인 출력
 	@GetMapping("/familypost/postview")
 	public String PostView(Model model, HttpSession session) {
-		// 세션으로부터 familySeq를 받아옴
-		int familySeq = (int) session.getAttribute("famSeq");
-		// 받아온 해당 Seq 가족에 대한 게시글을 familypost에 담아줌.
-		List<TimeLineModel> post = timelineService.getPostList(familySeq);
-		// 담겨진 리스트를 post.jsp에서 post라는 이름으로 사용할 수 있게함.
-		model.addAttribute("post", post);
+		int familySeq = (int) session.getAttribute("famSeq"); // 세션으로부터 familySeq를 받아옴
+		List<TimeLineModel> post = timelineService.getPostList(familySeq); // 받아온 해당 Seq 가족에 대한 게시글을 familypost에 담아줌.
+		model.addAttribute("post", post); // 담겨진 리스트를 post.jsp에서 post라는 이름으로 사용할 수 있게함.
 		Date currentDate = new Date();
 		model.addAttribute("currentDate", currentDate);
 		List<UserModel> myFam = userService.getFamilyMembers(familySeq);
 		model.addAttribute("myFam", myFam);
 
 		return "post/bucketListView";
+	}
+
+	//댓글 등록 액션
+	@PostMapping("/familypost/insertreplyaction")
+	public String insertReplyAction(HttpSession session , @RequestParam("postSeq") int postSeq, TimeLineReplyModel timeLineReplyModel) {
+
+		String userId = (String) session.getAttribute("userId");
+
+		timeLineReplyModel.setUserId(userId);
+		timeLineReplyModel.setPostSeq(postSeq);
+		timelineReplyService.insertReply(timeLineReplyModel);
+		
+		return "redirect:/post/content?postSeq=" + postSeq;
+	}
+		
+	@PostMapping("/familypost/updatereplyaction")
+	public String updateReplyAction(TimeLineReplyModel timeLineReplyModel, @RequestParam("postSeq") int postSeq) {
+		timelineReplyService.updateReply(timeLineReplyModel);
+		
+		return "redirect:/post/content?postSeq=" + postSeq;
+	}
+	
+	@PostMapping("/familypost/deletereplyaction")
+	public String deleteReplyAction(int postReplySeq, @RequestParam("postSeq") int postSeq) {
+		timelineReplyService.deleteReply(postReplySeq);
+		
+		return "redirect:/post/content?postSeq=" + postSeq;
 	}
 
 }

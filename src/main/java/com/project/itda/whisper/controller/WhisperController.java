@@ -1,8 +1,6 @@
 package com.project.itda.whisper.controller;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -41,6 +39,7 @@ public class WhisperController {
 		String userId = (String) session.getAttribute("userId");
 		List<WhisperModel> whisperList = whisperRepository.getWhisperList(userId);
 		model.addAttribute("whisperList", whisperList);
+		System.out.println(whisperList.size());
 		
 		return "whisper/whisperInboxImg";
 	}
@@ -55,13 +54,16 @@ public class WhisperController {
 	    	    .collect(Collectors.groupingBy(w -> w.getSendDate()));
 
 	    model.addAttribute("whisperByDate", whisperByDate);
-	    
+		System.out.println(whisperList.size());
+		System.out.println(whisperByDate.size());
+		
 		return "whisper/whisperInboxList";	
 	}
 	
 	@GetMapping("/whisper/detail/{whisperSeq}")
 	public String whisperDetail(@PathVariable("whisperSeq") int whisperSeq, Model model) {
 		WhisperModel whisperDetail = whisperRepository.getWhisperDetail(whisperSeq);
+		whisperRepository.checkWhisper(whisperSeq);
 		model.addAttribute("whisper", whisperDetail);
 		return "whisper/whisperDetail";
 	}
@@ -151,6 +153,12 @@ public class WhisperController {
 		
 		return map;
 		
+	}
+	
+	@ResponseBody
+	@PostMapping("/whisper/delete")
+	public void deleteWhisper(@RequestParam int whisperSeq) {
+	    whisperRepository.deleteWhisper(whisperSeq);
 	}
 	
 }

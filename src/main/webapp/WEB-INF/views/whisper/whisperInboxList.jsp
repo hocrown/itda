@@ -27,8 +27,10 @@
         <div class="dateLine2"></div>
 
         <c:forEach var="whisper" items="${entry.value}">
-        <div class="inboxList">
+        <div class="inboxList" style="height:200px" >
+        <a href="/whisper/detail/${whisper.whisperSeq}">
             <img src="/image/whisperCardImg.png" class="cardFrame">
+        </a>
             <span class="toPersonText">받는 사람</span>
             <span class="toPersonName">${whisper.receiver}</span>
             <div class="toPersonLine"></div>
@@ -42,7 +44,7 @@
         </c:forEach>
         
     </c:forEach>
-
+	<div class="dummy"></div>
 </div>
 </body>
 </html>

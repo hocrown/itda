@@ -58,7 +58,6 @@ public class UserController {
 				session.setAttribute("userId", loginUser.getUserId());
 				session.setAttribute("loginUser", loginUser);
 				session.setAttribute("famSeq", loginUser.getFamilySeq());
-				 // DailyQuestionController의 getDailyQuestion() 메소드 호출
 	            String loginUserId = loginUser.getUserId();
 
 	            dailyQuestionController.getDailyQuestion(loginUserId, session);
@@ -194,4 +193,6 @@ public class UserController {
 			return "fail";
 		}
 	}
+	
+	
 }

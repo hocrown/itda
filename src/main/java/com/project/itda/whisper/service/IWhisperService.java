@@ -9,5 +9,6 @@ public interface IWhisperService {
 	List<WhisperModel> getWhisperList(String userId);
 	List<WhisperModel> getInboxList(String userId);
 	List<WhisperModel> getOutboxList(String userId);
+	void deleteWhisper(int whisperSeq);
 	WhisperModel getWhisperDetail(int whisperSeq);
 }

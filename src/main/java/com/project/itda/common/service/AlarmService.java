@@ -1,5 +1,7 @@
 package com.project.itda.common.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,11 +12,17 @@ import com.project.itda.common.model.AlarmModel;
 public class AlarmService implements IAlarmService {
 
 	@Autowired
-	IAlarmRepository alarmDao;
+	IAlarmRepository alarmRepository;
 
 	@Override
 	public void insertAlarm(AlarmModel alarm) {
-		alarmDao.insertAlarm(alarm);
+		alarmRepository.insertAlarm(alarm);
+	}
+
+	@Override
+	public List<AlarmModel> getAlarmList(String userId) {
+		List<AlarmModel> alarmList = alarmRepository.getAlarmList(userId);
+		return alarmList;
 	}
 	
 }

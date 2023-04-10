@@ -4,21 +4,15 @@
 var prevUrl = document.referrer;
 
  $(document).ready(function() {
-
+	const referrer = document.referrer;
     $(".headBox .vector").click(function(){
-        // Get today's date
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0');
-        var yyyy = today.getFullYear();
-        var todayString = yyyy + '.' + mm + '.' + dd;
-
-        // Check if the date matches
-        if ($('.questionDate').text() == todayString) {
-            location.href = "/mainlist";
-        } else {
-            location.href = prevUrl;
-        }
+        if (referrer.includes('/mainlist')) {
+            window.location.href = "/mainlist";
+        } else if(referrer.includes('/mainimg')){
+           window.location.href = '/mainimg';
+		} else {
+			window.location.href='/mainimg';
+		}
     });
 	
 	$(".headBox .menuBtn").click(function(){

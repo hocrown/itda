@@ -28,6 +28,7 @@ public class WhisperService implements IWhisperService {
 	@Override
 	public WhisperModel getWhisperDetail(int whisperSeq) {
 		WhisperModel whisperDetail = whisperRepository.getWhisperDetail(whisperSeq);
+		whisperRepository.checkWhisper(whisperSeq);
 		return whisperDetail;
 	}
 
@@ -41,5 +42,10 @@ public class WhisperService implements IWhisperService {
 	public List<WhisperModel> getOutboxList(String userId) {
 		List<WhisperModel> outboxList = whisperRepository.getOutboxList(userId);
 		return outboxList;
+	}
+
+	@Override
+	public void deleteWhisper(int whisperSeq) {
+		whisperRepository.deleteWhisper(whisperSeq);
 	}
 }

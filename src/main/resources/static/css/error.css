@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+
+.layout {
+	min-width: 100%;
+	min-height: 851.33px;
+	background-image: url("/image/itdaBackImg.png");
+}
+
+.error-messageText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin-top: 20px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 25px;
+	line-height: 40px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: #6C4A32;
+}
+

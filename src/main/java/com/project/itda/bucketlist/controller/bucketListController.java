@@ -20,6 +20,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.project.itda.bucketlist.model.BucketListModel;
 import com.project.itda.bucketlist.model.BucketReplyModel;
 import com.project.itda.bucketlist.service.IBucketListService;
+import com.project.itda.common.AccessDeniedException;
+import com.project.itda.common.CheckAuth;
 import com.project.itda.common.model.UserModel;
 import com.project.itda.common.service.IUserService;
 
@@ -35,14 +37,19 @@ public class bucketListController {
 	// 가족 버킷리스트 전체 출력
 	@GetMapping("/bucket/familybucket")
 	public String familyBucket(Model model, HttpSession session) {
-		// 세션으로부터 familySeq를 받아옴
-		int familySeq = (int) session.getAttribute("famSeq");
+
+		//로그인 유저인지 검증
+		CheckAuth.checkLogin(session);
+
+		int familySeq= (int) session.getAttribute("famSeq");
+		
 		// 받아온 해당 Seq 가족에 대한 버킷리스트를 bucketlist에 담아줌.
 		List<BucketListModel> bucketlist = bucketlistService.getFamilyBucket(familySeq);
+		// 받아온 해당 Seq 가족에 대한 가족구성원의 Id 를 myFam에 담아줌.
+		List<String> myFam = userService.getFamilyUserIds(familySeq);
 		// 담겨진 리스트를 familyBucket.jsp에서 bucketlist라는 이름으로 사용할 수 있게함.
 		model.addAttribute("bucketlist", bucketlist);
-		// --------------------이 밑으론 테스트 코드----------------------------------
-		List<String> myFam = userService.getFamilyUserIds(familySeq);
+		// 담겨진 리스트를 familyBucket.jsp에서 myFam이라는 이름으로 사용할 수 있게함.
 		model.addAttribute("myFam", myFam);
 
 		return "bucketList/familyBucket";
@@ -51,9 +58,17 @@ public class bucketListController {
 	// 가족 버킷리스트 상세 정보
 	@GetMapping("/bucket/familybucketdetail")
 	public String familyBucketDetail(Model model, HttpSession session, @RequestParam("bucketSeq") int bucketSeq) {
+		//로그인 유저인지 검증
+		CheckAuth.checkLogin(session);
+		
 		// 이전 페이지에서 클릭한 bucket의 Seq를 요청하여 해당 bucket에 대한 상세 정보를 담아둠
-		int familySeq = (int) session.getAttribute("famSeq");
 		BucketListModel bucketOne = bucketlistService.getFamilyBucketDetail(bucketSeq);
+		
+		int familySeq = (int) session.getAttribute("famSeq");
+		int writerFamilySeq = bucketOne.getFamilySeq();
+		
+		//로그인 한 유저가 접근할 수 있는 bucketList인지 검증
+		CheckAuth.checkFamilyMember(session, writerFamilySeq);
 		// 해당 버킷리스트에 달린 댓글들의 정보를 담아둠
 		List<BucketReplyModel> reply = bucketlistService.getBucketReply(bucketSeq);
 		// bucketOne이라는 이름으로 전송
@@ -172,21 +187,8 @@ public class bucketListController {
 		System.out.println(userId);
 		// userId를 이용해서 bucketList를 가져오는 로직 구현
 		List<BucketListModel> bucketList = bucketlistService.getPersonalBucket(userId);
-		List<BucketListModel> blank = new ArrayList<>();
 		System.out.println(bucketList);
-		// if (bucketList.size() == 0) {
-		// throw new BucketListNotFoundException("해당 사용자의 버킷리스트가 없습니다. userId=" +
-		// userId);
-		// }
 		return bucketList;
-	}
-
-	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public class BucketListNotFoundException extends RuntimeException {
-		public BucketListNotFoundException(String message) {
-			super(message);
-		}
-
 	}
 
 	@GetMapping("/bucket/successaction")

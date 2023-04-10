@@ -32,13 +32,12 @@
 					<c:choose>
 						<c:when test="${whisper.checked==0}">
 							<a href="/whisper/detail/${whisper.whisperSeq}">
-							<img class="whisperImgCommon" src="../image/whisperImg.png">
+							<img class="whisperImgCommon" src="../image/noChkWhisperImg.png">
 							</a>
 						</c:when>
-						
 						<c:otherwise>
-							<a href="/whisper/${whisper.whisperSeq}">
-							<img class="whisperImgCommon" src="../image/noChkWhisperImg.png">
+							<a href="/whisper/detail/${whisper.whisperSeq}">
+							<img class="whisperImgCommon" src="../image/whisperImg.png">
 							</a>
 							</c:otherwise>
 					</c:choose>

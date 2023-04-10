@@ -14,9 +14,10 @@
 		<![CDATA[
 			SELECT * 
 			FROM WHISPER
-			WHERE receiver = #{userId} AND visible = 1
+			WHERE receiver = #{userId} AND VISIBLE = 1
+			ORDER BY sendDate DESC
 		]]>
-	</select>    
+	</select>
 	
 	<select id="getWhisperDetail" parameterType="int" resultType="com.project.itda.whisper.model.WhisperModel">
 		<![CDATA[
@@ -26,11 +27,20 @@
 		]]>
 	</select>
 	
+	<update id="checkWhisper" parameterType="int">
+		<![CDATA[
+			UPDATE whisper
+			SET checked = 1
+			WHERE whisperSeq = #{whisperSeq}
+		]]>
+	</update>
+	
+	
     <select id="getInboxList" parameterType="String" resultType="com.project.itda.whisper.model.WhisperModel">
 		<![CDATA[
         SELECT whisperSeq, sender, receiver, TRUNC(sendDate) AS sendDate, message, whisperType, visible, reserveDate, senderNickName, checked
         FROM whisper
-        WHERE receiver = #{userId}
+        WHERE receiver = #{userId} AND visible = 1
         ORDER BY sendDate DESC
 		]]>
     </select>
@@ -43,5 +53,13 @@
     	ORDER BY sendDate DESC
     	]]>
     </select>
+    
+    <update id="deleteWhisper" parameterType="int">
+    	<![CDATA[
+    		UPDATE whisper 
+    		SET visible = 0
+    		WHERE whisperSeq = #{whisperSeq}
+    	]]>
+    </update>
 	
 </mapper>

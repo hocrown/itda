@@ -3,18 +3,19 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.itda.dailyquestion.dao.IDailyQuestionRepository">
     
-
-    
-    <select id="getRandomQuestion" parameterType="map" resultType="com.project.itda.dailyquestion.model.DailyQuestionModel">
+    <select id="getRandomQuestion" parameterType="int" resultType="com.project.itda.dailyquestion.model.DailyQuestionModel">
     	<![CDATA[
-    	SELECT dq.*
+		SELECT dq.*
 		FROM dailyQuestion dq
-		LEFT JOIN familyQuestion fq ON dq.dailyQuestionSeq = fq.dailyQuestionSeq AND fq.familySeq = #{familySeq} AND fq.askedDate = #{todayStr}
-		WHERE fq.dailyQuestionSeq IS NULL
+		WHERE NOT EXISTS (
+		    SELECT 1
+		    FROM familyQuestion fq
+		    WHERE fq.dailyQuestionSeq = dq.dailyQuestionSeq
+		    AND fq.familySeq = #{familySeq}
+		)
 		ORDER BY dbms_random.value()
 		FETCH FIRST 1 ROW ONLY
     	]]>
     </select>
-    
     
 </mapper>

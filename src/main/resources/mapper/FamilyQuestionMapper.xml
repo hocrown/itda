@@ -31,7 +31,7 @@
 		]]>
 	</select>
 	
-	 <select id="getQuestionAndAskedDateByFamilySeq" parameterType="int" resultType="com.project.itda.dailyquestion.model.FamilyQuestionModel">
+	 <select id="getQuestionByFamilySeq" parameterType="int" resultType="com.project.itda.dailyquestion.model.FamilyQuestionModel">
 	    <![CDATA[
 	            SELECT 
 	                dq.dailyQuestionSeq,

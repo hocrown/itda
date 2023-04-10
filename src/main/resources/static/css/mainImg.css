@@ -6,7 +6,7 @@
 	height: 174px;
 	left: 15px;
 	top: 661px;
-	background-image: url( "../image/questionBox.png" );
+	background-image: url("../image/questionBox.png");
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -34,4 +34,40 @@
 	height: 32px;
 	left: 30px;
 	top: 87px;
+}
+
+.mainBackground{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width:393px;
+	height: 851px;
+}
+
+.mainTimeLine{
+	position: absolute;
+	top: 210px;
+	left: 30px;
+	width:170px;
+}
+
+.mainBucketList{
+	position: absolute;
+	top : 420px;
+	right: 10px;
+	width: 120px;	
+}
+
+.mainDailyQuestion{
+	position: absolute;
+	top : 460px;
+	left : 45px;
+	width: 230px;
+}
+
+.mainWhisper {
+	position: absolute;
+	top: 370px;
+	right: 140px;
+	width: 90px;
 }

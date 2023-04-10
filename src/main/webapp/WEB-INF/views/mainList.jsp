@@ -6,7 +6,6 @@
 <%@ include file="head.jsp"%>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/mainList.css">
-
 </head>
 <body>
 	<div class="layout">
@@ -29,9 +28,8 @@
 		</div>
 
 	</div>
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.2/sockjs.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
 <script type="text/javascript" src="/js/mainList.js"></script>
+<script type="text/javascript" src="/js/alarm.js"></script>
 </body>
 </html>

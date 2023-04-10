@@ -113,4 +113,13 @@ public class BucketListService implements IBucketListService {
 		return replyCount;
 	}
 	
+	@Override
+	public void updateReply(BucketReplyModel bucketReplyModel) {
+		bucketRepository.updateReply(bucketReplyModel);
+	}
+	
+	public void deleteReply(int bucketReplySeq) {
+		bucketRepository.deleteReply(bucketReplySeq);
+	}
+	
 }

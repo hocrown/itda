@@ -20,4 +20,6 @@ public interface IBucketListService {
 	public void addPersonalBucketList(BucketListModel bucketListModel, MultipartFile file) throws Exception;
 	public void addBucketReply(BucketReplyModel bucketReplyModel);
 	public int countBucketOneReply(int bucketSeq);
+	public void updateReply(BucketReplyModel bucketReplyModel);
+	public void deleteReply(int bucketReplySeq);
 }

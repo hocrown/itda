@@ -6,7 +6,7 @@
 <head>
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../css/bucket/modifyBucket.css">
+<link rel="stylesheet" type="text/css" href="../css/bucket/addFamilyBucket.css">
 
 </head>
 <body>
@@ -22,9 +22,8 @@
 				<input class="writeTitleTextarea" name="title" value="${bucketOne.title }" spellcheck="false">
 			</div>
 			
-			<div class="addImgBox">
-			<div><input type="file" name="file"><img src="../image/addImgImg.png" class="addImgImg"></div>
-			<span class="imgAddPlzText">연상되는 사진을 추가해주세요.</span>
+			<div id="fileArea" class="addImgBox">
+				<input style="display: none;" type="file" name="file" id="fileInput"><img src="${bucketOne.filepath }" alt="Preview" id="previewImage" class="addImgImg">
 			</div>
 			
 			<div class="addBucketTextareaBox">
@@ -35,6 +34,27 @@
 		<div style="height: 50px;"></div>
 		
 	</div>	
+	
+	<script>
+
+	
+	
+	const fileInput = document.getElementById('fileInput');
+	const previewImage = document.getElementById('previewImage');
+
+	fileInput.addEventListener('change', () => {
+	  const file = fileInput.files[0];
+	  const reader = new FileReader();
+	  reader.readAsDataURL(file);
+	  reader.onload = () => {
+	    previewImage.src = reader.result;
+	  };
+	});
+	
+	$('#previewImage').on('click', function() {
+		  $('#fileInput').click();
+		});
+	</script>
 	
 </body>
 </html>

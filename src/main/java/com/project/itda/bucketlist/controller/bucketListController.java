@@ -209,6 +209,18 @@ public class bucketListController {
 		return "redirect:/bucket/familybucketdetail?bucketSeq=" + bucketSeq;
 	}
 		
+	@PostMapping("/bucket/modifyreplyaction")
+	public String modifyReplyAction(BucketReplyModel bucketReplyModel, @RequestParam("bucketSeq") int bucketSeq) {
+		bucketlistService.updateReply(bucketReplyModel);
 		
+		return "redirect:/bucket/familybucketdetail?bucketSeq=" + bucketSeq;
+	}
+	
+	@PostMapping("/bucket/deletereplyaction")
+	public String deleteReplyAction(int bucketReplySeq, @RequestParam("bucketSeq") int bucketSeq) {
+		bucketlistService.deleteReply(bucketReplySeq);
+		
+		return "redirect:/bucket/familybucketdetail?bucketSeq=" + bucketSeq;
+	}
 
 }

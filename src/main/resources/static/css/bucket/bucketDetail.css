@@ -36,7 +36,8 @@ a {
 }
 
 .bucketContents {
-	width: 360px; font-family : 'Bookk Myungjo';
+	width: 360px;
+	font-family: 'Bookk Myungjo';
 	font-style: normal;
 	font-weight: 300;
 	font-size: 16px;
@@ -45,10 +46,11 @@ a {
 	font-family: 'Bookk Myungjo';
 }
 
-.ellipsis {
+.bucketDetailEllipsis {
 	position: absolute;
-	left: 88%;
-	top: 34%;
+	left: 340px;
+	top: 7px;
+	padding:15px;
 }
 
 .modalBox {
@@ -138,6 +140,7 @@ a {
 	letter-spacing: 0.05em;
 	color: #2A221D;
 	padding-bottom: 5px;
+	align-items: center;
 }
 
 .replyRegDateText {
@@ -184,7 +187,8 @@ a {
 }
 
 .replyCountBox {
-	padding-top: 10px; height : 50px;
+	padding-top: 10px;
+	height: 50px;
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -208,8 +212,11 @@ a {
 .replyEllipsis {
 	position: absolute;
 	left: 280px;
-	top:-15px;
-	padding:15px;
+	top: 0px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 15px;
+	
 	filter: grayscale(90%);
 }
 
@@ -226,23 +233,80 @@ a {
 	background-color: white;
 	border-color: #FFC3C3;
 	font-family: 'Bookk Myungjo';
-font-style: normal;
-font-weight: 300;
-font-size: 16px;
-	
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	display: none;
 }
 
-.replyModalBtn{
+.replyModalBtn {
 	display: flex;
 	text-align: center;
 	justify-content: center;
 	vertical-align: middle;
 	align-items: center;
 	height: 35px;
+}
+
+.reMoBtn {
+	border-bottom: solid 1px;
+	border-color: #FFC3C3;
+}
+
+.show{
+	display: block !important;
+	
 	
 }
 
-.reMoBtn{
-	border-bottom: solid 1px;
-	border-color: #FFC3C3;
+.replyInput{
+	padding: 0px;
+	background: none;
+	width: 290px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	letter-spacing: 0.05em;
+	color: #2A221D;
+	border: none;
+	outline: none;
+	border-bottom: solid 2px;	
+}
+.modifyReplyBtnBox{
+	margin-top: 5px;
+	width: 290px;
+	text-align: right;
+	
+}
+
+.modifyReplyCancelBtn{
+	width: 50px;
+	height: 35px;
+	border:none;
+	outline:none;
+background: rgba(177, 125, 90, 0.15);
+border-radius: 20px;	
+font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 13px;
+	letter-spacing: 0.05em;
+}
+
+.modifyReplyModifyBtn{
+	width: 50px;
+	height: 35px;
+	border:none;
+	outline:none;
+background: rgba(177, 125, 90, 0.15);
+border-radius: 20px;	
+font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 13px;
+	letter-spacing: 0.05em;
+}
+.editReplyForm{
+	display: none;
 }

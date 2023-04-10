@@ -31,6 +31,7 @@ a {
 }
 
 .testz {
+	
 	margin-left: 3%;
 	width: 85%;
 	height: 140px;
@@ -40,6 +41,11 @@ a {
 	overflow-x: auto;
 	vertical-align: middle;
 	text-align: right;
+	scroll-behavior: smooth;
+}
+.testz::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .testbox {

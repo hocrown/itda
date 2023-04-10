@@ -9,6 +9,8 @@
 		select * from BUCKETLIST
 		where FAMILYSEQ = #{familySeq}
 		and TYPE = 'Family'
+		order by regDate DESC
+		
 	</select>
 	
 	<select id="getOneFamilyBucket"
@@ -83,6 +85,20 @@
 			WHERE bucketSeq = #{bucketSeq}
 		]]>
 	</select>
+	
+	<update id="updateReply"
+		parameterType="com.project.itda.bucketlist.model.BucketReplyModel">
+		<![CDATA[
+		update BUCKETREPLY set 
+		    replyContents = #{replyContents, jdbcType=CLOB}
+		    WHERE bucketReplySeq = #{bucketReplySeq}
+		]]>
+	</update>
+	
+	<delete id="deleteReply">
+		delete from BUCKETREPLY
+		where BUCKETREPLYSEQ=#{bucketReplySeq}
+	</delete>
 	
 	
 	

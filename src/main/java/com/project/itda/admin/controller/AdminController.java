@@ -13,11 +13,18 @@ import com.project.itda.bucketlist.model.BucketListModel;
 @Controller
 public class AdminController {
 	
-	@GetMapping("/admin")
-	public String familyBucket(Model model, HttpSession session) {
+	@GetMapping("/admin/login")
+	public String adminLogin(Model model, HttpSession session) {
 		
 		
-		return "admin/admin";
+		return "admin/adminLogin";
+	}
+	
+	@GetMapping("/admin/questionmanagement")
+	public String adminQuestionManagement(Model model, HttpSession session) {
+		
+		
+		return "admin/questionManagement";
 	}
 	
 }

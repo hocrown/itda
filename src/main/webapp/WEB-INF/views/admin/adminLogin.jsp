@@ -14,7 +14,7 @@
 	<title>관리자 페이지</title>
 </head>
 <body>
-	<div class="adminLayout">
+	<div class="adminLoginLayout">
 		<div class="adminContainer">
 			<img class="adminLogo" src="../image/itdaLogo.png">
 			<form>

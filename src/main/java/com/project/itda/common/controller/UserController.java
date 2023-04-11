@@ -1,7 +1,10 @@
 package com.project.itda.common.controller;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -201,8 +204,20 @@ public class UserController {
 	}
 	
 	@GetMapping("/user/myinfo")
-	public String myInfo(Model model) {
+	public String myInfo(HttpSession session, Model model) {
+		UserModel loginUser = (UserModel) session.getAttribute("loginUser");
+		
+		   DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
+		   LocalDate localDate = loginUser.getUserBirth();
+		   String dateStr = localDate.format(dateFormat);
 
+		   model.addAttribute("dateStr", dateStr);
+		
+		   DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+		   String dateDot = localDate.format(formatter);
+		   
+		   model.addAttribute("dateDot", dateDot);
+		model.addAttribute("loginUser", loginUser);
 		return "user/myInfo";
 	}
 	

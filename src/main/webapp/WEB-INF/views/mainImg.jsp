@@ -16,7 +16,6 @@
 			<img class="alarmMark" src="/image/alarmMark.png">
 			<img class="myImg" src="/image/myImg.png">		
 		</div>
-
 		
 		<img class="mainBackground" src="/image/mainBackground.png">
 		
@@ -30,7 +29,6 @@
 		<div class="questionBox">
 			<span class="questionText">${todayFamilyQuestion.question}</span>
 		</div>
-
 	</div>
 </body>
 </html>

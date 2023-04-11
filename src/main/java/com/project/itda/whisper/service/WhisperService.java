@@ -48,4 +48,9 @@ public class WhisperService implements IWhisperService {
 	public void deleteWhisper(int whisperSeq) {
 		whisperRepository.deleteWhisper(whisperSeq);
 	}
+
+	@Override
+	public void checkWhisper(int whisperSeq) {
+		whisperRepository.checkWhisper(whisperSeq);
+	}
 }

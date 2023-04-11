@@ -25,6 +25,10 @@ $(document).ready(function(){
 		window.location.href="/alarmlist";
 	});
 	
+	$(".myImg").click(function(){
+		window.location.href="/user/mypage";
+	});
+	
 	
 	var socket = new SockJS('/websocket');	
 	var stompClient = Stomp.over(socket);

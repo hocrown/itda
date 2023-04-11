@@ -18,4 +18,19 @@
     	]]>
     </select>
     
+    <select id="getAllQuestion" resultType="com.project.itda.dailyquestion.model.DailyQuestionModel">
+    	<![CDATA[
+    	SELECT *
+    	FROM dailyQuestion
+    	ORDER BY dailyQuestionSeq
+    	]]>
+    </select>
+    
+    <insert id="insertQuestion" parameterType="map">
+    	<![CDATA[
+    		INSERT dailyQuestion(dailyQuestionSeq, QUESTION, TYPE,FAMILYSEQ, VISIBLE)
+    		VALUES (dailyQuestionseq.nextval, #{question}, #{type}, #{familySeq}, 1)
+    	]]>
+    </insert> 
+    
 </mapper>

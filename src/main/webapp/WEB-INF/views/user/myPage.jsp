@@ -7,7 +7,7 @@
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/user/myPage.css">
-
+<script type="text/javascript" src="/js/myPage.js"></script>
 </head>
 <body>
 	<div class="layout">
@@ -16,28 +16,28 @@
 			마이페이지
 		</div>
 		<div style="position: absolute;">
-		<div class="myPageItemBox">
+		<div class="myPageItemBox" id="myInfo">
 			<div class="myPageItemText">내 정보</div>
 			<img src="../image/vector.png" class="myPageSmallVector">
 			
 		</div>
 		<div style="margin:auto; height: 1px; border-bottom: solid 1px; width: 320px;"></div>
 		
-		<div class="myPageItemBox">
+		<div class="myPageItemBox" id="familyInfo">
 			<div class="myPageItemText">가족 정보</div>
 			<img src="../image/vector.png" class="myPageSmallVector">
 			
 		</div>
 		<div style="margin:auto; height: 1px; border-bottom: solid 1px; width: 320px;"></div>
 		
-		<div class="myPageItemBox">
+		<div class="myPageItemBox" id="itdaNotice">
 			<div class="myPageItemText">잇다 소식</div>
 			<img src="../image/vector.png" class="myPageSmallVector">
 			
 		</div>
 		<div style="margin:auto; height: 1px; border-bottom: solid 1px; width: 320px;"></div>
 		
-		<div class="myPageItemBox">
+		<div class="myPageItemBox" id="itdaQnA">
 			<div class="myPageItemText">잇다 질문통</div>
 			<img src="../image/vector.png" class="myPageSmallVector">
 			

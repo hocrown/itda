@@ -9,6 +9,7 @@
 	        FROM familyQuestion
 	        WHERE familySeq = #{familySeq}
 	        AND TO_CHAR(askedDate, 'YYYY-MM-DD') = #{todayStr}
+	        AND VISIBLE = 1
 	    ]]>
 	</select>
     
@@ -28,6 +29,7 @@
 		ON fq.dailyQuestionSeq = dq.dailyQuestionSeq
 		WHERE fq.familySeq = #{familySeq}
 		AND TRUNC(fq.askedDate) = TRUNC(SYSDATE)
+		AND dq.VISIBLE = 1
 		]]>
 	</select>
 	

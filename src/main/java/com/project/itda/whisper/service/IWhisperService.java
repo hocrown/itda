@@ -11,4 +11,5 @@ public interface IWhisperService {
 	List<WhisperModel> getOutboxList(String userId);
 	void deleteWhisper(int whisperSeq);
 	WhisperModel getWhisperDetail(int whisperSeq);
+	void checkWhisper(int whisperSeq);
 }

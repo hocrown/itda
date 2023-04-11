@@ -29,4 +29,17 @@ public class DailyQuestionService implements IDailyQuestionService {
 		DailyQuestionModel randomQuestion = dailyQuestionRepository.getRandomQuestion(familySeq, todayStr);
 		return randomQuestion;
 	}
+
+
+	@Override
+	public List<DailyQuestionModel> getAllQuestion() {
+		List<DailyQuestionModel> allDailyQuestion = dailyQuestionRepository.getAllQuestion();
+		return allDailyQuestion;
+	}
+
+
+	@Override
+	public void insertQuestion(DailyQuestionModel dailyQuestion) {
+		dailyQuestionRepository.insertQuestion();
+	}
 }

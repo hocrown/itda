@@ -12,7 +12,7 @@
 		    FROM familyQuestion fq
 		    WHERE fq.dailyQuestionSeq = dq.dailyQuestionSeq
 		    AND fq.familySeq = #{familySeq}
-		)
+		) AND dq.VISIBLE = 1
 		ORDER BY dbms_random.value()
 		FETCH FIRST 1 ROW ONLY
     	]]>

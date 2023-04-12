@@ -31,12 +31,12 @@ $(document).ready(function(){
   	});
   
 	// 취소 버튼과 모달창 바깥 영역 클릭 시 모달 창 닫기
-	$('#cancel-button, .modal').on('click', function() {
+	$('.btn-cancel-area, .modal').on('click', function() {
     	$('.modal').css('display', 'none');
 	});
 
 	// 삭제 버튼 클릭 시 whisperSeq 값 전달하고 whisperInboximg 페이지로 이동
-  	$('#delete-button').on('click', function() {
+  	$('.btn-delete-area').on('click', function() {
     	const whisperSeq =  document.getElementById('whisperSeq').value;
     	console.log(whisperSeq);
     	$.ajax({

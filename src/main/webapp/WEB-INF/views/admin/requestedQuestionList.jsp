@@ -15,7 +15,7 @@
 		
 		<div class="adminContent">
 			<div>
-				<div class="questionListText">질문 목록</div>
+				<div class="questionListText">요청 질문</div>
 				<div style="text-align: center;">
 				<table class="table table-striped table-hover dataTable" id="dataTable">
 				    <thead>
@@ -65,7 +65,7 @@
 		  $("#navi-questionManagement").addClass("navi-selected")
 		});
 		
-		$('.navi-questionList').html('>  질문 목록');
+		$('.navi-requestedList').html('>  요청 질문');
 	
 		
 		

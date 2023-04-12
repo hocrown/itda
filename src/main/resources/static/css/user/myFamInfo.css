@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+div {
+	margin: 0;
+	padding: 0;
+}
+
+.fam-profile {
+	width: 100%;
+	height: 262px;
+}
+
+.fam-name-area {
+	position: relative;
+	top: -4px; width : 100%;
+	height: 101px;
+	background-color: rgba(255, 255, 255);
+	width: 100%;
+}
+
+.fam-name {
+	position: absolute;
+	left: 22px;
+	top: 19px; font-family : 'Bookk Myungjo';
+	font-size: 25px;
+	color: #2A221D;
+	font-family: 'Bookk Myungjo';
+}
+
+.member-text {
+	position: absolute;
+	left: 22px;
+	top: 58px;
+	font-family: 'Bookk Myungjo';
+	font-size: 15px;
+	color: #9D9690;
+}
+
+.fam-name-edit-btn {
+	margin-left: 12px;
+	vertical-align: middle;
+}
+
+.fam-member-container {
+	margin-top: 30px;
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.fam-member-box {
+	position: relative;
+	display: inline-block;
+	width: 333px;
+	height: 98px;
+	background: rgba(177, 125, 90, 0.1);
+	border-radius: 20px;
+}
+
+.fam-member-img {
+	position: absolute;
+	width: 70px;
+	height: 70px;
+	border-radius: 50px;
+	left: 16px;
+	top: 13px;
+}
+
+.fam-member-name-area {
+	position: absolute;
+	left: 106px;
+	top: 24px;
+	display: flex;
+	justify-content: center; font-family : 'Bookk Myungjo';
+	font-size: 18px;
+	color: #2A221D;
+	font-family: 'Bookk Myungjo';
+}
+
+.fam-member-name-edit-btn {
+	width: 21px;
+	height: 21px; margin-left : 12px;
+	vertical-align: middle;
+	margin-left: 12px;
+}
+
+.fam-member-name-area2 {
+	position: absolute;
+	left: 106px;
+	top: 51px;
+	display: flex;
+	justify-content: center;
+	font-family: 'Bookk Myungjo';
+	font-size: 15px;
+	color: #9D9690;
+}
+
+.fam-member-birth {
+	margin-left: 12px;
+}
+
+.fam-code-text {
+	margin-left: 30px;
+	font-family: 'Bookk Myungjo';
+	font-size: 20px;
+	color: #2A221D;
+	margin-bottom: 15px;
+}
+
+.fam-code-area {
+	width: 336px;
+	height: 50px;
+	line-height: 50px;
+	background: rgba(177, 125, 90, 0.1);
+	border-radius: 20px;
+	display: inline-block;
+	font-family: 'Bookk Myungjo';
+	font-size: 18px;
+	color: #2A221D;
+	 position: relative;
+}
+
+.copy-btn{
+	position: absolute;
+	right: 18px;
+	top: 16px;
+}

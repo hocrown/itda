@@ -36,12 +36,12 @@
 					<div class="postContentText">${timeline.content}</div>
 					<img src="..${timeline.filepath}" style="width:100%; min-height: 393px;" class="userPic">
 				</div>
-				<div class="replyLayout">
-		       			<div class="replyCountBox">
-				        <img src="../image/bucket/replyCountImg.png" class="replyCountImg">
-				        <span class="replyCountText">${timeline.replyCount}</span>
-						</div>
-		        </div>
+			<div class="replyLayout">
+		       		<div class="replyCountBox">
+				       <img src="../image/bucket/replyCountImg.png" class="replyCountImg">
+				       <span class="replyCountText">${timeline.replyCount}</span>
+					</div>
+		    </div>
 
 		</div>
 		</c:forEach>		   

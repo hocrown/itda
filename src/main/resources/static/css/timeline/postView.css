@@ -125,26 +125,27 @@ a {
 position: relative;
 width: 393px;
 left: 0px;
-top: 77px;
+top: 0px;
 }
 
 .postContentText {
-	position: absolute;
 	width: 349px;
 	height: 54px;
 	left: 22px;
-	top: 80px;
+	top: 0px;
 	text-align: justify;
 	font-family: 'Bookk Myungjo';
 	font-style: normal;
 	font-weight: 300;
 	font-size: 16px;
 	line-height: 20px;
-	display: flex;
+	display: flex-start;
 	align-items: center;
 	letter-spacing: 0.05em;
 	
 	color: #2A221D;
 }
 
-
+.userPic{
+	
+}

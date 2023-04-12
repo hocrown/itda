@@ -19,27 +19,7 @@
 </head>
 <body>
 	<div class="adminLayout">
-		<div class="adminNaviBox">
-			<div style="border-bottom: solid 1px;">
-				<div class="navi-item adminSmallLogo"><img style="width: 7em; margin-right: 0.3em;" src="../image/itdaLogo.png"></div>
-			</div>
-			<div style="border-bottom: solid 1px;">
-				<div class="navi-item item-text">하루 질문 관리<img class="adminVector" src="../image/vector.png"></div>
-				<div class="detailItemText">요청 질문</div>
-				<div class="detailItemText">질문 목록</div>
-			</div>
-			<div style="border-bottom: solid 1px;">
-				<div class="navi-item item-text">잇다 질문통<img class="adminVector" src="../image/vector.png"></div>
-			</div>
-			<div style="border-bottom: solid 1px;">
-				<div class="navi-item item-text">잇다소식 관리<img class="adminVector" src="../image/vector.png"></div>
-			</div>
-			<div style="border-bottom: solid 1px;">
-				<div class="navi-item item-text">통계 관리<img class="adminVector" src="../image/vector.png"></div>
-			</div>
-		</div>
-		
-		<div class="top-bar"><span style="margin-right: 5%;">안녕하세요! admin1234 님</span></div>
+<%@ include file="adminNavi.jsp"%>
 		
 		<div class="adminContent">
 			<div>
@@ -48,11 +28,11 @@
 				<table class="table table-striped table-hover dataTable" id="dataTable">
 				    <thead>
 				      <tr>
-						<th><input type="checkbox"></th>
-				        <th>글번호</th>
-				        <th>작성자</th>
+						<th class="chkBoxWidth"><input type="checkbox"></th>
+				        <th class="seqWidth">글번호</th>
+				        <th class="wirterWidth">작성자</th>
 				        <th>내용</th>
-				        <th>상태</th>
+				        <th class="statusWidth">상태</th>
 				      </tr>
 				    </thead>
 				    <tbody id="tableContent">
@@ -73,6 +53,27 @@
 		
 		
 	</div>
+	
+	<script>
+		$(document).ready(function () {
+		  // 네비게이션 바의 각 항목에 대한 마우스 호버 이벤트 처리
+		  $(".navi-hover").on("mouseenter", function () {
+		    // 컨텐츠 배경색 가져오기
+
+		    // 현재 항목의 배경색을 컨텐츠 배경색과 동일하게 설정
+		    $(this).css("background-color", "#F3F3F3");
+		  });
+
+		  // 네비게이션 바의 각 항목에 대한 마우스 아웃 이벤트 처리
+		  $(".navi-hover").on("mouseleave", function () {
+		    // 배경색을 원래대로 되돌리기
+		    $(this).css("background-color", "");
+		  });
+		});
+		$("#questionManagement").click(function(){
+		    location.href = "/admin/questionmanagementlist";	
+			});
+	</script>
 	
 	<script>
 
@@ -96,11 +97,11 @@
 			      for (let i = startIndex; i < endIndex; i++) {
 			        const question = data[i];
 			        const row = '<tr>'
-			          + '<td class="table-p"><input type="checkbox"></td>'
-			          + '<td class="table-p t-border">' + question.dailyQuestionSeq + '</td>'
-			          + '<td class="table-p">' + question.writer + '</td>'
+			          + '<td class="table-p chkBoxWidth"><input type="checkbox"></td>'
+			          + '<td class="table-p seqWidth">' + question.dailyQuestionSeq + '</td>'
+			          + '<td class="table-p wirterWidth">' + question.writer + '</td>'
 			          + '<td class="table-p" style="text-align: left;">' + question.question + '</td>'
-			          + '<td class="table-p">' + question.visible + '</td>'
+			          + '<td class="table-p statusWidth">' + question.visible + '</td>'
 			          + '</tr>';
 			          
 			        tableContent.append(row);
@@ -132,22 +133,7 @@
 			  },
 			});
 	
-	
-		/* const serverData = [
-	      <c:forEach var="question" items="${questions}" varStatus="status">
-	        {
-	        	// 서버에서 받은 데이터를 JavaScript 객체로 변환
-	        	"dailyQuestionSeq": `${fn:escapeXml(question.dailyQuestionSeq)}`,
-	        	"writer": `${fn:escapeXml(question.writer)}`,
-	        	"question": `${fn:escapeXml(question.question)}`,
-	        	"visible": `${fn:escapeXml(question.visible)}`
-	         
-	        }
-	        <c:if test="${not status.last}">,</c:if>
-	      </c:forEach>
-	    ];
-		
-		console.log(serverData); */
+
 	</script>
 	
 	

@@ -33,8 +33,8 @@ public class FamilyQuestionService implements IFamilyQuestionService {
 	}
 
 	@Override
-	public List<FamilyQuestionModel> getQuestionAndAskedDateByFamilySeq(int familySeq) {
-		List<FamilyQuestionModel> getFamilyQuestion = familyQuestionRepository.getQuestionAndAskedDateByFamilySeq(familySeq);
+	public List<FamilyQuestionModel> getQuestionListByFamilySeq(int familySeq) {
+		List<FamilyQuestionModel> getFamilyQuestion = familyQuestionRepository.getQuestionByFamilySeq(familySeq);
 		return getFamilyQuestion;
 	}
 
@@ -43,5 +43,7 @@ public class FamilyQuestionService implements IFamilyQuestionService {
 		FamilyQuestionModel familyDailyQuestion = familyQuestionRepository.familyDailyQuestionByQuestionOrder(familySeq, questionOrder);
 		return familyDailyQuestion;
 	}
+	
+
 	
 }

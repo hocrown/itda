@@ -20,22 +20,19 @@
 		<span class="outboxText">속마음 발신함</span>
 		<c:forEach var="entry" items="${whisperByDate}">
         <div class="dateLine1"></div>
-        <div class="inboxListDate"><fmt:formatDate value="${entry.key}" pattern="yyyy.MM.dd"/></div>
+        <div class="outboxListDate"><fmt:formatDate value="${entry.key}" pattern="yyyy.MM.dd"/></div>
         <div class="dateLine2"></div>
 		
 	
 	        <c:forEach var="whisper" items="${entry.value}">
-	        <div class="inboxList">
+	        <div class="outboxList" style="height:200px">
 	            <img src="/image/whisperCardImg.png" class="cardFrame">
 	            <span class="toPersonText">받는 사람</span>
 	            <span class="toPersonName">${whisper.receiver}</span>
 	            <div class="toPersonLine"></div>
 	            <span class="sendDateText">발신일</span>
 	            <span class="sendDate"><fmt:formatDate value="${whisper.sendDate}" pattern="yyyy.MM.dd"/></span>
-	            <img src="../image/whisperCardStamp.png" class="inboxCardStamp">
-	            <span class="fromPersonText">보내는 사람</span>
-	            <span class="fromPersonName">${whisper.senderNickname}</span>
-	            <div class="fromPersonLine"></div>
+	            <img src="../image/whisperCardStamp.png" class="outboxCardStamp">
 	        </div>
 	        </c:forEach>
         </c:forEach>

@@ -51,10 +51,11 @@ public class DailyQuestionController {
 		return "dailyquestion/dailyAnswer";
 	}
 	
+	//가족 질문 가져오기
 	@GetMapping("/dailyquestion/dailylist")
 	public String dailyList(Model model, HttpSession session) {
 		int familySeq = (Integer) session.getAttribute("famSeq");
-		List<FamilyQuestionModel> familyQuestions =  familyQuestionService.getQuestionAndAskedDateByFamilySeq(familySeq);
+		List<FamilyQuestionModel> familyQuestions =  familyQuestionService.getQuestionListByFamilySeq(familySeq);
 		
 	    for (FamilyQuestionModel question : familyQuestions) {
 	        int dailyQuestionSeq = question.getDailyQuestionSeq();
@@ -71,6 +72,7 @@ public class DailyQuestionController {
 		return "dailyquestion/dailyList";
 	}
 	
+	//날짜 순으로 가족질문 리스트 가져오기 
 	@GetMapping("/dailyquestion/familybylist")
 	public String familyDailyQuestionByList(@RequestParam("dailyQuestionSeq") int dailyQuestionSeq, 
 			@RequestParam("familySeq") int familySeq, 
@@ -96,18 +98,12 @@ public class DailyQuestionController {
 		
 		return "dailyquestion/dailyDay";
 	}
-	
-	@GetMapping("/dailyquestion/monthlypage1")
-	public String dailyMonthlyStickerPage1(Model model) {
-	
-		return "dailyquestion/dailyMonthlyStickerPage1";
-	}
-	
+		
 	@GetMapping("/dailymain")
 	public String dailyQuestionPage(Model model, HttpSession session) {
 	    int familySeq = (Integer) session.getAttribute("famSeq");
 	    String userId = (String) session.getAttribute("userId");
-	    List<FamilyQuestionModel> getFamilyQuestion =  familyQuestionService.getQuestionAndAskedDateByFamilySeq(familySeq);
+	    List<FamilyQuestionModel> getFamilyQuestion =  familyQuestionService.getQuestionListByFamilySeq(familySeq);
 
 	    FamilyQuestionModel latestFamilyQuestion = getFamilyQuestion.get(0);
 	    int dailyQuestionSeq = latestFamilyQuestion.getDailyQuestionSeq();
@@ -122,6 +118,7 @@ public class DailyQuestionController {
 	    int questionSeq = familyQuestion.getDailyQuestionSeq();
 	    DailyAnswerModel dailyAnswer = dailyAnswerService.getDailyAnswerByUserId(questionSeq, userId);
 	    
+	    //답변이 없는 경우 예외 처리
 	    if (dailyAnswer == null) {
 
 	    }
@@ -192,6 +189,7 @@ public class DailyQuestionController {
         return "redirect:/dailymain";
     }
     
+    //가족 질문 월별로 모아보는 메소드
     @GetMapping("/dailyquestion/monthly")
     public String monthlyFamilyQuestion(DailyAnswerModel dailyAnswer, HttpSession session) {
     	return "dailyquestion/dailyMonthlyStickerPage1";

@@ -1,8 +1,6 @@
 package com.project.itda.whisper.controller;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -23,24 +21,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.itda.common.dao.IUserRepository;
 import com.project.itda.common.model.UserModel;
-import com.project.itda.whisper.dao.IWhisperRepository;
+import com.project.itda.whisper.service.IWhisperService;
 import com.project.itda.whisper.model.WhisperModel;
 
 @Controller
 public class WhisperController {
 	
 	@Autowired
-	IUserRepository userRepository;
+	IUserRepository userService;
 	
 	@Autowired
-	IWhisperRepository whisperRepository;
+	IWhisperService whisperService;
 	
 	@GetMapping("/whisper/inboximg")
 	public String whisperInboxImg(HttpSession session, Model model) {
 	
 		String userId = (String) session.getAttribute("userId");
-		List<WhisperModel> whisperList = whisperRepository.getWhisperList(userId);
+		List<WhisperModel> whisperList = whisperService.getWhisperList(userId);
 		model.addAttribute("whisperList", whisperList);
+		System.out.println(whisperList.size());
 		
 		return "whisper/whisperInboxImg";
 	}
@@ -49,19 +48,22 @@ public class WhisperController {
 	@GetMapping("/whisper/inboxlist")
 	public String whisperInboxList(HttpSession session, Model model) {
 		String userId = (String) session.getAttribute("userId");
-	    List<WhisperModel> whisperList = whisperRepository.getInboxList(userId);
+	    List<WhisperModel> whisperList = whisperService.getInboxList(userId);
 	    
 	    Map<Date, List<WhisperModel>> whisperByDate = whisperList.stream()
 	    	    .collect(Collectors.groupingBy(w -> w.getSendDate()));
 
 	    model.addAttribute("whisperByDate", whisperByDate);
-	    
+		System.out.println(whisperList.size());
+		System.out.println(whisperByDate.size());
+		
 		return "whisper/whisperInboxList";	
 	}
 	
 	@GetMapping("/whisper/detail/{whisperSeq}")
 	public String whisperDetail(@PathVariable("whisperSeq") int whisperSeq, Model model) {
-		WhisperModel whisperDetail = whisperRepository.getWhisperDetail(whisperSeq);
+		WhisperModel whisperDetail = whisperService.getWhisperDetail(whisperSeq);
+		whisperService.checkWhisper(whisperSeq);
 		model.addAttribute("whisper", whisperDetail);
 		return "whisper/whisperDetail";
 	}
@@ -69,7 +71,7 @@ public class WhisperController {
 	@GetMapping("/whisper/outbox")
 	public String whisperOutbox(HttpSession session, Model model) {
 		String userId = (String) session.getAttribute("userId");
-		List<WhisperModel> whisperList = whisperRepository.getOutboxList(userId);
+		List<WhisperModel> whisperList = whisperService.getOutboxList(userId);
 		
 		Map<Date, List<WhisperModel>> whisperByDate = whisperList.stream()
 				.collect(Collectors.groupingBy(w -> w.getSendDate()));
@@ -83,7 +85,7 @@ public class WhisperController {
 	public String whisperWrite(HttpSession session, Model model) {
 		int famSeq = (int) session.getAttribute("famSeq");
 		//가족 Id 불러오기 , 이름 출력
-		List<UserModel> myFamily = userRepository.selectFamilyMembers(famSeq);
+		List<UserModel> myFamily = userService.selectFamilyMembers(famSeq);
 		//작성자 이름 설정
 		UserModel loginUser = (UserModel) session.getAttribute("loginUser");
 		String myName = loginUser.getUserName();
@@ -98,7 +100,7 @@ public class WhisperController {
 	public String whisperMain(HttpSession session, Model model) {
 		
 		String userId = (String) session.getAttribute("userId");
-		List<WhisperModel> whisperList = whisperRepository.getWhisperList(userId);
+		List<WhisperModel> whisperList = whisperService.getWhisperList(userId);
 		model.addAttribute("whisperList", whisperList);
 		
 		return "whisper/whisperInboxImg";
@@ -140,7 +142,7 @@ public class WhisperController {
 	            reserveDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
 	        }
 	        whisper.setReserveDate(reserveDate);
-			whisperRepository.insertWhisper(whisper);
+			whisperService.insertWhisper(whisper);
 			map.put("result","success");
 			map.put("message", "속마음이 전송되었습니다.");
 		} catch (Exception e) {
@@ -151,6 +153,12 @@ public class WhisperController {
 		
 		return map;
 		
+	}
+	
+	@ResponseBody
+	@PostMapping("/whisper/delete")
+	public void deleteWhisper(@RequestParam int whisperSeq) {
+	    whisperService.deleteWhisper(whisperSeq);
 	}
 	
 }

@@ -27,9 +27,9 @@
 .dateLine1 {
 	position: relative;
 	width: 137px;
-	height: 0px;
+	height: px;
 	left: 15px;
-	top: 0px;
+	top: 11em;
 	border: 1px solid #BBB3AB;
 }
 
@@ -59,7 +59,6 @@
 
 .inBoxList{
 	position: relative;
-	height: 200px;
 }
 
 .cardFrame {
@@ -192,5 +191,10 @@
 	left: 219px;
 	top: -2em;
 	border: 1px solid #BBB3AB;
+}
+
+.dummy{
+	background-image: url("../../image/itdaBackImg.png"); 
+	height:200px;
 }
 

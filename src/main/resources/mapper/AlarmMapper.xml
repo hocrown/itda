@@ -3,8 +3,20 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="com.project.itda.common.dao.IAlarmRepository">
-  <insert id="insertAlarm" parameterType="com.project.itda.common.model.AlarmModel">
-    INSERT INTO alarm (alarmSeq,receiver, alarm_date, checked, message) VALUES (alarmSeq.nextval,#{userId}, #{alarmDate}, #{checked}, #{message})
-  </insert>
+  
+  	<insert id="insertAlarm" parameterType="com.project.itda.common.model.AlarmModel">
+    	<![CDATA[
+    	INSERT INTO alarm (alarmSeq,receiver, alarm_date, checked, message)
+    	VALUES (alarmSeq.nextval,#{userId}, #{alarmDate}, #{checked}, #{message})
+    	]]>
+	</insert>
 
+	<select id="getAlarmList" parameterType="String" resultType="com.project.itda.common.model.AlarmModel">
+		<![CDATA[
+			SELECT *
+			FROM ALARM
+			WHERE RECEIVER = #{userId}
+			ORDER BY ALARM_DATE DESC
+		]]>
+	</select>
 </mapper>

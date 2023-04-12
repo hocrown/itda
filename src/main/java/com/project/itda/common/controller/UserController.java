@@ -1,7 +1,10 @@
 package com.project.itda.common.controller;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,7 +61,6 @@ public class UserController {
 				session.setAttribute("userId", loginUser.getUserId());
 				session.setAttribute("loginUser", loginUser);
 				session.setAttribute("famSeq", loginUser.getFamilySeq());
-				 // DailyQuestionController의 getDailyQuestion() 메소드 호출
 	            String loginUserId = loginUser.getUserId();
 
 	            dailyQuestionController.getDailyQuestion(loginUserId, session);
@@ -194,4 +196,35 @@ public class UserController {
 			return "fail";
 		}
 	}
+	
+	@GetMapping("/user/mypage")
+	public String myPage(Model model) {
+
+		return "user/myPage";
+	}
+	
+	@GetMapping("/user/myinfo")
+	public String myInfo(HttpSession session, Model model) {
+		UserModel loginUser = (UserModel) session.getAttribute("loginUser");
+		
+		   DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
+		   LocalDate localDate = loginUser.getUserBirth();
+		   String dateStr = localDate.format(dateFormat);
+
+		   model.addAttribute("dateStr", dateStr);
+		
+		   DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+		   String dateDot = localDate.format(formatter);
+		   
+		   model.addAttribute("dateDot", dateDot);
+		model.addAttribute("loginUser", loginUser);
+		return "user/myInfo";
+	}
+	
+	@GetMapping("/user/myfaminfo")
+	public String myFamInfo(Model model) {
+
+		return "user/myFamInfo";
+	}
+	
 }

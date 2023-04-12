@@ -25,5 +25,4 @@ public interface IUserRepository {
 	int countFamilyMember(@Param("familySeq") int familySeq);
 	List<UserModel> selectFamilyMembers(int familySeq);
 	List<String> getFamilyUserIds(int familySeq);
-	
 }

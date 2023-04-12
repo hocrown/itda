@@ -26,8 +26,21 @@
 		
 		<div class="detailDeleteBox">
 			<span class="detailDeleteText">삭제하기</span>
+			<input type="hidden" id="whisperSeq" value="${whisper.whisperSeq}">
+		</div>
+	
+		<!-- 모달 창 -->
+		<div class="modal">
+		  <div class="modal-content">
+		    <span class="modal-deleteText">정말 삭제하시겠습니까?</span>
+		    <div class="modal-buttons">
+		      <button id="cancel-button">취소</button>
+		      <button id="delete-button">삭제</button>
+		    </div>
+		  </div>
 		</div>
 
+	
 	</div>
 </body>
 </html>

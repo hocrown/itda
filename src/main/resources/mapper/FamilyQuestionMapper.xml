@@ -28,10 +28,11 @@
 		ON fq.dailyQuestionSeq = dq.dailyQuestionSeq
 		WHERE fq.familySeq = #{familySeq}
 		AND TRUNC(fq.askedDate) = TRUNC(SYSDATE)
+		AND dq.VISIBLE = 1
 		]]>
 	</select>
 	
-	 <select id="getQuestionAndAskedDateByFamilySeq" parameterType="int" resultType="com.project.itda.dailyquestion.model.FamilyQuestionModel">
+	 <select id="getQuestionByFamilySeq" parameterType="int" resultType="com.project.itda.dailyquestion.model.FamilyQuestionModel">
 	    <![CDATA[
 	            SELECT 
 	                dq.dailyQuestionSeq,

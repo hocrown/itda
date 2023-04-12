@@ -22,7 +22,7 @@ public interface IFamilyQuestionRepository {
 
 	FamilyQuestionModel todayFamilyQuestion(@Param("familySeq") int familySeq);
 
-	List<FamilyQuestionModel> getQuestionAndAskedDateByFamilySeq(int familySeq);
+	List<FamilyQuestionModel> getQuestionByFamilySeq(int familySeq);
 	
 	FamilyQuestionModel familyDailyQuestionByQuestionOrder(@Param("familySeq") int familySeq, @Param("questionOrder") int questionOrder);
 	

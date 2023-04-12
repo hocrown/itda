@@ -4,6 +4,14 @@
     
 <mapper namespace="com.project.itda.timeline.dao.ITimeLineRepository">
 
+	<select id="getPostList"
+		resultType="com.project.itda.timeline.model.TimeLineModel">
+		select * from TIMELINE
+		where FAMILYSEQ = #{familySeq}
+		order by createDate DESC
+	</select>
+
+
 	<select id="getContent"
 		resultType="com.project.itda.timeline.model.TimeLineModel">
 		select * from TIMELINE
@@ -12,13 +20,13 @@
 		order by createDate DESC
 	</select>
 	
-	<insert id="insert"  
+	<insert id="insertPost"  
 		parameterType="com.project.itda.timeline.model.TimeLineModel">
 			INSERT INTO TIMELINE (postSeq, userId, createDate, content, familySeq, filename, filepath)
                VALUES (postSeq.NEXTVAL, #{userId}, SYSDATE, #{content}, #{familySeq}, #{filename}, #{filepath})
 	</insert>
 	
-	<update id="update"
+	<update id="updatePost"
 		parameterType="com.project.itda.timeline.model.TimeLineModel">
 			update TIMELINE set 
 				content = #{content},
@@ -28,7 +36,7 @@
 				where postSeq = #{postSeq}
 	</update>
 	
-	<update id="delete"
+	<update id="deletePost"
 		parameterType="com.project.itda.timeline.model.TimeLineModel">
 		update
 		TIMELINE set VISIBLE = 'n'

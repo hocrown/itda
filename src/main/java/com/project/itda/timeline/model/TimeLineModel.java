@@ -11,6 +11,8 @@ public class TimeLineModel {
 	private Date createDate; //게시글 작성일
 	private int familySeq; //가족 ID
 	private String userId; //개인 ID
-	private String fileName; //파일 이름
-	private String filePath; //파일 경로
+	private String filename; //파일 이름
+	private String filepath; //파일 경로
+	private String userName;
+	private int replyCount;
 }//end class

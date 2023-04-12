@@ -38,7 +38,6 @@ public class TimeLineController {
 		int familySeq = (int) session.getAttribute("famSeq"); //세션으로부터 familySeq를 받아온다.
 		List<TimeLineModel> post = timelineService.getPostList(familySeq); //받아온 해당 familySeq를 요청하여 가족 게시글을 post에 담는다.
 		model.addAttribute("post", post); //담겨진 리스트를 postView.jsp에서 post라는 이름으로 사용할 수 있게한다.
-
 		return "timeline/postView";
 	}
 	
@@ -46,17 +45,17 @@ public class TimeLineController {
 	@GetMapping("/familypost/postcontent")
 	public String familyPostContent(Model model, HttpSession session, @RequestParam("postSeq") int postSeq) {
 		TimeLineModel content = timelineService.getContent(postSeq); //이전 페이지에서 클릭한 게시글의 Seq를 요청하여 해당 게시글에 대한 내용을 담는다.
-		List<TimeLineReplyModel> reply = timelineService.getPostReply(postSeq); //해당 버킷리스트에 달린 댓글들의 정보를 담아둠
+		List<TimeLineReplyModel> reply = timelineReplyService.getReplyList(postSeq); //해당 버킷리스트에 달린 댓글들의 정보를 담아둠
 		model.addAttribute("content", content); //content라는 이름으로 전송
 		model.addAttribute("reply", reply); //reply라는 이름으로 전송
 
 		return "timeline/postContent";
 	}
 	
-	//게시글 추가
+	//게시글 추가 페이지
 	@GetMapping("/familypost/insertpost")
 	public String insertPost(Model model) {
-
+		
 		return "timeline/insertPost";
 	}
 	
@@ -102,28 +101,16 @@ public class TimeLineController {
 		return "redirect:/timeline/postView";
 	}
 	
-	//타임라인 출력
-	@GetMapping("/familypost/postview")
-	public String PostView(Model model, HttpSession session) {
-		int familySeq = (int) session.getAttribute("famSeq"); // 세션으로부터 familySeq를 받아옴
-		List<TimeLineModel> post = timelineService.getPostList(familySeq); // 받아온 해당 Seq 가족에 대한 게시글을 familypost에 담아줌.
-		model.addAttribute("post", post); // 담겨진 리스트를 post.jsp에서 post라는 이름으로 사용할 수 있게함.
-		Date currentDate = new Date();
-		model.addAttribute("currentDate", currentDate);
-		List<UserModel> myFam = userService.getFamilyMembers(familySeq);
-		model.addAttribute("myFam", myFam);
-
-		return "timeline/postView";
-	}
-
 	//댓글 등록 액션
 	@PostMapping("/familypost/insertreplyaction")
-	public String insertReplyAction(HttpSession session , @RequestParam("postSeq") int postSeq, TimeLineReplyModel timeLineReplyModel) {
+	public String insertReplyAction(HttpSession session , int postSeq, TimeLineReplyModel timeLineReplyModel) {
 
 		String userId = (String) session.getAttribute("userId");
-
+		UserModel loginUser = (UserModel) session.getAttribute("loginUser");
+		String userName = loginUser.getUserName();
+		
 		timeLineReplyModel.setUserId(userId);
-		timeLineReplyModel.setPostSeq(postSeq);
+		timeLineReplyModel.setUserName(userName);
 		timelineReplyService.insertReply(timeLineReplyModel);
 		
 		return "redirect:/timeline/content?postSeq=" + postSeq;

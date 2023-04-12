@@ -6,18 +6,24 @@
 
 	<select id="getPostList"
 		resultType="com.project.itda.timeline.model.TimeLineModel">
-		select * from TIMELINE
-		where FAMILYSEQ = #{familySeq}
-		order by createDate DESC
+		SELECT T.*, NVL(R.replyCount, 0) AS replyCount, U.userName
+		FROM TIMELINE T
+		LEFT JOIN (
+		    SELECT postSeq, COUNT(*) AS replyCount
+		    FROM TIMELINEREPLY
+		    GROUP BY postSeq
+		) R ON T.postSeq = R.postSeq
+		LEFT JOIN ITDAUSER U ON T.userId = U.userId
+		WHERE T.FAMILYSEQ = #{familySeq}
+		ORDER BY T.createDate DESC
 	</select>
 
 
-	<select id="getContent"
+	<select id="getContent" parameterType="int"
 		resultType="com.project.itda.timeline.model.TimeLineModel">
-		select * from TIMELINE
-		where FAMILYSEQ = #{familySeq}
-		and TYPE = 'Family'
-		order by createDate DESC
+            select TL.*, IU.userName from TIMELINE TL JOIN ITDAUSER IU
+            ON IU.userId = TL.userID
+            where postSeq = #{postSeq}
 	</select>
 	
 	<insert id="insertPost"  
@@ -54,7 +60,7 @@
 	
 	<insert id="insertReply" parameterType="com.project.itda.timeline.model.TimeLineReplyModel">
 		INSERT INTO TIMELINEREPLY (replySeq, postSeq, replyDate, replyContent, userId)
-			VALUES (replySeq.NEXTVAL, #{postSeq}, SYSDATE, #{Content}, #{userId})
+			VALUES (replySeq.NEXTVAL, #{postSeq}, SYSDATE, #{replyContent}, #{userId})
 	</insert>
 	
 	<update id="updateReply"
@@ -71,7 +77,7 @@
 		where replySeq = #{replySeq}
 	</delete>
 	
-	<select id="countPostOneReply" parameterType="int" resultType="int">
+	<select id="countPostReply" parameterType="int" resultType="int">
 		<![CDATA[
 			SELECT COUNT(*)
 			FROM TIMELINEREPLY

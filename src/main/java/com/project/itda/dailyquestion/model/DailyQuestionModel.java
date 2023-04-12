@@ -9,4 +9,6 @@ public class DailyQuestionModel {
 	private String question;
 	private String qusetionType;
 	private int familySeq;
+	private int visible;
+	private String writer;
 }

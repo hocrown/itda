@@ -70,5 +70,21 @@ public class UserService implements IUserService {
 		List<String> familyUserIds = userRepository.getFamilyUserIds(familySeq);
 		return familyUserIds;
 	}
+
+	@Override
+	public boolean modifyMyInfo(String userPw, String userAddress, String userAddressDetail, String userPhone,
+			String email) {
+		int result = userRepository.modifyMyInfo(userPw, userAddress, userAddressDetail, userPhone, email);
+		if(result>0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public void updateUserInfo(UserModel user) {
+		userRepository.updateUserInfo(user);		
+	}
 	
 }

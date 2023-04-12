@@ -149,8 +149,6 @@
 		        if(finishDateObj !== null){
 		        	const formattedFinishDate = formatDate(finishDateObj);
 		        output += `
-		        
-		        
 		        	<a href="/bucket/familybucketdetail?bucketSeq=`+bucketSeq+`">
 					<img src="..`+bucketImgSrc+`"
 					style="width: 100%; height: 155px; margin-bottom: 5px; filter: grayscale(85%);">
@@ -167,8 +165,6 @@
 		        `;
 		        } else {
 		        	output += `
-				        
-				        
 				          <a href="/bucket/familybucketdetail?bucketSeq=`+bucketSeq+`">
 				            <img src="..`+bucketImgSrc+`" style="width:100%; height: 155px;">
 				            <div style="position: relative;">
@@ -179,10 +175,6 @@
 				          </a>
 				        `;
 		        }
-		        
-		        
-		        
-		        
 		      });
 	            }
 		      $('.listContainer').html(output); // HTML을 동적으로 생성하여 listContainer 영역에 적용합니다.

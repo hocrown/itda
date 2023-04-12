@@ -21,4 +21,7 @@ public interface IUserService {
 	int countFamilyMember(@Param("familySeq") int familySeq);
 	List<UserModel> getFamilyMembers(int familySeq);
 	List<String> getFamilyUserIds(int familySeq);
+	boolean modifyMyInfo(String userPw, String userAddress, 
+			String userAddressDetail, String userPhone, String email);
+	void updateUserInfo(UserModel user);
 }

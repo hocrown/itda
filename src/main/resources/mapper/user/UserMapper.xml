@@ -75,4 +75,12 @@
   	]]>
   	</select>
   	
+  	<update id="updateUserInfo" parameterType="com.project.itda.common.model.UserModel">
+  		<![CDATA[
+  			UPDATE ITDAUSER SET (userPw, userAddress, userAddressDetail, userPhone, email)
+  			= (SELECT #{userPw}, #{userAddress}, #{userAddressDetail}, #{userPhone}, #{email} FROM DUAL)
+  			WHERE userId = #{userId}
+  		]]>
+  	</update>
+  	
 </mapper>

@@ -19,6 +19,7 @@ public class AdminController {
 	@Autowired
 	IDailyQuestionService dailyQuestionService;
 	
+	//로그인 페이지
 	@GetMapping("/admin/login")
 	public String adminLogin(Model model, HttpSession session) {
 		
@@ -26,13 +27,15 @@ public class AdminController {
 		return "admin/adminLogin";
 	}
 	
-	@GetMapping("/admin/questionmanagement")
+	//질문목록 페이지
+	@GetMapping("/admin/questionmanagementlist")
 	public String adminQuestionManagement(Model model, HttpSession session) {
 		List<DailyQuestionModel> question = dailyQuestionService.getAllQuestion();
 		model.addAttribute("questions", question);
-		return "admin/questionManagement";
+		return "admin/questionManagementList";
 	}
 	
+	//질문목록 불러오기
 	@GetMapping("/getQuestions")
 	@ResponseBody
 	public List<DailyQuestionModel> getQuestions() {
@@ -40,5 +43,28 @@ public class AdminController {
 		System.out.println(questions);
 		return questions;
 	}
+	
+	//요청질문 페이지
+	@GetMapping("/admin/requestedquestionlist")
+	public String requestedQuestionList(Model model, HttpSession session) {
+
+		return "admin/requestedQuestionList";
+	}
+	
+	//잇다소식관리 페이지
+	@GetMapping("/admin/newsmanagementlist")
+	public String adminNewsManagement(Model model, HttpSession session) {
+		
+		
+		return "admin/newsManagementList";
+	}
+	
+	//통계 페이지
+	@GetMapping("/admin/statistics")
+	public String adminStatistics(Model model, HttpSession session) {
+		
+		
+		return "admin/statistics";
+	}	
 	
 }

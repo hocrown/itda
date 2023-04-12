@@ -78,6 +78,11 @@ body {
 	background: #FFFFFF;
 }
 
+.navi-hover{
+	min-width:300px; width:65px; position:relative;
+	cursor: pointer;
+}
+
 .navi-item {
 	position: relative;
 	width: 250px;
@@ -152,6 +157,7 @@ body {
 	font-weight: 300;
 	font-size: 15px;
 	color: #2A221D;
+	cursor: pointer;
 }
 
 .questionListText{
@@ -192,4 +198,24 @@ th {
 
 .question-delete-btn{
 	
+}
+
+.chkBoxWidth{
+	width: 2em;
+}
+
+.seqWidth{
+	width: 5em;
+}
+
+.wirterWidth{
+	width: 7em;
+}
+
+.statusWidth{
+	width: 5em;
+}
+
+.navi-selected{
+	background-color: #F3F3F3;
 }

@@ -228,6 +228,12 @@ public class UserController {
 		return "user/myFamInfo";
 	}
 	
+	@GetMapping("/user/requestbox")
+	public String requestBox() {
+
+		return "user/requestBox";
+	}
+	
 	
 	@PostMapping("/user/updateUserInfo")
 	@ResponseBody

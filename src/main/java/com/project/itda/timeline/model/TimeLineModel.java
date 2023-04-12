@@ -15,4 +15,5 @@ public class TimeLineModel {
 	private String filepath; //파일 경로
 	private String userName;
 	private int replyCount;
+	private int visible;
 }//end class

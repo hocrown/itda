@@ -4,7 +4,7 @@ a {
 	text-decoration: none;
 }
 
-.gobackbtn{
+.gobackbtn {
 	position: absolute;
 	width: 20px;
 	height: 20px;
@@ -13,16 +13,7 @@ a {
 	z-index: 1
 }
 
-.searchbtn{
-	position: absolute;
-	width: 22px;
-	height: 22px;
-	left: 312px;
-	top: 22px;
-	z-index: 1
-}
-
-.writebtn{
+.writebtn {
 	position: absolute;
 	width: 24px;
 	height: 24px;
@@ -31,40 +22,61 @@ a {
 	z-index: 1
 }
 
-.timelineMainImg{
+.postBanner {
 	position: absolute;
-	width: 393px;
-	height: 262px;
-	left: 0px;
-	top: 0px;
+	left: 0;
+	top: 63;
 }
 
-.profile{
+.timelineMainImg {
+	width: 393px;
+	height: 262px;
+	margin: 0;
+	padding: 0;
+}
+
+.blindImg {
+	position: absolute;
+	left: 0; top : 0;
+	width: 393px;
+	height: 262px;
+	top: 0;
+}
+
+.profile {
 	position: absolute;
 	width: 393px;
 	height: 101px;
-	left: 0px;
 	top: 262px;
+	left: 0px;
 }
 
-.postLayout{
+.allPostLayout {
 	position: absolute;
 	width: 393px;
 	height: 851px;
 	left: 0px;
-	top: 375px;
+	top: 430px;
 	background-image: url("../../image/timeline/postbackground.png");
 }
 
-.postInfo{
-	position: absolute;
+.postLayout {
+	position: relative;
+	width: 393px;
+	height: 851px;
+	left: 0px;
+	top: 0px;
+}
+
+.postInfo {
+	position: relative;
 	width: 393px;
 	height: 77px;
 	left: 0px;
 	top: 0px;
 }
 
-.profileImg{
+.profileImg {
 	position: absolute;
 	width: 48px;
 	height: 48px;
@@ -72,13 +84,12 @@ a {
 	top: 16px;
 }
 
-.writter{
+.writter {
 	position: absolute;
 	width: 114px;
 	height: 27px;
 	left: 80px;
 	top: 16px;
-	
 	font-family: 'Bookk Myungjo';
 	font-style: normal;
 	font-weight: 700;
@@ -87,17 +98,15 @@ a {
 	display: flex;
 	align-items: center;
 	letter-spacing: 0.05em;
-	
 	color: #2A221D;
 }
 
-.createDate{
+.createDate {
 	position: absolute;
 	width: 181px;
 	height: 24px;
 	left: 81px;
 	top: 37px;
-	
 	font-family: 'Bookk Myungjo';
 	font-style: normal;
 	font-weight: 300;
@@ -105,26 +114,30 @@ a {
 	line-height: 15px;
 	display: flex;
 	align-items: center;
-	
-	color: #9D9690;	
-	
+	color: #9D9690;
 }
 
 .postContent {
-position: relate;
-width: 349px;
-height: 43px;
-left: 22px;
-top: 77px;
-
-font-family: 'Bookk Myungjo';
-font-style: normal;
-font-weight: 300;
-font-size: 16px;
-line-height: 16px;
-letter-spacing: 0.05em;
-
-color: #2A221D;
+	position: relative;
+	width: 393px;
+	left: 0px;
+	top: 77px;
 }
 
-
+.postContentText {
+	position: absolute;
+	width: 349px;
+	height: 54px;
+	left: 22px;
+	top: 80px;
+	text-align: justify;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 20px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.05em;
+	color: #2A221D;
+}

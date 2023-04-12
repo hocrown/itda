@@ -26,11 +26,11 @@ public class AdminController {
 		return "admin/adminLogin";
 	}
 	
-	@GetMapping("/admin/questionmanagement")
+	@GetMapping("/admin/questionmanagementlist")
 	public String adminQuestionManagement(Model model, HttpSession session) {
 		List<DailyQuestionModel> question = dailyQuestionService.getAllQuestion();
 		model.addAttribute("questions", question);
-		return "admin/questionManagement";
+		return "admin/questionManagementList";
 	}
 	
 	@GetMapping("/getQuestions")

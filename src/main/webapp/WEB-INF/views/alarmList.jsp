@@ -6,23 +6,23 @@
 <head>
 <%@ include file="head.jsp"%>
 <title>Insert title here</title>
-<script type="text/javascript" src="/js/alarm.js"></script>
+<script type="text/javascript" src="/js/alarmList.js"></script>
 
 </head>
 <body>
 	<div class="layout">
 		<div class="headBox"><img class="vector" src="../image/vector.png">
-			알람
-		</div>
+		<span class="alarmHeadText">알람</span>
 		<img class="bell" src="/image/bell.png">
 		<img class="alarmMark" src="/image/alarmMark.png">
 		<img class="myImg" src="/image/myImg.png">		
+		</div>
 	</div>
 
 	<div class="alarmList">
 		<c:forEach var="alarm" items="${alarmList}">
-			<div class="questionListContainer">
-		        <div class="questionListBox">
+			<div class="alarmListContainer">
+		        <div class="alarmListBox">
 		    	     <img class="listNum" src="/image/listNum/.png">
 				</div>
 			</div>

@@ -1,30 +1,31 @@
 /**
  * 
  */
-const notificationList = document.getElementById('notificationList');
+const alarmList = document.getElementById('alarmList');
+const socketUrl = window.location.origin + '/ws';
 
-// Replace with your WebSocket server URL
-const socket = new WebSocket('ws://localhost:8080/notifications');
+// Check if SockJS and STOMP are supported by the browser
+if ('SockJS' in window && 'Stomp' in window) {
+  const socket = new SockJS(socketUrl);
+  const stompClient = Stomp.over(socket);
+  
+  stompClient.connect({}, (frame) => {
+    console.log('WebSocket connection opened:', frame);
+    // Get userId from session storage
+    const userId = sessionStorage.getItem('userId');
+    // Subscribe to /user/{userId}/queue/alarm
+    stompClient.subscribe('/user/' + userId + '/queue/alarm', (response) => {
+      const alarm = response.body;
+      displayAlarm(alarm);
+    });
+  });
+} else {
+  console.error('SockJS and/or STOMP not supported by the browser');
+}
 
-socket.addEventListener('open', (event) => {
-  console.log('WebSocket connection opened:', event);
-});
-
-socket.addEventListener('message', (event) => {
-  const notification = event.data;
-  displayNotification(notification);
-});
-
-socket.addEventListener('close', (event) => {
-  console.log('WebSocket connection closed:', event);
-});
-
-socket.addEventListener('error', (event) => {
-  console.error('WebSocket error:', event);
-});
-
-function displayNotification(notification) {
+function displayAlarm(alarm) {
   const listItem = document.createElement('li');
-  listItem.textContent = notification;
-  notificationList.appendChild(listItem);
+  listItem.textContent = alarm;
+  alarmList.appendChild(listItem);
+  console.log(alarm);
 }

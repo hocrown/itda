@@ -32,4 +32,9 @@ $(document).ready(function(){
 	$("#itdaQnA").click(function(){
 		window.location.href = '/user/myinfo';		  
 	});
+	  // 로그아웃 버튼 클릭 이벤트 등록
+  	$(".myPageLogoutBtn").click(function() {
+		sessionStorage.clear
+		window.location.href= '/user/logout';
+	});
 });

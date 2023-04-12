@@ -8,8 +8,7 @@
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/css/dailyquestion/dailyMain.css">
-
-
+<script type="text/javascript" src="/js/dailyquestion/dailyMain.js"></script>
 </head>
 <body>
 
@@ -78,11 +77,5 @@
 			</div>		
 	</div>
 	</div>
-	
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.2/sockjs.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-	<script type="text/javascript" src="/js/dailyquestion/dailyMain.js"></script>
 </body>
 </html>

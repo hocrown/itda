@@ -47,4 +47,11 @@
 		]]>
 	</select>
 	
+	<select id="getMyAnswer" parameterType="map" resultType="com.project.itda.dailyquestion.model.DailyAnswerModel">
+		<![CDATA[
+			SELECT * FROM dailyAnswer
+			WHERE userId = #{userId} AND dailyQuestionSeq = #{dailyQuestionSeq}
+		]]>
+	</select>
+	
 </mapper>

@@ -1,6 +1,5 @@
 package com.project.itda.dailyquestion.model;
 
-import java.time.LocalDateTime;
 
 import lombok.Data;
 

@@ -1,6 +1,5 @@
 package com.project.itda.dailyquestion.dao;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -23,4 +22,6 @@ public interface IDailyAnswerRepository {
 	List<FamilyAnswerModel> getFamilyAnswers(int familySeq, int dailyQuestionSeq);
 
 	int countAnsweredFamilyMember(@Param("familySeq") int familySeq, @Param("dailyQuestionSeq") int dailyQuestionSeq);
+	
+	DailyAnswerModel getMyAnswer(String userId, int dailyQuestionSeq);
 }

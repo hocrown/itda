@@ -6,10 +6,7 @@
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/user/login.css">
-	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.2/sockjs.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-	<script type="text/javascript" src="/js/login.js"></script>
+<script type="text/javascript" src="/js/login.js"></script>
 </head>
 <body>
 
@@ -19,7 +16,6 @@
 		<span class="hi">안녕하세요!</span> <span class="weritda">하지 못한 말,
 			&nbsp;<span style="font-weight: bold;">잇다</span>입니다.
 		</span> <span class="waiting">당신만을 기다리고 있었어요.</span>
-		<form onsubmit="login(); return false;">
 		<span class="idText">아이디</span>
 		<input type="text" class="notes">
 		<img class="idBar" src="../image/underline.png">
@@ -27,7 +23,7 @@
 		<span class="pwdText">비밀번호</span>
 		<input type="password" class="notes2">
 		<img class="pwdBar" src="../image/underline.png">
-		<button class="eye"></button>
+		<button class="eye" title="비밀번호 표시/숨기기"><i class="far fa-eye"></i></button>
 		<button type="submit" class="loginBtn">로그인</button>
 		</form>
 		

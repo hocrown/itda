@@ -142,9 +142,9 @@
 	left: 312px;
 	top: 475px;
 	outline: none;
-	border: none; background : url(../image/eye.png);
+	border: none; 
+	background : url(/image/eye.png);
 	transform: matrix(1, 0, 0, -1, 0, 0);
-	background: url(../../image/eye.png);
 }
 
 .loginBtn {

@@ -25,27 +25,39 @@
 
 	<div class="allPostLayout">
 		<c:forEach var="timeline" items="${post}">
+		
+		
 		<div class="postLayout">
 			
 			<div class="postInfo">
 		 		<img src="../image/timeline/profile.png" class="profileImg">
 		 		<div class="writter">${timeline.userName}</div>
-		 		<div class="createDate">등록일 <fmt:formatDate value="${timeline.createDate}" pattern="yyyy.MM.dd"/></div>
+		 		<div class="createDate">등록일 <fmt:formatDate value="${timeline.createDate}" pattern="yyyy년 MM월 dd일"/></div>
 			</div>
+				
+				
 				<div class="postContent">
 					<div class="postContentText">${timeline.content}</div>
-					<img src="..${timeline.filepath}" style="width:100%; min-height: 393px;" class="userPic">
+					<img src="..${timeline.filepath}" style="width:100%; min-height: 250px;" class="userPic">
 				</div>
-			<div class="replyLayout">
-		       		<div class="replyCountBox">
-				       <img src="../image/bucket/replyCountImg.png" class="replyCountImg">
-				       <span class="replyCountText">${timeline.replyCount}</span>
-					</div>
-		    </div>
-
+				
+				
+				
+					<div class="replyLayout">
+		       			<div class="replyCountBox">
+				     	  <img src="../image/bucket/replyCountImg.png" class="replyCountImg">
+				     	  <span class="replyCountText">${timeline.replyCount}</span>
+						</div>
+		   			</div>
 		</div>
+		<c:set var="loopCount" value="0" />
+		    <c:forEach items="${reply}" var="reply" varStatus="status">
+				<c:if test="${status.last}">
+						<c:set var="loopCount" value="${status.index + 1}" />
+				</c:if>
+			</c:forEach>
 		</c:forEach>		   
-	</div>    	
+	</div>
 </div>
 </body>
 </html>

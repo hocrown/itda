@@ -21,9 +21,15 @@
 
 	<select id="getContent" parameterType="int"
 		resultType="com.project.itda.timeline.model.TimeLineModel">
-            select TL.*, IU.userName from TIMELINE TL JOIN ITDAUSER IU
-            ON IU.userId = TL.userID
-            where postSeq = #{postSeq}
+		SELECT T.*, NVL(R.replyCount, 0) AS replyCount, U.userName
+		FROM TIMELINE T
+		LEFT JOIN (
+		    SELECT postSeq, COUNT(*) AS replyCount
+		    FROM TIMELINEREPLY
+		    GROUP BY postSeq
+		) R ON T.postSeq = R.postSeq
+		LEFT JOIN ITDAUSER U ON T.userId = U.userId
+        where T.postSeq = #{postSeq}
 	</select>
 	
 	<insert id="insertPost"  

@@ -39,6 +39,7 @@ a {
 .blindImg{
 	position: absolute;
 	top:0;
+	left:0;
 	width: 393px;
 	height: 262px;
 	
@@ -53,11 +54,11 @@ a {
 }
 
 .allPostLayout{
-	position: absolute;
+	position: relative;
 	width: 393px;
 	height: 851px;
 	left: 0px;
-	top: 430px;
+	top: 375px;
 	background-image: url("../../image/timeline/postbackground.png");
 }
 
@@ -109,7 +110,7 @@ a {
 	position: absolute;
 	width: 181px;
 	height: 24px;
-	left: 81px;
+	left: 80px;
 	top: 37px;
 	
 	font-family: 'Bookk Myungjo';
@@ -128,14 +129,14 @@ a {
 position: relative;
 width: 393px;
 left: 0px;
-top: 0px;
+top: 77px;
 }
 
 .postContentText {
+	position: relative;
 	width: 349px;
-	height: 54px;
 	left: 22px;
-	top: 0px;
+	top: 16px;
 	text-align: justify;
 	font-family: 'Bookk Myungjo';
 	font-style: normal;
@@ -150,5 +151,35 @@ top: 0px;
 }
 
 .userPic{
-	
+	position: absolute;
+	width: 393px;
+	top: 110%;
+}
+
+.replyLayout{
+	position: absolute;
+	top: 105%;
+}
+
+.replyCountBox {
+	padding-top: 10px;
+	height: 50px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	height: 50px;
+}
+
+.replyCountImg {
+	position: relative;
+}
+
+.replyCountText {
+	position: absolute;
+	left: 110%;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	color: #9D9690;
 }

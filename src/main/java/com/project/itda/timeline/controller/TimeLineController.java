@@ -72,7 +72,7 @@ public class TimeLineController {
 		timelineModel.setFamilySeq(famSeq);
 
 		timelineService.insertPost(timelineModel, file);
-		return "redirect:/timeline/postview";
+		return "redirect:/timeline/postView";
 	}
 	
 	//게시글 수정 페이지
@@ -91,7 +91,7 @@ public class TimeLineController {
 	public String updatePostAction(TimeLineModel timeLineModel, MultipartFile file) throws Exception {
 		
 		timelineService.updatePost(timeLineModel, file);
-		return "redirect:/timeline/postview";
+		return "redirect:/timeline/postView";
 	}
 	
 	//게시글 삭제 액션
@@ -99,7 +99,7 @@ public class TimeLineController {
 	public String deletePostAction(@RequestParam("postSeq")int postSeq) {
 		timelineService.deletePost(postSeq);
 	
-		return "redirect:/timeline/postview";
+		return "redirect:/timeline/postView";
 	}
 	
 	//타임라인 출력
@@ -113,7 +113,7 @@ public class TimeLineController {
 		List<UserModel> myFam = userService.getFamilyMembers(familySeq);
 		model.addAttribute("myFam", myFam);
 
-		return "timeline/bucketListView";
+		return "timeline/postView";
 	}
 
 	//댓글 등록 액션

@@ -27,6 +27,7 @@
 		<img class="mainImgToggle" src="/image/imgToggle.png">
 
 		<div class="questionBox">
+			<span class="dailyQuestionText">오늘의 질문</span>
 			<span class="questionText">${todayFamilyQuestion.question}</span>
 		</div>
 	</div>

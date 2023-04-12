@@ -41,8 +41,8 @@ public class TimeLineService implements ITimeLineService {
 		File saveFile = new File(prjPath, fileName);
 			
 		file.transferTo(saveFile);
-		timeLineModel.setFileName(fileName);
-		timeLineModel.setFilePath("/files/" + fileName);
+		timeLineModel.setFilename(fileName);
+		timeLineModel.setFilepath("/files/" + fileName);
 		timeLineRepository.insertPost(timeLineModel);
 	}
 
@@ -57,40 +57,15 @@ public class TimeLineService implements ITimeLineService {
 		File saveFile = new File(prjPath, fileName);
 		
 		file.transferTo(saveFile);
-		timeLineModel.setFileName(fileName);
-		timeLineModel.setFilePath("/files/" + fileName);
+		timeLineModel.setFilename(fileName);
+		timeLineModel.setFilepath("/files/" + fileName);
 
 		timeLineRepository.updatePost(timeLineModel);
 	}
 		
 	@Override
 	public void deletePost(int postSeq) {
-
 		timeLineRepository.deletePost(postSeq);
 	}
 	
-	@Override
-	public List<TimeLineReplyModel> getPostReply(int postSeq) {
-		List<TimeLineReplyModel> reply = timeLineRepository.getPostReply(postSeq);
-		return reply;
-	}
-
-	@Override
-	public TimeLineModel postSearch(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<TimeLineModel> getContentSearch(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<TimeLineModel> getuserId(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }//end class

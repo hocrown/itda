@@ -228,18 +228,6 @@ public class UserController {
 		return "user/myFamInfo";
 	}
 	
-//	@ResponseBody
-//	@PostMapping("/user/mypage/modify")
-//	public Map<String,Object> modifyMyInfo(HttpSession session, Model model) {
-//		Map<String,Object> map = new HashMap<>(); 
-//		try {
-//			boolean isModify = userService.modifyMyInfo(userPw, userAddress, userAddressDetail, userPhone, email)
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			map.put("result", "error");
-//		}
-//		return map;
-//	}
 	
 	@PostMapping("/user/updateUserInfo")
 	@ResponseBody

@@ -33,19 +33,6 @@ public interface ITimeLineService {
 	//게시글 삭제
 	void deletePost(int postSeq);
 	
-	
-	//댓글 가져오기
-	List<TimeLineReplyModel> getPostReply(int postSeq);
-	
-	
-	//게시글 검색
-	TimeLineModel postSearch(String keyword);
-	
-	//내용 검색 결과
-	List<TimeLineModel> getContentSearch(@Param("keyword") String keyword);
-	
-	//작성자 검색 결과
-	List<TimeLineModel> getuserId(@Param("keyword") String keyword);
 
 	
 }//end class

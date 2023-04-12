@@ -52,7 +52,8 @@
 	        SELECT 
 			    dq.dailyQuestionSeq,
 			    dq.question, 
-			    fq.askedDate
+			    fq.askedDate,
+			    questionOrder
 			FROM dailyQuestion dq
 			JOIN (
 			    SELECT 

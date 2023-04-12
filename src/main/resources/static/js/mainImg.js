@@ -22,6 +22,10 @@ $(document).ready(function(){
 		window.location.href="/whisper/main";
 	});
 	
+	$(".mainTimeLine").click(function(){
+		window.location.href="/familypost";
+	});
+	
 	$(".alarmMark").click(function(){
 		window.location.href="/alarmlist";
 	});

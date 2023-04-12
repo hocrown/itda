@@ -22,14 +22,14 @@
     	<![CDATA[
     	SELECT *
     	FROM dailyQuestion
-    	ORDER BY dailyQuestionSeq
+    	ORDER BY dailyQuestionSeq DESC
     	]]>
     </select>
     
     <insert id="insertQuestion" parameterType="map">
     	<![CDATA[
-    		INSERT dailyQuestion(dailyQuestionSeq, QUESTION, TYPE,FAMILYSEQ, VISIBLE)
-    		VALUES (dailyQuestionseq.nextval, #{question}, #{type}, #{familySeq}, 1)
+    		INSERT dailyQuestion(dailyQuestionSeq, QUESTION, TYPE,FAMILYSEQ, VISIBLE, WRITER)
+    		VALUES (dailyQuestionseq.nextval, #{question}, #{type}, #{familySeq}, 1, #{userId})
     	]]>
     </insert> 
     

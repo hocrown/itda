@@ -13,15 +13,6 @@ a {
 	z-index: 1
 }
 
-.searchbtn{
-	position: absolute;
-	width: 22px;
-	height: 22px;
-	left: 312px;
-	top: 22px;
-	z-index: 1
-}
-
 .writebtn{
 	position: absolute;
 	width: 24px;
@@ -31,33 +22,53 @@ a {
 	z-index: 1
 }
 
-.timelineMainImg{
+.postBanner{
 	position: absolute;
+	top:63;
+}
+
+
+.timelineMainImg{
 	width: 393px;
 	height: 262px;
-	left: 0px;
-	top: 0px;
+	margin: 0;
+	padding: 0;
+}
+
+.blindImg{
+	position: absolute;
+	top:0;
+	width: 393px;
+	height: 262px;
 }
 
 .profile{
-	position: absolute;
 	width: 393px;
 	height: 101px;
-	left: 0px;
-	top: 262px;
+		margin: 0;
+	padding: 0;
 }
 
-.postLayout{
+.allPostLayout{
 	position: absolute;
 	width: 393px;
 	height: 851px;
 	left: 0px;
-	top: 375px;
+	top: 430px;
 	background-image: url("../../image/timeline/postbackground.png");
 }
 
+.postLayout{
+	position: relative;
+	width: 393px;
+	height: 851px;
+	left: 0px;
+	top: 0px;
+}
+
+
 .postInfo{
-	position: absolute;
+	position: relative;
 	width: 393px;
 	height: 77px;
 	left: 0px;
@@ -111,20 +122,29 @@ a {
 }
 
 .postContent {
-position: relate;
-width: 349px;
-height: 43px;
-left: 22px;
+position: relative;
+width: 393px;
+left: 0px;
 top: 77px;
+}
 
-font-family: 'Bookk Myungjo';
-font-style: normal;
-font-weight: 300;
-font-size: 16px;
-line-height: 16px;
-letter-spacing: 0.05em;
-
-color: #2A221D;
+.postContentText {
+	position: absolute;
+	width: 349px;
+	height: 54px;
+	left: 22px;
+	top: 80px;
+	text-align: justify;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 20px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.05em;
+	
+	color: #2A221D;
 }
 
 

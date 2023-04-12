@@ -197,6 +197,7 @@ public class UserController {
 		}
 	}
 	
+/*-----------------------ㅡMy Page---------------------------*/	
 	@GetMapping("/user/mypage")
 	public String myPage(Model model) {
 
@@ -226,5 +227,40 @@ public class UserController {
 
 		return "user/myFamInfo";
 	}
+	
+//	@ResponseBody
+//	@PostMapping("/user/mypage/modify")
+//	public Map<String,Object> modifyMyInfo(HttpSession session, Model model) {
+//		Map<String,Object> map = new HashMap<>(); 
+//		try {
+//			boolean isModify = userService.modifyMyInfo(userPw, userAddress, userAddressDetail, userPhone, email)
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			map.put("result", "error");
+//		}
+//		return map;
+//	}
+	
+	@PostMapping("/user/updateUserInfo")
+	@ResponseBody
+	public String updateUserInfo(String userPw, String userAddress, String userAddressDetail, 
+			String userPhone, String email, HttpSession session) {
+	    try {
+	      UserModel user = (UserModel) session.getAttribute("loginUser");
+	      user.setUserPw(userPw);
+	      user.setEmail(email);
+	      user.setUserAddress(userAddress);
+	      user.setUserAddressDetail(userAddressDetail);
+	      user.setUserPhone(userPhone);
+	      userService.updateUserInfo(user);
+	      return "success";
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	      return "fail";
+	    }
+	  }
+	
+	
+	
 	
 }

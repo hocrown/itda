@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ import com.project.itda.timeline.model.TimeLineReplyModel;
 import com.project.itda.timeline.service.ITimeLineReplyService;
 import com.project.itda.timeline.service.ITimeLineService;
 
+@Controller
 public class TimeLineController {
 
 	@Autowired
@@ -35,9 +37,9 @@ public class TimeLineController {
 	public String familyPost(Model model, HttpSession session) {
 		int familySeq = (int) session.getAttribute("famSeq"); //세션으로부터 familySeq를 받아온다.
 		List<TimeLineModel> post = timelineService.getPostList(familySeq); //받아온 해당 familySeq를 요청하여 가족 게시글을 post에 담는다.
-		model.addAttribute("post", post); //담겨진 리스트를 postview.jsp에서 post라는 이름으로 사용할 수 있게한다.
+		model.addAttribute("post", post); //담겨진 리스트를 postView.jsp에서 post라는 이름으로 사용할 수 있게한다.
 
-		return "post/postview";
+		return "timeline/postView";
 	}
 	
 	//게시글 상세 정보
@@ -48,14 +50,14 @@ public class TimeLineController {
 		model.addAttribute("content", content); //content라는 이름으로 전송
 		model.addAttribute("reply", reply); //reply라는 이름으로 전송
 
-		return "post/postContent";
+		return "timeline/postContent";
 	}
 	
 	//게시글 추가
 	@GetMapping("/familypost/insertpost")
 	public String insertPost(Model model) {
 
-		return "post/insertPost";
+		return "timeline/insertPost";
 	}
 	
 	
@@ -70,7 +72,7 @@ public class TimeLineController {
 		timelineModel.setFamilySeq(famSeq);
 
 		timelineService.insertPost(timelineModel, file);
-		return "redirect:/post/postview";
+		return "redirect:/timeline/postview";
 	}
 	
 	//게시글 수정 페이지
@@ -80,7 +82,7 @@ public class TimeLineController {
 		
 		model.addAttribute("postOne", postOne);
 		
-		return "post/updatePost;";
+		return "timeline/updatePost;";
 	}
 	
 	
@@ -89,7 +91,7 @@ public class TimeLineController {
 	public String updatePostAction(TimeLineModel timeLineModel, MultipartFile file) throws Exception {
 		
 		timelineService.updatePost(timeLineModel, file);
-		return "redirect:/post/postview";
+		return "redirect:/timeline/postview";
 	}
 	
 	//게시글 삭제 액션
@@ -97,7 +99,7 @@ public class TimeLineController {
 	public String deletePostAction(@RequestParam("postSeq")int postSeq) {
 		timelineService.deletePost(postSeq);
 	
-		return "redirect:/post/postview";
+		return "redirect:/timeline/postview";
 	}
 	
 	//타임라인 출력
@@ -111,7 +113,7 @@ public class TimeLineController {
 		List<UserModel> myFam = userService.getFamilyMembers(familySeq);
 		model.addAttribute("myFam", myFam);
 
-		return "post/bucketListView";
+		return "timeline/bucketListView";
 	}
 
 	//댓글 등록 액션
@@ -124,21 +126,21 @@ public class TimeLineController {
 		timeLineReplyModel.setPostSeq(postSeq);
 		timelineReplyService.insertReply(timeLineReplyModel);
 		
-		return "redirect:/post/content?postSeq=" + postSeq;
+		return "redirect:/timeline/content?postSeq=" + postSeq;
 	}
 		
 	@PostMapping("/familypost/updatereplyaction")
 	public String updateReplyAction(TimeLineReplyModel timeLineReplyModel, @RequestParam("postSeq") int postSeq) {
 		timelineReplyService.updateReply(timeLineReplyModel);
 		
-		return "redirect:/post/content?postSeq=" + postSeq;
+		return "redirect:/timeline/content?postSeq=" + postSeq;
 	}
 	
 	@PostMapping("/familypost/deletereplyaction")
 	public String deleteReplyAction(int postReplySeq, @RequestParam("postSeq") int postSeq) {
 		timelineReplyService.deleteReply(postReplySeq);
 		
-		return "redirect:/post/content?postSeq=" + postSeq;
+		return "redirect:/timeline/content?postSeq=" + postSeq;
 	}
 
 }

@@ -37,7 +37,7 @@
 		</div>
 		<div style="margin:auto; height: 1px; border-bottom: solid 1px; width: 320px;"></div>
 		
-		<div class="myPageItemBox" id="itdaQnA">
+		<div class="myPageItemBox" id="itdaQuestion">
 			<div class="myPageItemText">잇다 질문통</div>
 			<img src="../image/vector.png" class="myPageSmallVector">
 			

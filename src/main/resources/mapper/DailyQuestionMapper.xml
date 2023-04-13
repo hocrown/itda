@@ -26,10 +26,10 @@
     	]]>
     </select>
     
-    <insert id="insertQuestion" parameterType="map">
+    <insert id="insertQuestion" parameterType="com.project.itda.dailyquestion.model.DailyQuestionModel">
     	<![CDATA[
-    		INSERT dailyQuestion(dailyQuestionSeq, QUESTION, TYPE,FAMILYSEQ, VISIBLE, WRITER)
-    		VALUES (dailyQuestionseq.nextval, #{question}, #{type}, #{familySeq}, 1, #{userId})
+    		INSERT dailyQuestion(dailyQuestionSeq, QUESTION, TYPE, FAMILYSEQ, VISIBLE, WRITER)
+    		VALUES (dailyQuestionseq.nextval, #{question}, #{type}, #{familySeq}, #{visible}, #{userId})
     	]]>
     </insert> 
     

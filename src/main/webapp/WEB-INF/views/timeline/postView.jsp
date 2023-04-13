@@ -43,12 +43,10 @@
 				
 				
 				
-					<div class="replyLayout">
 		       			<div class="replyCountBox">
 				     	  <img src="../image/bucket/replyCountImg.png" class="replyCountImg">
 				     	  <span class="replyCountText">${timeline.replyCount}</span>
 						</div>
-		   			</div>
 		</div>
 		<c:set var="loopCount" value="0" />
 		    <c:forEach items="${reply}" var="reply" varStatus="status">

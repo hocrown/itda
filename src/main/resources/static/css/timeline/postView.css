@@ -1,179 +1,179 @@
 @charset "UTF-8";
 
 a {
-	text-decoration: none;
+   text-decoration: none;
 }
 
-.gobackbtn {
-	position: absolute;
-	width: 20px;
-	height: 20px;
-	left: 15px;
-	top: 22px;
-	z-index: 1
+.gobackbtn{
+   position: absolute;
+   width: 20px;
+   height: 20px;
+   left: 15px;
+   top: 22px;
+   z-index: 1
 }
 
-.writebtn {
-	position: absolute;
-	width: 24px;
-	height: 24px;
-	left: 354px;
-	top: 20px;
-	z-index: 1
+.writebtn{
+   position: absolute;
+   width: 24px;
+   height: 24px;
+   left: 354px;
+   top: 20px;
+   z-index: 1
 }
 
-.postBanner {
-	position: absolute;
-	left: 0;
-	top: 63;
+.postBanner{
+   position: absolute;
+   left:0;
+   top:63;
 }
 
-.timelineMainImg {
-	width: 393px;
-	height: 262px;
-	margin: 0;
-	padding: 0;
+
+.timelineMainImg{
+   width: 393px;
+   height: 262px;
+   margin: 0;
+   padding: 0;
 }
 
-.blindImg {
-	position: absolute;
-	top:0;
-	left:0;
-	left: 0; top : 0;
-	width: 393px;
-	height: 262px;
-	top: 0;
+.blindImg{
+   position: absolute;
+   top:0;
+   left:0;
+   width: 393px;
+   height: 262px;
+   
 }
 
-.profile {
-	position: absolute;
-	width: 393px;
-	height: 101px;
-	top: 262px;
-	left: 0px;
+.profile{
+   position:absolute;
+   width: 393px;
+   height: 101px;
+   top:262px;
+   left:0px;
 }
 
-.allPostLayout {
-	position: absolute;
-	width: 393px;
-	height: 851px;
-	left: 0px;
-	top: 375px;
-	background-image: url("../../image/timeline/postbackground.png");
+.allPostLayout{
+   position: relative;
+   width: 393px;
+   left: 0px;
+   top: 375px;
+   background-image: url("../../image/timeline/postbackground.png");
 }
 
-.postLayout {
-	position: relative;
-	width: 393px;
-	height: 851px;
-	left: 0px;
-	top: 0px;
+.postLayout{
+   position: relative;
+   width: 393px;
+   left: 0px;
+   top: 0px;
 }
 
-.postInfo {
-	position: relative;
-	width: 393px;
-	height: 77px;
-	left: 0px;
-	top: 0px;
+
+.postInfo{
+   position: relative;
+   width: 393px;
+   height: 77px;
+   left: 0px;
+   top: 0px;
 }
 
-.profileImg {
-	position: absolute;
-	width: 48px;
-	height: 48px;
-	left: 22px;
-	top: 16px;
+.profileImg{
+   position: absolute;
+   width: 48px;
+   height: 48px;
+   left: 22px;
+   top: 16px;
 }
 
-.writter {
-	position: absolute;
-	width: 114px;
-	height: 27px;
-	left: 80px;
-	top: 16px;
-	font-family: 'Bookk Myungjo';
-	font-style: normal;
-	font-weight: 700;
-	font-size: 16px;
-	line-height: 16px;
-	display: flex;
-	align-items: center;
-	letter-spacing: 0.05em;
-	color: #2A221D;
+.writter{
+   position: absolute;
+   width: 114px;
+   height: 27px;
+   left: 80px;
+   top: 16px;
+   
+   font-family: 'Bookk Myungjo';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 16px;
+   line-height: 16px;
+   display: flex;
+   align-items: center;
+   letter-spacing: 0.05em;
+   
+   color: #2A221D;
 }
 
-.createDate {
-	position: absolute;
-	width: 181px;
-	height: 24px;
-	left: 80px;
-	top: 37px;
-	font-family: 'Bookk Myungjo';
-	font-style: normal;
-	font-weight: 300;
-	font-size: 15px;
-	line-height: 15px;
-	display: flex;
-	align-items: center;
-	color: #9D9690;
+.createDate{
+   position: absolute;
+   width: 181px;
+   height: 24px;
+   left: 80px;
+   top: 37px;
+   
+   font-family: 'Bookk Myungjo';
+   font-style: normal;
+   font-weight: 300;
+   font-size: 15px;
+   line-height: 15px;
+   display: flex;
+   align-items: center;
+   
+   color: #9D9690;   
+   
 }
 
 .postContent {
-	position: relative;
-	width: 393px;
-	left: 0px;
-	top: 77px;
+position: relative;
+width: 393px;
+left: 0px;
+top: 0px;
 }
 
 .postContentText {
-	position: relative;
-	width: 349px;
-	left: 22px;
-	top: 16px;
-	text-align: justify;
-	font-family: 'Bookk Myungjo';
-	font-style: normal;
-	font-weight: 300;
-	font-size: 16px;
-	line-height: 20px;
-	display: flex-start;
-	align-items: center;
-	letter-spacing: 0.05em;
-	color: #2A221D;
+   position: relative;
+   width: 349px;
+   left: 22px;
+   text-align: justify;
+   font-family: 'Bookk Myungjo';
+   font-style: normal;
+   font-weight: 300;
+   font-size: 16px;
+   line-height: 20px;
+   display: flex-start;
+   align-items: center;
+   letter-spacing: 0.05em;
+   
+   color: #2A221D;
 }
 
 .userPic{
-	position: absolute;
-	width: 393px;
-	top: 110%;
-}
-
-.replyLayout{
-	position: absolute;
-	top: 105%;
+   position: relative;
+   width: 393px;
+   top: 16px;
 }
 
 .replyCountBox {
-	padding-top: 10px;
-	height: 50px;
-	position: relative;
-	display: flex;
-	align-items: center;
-	height: 50px;
+   height: 50px;
+   position: relative;
+   display: flex;
+   align-items: center;
+   height: 50px;
+   top:32px;
+   left: 10px
 }
 
 .replyCountImg {
-	position: relative;
+   position: relative;
+   top: 50%;
 }
 
 .replyCountText {
-	position: absolute;
-	left: 110%;
-	font-family: 'Bookk Myungjo';
-	font-style: normal;
-	font-weight: 300;
-	font-size: 15px;
-	color: #9D9690;
+   position: absolute;
+   left: 110%;
+   font-family: 'Bookk Myungjo';
+   font-style: normal;
+   font-weight: 300;
+   font-size: 15px;
+   color: #9D9690;
 }
-

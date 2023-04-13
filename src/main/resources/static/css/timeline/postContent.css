@@ -1,1 +1,22 @@
-@charset "EUC-KR";
+@charset "UTF-8";
+
+a {
+	text-decoration: none;
+}
+
+.gobackbtn{
+   position: absolute;
+   width: 20px;
+   height: 20px;
+   left: 15px;
+   top: 22px;
+   z-index: 1
+}
+
+.timeLineEllipsis{
+	position: absolute;
+	left: 340px;
+	top: 7px;
+	padding:15px;
+}
+

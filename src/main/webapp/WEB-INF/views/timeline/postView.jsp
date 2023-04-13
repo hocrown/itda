@@ -37,17 +37,21 @@
 				
 				
 				<div class="postContent">
+				<a href="/familypost/postcontent?postSeq=${timeline.postSeq}">
 					<div class="postContentText">${timeline.content}</div>
-					<img src="..${timeline.filepath}" style="width:100%; min-height: 250px;" class="userPic">
+					<img src="..${timeline.filepath}" class="userPic">
+				</a>
+					
+					<div class="replyCountBox">
+				   	  <img src="../image/bucket/replyCountImg.png" class="replyCountImg">
+				   	  <span class="replyCountText">${timeline.replyCount}</span>
+					</div>
 				</div>
-				
-				
-				
-		       			<div class="replyCountBox">
-				     	  <img src="../image/bucket/replyCountImg.png" class="replyCountImg">
-				     	  <span class="replyCountText">${timeline.replyCount}</span>
-						</div>
+		
 		</div>
+				
+				
+
 		<c:set var="loopCount" value="0" />
 		    <c:forEach items="${reply}" var="reply" varStatus="status">
 				<c:if test="${status.last}">

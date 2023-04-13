@@ -44,7 +44,7 @@ public class TimeLineController {
 	@GetMapping("/familypost/postcontent")
 	public String familyPostContent(Model model, HttpSession session, @RequestParam("postSeq") int postSeq) {
 		TimeLineModel content = timelineService.getContent(postSeq); //이전 페이지에서 클릭한 게시글의 Seq를 요청하여 해당 게시글에 대한 내용을 담는다.
-		List<TimeLineReplyModel> reply = timelineReplyService.getReplyList(postSeq); //해당 버킷리스트에 달린 댓글들의 정보를 담아둠
+		List<TimeLineReplyModel> reply = timelineReplyService.getReplyList(postSeq); //해당 포스트에린 댓글들의 정보를 담아둠
 		model.addAttribute("timeline", content); //content라는 이름으로 전송
 		model.addAttribute("reply", reply); //reply라는 이름으로 전송
 

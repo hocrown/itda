@@ -75,7 +75,7 @@ a {
    position: relative;
    width: 393px;
    left: 0px;
-   top: 310px;
+   top: 370px;
 }
 
 .postLayout{
@@ -143,52 +143,48 @@ a {
 }
 
 .postContent {
-position: relative;
-width: 393px;
-left: 0px;
-top: 0px;
+	width: 393px;
+	left: 0px;
+	top: 0px;
 }
 
 .postContentText {
-   position: relative;
-   width: 349px;
-   left: 22px;
-   text-align: justify;
-   font-family: 'Bookk Myungjo';
-   font-style: normal;
-   font-weight: 300;
-   font-size: 16px;
-   line-height: 20px;
-   display: flex-start;
-   align-items: center;
-   letter-spacing: 0.05em;
+	width: 349px;
+	text-align: justify;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 20px;
+	margin-left: 22px;
+	display: flex-start;
+	align-items: center;
+	letter-spacing: 0.05em;
    
-   color: #2A221D;
+	color: #2A221D;
 }
 
 .userPic{
-	position: relative;
 	width:100%;
 	top:16px;
+	margin-top: 4%;
 	min-height: 250px;
 }
 
 .replyCountBox {
 	height: 50px;
-    position: relative;
     display: flex;
     align-items: center;
-    top: 8px;
-    left: 10px;
+	margin-left: 22px;
+	margin-top: -1%;
 }
 
 .replyCountImg {
-   position: relative;
 }
 
 .replyCountText {
    position: absolute;
-   left: 110%;
+   left: 15%;
    font-family: 'Bookk Myungjo';
    font-style: normal;
    font-weight: 300;

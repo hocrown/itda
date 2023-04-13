@@ -7,39 +7,34 @@
 <head>
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/css/bucket/postContent.css">
+<link rel="stylesheet" type="text/css" href="/css/timeline/postContent.css">
 <script type="text/javascript" src="/js/timeline/postContent.js"></script>
 
 </head>
 <body>
-	<div class="layout">
-		
+<div class="layout">
 		<div class="headBox">
-			<a><img src="../image/vector.png" class="gobackbtn">
+			<img src="../image/vector.png" class="gobackbtn">
 			<img src="../image/ellipsis.png" class="timeLineEllipsis">
 		</div>
-		
-		<div class="allContent">
-			<img src="..${timeline.filepath}" style="width:100%; min-height: 250px;">
-			<div class="postContentContainer">
-				<div style="margin-left: 20px;">
-				    <div class="postInfo">
-		 				<img src="../image/timeline/profile.png" class="profileImg">
-		 				<div class="writter">${timeline.userName}</div>
-		 				<div class="createDate">등록일 <fmt:formatDate value="${timeline.createDate}" pattern="yyyy년 MM월 dd일"/></div>
-					</div>
-					<div class="postContent">
-						<div class="postContentText">${timeline.content}</div>
-					
-						<div class="replyCountBox">
-							<img src="../image/bucket/replyCountImg.png" class="replyCountImg">
-				   	  		<span class="replyCountText">${timeline.replyCount}</span>
-						</div>
-			       	 </div>
+		<div class="postLayout">
+				<div class="postInfo">
+			 		<img src="../image/timeline/profile.png" class="profileImg">
+			 		<div class="writter">${timeline.userName}</div>
+			 		<div class="createDate">등록일 <fmt:formatDate value="${timeline.createDate}" pattern="yyyy년 MM월 dd일"/></div>
 				</div>
-			</div>
+				<div class="postContent">
+					<img src="..${timeline.filepath}" style="width:100%; min-height: 250px;">
+					<div class="postContentText">${timeline.content}</div>
+						
+					<div class="replyCountBox">
+					<img src="../image/bucket/replyCountImg.png" class="replyCountImg">
+					<span class="replyCountText">${timeline.replyCount}</span>
+				</div>
 		</div>
-	<div>
+</div>
+
+<div class="layout">
 			
 		       	
 				<c:set var="loopCount" value="0" />
@@ -84,17 +79,11 @@
 						  <c:set var="loopCount" value="${status.index + 1}" />
 						</c:if>
 			        </c:forEach>
-			        
-
-				
-				<div style="height: 87px;"></div>
 		        
-		        <div class="modalBox detailDisNone"> 
-			        <div class="btnBox"><a class="finishBtnz" href="/bucket/successaction?bucketSeq=${bucketOne.bucketSeq }">완료하기</a></div>		       	
+		        <div class="modalBox detailDisNone"> 		       	
 			        <div class="btnBox"><a class="modifyBtn" href="/bucket/modifybucket?bucketSeq=${bucketOne.bucketSeq }">수정하기</a></div>
 			        <div class="btnBox"><a class="deleteBtn" href="/bucket/invisibleaction?bucketSeq=${bucketOne.bucketSeq }">삭제하기</a></div>
 			        <div class="btnBox detailCancelBtn">취소</div>
-			        <div class="btnBox" style="height: 67px !important;"></div>
 		        </div>
 
 		</div>

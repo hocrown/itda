@@ -17,6 +17,7 @@
 		<img src="../image/vector.png" class="gobackbtn">
 		<img src="../image/timeline/write.png" class="writebtn">
 	</div>
+	
 	<div class="postBanner">	
 			<img src="../image/timeline/mainpicture.png" class="timelineMainImg">
 			<img src="../image/timeline/mainpictureBlind.png" class="blindImg">

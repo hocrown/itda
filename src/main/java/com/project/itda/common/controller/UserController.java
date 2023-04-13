@@ -31,6 +31,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.project.itda.common.model.UserModel;
 import com.project.itda.common.service.IUserService;
 import com.project.itda.dailyquestion.controller.DailyQuestionController;
+import com.project.itda.dailyquestion.model.DailyQuestionModel;
+import com.project.itda.dailyquestion.service.IDailyQuestionService;
 
 @Controller
 public class UserController {
@@ -40,6 +42,9 @@ public class UserController {
 	
 	@Autowired
 	DailyQuestionController dailyQuestionController;
+	
+	@Autowired
+	IDailyQuestionService dailyService;
 	
 	@Autowired
 	private SimpMessagingTemplate messagingTemplate;
@@ -234,6 +239,26 @@ public class UserController {
 		return "user/requestBox";
 	}
 	
+	@ResponseBody
+	@PostMapping("/user/requestquestion")
+	public String requestQuestion(HttpSession session, @RequestBody DailyQuestionModel requestQuestion) {
+		System.out.println("타입 : " +requestQuestion.getType());
+		UserModel loginuser = (UserModel) session.getAttribute("loginUser");
+		String userName = loginuser.getUserName();
+		int familySeq = loginuser.getFamilySeq();
+		String userId = loginuser.getUserId();
+		int visible = requestQuestion.getType().equals("family") ? 1 : 0;
+		
+		requestQuestion.setVisible(visible);
+		requestQuestion.setWriter(userName);
+		requestQuestion.setFamilySeq(familySeq);
+		requestQuestion.setWriter(userId);
+		
+		dailyService.insertQuestion(requestQuestion);
+		
+		return "질문 등록이 완료되었습니다.";
+	}
+	
 	
 	@PostMapping("/user/updateUserInfo")
 	@ResponseBody
@@ -253,6 +278,16 @@ public class UserController {
 	      return "fail";
 	    }
 	  }
+	
+	
+	@RequestMapping("/user/logout")
+	  public String logout(HttpSession session) {
+	    // 세션을 만료시킴
+	    session.invalidate();
+	    // 첫 페이지로 리다이렉트
+	    return "redirect:/";
+	  }
+	
 	
 	
 	

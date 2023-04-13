@@ -29,7 +29,12 @@ $(document).ready(function(){
 		window.location.href = '/user/myinfo';		  
 	});
 	
-	$("#itdaQnA").click(function(){
-		window.location.href = '/user/myinfo';		  
+	$("#itdaQuestion").click(function(){
+		window.location.href = '/user/requestbox';		  
+	});
+	  // 로그아웃 버튼 클릭 이벤트 등록
+  	$(".myPageLogoutBtn").click(function() {
+		sessionStorage.clear
+		window.location.href= '/user/logout';
 	});
 });

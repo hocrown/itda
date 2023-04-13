@@ -2,23 +2,23 @@ package com.project.itda.common;
 
 
 public class AlarmRequest {
-    private String targetUserId;
+    private String userId;
     private String alarm;
 
     public AlarmRequest() {
     }
 
-    public AlarmRequest(String targetUserId, String alarm) {
-        this.targetUserId = targetUserId;
+    public AlarmRequest(String userId, String alarm) {
+        this.userId = userId;
         this.alarm = alarm;
     }
 
-    public String getTargetUserId() {
-        return targetUserId;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setTargetUserId(String targetUserId) {
-        this.targetUserId = targetUserId;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getAlarm() {

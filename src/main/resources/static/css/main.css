@@ -58,10 +58,13 @@ a{
 	position: absolute;
 	width: 14px;
 	height: 14px;
-	right: 17.3%;
+	right: 16.5%;
 	top: 50%;
 	z-index: 1;
-	
+}
+
+.alarmMark.hidden {
+  display: none;
 }
 
 .stickerPageLink {

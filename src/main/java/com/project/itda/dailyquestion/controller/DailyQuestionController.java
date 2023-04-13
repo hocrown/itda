@@ -89,6 +89,8 @@ public class DailyQuestionController {
 	    if (dailyAnswer == null) {
 
 	    }
+	    
+	    
 	    //출력할 내용들 모델에 담음.
 	    model.addAttribute("dailyAnswer", dailyAnswer);
 		model.addAttribute("familyQuestion", getFamilyQuestion);

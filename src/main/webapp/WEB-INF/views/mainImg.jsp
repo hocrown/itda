@@ -13,7 +13,7 @@
 		<div class="headBox">
 			잇 다
 			<img class="bell" src="/image/bell.png">
-			<img class="alarmMark" src="/image/alarmMark.png">
+			<img class="alarmMark hidden" src="/image/alarmMark.png">
 			<img class="myImg" src="/image/myImg.png">		
 		</div>
 		

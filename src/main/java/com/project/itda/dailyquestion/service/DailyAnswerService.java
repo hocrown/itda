@@ -1,6 +1,5 @@
 package com.project.itda.dailyquestion.service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +36,12 @@ public class DailyAnswerService implements IDailyAnswerService {
 	public int countAnsweredFamilyMember(int familySeq, int dailyQuestionSeq) {
 		int answeredFamilyMemberCount = dailyAnswerRepository.countAnsweredFamilyMember(familySeq, dailyQuestionSeq);		
 		return answeredFamilyMemberCount;
+	}
+
+	@Override
+	public DailyAnswerModel getMyAnswer(String userId, int dailyQuestionSeq) {
+		DailyAnswerModel myAnswer = dailyAnswerRepository.getMyAnswer(userId, dailyQuestionSeq);
+		return myAnswer;
 	}
 
 }

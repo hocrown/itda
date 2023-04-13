@@ -7,7 +7,7 @@ public class DailyQuestionModel {
 
 	private int dailyQuestionSeq;
 	private String question;
-	private String qusetionType;
+	private String type;
 	private int familySeq;
 	private int visible;
 	private String writer;

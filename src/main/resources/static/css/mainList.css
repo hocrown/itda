@@ -6,7 +6,7 @@
 	height: 174px;
 	left: 15px;
 	top: 661px;
-	background-image: url( "../image/questionBox.png" );
+	background-image: url(../image/questionBox.png);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -54,6 +54,7 @@
 	text-align: center;
 	letter-spacing: 0.05em;
 	color: #2A221D;
+	box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
 }
 
 .whisperTextBox {
@@ -75,6 +76,7 @@
 	text-align: center;
 	letter-spacing: 0.05em;
 	color: #2A221D;
+	box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
 }
 
 .whisperText1 {
@@ -106,6 +108,7 @@
 	text-align: center;
 	letter-spacing: 0.05em;
 	color: #2A221D;
+	box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
 }
 
 .timelineTextBox {
@@ -127,4 +130,16 @@
 	text-align: center;
 	letter-spacing: 0.05em;
 	color: #2A221D;
+	box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dailyQuestionText{
+	position: absolute;
+	top: 10%;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	letter-spacing: 0.06em;
+	color: gray;
 }

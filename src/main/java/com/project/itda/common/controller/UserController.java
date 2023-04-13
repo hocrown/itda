@@ -255,6 +255,16 @@ public class UserController {
 	  }
 	
 	
+	@RequestMapping("/user/logout")
+	  public String logout(HttpSession session) {
+	    // 세션을 만료시킴
+	    session.invalidate();
+	    // 첫 페이지로 리다이렉트
+	    return "redirect:/";
+	  }
+	
+	
+	
 	
 	
 }

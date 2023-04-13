@@ -12,7 +12,7 @@
 		<div class="headBox">
 			잇 다
 			<img class="bell" src="/image/bell.png">
-			<img class="alarmMark" src="/image/alarmMark.png">
+			<img class="alarmMark hidden" src="/image/alarmMark.png">
 			<img class="myImg" src="/image/myImg.png">		
 		</div>
 
@@ -24,6 +24,7 @@
 		<div class="timelineTextBox">타임라인</div>
 
 		<div class="questionBox">
+			<span class="dailyQuestionText">오늘의 질문</span>
 			<span class="questionText">${todayFamilyQuestion.question}</span>
 		</div>
 

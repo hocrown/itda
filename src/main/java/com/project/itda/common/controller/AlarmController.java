@@ -1,6 +1,5 @@
 package com.project.itda.common.controller;
 
-import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -29,9 +28,9 @@ public class AlarmController {
     @Autowired
     private IAlarmRepository alarmService;
 
-    @MessageMapping("/notifications")
+    @MessageMapping("/alarm/{userId}")
     public void sendAlarmToUser(AlarmRequest request) {
-        String userId = request.getTargetUserId();
+        String userId = request.getUserId();
         String alarm = request.getAlarm();
         messagingTemplate.convertAndSendToUser(userId, "/queue/alarm", alarm);
     }

@@ -71,3 +71,14 @@
 	right: 140px;
 	width: 90px;
 }
+
+.dailyQuestionText{
+	position: absolute;
+	top: 10%;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	letter-spacing: 0.06em;
+	color: gray;
+}

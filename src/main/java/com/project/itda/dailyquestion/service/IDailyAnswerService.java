@@ -16,4 +16,7 @@ public interface IDailyAnswerService {
 	List<FamilyAnswerModel> getFamilyAnswers(int familySeq, int dailyQuestionSeq);
 
 	int countAnsweredFamilyMember(@Param("familySeq") int familySeq, @Param("dailyQuestionSeq") int dailyQuestionSeq);
+	
+	DailyAnswerModel getMyAnswer(String userId, int dailyQuestionSeq);
+
 }

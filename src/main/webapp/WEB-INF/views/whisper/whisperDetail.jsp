@@ -32,15 +32,21 @@
 		<!-- 모달 창 -->
 		<div class="modal">
 		  <div class="modal-content">
-		    <span class="modal-deleteText">정말 삭제하시겠습니까?</span>
-		    <div class="modal-buttons">
-		      <button id="cancel-button">취소</button>
-		      <button id="delete-button">삭제</button>
+		    <div class="modal-deleteText">정말 삭제하시겠습니까?</div>
+		    <div class="modal-btn-box">
+		    	<button class="btn-cancel-area">취소</button>
+		    	<button class="btn-delete-area">삭제</button>
 		    </div>
 		  </div>
 		</div>
 
 	
 	</div>
+	
+	<script>
+	$(document).on('click', function(event){
+		console.log(event.target);
+	});
+	</script>
 </body>
 </html>

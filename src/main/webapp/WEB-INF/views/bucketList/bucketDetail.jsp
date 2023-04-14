@@ -15,17 +15,16 @@
 	<div class="layout">
 		
 		<div class="headBox">
-			<a><img src="../image/vector.png" class="vector">
+			<img src="../image/vector.png" class="vector">
 			소망을 잇다
 			<img src="../image/ellipsis.png" class="bucketDetailEllipsis">
-		</div>
+		</div>	
 		
 		<div class="layoutz">
 		
 		        
 		
-
-		        <img src="..${bucketOne.filepath }" style="width:100%; min-height: 250px;">
+				<img src="data:image/png;base64,${base64ImageData}" style="width:100%; min-height: 250px;"/>
 		        <div class="bucketDetailContainer">
 		        	<div style="margin-left: 20px;">
 				        <div class="bucketTextBox">

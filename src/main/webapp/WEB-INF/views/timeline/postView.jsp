@@ -26,7 +26,6 @@
 	<div class="allPostLayout">
 		<c:forEach var="timeline" items="${post}">
 		
-		
 		<div class="postLayout">
 			
 			<div class="postInfo">
@@ -48,6 +47,12 @@
 				     	  <span class="replyCountText">${timeline.replyCount}</span>
 						</div>
 		</div>
+		
+						<%-- <div class="replyCountBox">
+					        <img src="../image/bucket/replyCountImg.png" class="replyCountImg">
+					        <span class="replyCountText">${replyCount }</span>
+				        </div> --%>
+		
 		<c:set var="loopCount" value="0" />
 		    <c:forEach items="${reply}" var="reply" varStatus="status">
 				<c:if test="${status.last}">

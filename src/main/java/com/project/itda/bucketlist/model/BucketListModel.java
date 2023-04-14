@@ -1,6 +1,9 @@
 package com.project.itda.bucketlist.model;
 
 import java.util.Date;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -14,7 +17,8 @@ public class BucketListModel {
 	private String type;
 	private int familySeq;
 	private String visible;
-	private String filename;
-	private String filepath;
 	private Date finishDate;
+	private MultipartFile file;
+	private String fileName;
+	private byte[] fileData;
 }

@@ -83,4 +83,20 @@
   		]]>
   	</update>
   	
+  	<insert id="insertNickName" parameterType="com.project.itda.common.model.NickNameModel">
+  		<![CDATA[
+  			INSERT INTO
+  			NICKNAME (nicknameSeq, userId, targetUserId, targetNickName, selfNickName)
+  			VALUES (nickNameSeq.nextval, #{userId}, #{targetUserId}, #{targetNickName}, #{selfNickName})
+  		]]>
+  	</insert>
+	
+	<update id="updateSelfNickName" parameterType="String">
+		<![CDATA[
+			UPDATE NICKNAME SET SELFNICKNAME = #{selfNickName} 
+			WHERE userId = #{userId}
+		]]>
+	</update>
+	
+	
 </mapper>

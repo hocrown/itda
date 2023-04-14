@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.itda.common.CheckAuth;
 import com.project.itda.common.model.FamilyModel;
 import com.project.itda.common.model.UserModel;
 import com.project.itda.common.service.UserService;
@@ -54,6 +55,10 @@ public class DailyQuestionController {
 	//가족 질문 가져오기
 	@GetMapping("/dailyquestion/dailylist")
 	public String dailyList(Model model, HttpSession session) {
+		
+		//로그인 유저인지 검증
+		CheckAuth.checkLogin(session);
+				
 		int familySeq = (Integer) session.getAttribute("famSeq");
 		List<FamilyQuestionModel> familyQuestions =  familyQuestionService.getQuestionListByFamilySeq(familySeq);
 		

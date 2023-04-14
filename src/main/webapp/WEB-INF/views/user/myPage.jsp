@@ -19,7 +19,6 @@
 		<div class="myPageItemBox" id="myInfo">
 			<div class="myPageItemText">내 정보</div>
 			<img src="../image/vector.png" class="myPageSmallVector">
-			
 		</div>
 		<div style="margin:auto; height: 1px; border-bottom: solid 1px; width: 320px;"></div>
 		

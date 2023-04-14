@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.itda.common.dao.IUserRepository;
 import com.project.itda.common.model.FamilyModel;
+import com.project.itda.common.model.NickNameModel;
 import com.project.itda.common.model.UserModel;
 
 @Service
@@ -85,6 +86,16 @@ public class UserService implements IUserService {
 	@Override
 	public void updateUserInfo(UserModel user) {
 		userRepository.updateUserInfo(user);		
+	}
+
+	@Override
+	public void insertNickName(NickNameModel nickname) {
+		userRepository.insertNickName(nickname);
+	}
+
+	@Override
+	public void updateNickName(NickNameModel nickname) {
+		userRepository.updateNickName(nickname);
 	}
 	
 }

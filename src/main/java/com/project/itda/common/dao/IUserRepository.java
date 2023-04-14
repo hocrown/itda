@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.project.itda.common.model.FamilyModel;
+import com.project.itda.common.model.NickNameModel;
 import com.project.itda.common.model.UserModel;
 
 @Repository
@@ -28,5 +29,11 @@ public interface IUserRepository {
 	//사용 할지 말지 모르는 메소드
 	int modifyMyInfo(String userPw, String userAddress, 
 			String userAddressDetail, String userPhone, String email);
+	
 	void updateUserInfo(UserModel user);
+	void insertNickName(NickNameModel nickname);
+	
+	void updateNickName(NickNameModel nickname);
+	
+	
 }

@@ -1,12 +1,12 @@
 package com.project.itda.common.model;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 import lombok.Data;
 
 @Data
 public class UserModel {
+
 	private String userId;
 	private int familySeq;
 	private String userPw;
@@ -23,4 +23,7 @@ public class UserModel {
 	private int month;
 	private int day;
 	private String famCode;
+	private byte[] userImageData;
+	private String userImageName;
+	
 }

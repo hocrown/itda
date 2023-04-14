@@ -6,8 +6,10 @@ import lombok.Data;
 
 @Data
 public class PokingModel {
+	
 	private int pokingSeq;
 	private String sender;
 	private String receiver;
 	private Date pokeDate;
+	
 }

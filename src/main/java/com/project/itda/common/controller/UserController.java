@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.project.itda.common.model.NickNameModel;
 import com.project.itda.common.model.UserModel;
 import com.project.itda.common.service.IUserService;
 import com.project.itda.dailyquestion.controller.DailyQuestionController;
@@ -188,6 +189,12 @@ public class UserController {
 			// insertUser 메소드로 itda_user 테이블에 데이터를 입력합니다.
 			user.setFamilySeq(famSeq);
 			userService.insertUser(user);
+			
+			// NickName 설정
+			NickNameModel nickname = new NickNameModel();;
+			nickname.setUserId(userId);
+			nickname.setSelfNickName(user.getUserName());
+			userService.insertNickName(nickname);
 			// 데이터 입력에 성공하면 "success" 문자열을 반환합니다.
 			return "success";
 		} catch (DuplicateKeyException e) {
@@ -281,15 +288,10 @@ public class UserController {
 	
 	
 	@RequestMapping("/user/logout")
-	  public String logout(HttpSession session) {
-	    // 세션을 만료시킴
-	    session.invalidate();
-	    // 첫 페이지로 리다이렉트
-	    return "redirect:/";
-	  }
-	
-	
-	
-	
-	
+	public String logout(HttpSession session) {
+	// 세션을 만료시킴
+	session.invalidate();
+	// 첫 페이지로 리다이렉트
+	return "redirect:/";
+	}
 }

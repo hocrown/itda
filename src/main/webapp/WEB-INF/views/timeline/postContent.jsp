@@ -15,7 +15,7 @@
 <div class="layout">
 		<div class="headBox">
 			<img src="../image/vector.png" class="gobackbtn">
-			<img src="../image/ellipsis.png" class="timeLineEllipsis">
+			<img src="../image/ellipsis.png" class="detailEllipsis">
 		</div>
 		<div class="postLayout">
 				<div class="postInfo">
@@ -33,12 +33,7 @@
 				</div>
 		</div>
 </div>
-
-<div class="layout">
-			
-		       	
-				<c:set var="loopCount" value="0" />
-		       	
+		<c:set var="loopCount" value="0" />
 		        
 			        <c:forEach items="${reply}" var="reply" varStatus="status">
 				        <div>
@@ -48,51 +43,72 @@
 						        	<img src="../image/bucket/replyEllipsis.png" class="replyEllipsis replyEachEllipsis${status.index }">
 						        	<div class="replyModal replyEachModal${status.index }">
 						        		<div class="replyModalBtn reMoBtn" id="replyModifyBtnz${status.index }">수정</div>
-						        		<form action="/bucket/deletereplyaction" id="deleteReplyForm${status.index }" method="post">
+						        		<form action="/familypost/deletereplyaction" id="deleteReplyForm${status.index }" method="post">
 						        			<input type="hidden" name="replySeq" value="${reply.replyseq }">
-						        			<input type="hidden" name="postSeq" value="${reply.posttSeq }">
+						        			<input type="hidden" name="postSeq" value="${reply.postSeq}">
 						        			
 							        		<div onclick="document.getElementById('deleteReplyForm${status.index }').submit();" class="replyModalBtn" style="color: #E16646;">삭제</div>
 						        		</form>
 						        	</div>
 							        <div class="userNameText">${reply.userName }</div>
-							        <div class="replyContentsText replyContentsTextz${status.index }">${reply.replyContents }</div>
+							        <div class="replyContentsText replyContentsTextz${status.index }">${reply.replyContent}</div>
 							        
-							        <form action="/bucket/modifyreplyaction" method="post" id="modifyReplyForm${status.index }" class="editReplyForm modifyReplyFormz${status.index }">
-							        	<input class="replyInput" type="text" name="replyContents" value="${reply.replyContents }" spellcheck="false">
+							        <form action="/familypost/updatereplyaction" method="post" id="modifyReplyForm${status.index }" class="editReplyForm modifyReplyFormz${status.index }">
+							        	<input class="replyInput" type="text" name="replyContent" value="${reply.replyContent}" spellcheck="false">
 							        	<div class="bottom-border"></div>
-							        	<input type="hidden" name="bucketSeq" value="${reply.bucketSeq }">
-							        	<input type="hidden" name="bucketReplySeq" value="${reply.bucketReplySeq }">
+							        	<input type="hidden" name="postSeq" value="${reply.postSeq }">
+							        	<input type="hidden" name="ReplySeq" value="${reply.replySeq }">
 							        	<div class="modifyReplyBtnBox">
 								        	<button type="button" class="modifyReplyCancelBtn modifyReplyCancelBtnz${status.index }">취소</button>
 								        	<input class="modifyReplyModifyBtn" value="수정" type="button" alt="수정" onclick="document.getElementById('modifyReplyForm${status.index }').submit();">
 							        	</div>
 							        </form>
 							        
-							        <div class="replyRegDateText"><fmt:formatDate value="${reply.regDate}" pattern="yyyy.MM.dd a hh:mm"/></div>
+							        <div class="replyRegDateText"><fmt:formatDate value="${reply.regDate}" pattern="yyyy년 MM월 dd일 a hh:mm"/></div>
 							        <div style="height: 8px;"></div>
-							        
-				        		</div>
+							        </div>
 					        </div>
 					    </div>
 					    <c:if test="${status.last}">
 						  <c:set var="loopCount" value="${status.index + 1}" />
 						</c:if>
 			        </c:forEach>
+			        
+			        
+			 
 		        
-		        <div class="modalBox detailDisNone"> 		       	
-			        <div class="btnBox"><a class="modifyBtn" href="/bucket/modifybucket?bucketSeq=${bucketOne.bucketSeq }">수정하기</a></div>
-			        <div class="btnBox"><a class="deleteBtn" href="/bucket/invisibleaction?bucketSeq=${bucketOne.bucketSeq }">삭제하기</a></div>
-			        <div class="btnBox detailCancelBtn">취소</div>
-		        </div>
+<!-- 		        <div class="modalBox detailDisNone"> 		       	 -->
+<%-- 			        <div class="btnBox"><a class="modifyBtn" href="/familypost/updatepost?postSeq=${timeline.postSeq}">수정하기</a></div> --%>
+<%-- 			        <div class="btnBox"><a class="deleteBtn" href="/familypost/deleteaction?postSeq=${timeline.postSeq }">삭제하기</a></div> --%>
+<!-- 			        <div class="btnBox detailCancelBtn">취소</div> -->
+<!-- 		        </div> -->
+		        
+		        <!-- 모달 창 -->
+		        <div class="detailDeleteBox">
+					<div class="detailModifyText">수정하기</div>
+					<span class="detailDeleteText">삭제하기</span>
+					<input type="hidden" id="postSeq" value="${timeline.postSeq}">
+				</div>
+        		
+        		
+        		
+				<div class="modal">
+				  <div class="modal-content">
+				    <div class="modal-deleteText">정말 삭제하시겠습니까?</div>
+				    <div class="modal-btn-box">
+				    	<button class="btn-cancel-area">취소</button>
+				    	<button class="btn-delete-area">삭제</button>
+				    </div>
+				  </div>
+				</div>
 
 		</div>
 	</div>
 	
-	<form action="/bucket/addbucketreplyaction" method="post" class="addReplyForm">
+	<form action="/familypost/insertreplyaction" method="post" class="addReplyForm">
 	<div class="inputReplyBox">
-		<input type="hidden" name="bucketSeq" value="${bucketOne.bucketSeq }">
-		<input name="replyContents" type="text" placeholder="응원의 말을 남겨주세요." class="inputReply">
+		<input type="hidden" name="postSeq" value="${timeline.postSeq }">
+		<input name="replyContents" type="text" placeholder="댓글을 남겨주세요." class="inputReply">
 		<input class="replyAddImg" type="image" src="../image/bucket/replyAddImg.png" alt="완료" onclick="document.getElementById('addReplyForm').submit();">
 	</div>
 	</form>
@@ -134,25 +150,6 @@
 		 
 	</script>
 	
-
-	
-	<script>
-	const ellipsis = document.querySelector('.bucketDetailEllipsis');
-
-	// add a click event listener to the ellipsis image
-	ellipsis.addEventListener('click', () => {
-	  // get the element you want to toggle the class on
-	  const element = document.querySelector('.modalBox');
-	  // toggle the "disNone" class on the element
-	  element.classList.toggle('detailDisNone');
-	});
-	
-	$('.detailCancelBtn').on('click', function() {
-		  $(this).closest('.modalBox').addClass('detailDisNone');
-		});
-	</script>
-	
-
 
 </body>
 </html>

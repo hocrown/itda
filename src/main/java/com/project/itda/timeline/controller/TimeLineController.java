@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.itda.common.model.UserModel;
@@ -74,13 +75,11 @@ public class TimeLineController {
 	}
 	
 	//게시글 수정 페이지
-	@GetMapping("familypost/updatepost")
-	public String updatePost(@RequestParam("postSeq")int postSeq, Model model) {
-		TimeLineModel postOne = timelineService.getContent(postSeq);
-		
-		model.addAttribute("postOne", postOne);
-		
-		return "timeline/updatePost;";
+	@PostMapping("/familypost/updatepost")
+	@ResponseBody
+	public TimeLineModel updatePost(int postSeq) {
+	    TimeLineModel postOne = timelineService.getContent(postSeq);
+	    return postOne;
 	}
 	
 	

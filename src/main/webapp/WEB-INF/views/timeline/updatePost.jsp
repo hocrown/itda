@@ -8,10 +8,11 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/timeline/updatePost.css">
 
+
 </head>
 <body>
 	<div class="layout">
-		<form class="updatePostForm" action="/familypost/updateaction method="post" enctype="multipart/form-data">
+		<form class="updatePostForm" action="/familypost/updateaction" method="post" enctype="multipart/form-data">
 			<div class="headBox">
 				<img src="../image/vector.png" class="gobackbtn">
 				<input class="finishBtn" type="image" src="../image/finishBtn.png" alt="완료" onclick="document.getElementById('insertContentarea').submit();">

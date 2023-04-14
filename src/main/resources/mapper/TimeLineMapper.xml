@@ -34,8 +34,8 @@
 	
 	<insert id="insertPost"  
 		parameterType="com.project.itda.timeline.model.TimeLineModel">
-			INSERT INTO TIMELINE (postSeq, userId, createDate, content, familySeq, filename, filepath)
-               VALUES (postSeq.NEXTVAL, #{userId}, SYSDATE, #{content}, #{familySeq}, #{filename}, #{filepath})
+			INSERT INTO TIMELINE (postSeq, userId, createDate, content, familySeq, filename, filepath, visible)
+               VALUES (postSeq.NEXTVAL, #{userId}, SYSDATE, #{content}, #{familySeq}, #{filename}, #{filepath},1)
 	</insert>
 	
 	<update id="updatePost"

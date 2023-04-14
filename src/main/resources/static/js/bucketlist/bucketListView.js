@@ -15,6 +15,6 @@ $(document).ready(function(){
     });
 	
 	$(".headBox .addBtn").click(function(){
-		location.href = "/bucket/addfamilybucket"; 
+		location.href = "/bucket/addbucket"; 
 	});
 });

@@ -1,0 +1,192 @@
+@charset "UTF-8";
+
+#previewImage[src="#"] {
+	display: none;
+}
+
+.titleBox{
+	position: relative;
+	margin-top: 100px;
+}
+
+.writeTitleTextarea {
+	position:absolute;
+	left:82px;
+	top:10px;
+	width: 255px;
+	font-family: 'Bookk Myungjo';
+	font-size: 18px;
+	background: none;
+	border: none;
+	outline: none;
+}
+
+.addImgBox {
+	position: relative;
+	width: 393px;
+	margin-top: 200px;
+	min-height: 187px;
+	text-align: center;
+	background: rgba(177, 125, 90, 0.06);
+	border-radius: 20px;
+}
+
+.addImgImg {
+	width: 100%;
+	height: 100%;
+}
+
+.imgAddPlzText {
+	position: absolute;
+	top: 40%;
+	left: 26%;
+	font-family: 'Bookk Myungjo';
+	margin-top: 0px;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	align-items: center;
+	text-align: center;
+	color: #9D9690;
+}
+
+.addBucketTextareaBox {
+	background-image: url("../../image/bucket/bucketContentBackImg.png");
+	height:350px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.addBucketTextarea {
+	width: 90%;
+	height: 99%;
+	font-family: 'Bookk Myungjo';
+	font-size: 16px;
+	line-height: 41px;
+	letter-spacing: 0.05em;
+	color: #2A221D;
+	outline: none;
+	resize: none;
+	background: none;
+	border: none;
+	resize: none;
+}
+
+.bucketWriteText {
+	font-family: 'Bookk Myungjo';
+	font-size: 25px;
+	margin-top: 20px;
+	margin-left: 30px;
+}
+
+.typeBox {
+	position: relative;
+	margin-top: 20px;
+	margin-left: 30px;
+}
+
+.typeText {
+	position: absolute;
+	font-family: 'Bookk Myungjo';
+	font-size: 20px;
+	left: 0;
+	top: 8.7px;
+}
+
+.radioLabelFamily {
+	position: absolute;
+	left: 72px;
+	top: 0px;
+	width: 151px;
+	height: 42px;
+	border-radius: 20px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+}
+
+.radioLabelPersonal {
+	position: absolute;
+	left: 200px;
+	top: 0 px;
+	width: 151px;
+	height: 42px;
+	border-radius: 20px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+}
+
+.radioTypeInput {
+	display: none;
+}
+
+.ellipseFamily {
+	margin-left: 15%;
+	width: 22px;
+	height: 22px;
+	background: rgba(176, 151, 144, 0.4);
+	border-radius: 20px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+}
+
+.ellipsePersonal {
+	margin-left: 15%;
+	width: 22px;
+	height: 22px;
+	background: rgba(176, 151, 144, 0.4);
+	border-radius: 20px;
+	width: 22px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+}
+
+.familyText {
+	margin-left: 10%;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	color: #2A221D;
+}
+
+.personalText {
+	margin-left: 10%;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	color: #2A221D;
+	font-family: 'Bookk Myungjo';
+}
+
+.radioClickEllipse {
+	width: 16px;
+	height: 16px;
+	background: rgba(176, 151, 144, 0.8);
+	border-radius: 20px;
+	margin: auto;
+	padding: 0;
+}
+
+.titleText{
+	position: absolute;
+left: 30px;
+top: 11px;
+font-family: 'Bookk Myungjo';
+font-size: 20px;	
+}
+
+.titleUnderline{
+	position: absolute;
+left: 82px;
+top: 32.92px;
+	
+}

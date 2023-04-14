@@ -1,12 +1,9 @@
 package com.project.itda.bucketlist.service;
 
-import java.io.File;
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.project.itda.bucketlist.dao.IBucketListRepository;
 import com.project.itda.bucketlist.model.BucketListModel;
@@ -33,79 +30,52 @@ public class BucketListService implements IBucketListService {
 		List<BucketReplyModel> reply = bucketRepository.getBucketReply(bucketSeq);
 		return reply;
 	}
+	
+	
+	
 	@Override
-	public void addBucketList(BucketListModel bucketListModel, MultipartFile file) throws Exception {
+	public void addBucketList(BucketListModel bucketListModel) {
 		
-		String prjPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files"; 
+		bucketRepository.insertBucket(bucketListModel);
 		
-		UUID uuid = UUID.randomUUID();
-		
-		String fileName = uuid + "_" + file.getOriginalFilename();
-		
-		File saveFile = new File(prjPath, fileName);
-		
-		file.transferTo(saveFile);
-		bucketListModel.setFilename(fileName);
-		bucketListModel.setFilepath("/files/" + fileName);
-		bucketRepository.insertFamily(bucketListModel);
 	}
+	
+	
 	@Override
-	public BucketListModel getFamilyBucketDetail(int bucketSeq) {
+	public BucketListModel getBucketDetail(int bucketSeq) {
 		
 		return bucketRepository.getOneFamilyBucket(bucketSeq);
 	}
+	
+	// 버킷 삭제 시 안보이게 처리
 	@Override
 	public void BucketInvisible(int bucketSeq) {
 		
 		bucketRepository.invisible(bucketSeq);
 	}
 
+	// 버킷 수정
 	@Override
-	public void updateBucket(BucketListModel bucketListModel, MultipartFile file) throws Exception {
-		String prjPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
+	public void updateBucket(BucketListModel bucketListModel) {
 
-		UUID uuid = UUID.randomUUID();
-
-		String fileName = uuid + "_" + file.getOriginalFilename();
-
-		File saveFile = new File(prjPath, fileName);
-
-		file.transferTo(saveFile);
-		bucketListModel.setFilename(fileName);
-		bucketListModel.setFilepath("/files/" + fileName);
-
-		bucketRepository.update(bucketListModel);
+		bucketRepository.updateBucket(bucketListModel);
 	}
-	
-	@Override
-	public void addPersonalBucketList(BucketListModel bucketListModel, MultipartFile file) throws Exception {
-		
-		String prjPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files"; 
-		
-		UUID uuid = UUID.randomUUID();
-		
-		String fileName = uuid + "_" + file.getOriginalFilename();
-		
-		File saveFile = new File(prjPath, fileName);
-		
-		file.transferTo(saveFile);
-		bucketListModel.setFilename(fileName);
-		bucketListModel.setFilepath("/files/" + fileName);
-		bucketRepository.insertPersonal(bucketListModel);
-	}
-	
+
+	// 버킷 완료 처리
 	@Override
 	public void BucketSuccess(int bucketSeq) {
 		
 		bucketRepository.success(bucketSeq);
 	}
 	
+	// 댓글 작성
 	@Override
 	public void addBucketReply(BucketReplyModel bucketReplyModel) {
 		
 		bucketRepository.insertReply(bucketReplyModel);
 	}
 	
+	// 해당 버킷 댓글 수 불러오기
 	@Override
 	public int countBucketOneReply(int bucketSeq) {
 		int replyCount = bucketRepository.countBucketOneReply(bucketSeq);
@@ -113,13 +83,17 @@ public class BucketListService implements IBucketListService {
 		return replyCount;
 	}
 	
+	// 댓글 수정
 	@Override
 	public void updateReply(BucketReplyModel bucketReplyModel) {
 		bucketRepository.updateReply(bucketReplyModel);
 	}
 	
+	// 댓글 삭제
+	@Override
 	public void deleteReply(int bucketReplySeq) {
 		bucketRepository.deleteReply(bucketReplySeq);
 	}
+
 	
 }

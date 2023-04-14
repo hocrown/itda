@@ -28,7 +28,6 @@
 	<div class="allPostLayout">
 		<c:forEach var="timeline" items="${post}">
 		
-		
 		<div class="postLayout">
 			
 			<div class="postInfo">

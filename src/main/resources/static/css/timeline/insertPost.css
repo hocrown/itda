@@ -1,1 +1,63 @@
-@charset "EUC-KR";
+@charset "UTF-8";
+#previewImage[src="#"] {
+  display: none;
+}
+
+.gobackbtn{
+   position: absolute;
+   width: 20px;
+   height: 20px;
+   left: 15px;
+   top: 22px;
+}
+
+.insertPostForm{
+position: absolute;
+width: 393px;
+height: 541px;
+left: 1.08px;
+top: 63px;
+}
+
+.insertContentareaBox{
+	height: 470px;
+	background: #FFFFFF;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.insertContentarea{
+	width: 90%;
+	height: 90%;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 22px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.05em;
+	color: #2A221D;
+	outline: none;
+	resize: none;
+	background: none;
+	border: none;
+	resize: none;
+}
+
+.addImgBox{
+	width: 143.99px;
+	height: 26.61px;
+	left: 22px;
+	top: 811px;
+}
+
+.addImgImg{
+position: absolute;
+width: 143.99px;
+height: 26.61px;
+left: 22px;
+top: 811px;
+}

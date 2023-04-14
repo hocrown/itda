@@ -62,7 +62,8 @@ public class TimeLineService implements ITimeLineService {
 
 		timeLineRepository.updatePost(timeLineModel);
 	}
-		
+	
+	
 	@Override
 	public void deletePost(int postSeq) {
 		timeLineRepository.deletePost(postSeq);

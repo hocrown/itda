@@ -8,6 +8,7 @@
 <%@ include file="../head.jsp"%>
 <title>가족 게시판</title>
 <link rel="stylesheet" type="text/css" href="/css/timeline/postView.css">
+<script type="text/javascript" src="/js/timeline/postView.js"></script>
 </head>
 
 <body> 
@@ -17,6 +18,7 @@
 		<img src="../image/vector.png" class="gobackbtn">
 		<img src="../image/timeline/write.png" class="writebtn">
 	</div>
+	
 	<div class="postBanner">	
 			<img src="../image/timeline/mainpicture.png" class="timelineMainImg">
 			<img src="../image/timeline/mainpictureBlind.png" class="blindImg">
@@ -36,23 +38,21 @@
 				
 				
 				<div class="postContent">
+				<a href="/familypost/postcontent?postSeq=${timeline.postSeq}">
 					<div class="postContentText">${timeline.content}</div>
-					<img src="..${timeline.filepath}" style="width:100%; min-height: 250px;" class="userPic">
+					<img src="..${timeline.filepath}" class="userPic">
+				</a>
+					
+					<div class="replyCountBox">
+				   	  <img src="../image/bucket/replyCountImg.png" class="replyCountImg">
+				   	  <span class="replyCountText">${timeline.replyCount}</span>
+					</div>
 				</div>
-				
-				
-				
-		       			<div class="replyCountBox">
-				     	  <img src="../image/bucket/replyCountImg.png" class="replyCountImg">
-				     	  <span class="replyCountText">${timeline.replyCount}</span>
-						</div>
+		
 		</div>
-		
-						<%-- <div class="replyCountBox">
-					        <img src="../image/bucket/replyCountImg.png" class="replyCountImg">
-					        <span class="replyCountText">${replyCount }</span>
-				        </div> --%>
-		
+				
+				
+
 		<c:set var="loopCount" value="0" />
 		    <c:forEach items="${reply}" var="reply" varStatus="status">
 				<c:if test="${status.last}">

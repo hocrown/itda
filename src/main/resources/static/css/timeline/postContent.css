@@ -1,1 +1,383 @@
-@charset "EUC-KR";
+@charset "UTF-8";
+
+a {
+	text-decoration: none;
+}
+
+.gobackbtn{
+   position: absolute;
+   width: 20px;
+   height: 20px;
+   left: 15px;
+   top: 22px;
+}
+
+.timeLineEllipsis{
+	position: absolute;
+	width: 23px;
+	height: 23px;
+	left: 346px;
+	top: 20px;
+}
+
+
+.postLayout{
+   position: absolute;
+   width: 393px;
+   min-height: 300px;
+   left: 0px;
+   top: 63px;
+   background-image: url("../../image/timeline/postbackground.png");
+}
+
+
+.postInfo{
+   position: relative;
+   width: 393px;
+   height: 77px;
+   left: 0px;
+   top: 0px;
+}
+
+.profileImg{
+   position: absolute;
+   width: 48px;
+   height: 48px;
+   left: 22px;
+   top: 16px;
+}
+
+.writter{
+   position: absolute;
+   width: 114px;
+   height: 27px;
+   left: 80px;
+   top: 16px;
+   
+   font-family: 'Bookk Myungjo';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 16px;
+   line-height: 16px;
+   display: flex;
+   align-items: center;
+   letter-spacing: 0.05em;
+   
+   color: #2A221D;
+}
+
+.createDate{
+   position: absolute;
+   width: 181px;
+   height: 24px;
+   left: 80px;
+   top: 37px;
+   
+   font-family: 'Bookk Myungjo';
+   font-style: normal;
+   font-weight: 300;
+   font-size: 15px;
+   line-height: 15px;
+   display: flex;
+   align-items: center;
+   
+   color: #9D9690;   
+   
+}
+
+.postContent {
+	width: 393px;
+	left: 0px;
+	top: 0px;
+}
+
+.postContentText {
+	width: 349px;
+	text-align: justify;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 20px;
+	margin-left: 22px;
+	margin-top: 4%;
+	display: flex-start;
+	align-items: center;
+	letter-spacing: 0.05em;
+   
+	color: #2A221D;
+}
+
+.userPic{
+	width:100%;
+	margin-top: 4%;
+	min-height: 250px;
+}
+
+.replyCountBox {
+	height: 50px;
+    display: flex;
+    align-items: center;
+	margin-left: 22px;
+	margin-top: -2%;
+}
+
+.replyCountImg {
+}
+
+.replyCountText {
+   position: absolute;
+   left: 15%;
+   font-family: 'Bookk Myungjo';
+   font-style: normal;
+   font-weight: 300;
+   font-size: 15px;
+   color: #9D9690;
+}
+
+.bucketReplyContainer {
+	position: relative;
+}
+
+.bucketReplyProfile {
+	position: absolute;
+	top: 20px;
+	left: 10px;
+}
+
+.replyTextBox {
+	position: relative;
+	width: 320px;
+	left: 60px;
+	top: 15px;
+}
+
+.userNameText {
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	letter-spacing: 0.05em;
+	color: #2A221D;
+	margin-bottom: 5px;
+}
+
+.replyContentsText {
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	width: 290px;
+	align-items: center;
+	letter-spacing: 0.05em;
+	color: #2A221D;
+	padding-bottom: 5px;
+	align-items: center;
+}
+
+.replyRegDateText {
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	color: #9D9690;
+}
+
+.inputReplyBox {
+	position: fixed;
+	width: 393px;
+	height: 67px;
+	background: #FFFFFF;
+	bottom: 0px;
+	display: flex;
+	align-items: center;
+}
+
+.inputReply {
+	position: relative;
+	left: 10px;
+	box-sizing: border-box;
+	background: rgba(255, 255, 255, 0.2);
+	border: 4px solid rgba(177, 125, 90, 0.2);
+	border-radius: 20px;
+	width: 316.08px;
+	height: 47px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	letter-spacing: 0.05em;
+	color: #9D9690;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.replyAddImg {
+	position: relative;
+	left: 25px;
+	background-image: url("../../image/bucket/replyAddImg.png")
+}
+
+.replyCountBox {
+	padding-top: 10px;
+	height: 50px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	height: 50px;
+}
+
+.replyCountImg {
+	position: relative;
+}
+
+.replyCountText {
+	position: relative;
+	left: 12px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	color: #9D9690;
+}
+
+.replyEllipsis {
+	position: absolute;
+	left: 280px;
+	top: 0px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 15px;
+	
+	filter: grayscale(90%);
+}
+
+.replyModal {
+	position: absolute;
+	left: 220px;
+	top: 20px;
+	height: 70px;
+	width: 100px;
+	border: solid 1px;
+	text-align: center;
+	vertical-align: middle;
+	align-items: center;
+	background-color: white;
+	border-color: #FFC3C3;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	display: none;
+}
+
+.replyModalBtn {
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	vertical-align: middle;
+	align-items: center;
+	height: 35px;
+}
+
+.reMoBtn {
+	border-bottom: solid 1px;
+	border-color: #FFC3C3;
+}
+
+.show{
+	display: block !important;
+	
+	
+}
+
+.replyInput{
+	padding: 0px;
+	background: none;
+	width: 290px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 16px;
+	letter-spacing: 0.05em;
+	color: #2A221D;
+	border: none;
+	outline: none;
+	border-bottom: solid 2px;	
+}
+.modifyReplyBtnBox{
+	margin-top: 5px;
+	width: 290px;
+	text-align: right;
+	
+}
+
+.modifyReplyCancelBtn{
+	width: 50px;
+	height: 35px;
+	border:none;
+	outline:none;
+background: rgba(177, 125, 90, 0.15);
+border-radius: 20px;	
+font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 13px;
+	letter-spacing: 0.05em;
+}
+
+.modifyReplyModifyBtn{
+	width: 50px;
+	height: 35px;
+	border:none;
+	outline:none;
+background: rgba(177, 125, 90, 0.15);
+border-radius: 20px;	
+font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 13px;
+	letter-spacing: 0.05em;
+}
+.editReplyForm{
+	display: none;
+}
+
+.modalBox {
+	position: fixed;
+	height: 270px;
+	bottom: 0px;
+	width: 100%;
+	background-color: white;
+	text-align: center;
+	justify-content: center;
+	vertical-align: middle;
+	border-radius: 30px;
+	border-top: solid 1px;
+	border-color: #DCDAD9;
+}
+
+.btnBox {
+	height: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 18px;
+	border-top: solid 1px;
+	border-color: #DCDAD9;
+}
+
+.modifyBtn {
+	color: #2A221D;
+}
+
+.deleteBtn {
+	color: #E16646;
+}
+
+.cancelBtn {
+	color: #2A221D;
+}

@@ -14,6 +14,7 @@ public class TimeLineReplyService implements ITimeLineReplyService {
 	@Autowired
 	ITimeLineReplyRepository timeLineReplyRepository;
 	
+	
 	@Override
 	public List<TimeLineReplyModel> getReplyList(int postSeq) {
 		// TODO Auto-generated method stub
@@ -40,5 +41,6 @@ public class TimeLineReplyService implements ITimeLineReplyService {
 		int replyCount = timeLineReplyRepository.countPostOneReply(postSeq);
 		return replyCount;
 	}
+	
 
 }//end class

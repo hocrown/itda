@@ -1,6 +1,7 @@
 package com.project.itda.timeline.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,8 +40,10 @@ public class TimeLineController {
 		int familySeq = (int) session.getAttribute("famSeq"); //세션으로부터 familySeq를 받아온다.
 		List<TimeLineModel> post = timelineService.getPostList(familySeq); //받아온 해당 familySeq를 요청하여 가족 게시글을 post에 담는다.
 		model.addAttribute("post", post); //담겨진 리스트를 postView.jsp에서 post라는 이름으로 사용할 수 있게한다.
+		
 		return "timeline/postView";
 	}
+	
 	
 	//게시글 상세 정보
 	@GetMapping("/familypost/postcontent")
@@ -75,11 +79,13 @@ public class TimeLineController {
 	}
 	
 	//게시글 수정 페이지
-	@PostMapping("/familypost/updatepost")
-	@ResponseBody
-	public TimeLineModel updatePost(int postSeq) {
-	    TimeLineModel postOne = timelineService.getContent(postSeq);
-	    return postOne;
+	@GetMapping("/familypost/updatepost")
+	public String updatePost(@RequestParam("postSeq")int postSeq, Model model) {
+		TimeLineModel postOne = timelineService.getContent(postSeq);
+		
+		model.addAttribute("postOne", postOne);
+		
+		return "timeline/updatePost;";
 	}
 	
 	

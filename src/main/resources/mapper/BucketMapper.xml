@@ -10,7 +10,6 @@
 		where FAMILYSEQ = #{familySeq}
 		and TYPE = 'Family'
 		order by regDate DESC
-		
 	</select>
 	
 	<select id="getOneFamilyBucket"
@@ -42,26 +41,20 @@
 		ORDER BY r.regDate DESC
 	</select>
 	
-	<insert id="insertFamily"
+	<insert id="insertBucket"
 		parameterType="com.project.itda.bucketlist.model.BucketListModel">
-			INSERT INTO BUCKETLIST (bucketSeq ,userId, regDate, title, contents, goalDate, type, familySeq, filename, filepath)
-               VALUES (bucketSeq.NEXTVAL, #{userId}, SYSDATE, #{title}, #{contents}, NULL, 'Family', #{familySeq}, #{filename}, #{filepath})
+			INSERT INTO BUCKETLIST (bucketSeq ,userId, regDate, title, contents, goalDate, type, familySeq, visible, finishDate, fileName, fileData)
+               VALUES (bucketSeq.NEXTVAL, #{userId}, SYSDATE, #{title}, #{contents}, NULL, #{type}, #{familySeq}, 'y', NULL, #{fileName}, #{fileData})
 	</insert>
 	
-	<insert id="insertPersonal"
-		parameterType="com.project.itda.bucketlist.model.BucketListModel">
-			INSERT INTO BUCKETLIST (bucketSeq ,userId, regDate, title, contents, goalDate, type, familySeq, filename, filepath)
-               VALUES (bucketSeq.NEXTVAL, #{userId}, SYSDATE, #{title}, #{contents}, NULL, 'Personal', #{familySeq}, #{filename}, #{filepath})
-	</insert>
-	
-	<update id="update"
+	<update id="updateBucket"
 		parameterType="com.project.itda.bucketlist.model.BucketListModel">
 			update BUCKETLIST set 
 				title = #{title},
 				contents = #{contents},
-				filepath = #{filepath},
-				filename = #{filename},
-				goalDate = SYSDATE
+				fileData = #{fileData},
+				fileName = #{fileName},
+				type = #{type}
 
 				where bucketSeq = #{bucketSeq}
 	</update>
@@ -100,8 +93,9 @@
 		where BUCKETREPLYSEQ=#{bucketReplySeq}
 	</delete>
 	
+	<!-- /////////////////////////////////////////////////// -->
 	
 	
-	
+		
 	
 </mapper>

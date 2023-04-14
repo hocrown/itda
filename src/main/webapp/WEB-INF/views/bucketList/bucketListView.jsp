@@ -40,13 +40,12 @@
 		</div>
 		<div class="listLayout">
 			<div class="listContainer">
-				<c:forEach items="${bucketlist}" var="bucket">
+				<c:forEach items="${bucketlist}" var="bucket" varStatus="status">
 					<c:if test="${bucket.visible eq 'y' }">
 						<c:choose>
 							<c:when test="${not empty bucket.finishDate && bucket.finishDate <= currentDate}">
-								<a href="/bucket/familybucketdetail?bucketSeq=${bucket.bucketSeq }">
-									<img src="..${bucket.filepath }"
-									style="width: 100%; height: 155px; margin-bottom: 5px; filter: grayscale(70%);">
+								<a href="/bucket/bucketdetail?bucketSeq=${bucket.bucketSeq }">
+									<img src="data:image/png;base64,${base64ImageDataList[status.index]}" style="width: 100%; height: 155px; margin-bottom: 5px; filter: grayscale(70%);" />
 									<div style="position: relative;">
 										<img src="../image/bucket/chkLine.png" style="width: 100%">
 										<img src="../image/bucket/successStamp2.png" class="successStamp"> 
@@ -60,10 +59,8 @@
 							</c:when>
 
 							<c:otherwise>
-								<a
-									href="/bucket/familybucketdetail?bucketSeq=${bucket.bucketSeq }">
-									<img src="..${bucket.filepath }"
-									style="width: 100%; height: 155px; margin-bottom: 5px;">
+								<a href="/bucket/bucketdetail?bucketSeq=${bucket.bucketSeq }">
+									<img src="data:image/png;base64,${base64ImageDataList[status.index]}" style="width: 100%; height: 155px; margin-bottom: 5px;" />
 									<div style="position: relative;">
 										<img src="../image/bucket/chkLine.png" style="width: 100%">
 										<span class="bucketTitleSpan">${bucket.title}</span>
@@ -135,9 +132,9 @@
 
 		      // bucketList 배열을 순회하며 각 요소의 속성 값을 이용하여 HTML 문자열을 생성합니다.
 		      response.forEach(bucket => {
-		        const { bucketSeq, filepath, title, finishDate } = bucket; // bucket 객체에서 bucketSeq, bucketListImg, bucketListTitle 속성 값을 가져옵니다.
+		        const { bucketSeq,/*  filepath, */ title, finishDate } = bucket; // bucket 객체에서 bucketSeq, bucketListImg, bucketListTitle 속성 값을 가져옵니다.
 		        
-		        const bucketImgSrc = filepath ? filepath : '/image/itdaLogo.png';
+		      //  const bucketImgSrc = filepath ? filepath : '/image/itdaLogo.png';
 		        const finishDateObj = finishDate ? new Date(finishDate) : null;
 		        function formatDate(date) {
 		        	  const year = date.getFullYear();
@@ -149,7 +146,7 @@
 		        if(finishDateObj !== null){
 		        	const formattedFinishDate = formatDate(finishDateObj);
 		        output += `
-		        	<a href="/bucket/familybucketdetail?bucketSeq=`+bucketSeq+`">
+		        	<a href="/bucket/bucketdetail?bucketSeq=`+bucketSeq+`">
 					<img src="..`+bucketImgSrc+`"
 					style="width: 100%; height: 155px; margin-bottom: 5px; filter: grayscale(85%);">
 					<div style="position: relative;">
@@ -165,7 +162,7 @@
 		        `;
 		        } else {
 		        	output += `
-				          <a href="/bucket/familybucketdetail?bucketSeq=`+bucketSeq+`">
+				          <a href="/bucket/bucketdetail?bucketSeq=`+bucketSeq+`">
 				            <img src="..`+bucketImgSrc+`" style="width:100%; height: 155px;">
 				            <div style="position: relative;">
 				              <img src="../image/bucket/chkLine.png" style="width: 100%">

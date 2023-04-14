@@ -1,26 +1,25 @@
 package com.project.itda.bucketlist.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.itda.bucketlist.model.BucketListModel;
 import com.project.itda.bucketlist.model.BucketReplyModel;
 import com.project.itda.bucketlist.service.IBucketListService;
-import com.project.itda.common.AccessDeniedException;
 import com.project.itda.common.CheckAuth;
 import com.project.itda.common.model.UserModel;
 import com.project.itda.common.service.IUserService;
@@ -33,37 +32,44 @@ public class bucketListController {
 
 	@Autowired
 	IUserService userService;
-
-	// 가족 버킷리스트 전체 출력
-	@GetMapping("/bucket/familybucket")
-	public String familyBucket(Model model, HttpSession session) {
-
-		//로그인 유저인지 검증
-		CheckAuth.checkLogin(session);
-
-		int familySeq= (int) session.getAttribute("famSeq");
-		
+	
+	
+	// 버킷리스트 출력
+	@GetMapping("/bucket/bucketview")
+	public String BucketListView(Model model, HttpSession session) {
+		// 세션으로부터 familySeq를 받아옴
+		int familySeq = (int) session.getAttribute("famSeq");
 		// 받아온 해당 Seq 가족에 대한 버킷리스트를 bucketlist에 담아줌.
 		List<BucketListModel> bucketlist = bucketlistService.getFamilyBucket(familySeq);
-		// 받아온 해당 Seq 가족에 대한 가족구성원의 Id 를 myFam에 담아줌.
-		List<String> myFam = userService.getFamilyUserIds(familySeq);
-		// 담겨진 리스트를 familyBucket.jsp에서 bucketlist라는 이름으로 사용할 수 있게함.
+		List<String> base64ImageDataList = new ArrayList<>();
+		for (BucketListModel bucket : bucketlist) {
+	        byte[] fileData = bucket.getFileData();
+	        String base64ImageData = Base64.getEncoder().encodeToString(fileData);
+	        base64ImageDataList.add(base64ImageData);
+	    }
 		model.addAttribute("bucketlist", bucketlist);
-		// 담겨진 리스트를 familyBucket.jsp에서 myFam이라는 이름으로 사용할 수 있게함.
+		model.addAttribute("base64ImageDataList", base64ImageDataList);
+		Date currentDate = new Date();
+		model.addAttribute("currentDate", currentDate);
+		List<UserModel> myFam = userService.getFamilyMembers(familySeq);
 		model.addAttribute("myFam", myFam);
 
-		return "bucketList/familyBucket";
+		return "bucketList/bucketListView";
 	}
 
 	// 가족 버킷리스트 상세 정보
-	@GetMapping("/bucket/familybucketdetail")
-	public String familyBucketDetail(Model model, HttpSession session, @RequestParam("bucketSeq") int bucketSeq) {
+	@GetMapping("/bucket/bucketdetail")
+	public String bucketDetail(Model model, HttpSession session, @RequestParam("bucketSeq") int bucketSeq) {
 		//로그인 유저인지 검증
 		CheckAuth.checkLogin(session);
 		
 		// 이전 페이지에서 클릭한 bucket의 Seq를 요청하여 해당 bucket에 대한 상세 정보를 담아둠
-		BucketListModel bucketOne = bucketlistService.getFamilyBucketDetail(bucketSeq);
+		BucketListModel bucketOne = bucketlistService.getBucketDetail(bucketSeq);
 		
+		
+		    byte[] fileData = bucketOne.getFileData();
+	        String base64ImageData = Base64.getEncoder().encodeToString(fileData);
+	    
 		int familySeq = (int) session.getAttribute("famSeq");
 		int writerFamilySeq = bucketOne.getFamilySeq();
 		
@@ -79,17 +85,21 @@ public class bucketListController {
 		model.addAttribute("myFam", myFam);
 		int replyCount = bucketlistService.countBucketOneReply(bucketSeq);
 		model.addAttribute("replyCount", replyCount);
-		return "bucketList/familyBucketDetail";
+		model.addAttribute("base64ImageData", base64ImageData);
+		return "bucketList/bucketDetail";
 	}
-
-	@GetMapping("/bucket/personalbucket")
-	public String personalBucket(Model model, @RequestParam("userId") String userId) {
-
-		List<BucketListModel> bucketlist = bucketlistService.getPersonalBucket(userId);
-
-		model.addAttribute("bucketlist", bucketlist);
-
-		return "bucketList/personalBucket";
+	
+	
+	
+	// 유저ID에 따른 버킷리스트 목록 -> ajax로 데이터 보내기
+	@GetMapping("/bucket/bucketlistz")
+	@ResponseBody
+	public List<BucketListModel> getBucketListByUserId(@RequestParam String userId) {
+		System.out.println(userId);
+		// userId를 이용해서 bucketList를 가져오는 로직 구현
+		List<BucketListModel> bucketList = bucketlistService.getPersonalBucket(userId);
+		System.out.println(bucketList);
+		return bucketList;
 	}
 
 	// 버킷리스트 삭제 시 보이지 않도록 처리
@@ -101,102 +111,70 @@ public class bucketListController {
 	}
 
 	// 버킷리스트 등록 페이지
-	@GetMapping("/bucket/addfamilybucket")
+	@GetMapping("/bucket/addbucket")
 	public String addBucket(HttpSession session, Model model) {
 		String userId = (String) session.getAttribute("userId");
 		
-		return "bucketList/addFamilyBucket";
+		return "bucketList/addBucket";
 	}
 
 	// 버킷리스트 등록 액션
 	@PostMapping("/bucket/addbucketaction")
-	public String addFamilyBucketAction(HttpSession session, BucketListModel bucketListModel, MultipartFile file)
-			throws Exception {
+	public String addFamilyBucketAction(HttpSession session, BucketListModel bucketListModel) throws IOException {
 
 		String userId = (String) session.getAttribute("userId");
 		int famSeq = (int) session.getAttribute("famSeq");
 
 		bucketListModel.setUserId(userId);
 		bucketListModel.setFamilySeq(famSeq);
-
-		bucketlistService.addBucketList(bucketListModel, file);
+		
+		MultipartFile mfile = bucketListModel.getFile();
+		
+		bucketListModel.setFileName(mfile.getOriginalFilename());
+		bucketListModel.setFileData(mfile.getBytes());
+		
+		bucketlistService.addBucketList(bucketListModel);
+		
 		return "redirect:/bucket/bucketview";
 	}
 
+	
 	// 버킷리스트 수정 페이지
 	@GetMapping("/bucket/modifybucket")
 	public String modifyBucket(@RequestParam("bucketSeq") int bucketSeq, Model model) {
-		BucketListModel bucketOne = bucketlistService.getFamilyBucketDetail(bucketSeq);
+		BucketListModel bucketOne = bucketlistService.getBucketDetail(bucketSeq);
+		byte[] fileData = bucketOne.getFileData();
+        String base64ImageData = Base64.getEncoder().encodeToString(fileData);
 
 		model.addAttribute("bucketOne", bucketOne);
-
+		model.addAttribute("base64ImageData", base64ImageData);
 		return "bucketList/modifyBucket";
 	}
-
+	
 	// 버킷리스트 수정 액션
 	@PostMapping("/bucket/modifyaction")
-	public String modifyBucketAction(BucketListModel bucketListModel, MultipartFile file) throws Exception {
-
-		bucketlistService.updateBucket(bucketListModel, file);
+	public String modifyBucketAction(BucketListModel bucketListModel) throws Exception {
+		
+		MultipartFile mfile = bucketListModel.getFile();
+		
+		bucketListModel.setFileName(mfile.getOriginalFilename());
+		bucketListModel.setFileData(mfile.getBytes());
+		
+		bucketlistService.updateBucket(bucketListModel);
+		
 		return "redirect:/bucket/bucketview";
 	}
 
-	// --------------------------------------------------------------------------------------------------------
-	// 버킷리스트 등록 페이지
-	@GetMapping("/bucket/addpersonalbucket")
-	public String addPersonalBucket(Model model) {
-
-		return "bucketList/addPersonalBucket";
-	}
-
-	// 버킷리스트 등록 액션
-	@PostMapping("/bucket/addpersonalbucketaction")
-	public String addPersonalBucketAction(HttpSession session, BucketListModel bucketListModel, MultipartFile file)
-			throws Exception {
-
-		String userId = (String) session.getAttribute("userId");
-		int famSeq = (int) session.getAttribute("famSeq");
-
-		bucketListModel.setUserId(userId);
-		bucketListModel.setFamilySeq(famSeq);
-
-		bucketlistService.addPersonalBucketList(bucketListModel, file);
-		return "redirect:/bucket/bucketview";
-	}
-
-	// 버킷리스트 출력
-	@GetMapping("/bucket/bucketview")
-	public String BucketListView(Model model, HttpSession session) {
-		// 세션으로부터 familySeq를 받아옴
-		int familySeq = (int) session.getAttribute("famSeq");
-		// 받아온 해당 Seq 가족에 대한 버킷리스트를 bucketlist에 담아줌.
-		List<BucketListModel> bucketlist = bucketlistService.getFamilyBucket(familySeq);
-		// 담겨진 리스트를 familyBucket.jsp에서 bucketlist라는 이름으로 사용할 수 있게함.
-		model.addAttribute("bucketlist", bucketlist);
-		Date currentDate = new Date();
-		model.addAttribute("currentDate", currentDate);
-		List<UserModel> myFam = userService.getFamilyMembers(familySeq);
-		model.addAttribute("myFam", myFam);
-
-		return "bucketList/bucketListView";
-	}
-
-	@GetMapping("/bucket/bucketlistz")
-	@ResponseBody
-	public List<BucketListModel> getBucketListByUserId(@RequestParam String userId) {
-		System.out.println(userId);
-		// userId를 이용해서 bucketList를 가져오는 로직 구현
-		List<BucketListModel> bucketList = bucketlistService.getPersonalBucket(userId);
-		System.out.println(bucketList);
-		return bucketList;
-	}
-
+	// 버킷리스트 완료처리
 	@GetMapping("/bucket/successaction")
 	public String successBucketAction(@RequestParam("bucketSeq") int bucketSeq) {
 		bucketlistService.BucketSuccess(bucketSeq);
 
 		return "redirect:/bucket/bucketview";
 	}
+		
+	// --------------------------------------------------------------------------------------------------------
+
 	
 	// 댓글 등록 액션
 	@PostMapping("/bucket/addbucketreplyaction")
@@ -210,7 +188,9 @@ public class bucketListController {
 		
 		return "redirect:/bucket/familybucketdetail?bucketSeq=" + bucketSeq;
 	}
-		
+	
+	
+	// 댓글 수정
 	@PostMapping("/bucket/modifyreplyaction")
 	public String modifyReplyAction(BucketReplyModel bucketReplyModel, @RequestParam("bucketSeq") int bucketSeq) {
 		bucketlistService.updateReply(bucketReplyModel);
@@ -218,6 +198,7 @@ public class bucketListController {
 		return "redirect:/bucket/familybucketdetail?bucketSeq=" + bucketSeq;
 	}
 	
+	// 댓글 삭제
 	@PostMapping("/bucket/deletereplyaction")
 	public String deleteReplyAction(int bucketReplySeq, @RequestParam("bucketSeq") int bucketSeq) {
 		bucketlistService.deleteReply(bucketReplySeq);

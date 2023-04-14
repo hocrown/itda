@@ -6,8 +6,8 @@
 <head>
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../css/bucket/addFamilyBucket.css">
-<script type="text/javascript" src="/js/bucketlist/addFamilyBucket.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/bucket/addBucket.css">
+<script type="text/javascript" src="/js/bucketlist/addBucket.js"></script>
 
 </head>
 <body>
@@ -19,9 +19,40 @@
 				<input class="finishBtn" type="image" src="../image/finishBtn.png" alt="완료" onclick="document.getElementById('addBucketForm').submit();">
 			</div>
 			
-			<div class="writeTitleBox">
-				<input class="writeTitleTextarea" name="title" placeholder="제목을 입력해 주세요." spellcheck="false">
+			<div class="bucketWriteText">
+				버킷리스트 작성하기
 			</div>
+			
+			<div class="typeBox">
+				<span class="typeText">유형</span>
+				
+				<input class="radioTypeInput" type="radio" id="family" name="type" value="Family">
+				<label class="radioLabelFamily" for="family">
+					<div class="ellipseFamily">
+						<div id="familySmallEllipse">
+						</div>
+					</div>
+					<span class="familyText">가족</span>
+				</label>
+			
+			
+				<input class="radioTypeInput" type="radio" id="personal" name="type" value="Personal">
+				<label class="radioLabelPersonal" for="personal">
+					<div class="ellipsePersonal">
+						<div id="personalSmallEllipse">
+						</div>
+					</div>
+					<span class="personalText">개인</span>
+				</label>		
+			</div>
+			
+			<div class="titleBox">
+				<div class="titleText">제목</div>
+				<input class="writeTitleTextarea" name="title" spellcheck="false">
+				<img src="../image/bucket/bucketTitleUnderline.png" class="titleUnderline">
+			</div>
+				
+			
 			
 			<div id="fileArea" class="addImgBox">
 				<input style="display: none;" type="file" name="file" id="fileInput"><img src="#" alt="Preview" id="previewImage" class="addImgImg">
@@ -29,15 +60,24 @@
 			</div>
 			
 			<div class="addBucketTextareaBox">
-				<textarea class="addBucketTextarea" name="contents" spellcheck="false" placeholder="내용을 입력해 주세요."></textarea>
+			<textarea class="addBucketTextarea" name="contents" spellcheck="false" placeholder="내용을 입력해 주세요."></textarea>
 			</div>
 		</form>
 
-		<div style="height: 50px;"></div>
 		
 	</div>	
 	
 	<script>
+	$(".radioLabelPersonal").click(function() {
+	    $("#personalSmallEllipse, #familySmallEllipse").removeClass("radioClickEllipse");
+	    $("#personalSmallEllipse").addClass("radioClickEllipse");
+	  });
+
+	  $(".radioLabelFamily").click(function() {
+	    $("#personalSmallEllipse, #familySmallEllipse").removeClass("radioClickEllipse");
+	    $("#familySmallEllipse").addClass("radioClickEllipse");
+	  });
+	  
 	
 	$('.addImgBox').on('click', function() {
 		  $('#fileInput').click();

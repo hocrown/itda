@@ -1,1 +1,52 @@
-@charset "EUC-KR";
+@charset "UTF-8";
+#previewImage[src="#"] {
+  display: none;
+}
+
+.gobackbtn{
+   position: absolute;
+   width: 20px;
+   height: 20px;
+   left: 15px;
+   top: 22px;
+}
+
+.addImgBox{
+width: 393px;
+height: 187px;
+text-align:center;
+background: #F4F4F4;
+}
+
+.addImgImg{
+	margin-top:17%;
+	margin-bottom: 7px;
+}
+
+.insertContentareaBox{
+	height: 470px;
+	background: #FFFFFF;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.insertContentarea{
+	width: 90%;
+	height: 90%;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 22px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.05em;
+	color: #2A221D;
+	outline: none;
+	resize: none;
+	background: none;
+	border: none;
+	resize: none;
+}

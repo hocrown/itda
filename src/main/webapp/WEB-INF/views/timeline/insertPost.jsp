@@ -7,6 +7,7 @@
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/timeline/insertPost.css">
+<script type="text/javascript" src="/js/timeline/insertPost.js"></script>
 
 </head>
 <body>
@@ -16,16 +17,16 @@
 			<input class="finishBtn" type="image" src="../image/finishBtn.png" alt="완료" onclick="document.getElementById('insertPostForm').submit();">
 		</div>
 
-				<form class="insertPostForm" action="/familypost/insertaction" method="post" enctype="multipart/form-data">
-				
+				<form class="insertPostForm" id="insertPostForm" action="/familypost/insertaction" method="post" enctype="multipart/form-data">
 					<div class="insertContentareaBox">
-						<textarea class="insertContentarea" name="contents" spellcheck="false" placeholder="내용을 입력해 주세요."></textarea>
+						<textarea class="insertContentarea" name="content" spellcheck="false" placeholder="내용을 입력해 주세요."></textarea>
 					</div>
-				</form>
+				
 			
 					<div class="addImgBox">
 					<div><input type="file" name="file"><img src="../image/timeline/addPicture.png" class="addImgImg"></div>
 					</div>
+				</form>
 	</div>
 </body>
 </html>

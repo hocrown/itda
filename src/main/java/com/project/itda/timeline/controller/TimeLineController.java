@@ -54,7 +54,7 @@ public class TimeLineController {
 	//게시글 추가 페이지
 	@GetMapping("/familypost/insertpost")
 	public String insertPost(Model model) {
-		
+		System.out.println("?");
 		return "timeline/insertPost";
 	}
 	
@@ -70,7 +70,7 @@ public class TimeLineController {
 		timelineModel.setFamilySeq(famSeq);
 
 		timelineService.insertPost(timelineModel, file);
-		return "redirect:/timeline/postView";
+		return "redirect:/familypost";
 	}
 	
 	//게시글 수정 페이지

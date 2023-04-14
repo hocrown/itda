@@ -8,6 +8,7 @@
 <%@ include file="../head.jsp"%>
 <title>가족 게시판</title>
 <link rel="stylesheet" type="text/css" href="/css/timeline/postView.css">
+<script type="text/javascript" src="/js/timeline/postView.js"></script>
 </head>
 
 <body> 

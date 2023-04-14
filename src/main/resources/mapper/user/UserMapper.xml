@@ -77,10 +77,9 @@
   	
   	<update id="updateUserInfo" parameterType="com.project.itda.common.model.UserModel">
   		<![CDATA[
-  			UPDATE ITDAUSER SET (userPw, userAddress, userAddressDetail, userPhone, email)
-  			= (SELECT #{userPw}, #{userAddress}, #{userAddressDetail}, #{userPhone}, #{email} FROM DUAL)
-  			WHERE userId = #{userId}
-  		]]>
+        UPDATE ITDAUSER SET userImageName=#{userImageName}, userImageData=#{userImageData}, userPw=#{userPw}, userAddress=#{userAddress}, userAddressDetail=#{userAddressDetail}, userPhone=#{userPhone}, email=#{email}
+        WHERE userId = #{userId}
+    	]]>
   	</update>
   	
   	<insert id="insertNickName" parameterType="com.project.itda.common.model.NickNameModel">

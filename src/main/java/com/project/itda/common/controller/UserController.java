@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.project.itda.common.model.NickNameModel;
 import com.project.itda.common.model.UserModel;
@@ -229,8 +231,12 @@ public class UserController {
 		   DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
 		   String dateDot = localDate.format(formatter);
 		   
-		   model.addAttribute("dateDot", dateDot);
+		byte[] fileData = loginUser.getUserImageData();
+	    String base64ImageData = Base64.getEncoder().encodeToString(fileData);
+		
+        model.addAttribute("dateDot", dateDot);
 		model.addAttribute("loginUser", loginUser);
+		model.addAttribute("base64ImageData", base64ImageData);
 		return "user/myInfo";
 	}
 	
@@ -270,7 +276,7 @@ public class UserController {
 	@PostMapping("/user/updateUserInfo")
 	@ResponseBody
 	public String updateUserInfo(String userPw, String userAddress, String userAddressDetail, 
-			String userPhone, String email, HttpSession session) {
+			String userPhone, String email, MultipartFile file, HttpSession session) {
 	    try {
 	      UserModel user = (UserModel) session.getAttribute("loginUser");
 	      user.setUserPw(userPw);
@@ -278,7 +284,12 @@ public class UserController {
 	      user.setUserAddress(userAddress);
 	      user.setUserAddressDetail(userAddressDetail);
 	      user.setUserPhone(userPhone);
+	      
+	      user.setUserImageName(file.getOriginalFilename());
+	      user.setUserImageData(file.getBytes());
+	      
 	      userService.updateUserInfo(user);
+	      
 	      return "success";
 	    } catch (Exception e) {
 	      e.printStackTrace();

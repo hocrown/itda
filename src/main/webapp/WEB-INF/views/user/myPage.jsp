@@ -10,6 +10,7 @@
 <script type="text/javascript" src="/js/myPage.js"></script>
 </head>
 <body>
+
 	<div class="layout">
 		<div class="headBox">
 			<img src="../image/vector.png" class="vector">

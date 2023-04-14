@@ -42,11 +42,5 @@
 
 	
 	</div>
-	
-	<script>
-	$(document).on('click', function(event){
-		console.log(event.target);
-	});
-	</script>
 </body>
 </html>

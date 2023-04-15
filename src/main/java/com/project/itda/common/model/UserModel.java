@@ -1,12 +1,14 @@
 package com.project.itda.common.model;
 
-import java.sql.Date;
 import java.time.LocalDate;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
 @Data
 public class UserModel {
+
 	private String userId;
 	private int familySeq;
 	private String userPw;
@@ -23,4 +25,9 @@ public class UserModel {
 	private int month;
 	private int day;
 	private String famCode;
+	
+	private MultipartFile file;
+	private byte[] userImageData;
+	private String userImageName;
+	
 }

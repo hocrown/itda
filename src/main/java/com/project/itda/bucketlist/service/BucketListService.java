@@ -31,8 +31,6 @@ public class BucketListService implements IBucketListService {
 		return reply;
 	}
 	
-	
-	
 	@Override
 	public void addBucketList(BucketListModel bucketListModel) {
 		

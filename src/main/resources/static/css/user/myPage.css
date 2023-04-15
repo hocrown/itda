@@ -3,9 +3,9 @@
 .myPageSmallVector{
 	transform: rotate(-180deg);
 	width: 12px;
-height: 12px;
-position: absolute;
-right: 60px;
+	height: 12px;
+	position: absolute;
+	right: 60px;
 }
 
 .myPageItemText{
@@ -21,11 +21,11 @@ right: 60px;
 	vertical-align: middle;
 	align-items: center;
 	font-family: 'Bookk Myungjo';
-font-style: normal;
-font-weight: 300;
-font-size: 20px;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 20px;
 
-color: #2A221D;
+	color: #2A221D;
 	
 }
 

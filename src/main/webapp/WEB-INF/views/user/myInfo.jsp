@@ -18,8 +18,11 @@
 		</div>
 		
 			<div class="myInfoProfileBox"></div>
-			<div class="profileImgEllipse"></div>
+			
+			<img class="profileImgEllipse" src="data:image/png;base64,${base64ImageData}" id="profileImgEllipse">
 			<img src="../image/cameraImg.png" class="cameraImg">
+			<input style="display: none;" type="file" name="file" id="fileInput">
+			
 			<span class="myInfoNicknameText">${loginUser.userName}</span>
 			<img src="../image/textEditBtnImg.png" class="textEditBtnImg">
 			<span class="myInfoUsernameText">${loginUser.userName}</span>
@@ -57,7 +60,7 @@
 			<input class="myInfoEmail" value="${loginUser.email}">
 			
 			<div class="myInfoModifyBtn">수정하기</div>
-			
+			</form>
 			<div class="myInfoUserDeactivate">탈퇴하기</div>
 			
 	</div>	

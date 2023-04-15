@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.project.itda.common.model.FamilyModel;
+import com.project.itda.common.model.NickNameModel;
 import com.project.itda.common.model.UserModel;
 
 public interface IUserService {
@@ -24,4 +25,7 @@ public interface IUserService {
 	boolean modifyMyInfo(String userPw, String userAddress, 
 			String userAddressDetail, String userPhone, String email);
 	void updateUserInfo(UserModel user);
+	
+	void insertNickName(NickNameModel nickname);
+	void updateNickName(NickNameModel nickname);
 }

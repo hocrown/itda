@@ -41,15 +41,14 @@
 				<a href="/familypost/postcontent?postSeq=${timeline.postSeq}">
 					<div class="postContentText">${timeline.content}</div>
 					<img src="..${timeline.filepath}" class="userPic">
-				</a>
-					
+					</a>
+
 					<div class="replyCountBox">
 				   	  <img src="../image/bucket/replyCountImg.png" class="replyCountImg">
 				   	  <span class="replyCountText">${timeline.replyCount}</span>
 					</div>
+				</a>
 				</div>
-		
-		</div>
 				
 				
 
@@ -59,7 +58,7 @@
 						<c:set var="loopCount" value="${status.index + 1}" />
 				</c:if>
 			</c:forEach>
-		</c:forEach>		   
+		</c:forEach>	
 	</div>
 </div>
 </body>

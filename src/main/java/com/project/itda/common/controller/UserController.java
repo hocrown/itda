@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +28,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.project.itda.common.model.NickNameModel;
 import com.project.itda.common.model.UserModel;
 import com.project.itda.common.service.IUserService;
 import com.project.itda.dailyquestion.controller.DailyQuestionController;
@@ -188,6 +191,12 @@ public class UserController {
 			// insertUser 메소드로 itda_user 테이블에 데이터를 입력합니다.
 			user.setFamilySeq(famSeq);
 			userService.insertUser(user);
+			
+			// NickName 설정
+			NickNameModel nickname = new NickNameModel();;
+			nickname.setUserId(userId);
+			nickname.setSelfNickName(user.getUserName());
+			userService.insertNickName(nickname);
 			// 데이터 입력에 성공하면 "success" 문자열을 반환합니다.
 			return "success";
 		} catch (DuplicateKeyException e) {
@@ -222,8 +231,12 @@ public class UserController {
 		   DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
 		   String dateDot = localDate.format(formatter);
 		   
-		   model.addAttribute("dateDot", dateDot);
+		byte[] fileData = loginUser.getUserImageData();
+	    String base64ImageData = Base64.getEncoder().encodeToString(fileData);
+		
+        model.addAttribute("dateDot", dateDot);
 		model.addAttribute("loginUser", loginUser);
+		model.addAttribute("base64ImageData", base64ImageData);
 		return "user/myInfo";
 	}
 	
@@ -263,7 +276,7 @@ public class UserController {
 	@PostMapping("/user/updateUserInfo")
 	@ResponseBody
 	public String updateUserInfo(String userPw, String userAddress, String userAddressDetail, 
-			String userPhone, String email, HttpSession session) {
+			String userPhone, String email, MultipartFile file, HttpSession session) {
 	    try {
 	      UserModel user = (UserModel) session.getAttribute("loginUser");
 	      user.setUserPw(userPw);
@@ -271,7 +284,12 @@ public class UserController {
 	      user.setUserAddress(userAddress);
 	      user.setUserAddressDetail(userAddressDetail);
 	      user.setUserPhone(userPhone);
+	      
+	      user.setUserImageName(file.getOriginalFilename());
+	      user.setUserImageData(file.getBytes());
+	      
 	      userService.updateUserInfo(user);
+	      
 	      return "success";
 	    } catch (Exception e) {
 	      e.printStackTrace();
@@ -281,15 +299,10 @@ public class UserController {
 	
 	
 	@RequestMapping("/user/logout")
-	  public String logout(HttpSession session) {
-	    // 세션을 만료시킴
-	    session.invalidate();
-	    // 첫 페이지로 리다이렉트
-	    return "redirect:/";
-	  }
-	
-	
-	
-	
-	
+	public String logout(HttpSession session) {
+	// 세션을 만료시킴
+	session.invalidate();
+	// 첫 페이지로 리다이렉트
+	return "redirect:/";
+	}
 }

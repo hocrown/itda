@@ -10,6 +10,7 @@
 <script type="text/javascript" src="/js/myPage.js"></script>
 </head>
 <body>
+
 	<div class="layout">
 		<div class="headBox">
 			<img src="../image/vector.png" class="vector">
@@ -19,7 +20,6 @@
 		<div class="myPageItemBox" id="myInfo">
 			<div class="myPageItemText">내 정보</div>
 			<img src="../image/vector.png" class="myPageSmallVector">
-			
 		</div>
 		<div style="margin:auto; height: 1px; border-bottom: solid 1px; width: 320px;"></div>
 		

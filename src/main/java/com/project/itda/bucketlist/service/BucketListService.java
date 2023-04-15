@@ -52,11 +52,18 @@ public class BucketListService implements IBucketListService {
 		bucketRepository.invisible(bucketSeq);
 	}
 
-	// 버킷 수정
+	// 버킷 수정 ( 수정 파일이 있는 경우 )
 	@Override
 	public void updateBucket(BucketListModel bucketListModel) {
 
 		bucketRepository.updateBucket(bucketListModel);
+	}
+	
+	// 버킷 수정 ( 수정 파일이 없는 경우 )
+	@Override
+	public void updateBucketTwo(BucketListModel bucketListModel) {
+
+		bucketRepository.updateBucketTwo(bucketListModel);
 	}
 
 	// 버킷 완료 처리

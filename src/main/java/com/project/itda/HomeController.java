@@ -1,8 +1,13 @@
 package com.project.itda;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.function.ServerRequest.Headers;
 
 @Controller
 public class HomeController {
@@ -15,8 +20,14 @@ public class HomeController {
 	
 	@GetMapping("/mainimg")
 	public String mainImg(Model model) {
-		
+		HttpHeaders header = new HttpHeaders(); 
 		return "mainImg";
+	}
+	
+	ResponseEntity<byte[]> getImg(){
+		HttpHeaders header=null;
+		byte[] data = null;
+		return new ResponseEntity<byte[]>(data,header,HttpStatus.ACCEPTED);
 	}
 	
 	@GetMapping("/mainlist")

@@ -92,7 +92,7 @@
 				<div style="height: 87px;"></div>
 		        
 		        <div class="modalBox detailDisNone"> 
-			        <div class="btnBox"><a class="finishBtnz" href="/bucket/successaction?bucketSeq=${bucketOne.bucketSeq }">완료하기</a></div>		       	
+			        <div class="btnBox except1"><a class="finishBtnz" href="/bucket/successaction?bucketSeq=${bucketOne.bucketSeq }">완료하기</a></div>		       	
 			        <div class="btnBox"><a class="modifyBtn" href="/bucket/modifybucket?bucketSeq=${bucketOne.bucketSeq }">수정하기</a></div>
 			        <div class="btnBox"><a class="deleteBtn" href="/bucket/invisibleaction?bucketSeq=${bucketOne.bucketSeq }">삭제하기</a></div>
 			        <div class="btnBox detailCancelBtn">취소</div>
@@ -102,7 +102,7 @@
 		</div>
 	</div>
 	
-	<form action="/bucket/addbucketreplyaction" method="post" class="addReplyForm">
+	<form action="/bucket/addbucketreplyaction" method="post" class="addReplyForm" id="addReplyForm">
 	<div class="inputReplyBox">
 		<input type="hidden" name="bucketSeq" value="${bucketOne.bucketSeq }">
 		<input name="replyContents" type="text" placeholder="응원의 말을 남겨주세요." class="inputReply">

@@ -15,6 +15,7 @@ public interface IBucketListService {
 	public void BucketInvisible(int bucketSeq); // 버킷 삭제 시 안보이게 처리
 	public void BucketSuccess(int bucketSeq); // 버킷 완료 처리
 	public void updateBucket(BucketListModel bucketListModel); // 버킷 수정
+	public void updateBucketTwo(BucketListModel bucketListModel); // 버킷 수정
 	public void addBucketReply(BucketReplyModel bucketReplyModel); // 댓글 작성
 	public int countBucketOneReply(int bucketSeq); // 해당 버킷 댓글 수 불러오기
 	public void updateReply(BucketReplyModel bucketReplyModel); // 댓글 수정

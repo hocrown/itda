@@ -1,5 +1,28 @@
 @charset "UTF-8";
 
+body {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(128, 128, 128, 0.7);
+    transform: scale(0);
+    animation: ripple-animation 0.5s linear forwards;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(6);
+        opacity: 0;
+    }
+}
+
 a {
 	text-decoration: none;
 }
@@ -126,7 +149,7 @@ a {
 	position: absolute;
 	top: 177.5px;
 	left: 11px;
-	width: 97%;
+	width: 381.5px;
 	min-height: 665px;
 	background-image: url("../../image/bucket/bucketBackground2-1.png");
 	border-top: solid 6px;

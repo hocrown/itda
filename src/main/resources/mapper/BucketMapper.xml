@@ -53,8 +53,16 @@
 				title = #{title},
 				contents = #{contents},
 				fileData = #{fileData},
-				fileName = #{fileName},
-				type = #{type}
+				fileName = #{fileName}
+
+				where bucketSeq = #{bucketSeq}
+	</update>
+	
+	<update id="updateBucketTwo"
+		parameterType="com.project.itda.bucketlist.model.BucketListModel">
+			update BUCKETLIST set 
+				title = #{title},
+				contents = #{contents}
 
 				where bucketSeq = #{bucketSeq}
 	</update>

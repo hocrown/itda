@@ -111,7 +111,7 @@
 	text-align: left;
 	border: none;
 	outline: none;
-	background-image: url("../../image/itdaBackImg.png");
+	background: none;
 	color: #979797;
 }
 
@@ -131,7 +131,7 @@
 	text-align: left;
 	border: none;
 	outline: none;
-	background-image: url("../../image/itdaBackImg.png");
+	background: none;
 	color: #979797;
 }
 

@@ -27,25 +27,25 @@
 			<div class="typeBox">
 				<span class="typeText">유형</span>
 				<c:choose>
-					<c:when test="${bucketOne.type eq 'family'}">
+					<c:when test="${bucketOne.type eq 'Family'}">
 		
 						<input class="radioTypeInput" type="radio" id="family" name="type" value="Family">
 						<label class="radioLabelFamily" for="family">
-							<div class="ellipseFamily">
-								<div id="familySmallEllipse" class="radioClickEllipse">
+							<div class="ellipseFamily" style="filter: grayscale(85%);">
+								<div id="familySmallEllipse" class="radioClickEllipse style="filter: grayscale(85%);"">
 								</div>
 							</div>
-							<span class="familyText">가족</span>
+							<span class="familyText" style="color: gray;">가족</span>
 						</label>
 					
 					
 						<input class="radioTypeInput" type="radio" id="personal" name="type" value="Personal">
 						<label class="radioLabelPersonal" for="personal">
-							<div class="ellipsePersonal">
-								<div id="personalSmallEllipse">
+							<div class="ellipsePersonal" style="filter: grayscale(85%);">
+								<div id="personalSmallEllipse" style="filter: grayscale(85%);">
 								</div>
 							</div>
-							<span class="personalText">개인</span>
+							<span class="personalText" style="color: gray;">개인</span>
 						</label>	
 	
 					</c:when>
@@ -53,21 +53,21 @@
 					<c:otherwise>
 						<input class="radioTypeInput" type="radio" id="family" name="type" value="Family">
 						<label class="radioLabelFamily" for="family">
-							<div class="ellipseFamily">
-								<div id="familySmallEllipse">
+							<div class="ellipseFamily" style="filter: grayscale(85%);">
+								<div id="familySmallEllipse" style="filter: grayscale(85%);">
 								</div>
 							</div>
-							<span class="familyText">가족</span>
+							<span class="familyText" style="color: gray;">가족</span>
 						</label>
 					
 					
 						<input class="radioTypeInput" type="radio" id="personal" name="type" value="Personal">
 						<label class="radioLabelPersonal" for="personal">
-							<div class="ellipsePersonal">
-								<div id="personalSmallEllipse" class="radioClickEllipse">
+							<div class="ellipsePersonal" style="filter: grayscale(85%);">
+								<div id="personalSmallEllipse" class="radioClickEllipse" style="filter: grayscale(85%);">
 								</div>
 							</div>
-							<span class="personalText">개인</span>
+							<span class="personalText" style="color: gray;">개인</span>
 						</label>	
 					
 					</c:otherwise>
@@ -81,7 +81,8 @@
 			</div>
 			
 			<div id="fileArea" class="addImgBox">
-				<input style="display: none;" type="file" name="file" id="fileInput">
+
+				<input type="file" id="fileInput" name="file" style="display: none;">
 				<img src="data:image/png;base64,${base64ImageData}" style="width: 100%; margin-bottom: 5px;" alt="Preview" id="previewImage" class="addImgImg" />
 								
 			</div>
@@ -97,7 +98,7 @@
 	</div>	
 	
 	<script>
-
+	
 	
 	
 	const fileInput = document.getElementById('fileInput');

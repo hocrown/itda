@@ -52,6 +52,18 @@ public class DailyQuestionController {
 		return "dailyquestion/dailyAnswer";
 	}
 	
+	@GetMapping("/dailyquestion/answerform2")
+	public String dailyListAnswer(@RequestParam("questionOrder") int questionOrder, Model model, HttpSession session) {
+	    int familySeq = (int) session.getAttribute("famSeq");
+	    FamilyQuestionModel getFamilyQuestion = familyQuestionService.familyDailyQuestionByQuestionOrder(familySeq, questionOrder);
+	    model.addAttribute("familyQuestion", getFamilyQuestion);
+	    model.addAttribute("questionOrder", questionOrder);
+	    model.addAttribute("familySeq",familySeq);
+	    return "dailyquestion/dailyAnswerForm";
+	}
+	
+	
+	
 	//가족 질문 가져오기
 	@GetMapping("/dailyquestion/dailylist")
 	public String dailyList(Model model, HttpSession session) {
@@ -92,11 +104,12 @@ public class DailyQuestionController {
 	    DailyAnswerModel dailyAnswer = dailyAnswerService.getDailyAnswerByUserId(questionSeq, userId);
 	    
 	    if (dailyAnswer == null) {
-
+	    	
 	    }
 	    
 	    
 	    //출력할 내용들 모델에 담음.
+	    model.addAttribute("questionOrder",questionOrder);
 	    model.addAttribute("dailyAnswer", dailyAnswer);
 		model.addAttribute("familyQuestion", getFamilyQuestion);
 		model.addAttribute("familyAnswers", familyAnswers);
@@ -108,8 +121,10 @@ public class DailyQuestionController {
 		
 	@GetMapping("/dailymain")
 	public String dailyQuestionPage(Model model, HttpSession session) {
-	    int familySeq = (Integer) session.getAttribute("famSeq");
+	    
+		int familySeq = (Integer) session.getAttribute("famSeq");
 	    String userId = (String) session.getAttribute("userId");
+	    
 	    List<FamilyQuestionModel> getFamilyQuestion =  familyQuestionService.getQuestionListByFamilySeq(familySeq);
 
 	    FamilyQuestionModel latestFamilyQuestion = getFamilyQuestion.get(0);
@@ -169,26 +184,23 @@ public class DailyQuestionController {
 	        session.setAttribute("todayFamilyQuestion", todayFamilyQuestion);
 	        
 	        //웹소켓 활용 알림 메시지 전송
-	        
 	        // 해당 familySeq에 해당하는 유저들의 ID 목록을 가져옵니다.
             List<String> userIds = userService.getFamilyUserIds(familySeq); 
-            String notification = "오늘의 질문이 등록됐어요.";
+            String alarm = "오늘의 질문이 등록됐어요.";
             for (String loginUserId : userIds) {
-            	 messagingTemplate.convertAndSendToUser(loginUserId, "/queue/notifications", notification);
+            	 messagingTemplate.convertAndSendToUser(loginUserId, "/queue/alarm", alarm);
             }
 	    } else {
 	    	FamilyQuestionModel todayFamilyQuestion = familyQuestionService.todayFamilyQuestion(familySeq);
 	    	session.setAttribute("todayFamilyQuestion", todayFamilyQuestion);
 	    }
     }
-	
-    @PostMapping("/dailyquestion/answer")
-    public String saveDailyAnswer(DailyAnswerModel dailyAnswer, HttpSession session) {
 
-    	FamilyQuestionModel familyQuestion = (FamilyQuestionModel) session.getAttribute("todayFamilyQuestion");
-    	int dailyQuestionSeq = familyQuestion.getDailyQuestionSeq();
+	@PostMapping("/dailyquestion/answer")
+    public String saveDailyAnswer(DailyAnswerModel dailyAnswer, @RequestParam("dailyQuestionSeq") int dailyQuestionSeq, HttpSession session) {
+    	
     	String userId = (String) session.getAttribute("userId");
-    	int familySeq = familyQuestion.getFamilySeq();
+    	int familySeq = (int) session.getAttribute("famSeq");
     	dailyAnswer.setFamilySeq(familySeq);
     	dailyAnswer.setUserId(userId);
     	dailyAnswer.setDailyQuestionSeq(dailyQuestionSeq);

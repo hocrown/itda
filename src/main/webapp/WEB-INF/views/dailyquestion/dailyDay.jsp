@@ -37,7 +37,7 @@
 		</div>
 		
 		<span class="question">${familyQuestion.question}</span>
-		<span class="numberOfQuestion">#${familyQuestion.questionOrder}번째 질문</span>
+		<span class="numberOfQuestion">#${questionOrder}번째 질문</span>
 		<span class="questionDate"><fmt:formatDate value="${familyQuestion.askedDate}" pattern="yyyy.MM.dd"/></span>
 
 		
@@ -48,7 +48,6 @@
 		
 <!-- 		가족 구성원 전체의 답변 정보 출력 -->
 		<c:forEach items="${familyAnswers}" var="answer">
-<!-- 		    세션 유저의 답변 정보인 경우는 출력하지 않음 -->
 		    <c:if test="${answer.userId != sessionScope.userId}">
 		        <div class="memberAnswerBox">
 		            <c:choose>
@@ -70,19 +69,22 @@
 		
 <!-- 		세션 유저의 답변 정보 출력 -->
 		<div class="memberAnswerBox">
-		    <span class="memberText">나</span>
-<!-- 		        세션 유저의 답변 정보가 있는 경우 -->
-		        <c:if test="${myAnswer != null}">
-		    <span class="answerContents" style="color: #2A221D;">
-		            ${myAnswer.answer}
-		    </span>
-		        </c:if>
-<!-- 		        세션 유저의 답변 정보가 없는 경우 -->
-		        <c:if test="${myAnswer == null}">
-		            <a class="answerContents" href="/dailyquestion/answerform">답변 작성하기</a>
-		        </c:if>
+<!-- 		        세션 유저의 답변 정보가 있는 경우 없는 경우의 분기  -->
+		<c:choose>
+		    <c:when test="${dailyAnswer != null}">
+		        <div class="memberAnswerBox">
+		            <span class="memberText" style="color: #2A221D;">나</span>
+		            <span class="answerContents" style="color: #2A221D;">${dailyAnswer.answer}</span>
+		        </div>
+		    </c:when>
+		    <c:otherwise>
+		        <div class="memberAnswerBox">
+		            <span class="memberText">나</span>
+		            <a class="answerContents" href="/dailyquestion/answerform2?questionOrder=${questionOrder}">답변 작성하기</a>
+		        </div>
+		    </c:otherwise>
+		</c:choose>
 		</div>
-		
 	</div>
 </div>
 

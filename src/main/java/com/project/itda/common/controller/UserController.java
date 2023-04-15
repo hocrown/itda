@@ -192,7 +192,7 @@ public class UserController {
 			user.setFamilySeq(famSeq);
 			userService.insertUser(user);
 			
-			// NickName 설정
+			// NickName 설정 (초기에는 사용자 이름으로 임의로 설정)
 			NickNameModel nickname = new NickNameModel();;
 			nickname.setUserId(userId);
 			nickname.setSelfNickName(user.getUserName());
@@ -255,7 +255,6 @@ public class UserController {
 	@ResponseBody
 	@PostMapping("/user/requestquestion")
 	public String requestQuestion(HttpSession session, @RequestBody DailyQuestionModel requestQuestion) {
-		System.out.println("타입 : " +requestQuestion.getType());
 		UserModel loginuser = (UserModel) session.getAttribute("loginUser");
 		String userName = loginuser.getUserName();
 		int familySeq = loginuser.getFamilySeq();

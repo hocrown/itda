@@ -13,7 +13,7 @@
 			data: formData,
 			success: function(data) {
 				// 전송이 완료되면 처리할 내용
-				 window.location.href = '/dailymain';
+				 window.location.href = '/dailyquestion/familybylist';
 			}
 		});
 	});

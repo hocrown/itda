@@ -7,7 +7,7 @@
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/dailyquestion/dailyAnswer.css">
-<script type="text/javascript" src="/js/dailyquestion/dailyAnswer.js"></script>
+<script type="text/javascript" src="/js/dailyquestion/dailyAnswerForm.js"></script>
 
 </head>
 <body>
@@ -20,10 +20,12 @@
 		</div>
 		
 		
-		<span class="question2">${todayFamilyQuestion.question}</span>
-		<span class="numberOfQuestion2">#${todayFamilyQuestion.dailyQuestionSeq}번째 질문</span>
-		<span class="questionDate2"><fmt:formatDate value="${todayFamilyQuestion.askedDate}" pattern="yyyy.MM.dd"/></span>
-		
+		<span class="question2">${familyQuestion.question}</span>
+		<span class="numberOfQuestion2">#${questionOrder}번째 질문</span>
+		<span class="questionDate2"><fmt:formatDate value="${familyQuestion.askedDate}" pattern="yyyy.MM.dd"/></span>
+		<input type="hidden" name="dailyQuestionSeq" value="${familyQuestion.dailyQuestionSeq}" />
+		<input type="hidden" name="questionOrder" value="${questionOrder}"/>
+		<input type="hidden" name="familySeq" value="${familySeq}"/>
 	
 		<div class="answerBox">
 			<textarea spellcheck="false" placeholder="답변을 입력해주세요." class="answerTextarea" name="answer"></textarea>

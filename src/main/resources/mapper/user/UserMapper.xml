@@ -85,8 +85,8 @@
   	<insert id="insertNickName" parameterType="com.project.itda.common.model.NickNameModel">
   		<![CDATA[
   			INSERT INTO
-  			NICKNAME (nicknameSeq, userId, targetUserId, targetNickName, selfNickName)
-  			VALUES (nickNameSeq.nextval, #{userId}, #{targetUserId}, #{targetNickName}, #{selfNickName})
+  			NICKNAME (nicknameSeq, userId, selfNickName)
+  			VALUES (nickNameSeq.nextval, #{userId}, #{selfNickName})
   		]]>
   	</insert>
 	
@@ -97,5 +97,13 @@
 		]]>
 	</update>
 	
+	<update id="updateFamilyNickName" parameterType="com.project.itda.common.model.NickNameModel">
+		<![CDATA[
+			UPDATE NICKNAME SET 
+			targetUserId = #{targetUserID},
+			targetNickName = #{targetNickName}
+			WHERE userId = #{userId}
+		]]>
+	</update>
 	
 </mapper>

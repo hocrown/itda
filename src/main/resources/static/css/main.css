@@ -3,18 +3,18 @@ body {
 	padding: 0;
 }
 
-a{
+a {
 	text-decoration: none;
 }
+
 .layout {
-	min-width: 100%;
+	width: 393.33px;
 	min-height: 851.33px;
 	background-image: url("../../image/itdaBackImg.png");
-	
 }
 
 .headBox {
-	position: absolute;
+	position: relative;
 	width: 100%;
 	height: 63px;
 	display: flex;
@@ -37,6 +37,7 @@ a{
 	height: 20px;
 	left: 15px;
 	top: 22px;
+	cursor: pointer;
 }
 
 .bell {
@@ -44,6 +45,8 @@ a{
 	width: 32px;
 	height: 32px;
 	right: 17%;
+	z-index: 1;
+	cursor: pointer;
 }
 
 .myImg {
@@ -64,38 +67,37 @@ a{
 }
 
 .alarmMark.hidden {
-  display: none;
+	display: none;
 }
 
 .stickerPageLink {
-		position: absolute;
+	position: absolute;
 	width: 32px;
 	height: 32px;
 	right: 17%;
 }
 
-.menuBtn{
-position: absolute;
-width: 21px;
-height: 21px;
-right: 5%;
-
+.menuBtn {
+	position: absolute;
+	width: 21px;
+	height: 21px;
+	right: 5%;
 }
 
-.finishBtn{
-position: absolute;
-width: 22px;
-height: 22px;
-right: 5%;
-border: none;
+.finishBtn {
+	position: absolute;
+	width: 22px;
+	height: 22px;
+	right: 5%;
+	border: none;
 }
 
-.addBtn{
+.addBtn {
 	position: absolute;
 	left: 90%;
 }
 
-.send{
+.send {
 	position: absolute;
 	right: 15%;
 	width: 22px;
@@ -105,7 +107,7 @@ border: none;
 	transform: rotate(-30deg);
 }
 
-.send2{
+.send2 {
 	position: absolute;
 	right: 5%;
 	width: 25px;

@@ -38,6 +38,7 @@ public class bucketListController {
 	@GetMapping("/bucket/bucketview")
 	public String BucketListView(Model model, HttpSession session) {
 		// 세션으로부터 familySeq를 받아옴
+		
 		int familySeq = (int) session.getAttribute("famSeq");
 		// 받아온 해당 Seq 가족에 대한 버킷리스트를 bucketlist에 담아줌.
 		List<BucketListModel> bucketlist = bucketlistService.getFamilyBucket(familySeq);
@@ -113,7 +114,6 @@ public class bucketListController {
 	// 버킷리스트 등록 페이지
 	@GetMapping("/bucket/addbucket")
 	public String addBucket(HttpSession session, Model model) {
-		String userId = (String) session.getAttribute("userId");
 		
 		return "bucketList/addBucket";
 	}
@@ -156,11 +156,23 @@ public class bucketListController {
 	public String modifyBucketAction(BucketListModel bucketListModel) throws Exception {
 		
 		MultipartFile mfile = bucketListModel.getFile();
+		if (mfile.isEmpty()) {
+			bucketlistService.updateBucketTwo(bucketListModel);
+		    // mfile 처리 작업 수행...
+		} else {
+			bucketListModel.setFileName(mfile.getOriginalFilename());
+			bucketListModel.setFileData(mfile.getBytes());
+			
+			bucketlistService.updateBucket(bucketListModel);
+
+		    // mfile이 null인 경우 처리 작업 수행 (예: 기존 파일 유지)
+		}
 		
-		bucketListModel.setFileName(mfile.getOriginalFilename());
-		bucketListModel.setFileData(mfile.getBytes());
 		
-		bucketlistService.updateBucket(bucketListModel);
+		
+		
+		
+		
 		
 		return "redirect:/bucket/bucketview";
 	}
@@ -186,7 +198,7 @@ public class bucketListController {
 		bucketReplyModel.setBucketSeq(bucketSeq);
 		bucketlistService.addBucketReply(bucketReplyModel);
 		
-		return "redirect:/bucket/familybucketdetail?bucketSeq=" + bucketSeq;
+		return "redirect:/bucket/bucketdetail?bucketSeq=" + bucketSeq;
 	}
 	
 	
@@ -195,7 +207,7 @@ public class bucketListController {
 	public String modifyReplyAction(BucketReplyModel bucketReplyModel, @RequestParam("bucketSeq") int bucketSeq) {
 		bucketlistService.updateReply(bucketReplyModel);
 		
-		return "redirect:/bucket/familybucketdetail?bucketSeq=" + bucketSeq;
+		return "redirect:/bucket/bucketdetail?bucketSeq=" + bucketSeq;
 	}
 	
 	// 댓글 삭제
@@ -203,7 +215,7 @@ public class bucketListController {
 	public String deleteReplyAction(int bucketReplySeq, @RequestParam("bucketSeq") int bucketSeq) {
 		bucketlistService.deleteReply(bucketReplySeq);
 		
-		return "redirect:/bucket/familybucketdetail?bucketSeq=" + bucketSeq;
+		return "redirect:/bucket/bucketdetail?bucketSeq=" + bucketSeq;
 	}
 
 }

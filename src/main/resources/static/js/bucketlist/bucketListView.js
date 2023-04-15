@@ -18,3 +18,15 @@ $(document).ready(function(){
 		location.href = "/bucket/addbucket"; 
 	});
 });
+
+document.addEventListener('click', function (event) {
+            const ripple = document.createElement('div');
+            ripple.className = 'ripple';
+            ripple.style.left = event.clientX - 5 + 'px';
+            ripple.style.top = event.clientY - 5 + 'px';
+            document.body.appendChild(ripple);
+
+            setTimeout(function () {
+                ripple.remove();
+            }, 1000);
+        });

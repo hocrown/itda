@@ -20,6 +20,7 @@ public interface IBucketListRepository {
 	BucketListModel getOneFamilyBucket(int bucketSeq);
 	void invisible(int bucketSeq);
 	void updateBucket(BucketListModel bucketListModel);
+	void updateBucketTwo(BucketListModel bucketListModel);	
 	void success(int bucketSeq);
 	void insertReply(BucketReplyModel bucketReplyModel);
 	int countBucketOneReply(int bucketSeq);

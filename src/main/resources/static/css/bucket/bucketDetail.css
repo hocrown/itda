@@ -62,8 +62,8 @@ a {
 	text-align: center;
 	justify-content: center;
 	vertical-align: middle;
-	border-radius: 30px;
 	border-top: solid 1px;
+	border-radius: 30px;
 	border-color: #FFC3C3;
 }
 
@@ -312,4 +312,8 @@ font-family: 'Bookk Myungjo';
 }
 .editReplyForm{
 	display: none;
+}
+
+.except1{
+	border:none !important;
 }

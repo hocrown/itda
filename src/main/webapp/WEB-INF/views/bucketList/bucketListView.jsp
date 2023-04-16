@@ -19,59 +19,69 @@
 		</div>
 
 		<span class="ourBucketText">우리 가족 버킷리스트</span>
+		
 		<div style="position: relative;">
-		<img src="../image/bucket/bucketMemMore.png" style="position:absolute; top:43px; left: 360px;" class="memMoreBtn">
-		<div class="testz">
-			
-	
-			<div class="testbox selectedTestbox">
-				<a href="/bucket/bucketview"><div class="testspan">함께</div></a>
-				<div class="bordermy" style="height: 30px;"></div>
-			</div>
-			<c:forEach items="${myFam }" var="fam" varStatus="status">
-				<div data-member-id="${fam.userId }" class="testbox">
-					<button id="sticker${status.index }" class="testspan">${fam.userName }</button>
+			<img src="../image/bucket/bucketMemMore.png" style="position:absolute; top:43px; left: 360px;" class="memMoreBtn">
+			<div class="testz">
+				
+		
+				<div class="testbox selectedTestbox">
+					<a href="/bucket/bucketview"><div class="homeBtn"><img src="../image/bucket/homeBtn.png" class="homeImg"></div></a>
 					<div class="bordermy" style="height: 30px;"></div>
 				</div>
-			</c:forEach>
-
-
-		</div>
-		</div>
-		<div class="listLayout">
-			<div class="listContainer">
-				<c:forEach items="${bucketlist}" var="bucket" varStatus="status">
-					<c:if test="${bucket.visible eq 'y' }">
-						<c:choose>
-							<c:when test="${not empty bucket.finishDate && bucket.finishDate <= currentDate}">
-								<a href="/bucket/bucketdetail?bucketSeq=${bucket.bucketSeq }">
-									<img src="data:image/png;base64,${base64ImageDataList[status.index]}" style="width: 100%; height: 155px; margin-bottom: 5px; filter: grayscale(70%);" />
-									<div style="position: relative;">
-										<img src="../image/bucket/chkLine.png" style="width: 100%">
-										<img src="../image/bucket/successStamp2.png" class="successStamp"> 
-											<span class="finishDateText"><fmt:formatDate value="${bucket.finishDate}" pattern="yyyy.MM.dd" /></span> 
-											<img src="../image/bucket/greenChk.png" class="greenChk"> 
-											<span class="bucketTitleSpan">${bucket.title}</span>
-									</div>
-									<div style="height: 25px;"></div>
-								</a>
-
-							</c:when>
-
-							<c:otherwise>
-								<a href="/bucket/bucketdetail?bucketSeq=${bucket.bucketSeq }">
-									<img src="data:image/png;base64,${base64ImageDataList[status.index]}" style="width: 100%; height: 155px; margin-bottom: 5px;" />
-									<div style="position: relative;">
-										<img src="../image/bucket/chkLine.png" style="width: 100%">
-										<span class="bucketTitleSpan">${bucket.title}</span>
-									</div>
-									<div style="height: 25px;"></div>
-								</a>
-							</c:otherwise>
-						</c:choose>
-					</c:if>
+				
+				<c:forEach items="${myFam }" var="fam" varStatus="status">
+					<div data-member-id="${fam.userId }" class="testbox">
+						<button id="sticker${status.index }" class="testspan">${fam.userName }</button>
+						<div class="bordermy" style="height: 30px;"></div>
+					</div>
 				</c:forEach>
+	
+		              			
 			</div>
+		</div>
+	
+		
+		<div class="listLayout">
+		    <div class="listContainer">
+		        <c:choose>
+		            <c:when test="${empty bucketlist}">
+		                <div style="text-align:center;"><span class="noBucketText">아직<br>버킷리스트가<br>없어요.</span></div>
+		                <img src="../image/bucket/noBucketImg.png" class="noBucketImg">
+		            </c:when>
+		            <c:otherwise>
+		                <c:forEach items="${bucketlist}" var="bucket" varStatus="status">
+		                    <c:if test="${bucket.visible eq 'y' }">
+		                        <c:choose>
+		                            <c:when test="${not empty bucket.finishDate && bucket.finishDate <= currentDate}">
+		                                <a href="/bucket/bucketdetail?bucketSeq=${bucket.bucketSeq }">
+											<img src="data:image/png;base64,${base64ImageDataList[status.index]}" style="width: 100%; height: 155px; margin-bottom: 5px; filter: grayscale(70%);" />
+											<div style="position: relative;">
+												<img src="../image/bucket/chkLine.png" style="width: 100%">
+												<img src="../image/bucket/successStamp2.png" class="successStamp"> 
+													<span class="finishDateText"><fmt:formatDate value="${bucket.finishDate}" pattern="yyyy.MM.dd" /></span> 
+													<img src="../image/bucket/greenChk.png" class="greenChk"> 
+													<span class="bucketTitleSpan">${bucket.title}</span>
+											</div>
+											<div style="height: 25px;"></div>
+										</a>
+		                            </c:when>
+		                            <c:otherwise>
+										<a href="/bucket/bucketdetail?bucketSeq=${bucket.bucketSeq }">
+											<img src="data:image/png;base64,${base64ImageDataList[status.index]}" style="width: 100%; height: 155px; margin-bottom: 5px;" />
+											<div style="position: relative;">
+												<img src="../image/bucket/chkLine.png" style="width: 100%">
+												<span class="bucketTitleSpan">${bucket.title}</span>
+											</div>
+											<div style="height: 25px;"></div>
+										</a>
+		                            </c:otherwise>
+		                        </c:choose>
+		                    </c:if>
+		                </c:forEach>
+		            </c:otherwise>
+		        </c:choose>
+		    </div>
 		</div>
 
 
@@ -81,15 +91,29 @@
 	<script>
 	const testboxes = document.querySelectorAll('.testbox');
 
-	// loop through each testbox and add a click event listener
+	
 	testboxes.forEach(testbox => {
 	  testbox.addEventListener('click', () => {
-	    // remove "selectedTestbox" class from all testboxes
+	    
 	    testboxes.forEach(tb => tb.classList.remove('selectedTestbox'));
-	    // add "selectedTestbox" class to clicked testbox
+	    
 	    testbox.classList.add('selectedTestbox');
 	  });
 	});
+	
+	function checkScroll() {
+		  const testz = document.querySelector('.testz');
+		  const hasScroll = testz.scrollWidth > testz.clientWidth;
+
+		  if (hasScroll) {
+		    console.log(hasScroll);
+		    document.querySelector('.memMoreBtn').style.display = "block";
+		  } else {
+		    document.querySelector('.memMoreBtn').style.display = "none";
+		  }
+		}
+	
+	window.addEventListener('load', checkScroll);
 	
 	document.querySelector('.testz').addEventListener('scroll', function() {
 		  if (this.scrollLeft+1 >= this.scrollWidth - this.clientWidth) {
@@ -98,6 +122,8 @@
 			  document.querySelector('.memMoreBtn').style.display = 'block';
 		  }
 		});
+	
+	
 	
 	
 	$('.memMoreBtn').on('click', function() {
@@ -112,7 +138,6 @@
 	    loadData(userId); 
 	});
 		function loadData(userId) {
-//		  const userId = div.getAttribute('data-member-id'); // 클릭한 버튼의 data-member-id 속성 값을 가져옵니다.
 
 		  $.ajax({
 		    type: 'GET',

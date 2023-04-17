@@ -89,13 +89,18 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public void insertNickName(NickNameModel nickname) {
-		userRepository.insertNickName(nickname);
+	public NickNameModel getNickName(String userId) {
+		NickNameModel nickName = userRepository.getNickName(userId); 		
+		return nickName;
 	}
 
 	@Override
-	public void updateNickName(NickNameModel nickname) {
-		userRepository.updateNickName(nickname);
+	public List<UserModel> getFamilyMembersWithNickName(UserModel loginUser) {
+		return userRepository.getFamilyMembersWithNickName(loginUser);
 	}
-	
+
+	@Override
+	public String getFamCode(int familySeq) {
+		return userRepository.getFamCode(familySeq);
+	}
 }

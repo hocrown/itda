@@ -9,6 +9,5 @@ public class NickNameModel {
 	private String userId;
 	private String targetUserId;
 	private String targetNickName;
-	private String selfNickName;
 	
 }

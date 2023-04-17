@@ -13,9 +13,9 @@
 	<insert id="insertUser" parameterType="com.project.itda.common.model.UserModel">
 	<![CDATA[
 		INSERT INTO 
-			itdauser (userId, familySeq, userPw, userName, userAge, userGender, userAddress, userAddressDetail, userPhone, approve, userBirth, email) 
+			itdauser (userId, familySeq, userPw, userName, userAge, userGender, userAddress, userAddressDetail, userPhone, approve, userBirth, email, nickname) 
 		VALUES 
-			(#{userId}, #{familySeq}, #{userPw}, #{userName}, #{userAge}, #{userGender}, #{userAddress}, #{userAddressDetail}, #{userPhone}, #{approve}, #{userBirth}, #{email})
+			(#{userId}, #{familySeq}, #{userPw}, #{userName}, #{userAge}, #{userGender}, #{userAddress}, #{userAddressDetail}, #{userPhone}, #{approve}, #{userBirth}, #{email} #{nickName})
 	]]>
 	</insert>
 	
@@ -64,7 +64,21 @@
 	</select>
 	
 	<select id="selectFamilyMembers" parameterType="int" resultType="com.project.itda.common.model.UserModel">
-    SELECT * FROM itdaUser WHERE familySeq = #{familySeq}
+    SELECT * FROM itdaUser WHERE familySeq = #{familySeq} order by userAge DESC;
+	</select>
+  	
+ 	<select id="getFamilyMembersWithNickName" parameterType="com.project.itda.common.model.UserModel" resultType="com.project.itda.common.model.UserModel">
+    SELECT
+    u.*,
+    COALESCE(n.TARGETNICKNAME, u.NICKNAME) as targetNickName
+	FROM
+    ITDAUSER u
+    LEFT JOIN NICKNAME n ON u.USERID = n.TARGETUSERID AND n.USERID = #{userId}
+	WHERE
+    u.FAMILYSEQ = #{familySeq}
+	ORDER BY
+    CASE WHEN u.USERID = #{userId} THEN 1 ELSE 0 END,
+    u.USERAGE
 	</select>
   	
   	<select id="getFamilyUserIds" parameterType="int" resultType="java.lang.String">
@@ -77,25 +91,11 @@
   	
   	<update id="updateUserInfo" parameterType="com.project.itda.common.model.UserModel">
   		<![CDATA[
-        UPDATE ITDAUSER SET userImageName=#{userImageName}, userImageData=#{userImageData}, userPw=#{userPw}, userAddress=#{userAddress}, userAddressDetail=#{userAddressDetail}, userPhone=#{userPhone}, email=#{email}
+        UPDATE ITDAUSER SET userImageName=#{userImageName}, userImageData=#{userImageData}, userPw=#{userPw}, userAddress=#{userAddress}, userAddressDetail=#{userAddressDetail}, userPhone=#{userPhone}, email=#{email}, nickname=#{nickName}
         WHERE userId = #{userId}
     	]]>
   	</update>
   	
-  	<insert id="insertNickName" parameterType="com.project.itda.common.model.NickNameModel">
-  		<![CDATA[
-  			INSERT INTO
-  			NICKNAME (nicknameSeq, userId, selfNickName)
-  			VALUES (nickNameSeq.nextval, #{userId}, #{selfNickName})
-  		]]>
-  	</insert>
-	
-	<update id="updateSelfNickName" parameterType="String">
-		<![CDATA[
-			UPDATE NICKNAME SET SELFNICKNAME = #{selfNickName} 
-			WHERE userId = #{userId}
-		]]>
-	</update>
 	
 	<update id="updateFamilyNickName" parameterType="com.project.itda.common.model.NickNameModel">
 		<![CDATA[
@@ -105,5 +105,13 @@
 			WHERE userId = #{userId}
 		]]>
 	</update>
+	
+	<select id="getFamCode" parameterType="int" resultType="String">
+		<![CDATA[
+			SELECT famcode FROM FAMILY 
+			WHERE familyOwner 
+			IN ( select userId FROM ITDAUSER WHERE familySeq = #{familySeq})
+		]]>
+	</select>
 	
 </mapper>

@@ -28,27 +28,26 @@
 			<span class="member-text">멤버 4</span>
 		</div>
 		
-		<div class="fam-member-container">	
-			<!-- forEach 자리 -->
-			<div class="fam-member-box">
-				<img src="../../image/dummyImg.jpg" class="fam-member-img">
-				<div class="fam-member-name-area">
-					<span>아빠</span>
-					<img src="../../image/textEditBtnImg.png" class="fam-member-name-edit-btn">
-				</div>
-				<div class="fam-member-name-area2">
-					<span>박정수</span>
-					<span class="fam-member-birth">1967.04.15</span>
-				</div>
-			</div>
-			<!-- forEach 닫는자리 -->
+		<div class="fam-member-container">    
+		    <c:forEach items="${familyMember}" var="member" varStatus="status">
+		        <div class="fam-member-box">
+		            <img src="data:image/png;base64,${profileImage[status.index]}" class="fam-member-img">
+		            <div class="fam-member-name-area">
+		                <span>${member.targetNickName}</span>
+		                <img src="../../image/textEditBtnImg.png" class="fam-member-name-edit-btn">
+		            </div>
+		            <div class="fam-member-name-area2">
+		                <span>${member.userName}</span>
+		                <span class="fam-member-birth">${member.userBirth}</span>
+		            </div>
+		        </div>
+		    </c:forEach>
 		</div>
 		
 		<div class="fam-code-text">가족코드</div>
 		<div style="text-align: center;">
-			<div class="fam-code-area">GeAbAbBa<img class="copy-btn" src="../../image/copyBtnImg.png"></div>
+			<div class="fam-code-area">${famCode}<img class="copy-btn" src="../../image/copyBtnImg.png"></div>
 		</div>
-		
 	</div>	
 
 	

@@ -25,6 +25,8 @@ public class UserModel {
 	private int month;
 	private int day;
 	private String famCode;
+	private String nickName;
+	private String targetNickName;
 	
 	private MultipartFile file;
 	private byte[] userImageData;

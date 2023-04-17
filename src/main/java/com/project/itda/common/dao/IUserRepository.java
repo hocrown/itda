@@ -26,14 +26,16 @@ public interface IUserRepository {
 	int countFamilyMember(@Param("familySeq") int familySeq);
 	List<UserModel> selectFamilyMembers(int familySeq);
 	List<String> getFamilyUserIds(int familySeq);
+
 	//사용 할지 말지 모르는 메소드
 	int modifyMyInfo(String userPw, String userAddress, 
 			String userAddressDetail, String userPhone, String email);
 	
 	void updateUserInfo(UserModel user);
-	void insertNickName(NickNameModel nickname);
 	
-	void updateNickName(NickNameModel nickname);
+	NickNameModel getNickName(String userId);
+	List<UserModel> getFamilyMembersWithNickName(UserModel loginUser);
 	
+	String getFamCode(int familySeq);
 	
 }

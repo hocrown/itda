@@ -26,6 +26,8 @@ public interface IUserService {
 			String userAddressDetail, String userPhone, String email);
 	void updateUserInfo(UserModel user);
 	
-	void insertNickName(NickNameModel nickname);
-	void updateNickName(NickNameModel nickname);
+	NickNameModel getNickName(String userId);
+	List<UserModel> getFamilyMembersWithNickName(UserModel loginUser);
+	
+	String getFamCode(int familySeq);
 }

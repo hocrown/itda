@@ -83,7 +83,7 @@ $(document).ready(function() {
 	
 	  // 모달창에 입력된 닉네임 정보 myInfo 페이지로 전달
 	  $save.on("click", function() {
-	    $myInfoNicknameText.text($nickname.val());
+	   	$myInfoNicknameText.val($nickname.val());
 	    $modal.css("display", "none");
 	  });
 	
@@ -106,17 +106,19 @@ $(document).ready(function() {
       var userAddressDetail = $(".myInfoAddressDetail").val();
       var phone = $(".myInfoPhone").val();
       var email = $(".myInfoEmail").val();
-      var file = $('#fileInput')[0].files[0]; // 수정된 부분
+      var file = $('#fileInput')[0].files[0];
+	  var selfNickName = $('.myInfoNicknameText').val();
+      var formData = new FormData();
 
       // FormData 객체 생성
-      var formData = new FormData();
       formData.append('userId', userId);
       formData.append('userPw', userPw);
       formData.append('userAddress', userAddress);
       formData.append('userAddressDetail', userAddressDetail);
       formData.append('userPhone', phone);
       formData.append('email', email);
-      formData.append('file', file); // 파일 추가
+      formData.append('file', file);
+      formData.append('selfNickName', selfNickName);
 
       // Ajax를 사용하여 정보 전송
       $.ajax({

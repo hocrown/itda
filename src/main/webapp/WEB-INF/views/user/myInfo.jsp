@@ -23,7 +23,7 @@
 			<img src="../image/cameraImg.png" class="cameraImg">
 			<input style="display: none;" type="file" name="file" id="fileInput">
 			
-			<span class="myInfoNicknameText">${loginUser.userName}</span>
+			<input type="text" class="myInfoNicknameText" value="${loginUser.nickName}" readonly>
 			<img src="../image/textEditBtnImg.png" class="textEditBtnImg">
 			<span class="myInfoUsernameText">${loginUser.userName}</span>
 			<span class="myInfoBirthText">${dateDot}</span>
@@ -60,7 +60,6 @@
 			<input class="myInfoEmail" value="${loginUser.email}">
 			
 			<div class="myInfoModifyBtn">수정하기</div>
-			</form>
 			<div class="myInfoUserDeactivate">탈퇴하기</div>
 			
 	</div>	

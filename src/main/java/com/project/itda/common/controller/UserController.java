@@ -1,22 +1,21 @@
 package com.project.itda.common.controller;
 
-import java.text.SimpleDateFormat;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Base64;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
-import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
@@ -48,9 +47,6 @@ public class UserController {
 	
 	@Autowired
 	IDailyQuestionService dailyService;
-	
-	@Autowired
-	private SimpMessagingTemplate messagingTemplate;
 	
 	@GetMapping("/user/login")
 	public String login(Model model) {
@@ -190,13 +186,10 @@ public class UserController {
 			int famSeq = userService.selectFamilySeq(famCode);
 			// insertUser 메소드로 itda_user 테이블에 데이터를 입력합니다.
 			user.setFamilySeq(famSeq);
+			// NickName 설정 (초기에는 사용자 이름으로 임의로 설정)
+			user.setNickName(user.getUserName());
 			userService.insertUser(user);
 			
-			// NickName 설정 (초기에는 사용자 이름으로 임의로 설정)
-			NickNameModel nickname = new NickNameModel();;
-			nickname.setUserId(userId);
-			nickname.setSelfNickName(user.getUserName());
-			userService.insertNickName(nickname);
 			// 데이터 입력에 성공하면 "success" 문자열을 반환합니다.
 			return "success";
 		} catch (DuplicateKeyException e) {
@@ -221,15 +214,14 @@ public class UserController {
 	@GetMapping("/user/myinfo")
 	public String myInfo(HttpSession session, Model model) {
 		UserModel loginUser = (UserModel) session.getAttribute("loginUser");
-		
-		   DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
-		   LocalDate localDate = loginUser.getUserBirth();
-		   String dateStr = localDate.format(dateFormat);
+		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
+		LocalDate localDate = loginUser.getUserBirth();
+		String dateStr = localDate.format(dateFormat);
 
-		   model.addAttribute("dateStr", dateStr);
+		model.addAttribute("dateStr", dateStr);
 		
-		   DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
-		   String dateDot = localDate.format(formatter);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+		String dateDot = localDate.format(formatter);
 		   
 		byte[] fileData = loginUser.getUserImageData();
 	    String base64ImageData = Base64.getEncoder().encodeToString(fileData);
@@ -240,11 +232,47 @@ public class UserController {
 		return "user/myInfo";
 	}
 	
-	@GetMapping("/user/myfaminfo")
-	public String myFamInfo(Model model) {
-
-		return "user/myFamInfo";
+	private String getDefaultProfileImage() {
+	    try {
+	        File file = new File("src/main/resources/static/image/profile.png");
+	        FileInputStream fis = new FileInputStream(file);
+	        byte[] imageData = new byte[(int) file.length()];
+	        fis.read(imageData);
+	        fis.close();
+	        return Base64.getEncoder().encodeToString(imageData);
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        return "";
+	    }
 	}
+
+	@GetMapping("/user/myfaminfo")
+	public String myFamInfo(HttpSession session, Model model) {
+	    UserModel loginUser = (UserModel) session.getAttribute("loginUser");
+	    
+	    List<UserModel> familyMember = userService.getFamilyMembersWithNickName(loginUser);
+	    List<String> encodedProfileImages = new ArrayList<>();
+	    String defaultProfileImage = getDefaultProfileImage();
+	    for (UserModel member : familyMember) {
+	        byte[] imageData = member.getUserImageData();
+	        String encodedImageData;
+	        if (imageData != null) {
+	            encodedImageData = Base64.getEncoder().encodeToString(imageData);
+	        } else {
+	            encodedImageData = defaultProfileImage;
+	        }
+	        encodedProfileImages.add(encodedImageData);
+	    }
+	    
+	    String famCode = userService.getFamCode(loginUser.getFamilySeq());
+	    
+	    model.addAttribute("famCode", famCode);
+	    model.addAttribute("familyMember", familyMember);
+	    model.addAttribute("profileImage", encodedProfileImages);
+	        
+	    return "user/myFamInfo";
+	}
+	
 	
 	@GetMapping("/user/requestbox")
 	public String requestBox() {
@@ -275,7 +303,7 @@ public class UserController {
 	@PostMapping("/user/updateUserInfo")
 	@ResponseBody
 	public String updateUserInfo(String userPw, String userAddress, String userAddressDetail, 
-			String userPhone, String email, MultipartFile file, HttpSession session) {
+			String userPhone, String email, String nickName, MultipartFile file, HttpSession session) {
 	    try {
 	      UserModel user = (UserModel) session.getAttribute("loginUser");
 	      user.setUserPw(userPw);
@@ -283,18 +311,25 @@ public class UserController {
 	      user.setUserAddress(userAddress);
 	      user.setUserAddressDetail(userAddressDetail);
 	      user.setUserPhone(userPhone);
-	      
-	      user.setUserImageName(file.getOriginalFilename());
-	      user.setUserImageData(file.getBytes());
+	      user.setNickName(nickName);
+	      if (file != null && !file.isEmpty()) {
+	    	    String filename = file.getOriginalFilename();
+	    	    user.setUserImageName(filename);
+	    	    user.setUserImageData(file.getBytes());
+	    	} else {
+
+	    	}
 	      
 	      userService.updateUserInfo(user);
 	      
 	      return "success";
+	      
 	    } catch (Exception e) {
 	      e.printStackTrace();
+	      
 	      return "fail";
 	    }
-	  }
+	}
 	
 	
 	@RequestMapping("/user/logout")
@@ -304,4 +339,5 @@ public class UserController {
 	// 첫 페이지로 리다이렉트
 	return "redirect:/";
 	}
+	
 }

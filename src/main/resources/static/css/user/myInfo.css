@@ -30,19 +30,21 @@
 
 .myInfoNicknameText	{
 	position: absolute;
-	left: 183px;
-	top: 118px;
+	left: 180px;
+	top: 125px;
 	font-family: 'Bookk Myungjo';
 	font-style: normal;
 	font-weight: 300;
 	font-size: 18px;
 	color: #2A221D;
+	background: transparent;
+	border: none;
 }
 
 .textEditBtnImg	{
 	position: absolute;
 	left: 262px;
-	top: 118px;
+	top: 125px;
 }
 
 .myInfoUsernameText	{

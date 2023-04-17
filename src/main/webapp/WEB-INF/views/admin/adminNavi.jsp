@@ -9,8 +9,7 @@
 				<div id="navi-questionManagement" class="navi-hover">
 					<div class="navi-item item-text">하루 질문 관리<img class="adminVector" src="../image/vector.png"></div>
 				</div>
-					<div class="detailItemText navi-questionList">질문 목록</div>
-					<div class="detailItemText navi-requestedList">요청 질문</div>
+
 			</div>
 			<!-- <div style="border-bottom: solid 1px;">
 				<div id="navi-newsManagement" class="navi-hover">

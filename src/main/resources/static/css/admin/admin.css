@@ -146,6 +146,7 @@ body {
 	margin-left: 300px;
 	margin-top: 85px;
 	padding: 20px;
+	text-align: center;
 }
 
 .detailItemText{
@@ -161,20 +162,22 @@ body {
 }
 
 .questionListText{
-	margin-top: 2%;
+	position: absolute;
+	top:0;
+	left:0;
+	display: inline-block;
 	font-family: 'Bookk Myungjo';
 	font-style: normal;
 	font-weight: 700;
 	font-size: 2em;
-	margin-left: 10.5vw;
 	text-align: left;
 }
 
 .dataTable{
 	display: inline-table;
 	text-align: center;
-	width: 60vw !important;
-	margin-top: 3%;
+	width: 65vw !important;
+	margin-top: 6%;
 	margin-bottom: 2%;
 	font-family: 'Bookk Myungjo';
 	font-style: normal;
@@ -197,7 +200,9 @@ th {
 }
 
 .question-delete-btn{
-	
+	position: absolute;
+	right: 1em;
+	border: 0;
 }
 
 .chkBoxWidth{
@@ -213,9 +218,23 @@ th {
 }
 
 .statusWidth{
-	width: 5em;
+	width: 7em;
+}
+
+.typeWidth{
+	width: 6em;
 }
 
 .navi-selected{
 	background-color: #F3F3F3;
+}
+
+.edit-input{
+	width: 40em;	
+}
+
+.questionListContainer{
+	margin-top: 50px;
+	display: inline-block;
+	position: relative;
 }

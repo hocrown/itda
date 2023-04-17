@@ -2,7 +2,6 @@
 
 body {
     position: relative;
-    overflow: hidden;
 }
 
 .ripple {
@@ -90,11 +89,26 @@ a {
 	background-position: center;
 	padding: 5px;
 	font-family: 'Bookk Myungjo';
-	font-style: normal;
-	font-weight: 300;
 	font-size: 15px;
 	letter-spacing: 0.05em;
 	color: #513828;
+	height: 37px;
+}
+
+.homeBtn{
+	border: solid 3px;
+	border-top: solid 3px;
+	margin-left: 3px;
+	margin-right: 3px;
+	padding: 5px;
+	border-image: url( "../../image/itdaColor2.png" ) 100 30 50 repeat;
+	height: 37px;
+	background-color: #E7DCD4;
+}
+
+.homeImg{
+	width:25px;
+	
 }
 
 .bordermy {

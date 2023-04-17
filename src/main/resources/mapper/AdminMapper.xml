@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.itda.bucketlist.dao.IAdminRepository">
+<mapper namespace="com.project.itda.admin.dao.IAdminRepository">
+
+	<update id="updateQuestion" parameterType="com.project.itda.dailyquestion.model.DailyQuestionModel">
+        UPDATE DAILYQUESTION
+	        SET question = #{question}
+	        WHERE dailyQuestionSeq = #{dailyQuestionSeq}
+	</update>
+
+	<update id="updateStatus" parameterType="com.project.itda.dailyquestion.model.DailyQuestionModel">
+        UPDATE DAILYQUESTION
+	        SET visible = #{visible}
+	        WHERE dailyQuestionSeq = #{dailyQuestionSeq}
+	</update>
+	
+	<delete id="deleteQuestions" parameterType="list">
+        DELETE FROM DAILYQUESTION WHERE DAILYQUESTIONSEQ IN
+        <foreach item="dailyQuestionSeq" collection="dailyQuestionSeqs" open="(" separator="," close=")">
+            #{dailyQuestionSeq}
+        </foreach>
+    </delete>
 
 </mapper>

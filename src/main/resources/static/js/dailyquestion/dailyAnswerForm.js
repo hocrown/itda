@@ -3,20 +3,6 @@
  * @since 2023-03-29
  */
  $(document).ready(function() {
-	$('#answer-form').submit(function(event) {
-		event.preventDefault(); // 기본 동작 중지
-		var formData = $(this).serialize(); // Form 데이터 가져오기
-		formData = formData.replace(/\r?\n/g, '\n'); // 줄 바꿈 문자를 HTML <br> 태그로 변환
-		$.ajax({
-			url: $(this).attr('action'),
-			type: $(this).attr('method'),
-			data: formData,
-			success: function(data) {
-				// 전송이 완료되면 처리할 내용
-				 window.location.href = '/dailyquestion/familybylist';
-			}
-		});
-	});
 	
 	$('.answerTextarea').keypress(function(event) {
 		if (event.which == 13) { // Enter 키가 눌렸을 때

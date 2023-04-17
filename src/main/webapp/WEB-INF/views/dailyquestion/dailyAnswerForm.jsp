@@ -13,7 +13,7 @@
 <body>
 
 	<div class="layout">
-		<form id="answer-form" action="/dailyquestion/answer" method="POST">
+		<form id="answer-form" action="/dailyquestion/dayanswer" method="POST">
 		<div class="headBox"><img class="vector" src="../image/vector.png">
 			하루를 잇다
 		<input type="image" src="../image/finishBtn.png" class="finishBtn" alt="완료" onclick="submitForm()">
@@ -23,13 +23,15 @@
 		<span class="question2">${familyQuestion.question}</span>
 		<span class="numberOfQuestion2">#${questionOrder}번째 질문</span>
 		<span class="questionDate2"><fmt:formatDate value="${familyQuestion.askedDate}" pattern="yyyy.MM.dd"/></span>
-		<input type="hidden" name="dailyQuestionSeq" value="${familyQuestion.dailyQuestionSeq}" />
-		<input type="hidden" name="questionOrder" value="${questionOrder}"/>
-		<input type="hidden" name="familySeq" value="${familySeq}"/>
+		
 	
 		<div class="answerBox">
 			<textarea spellcheck="false" placeholder="답변을 입력해주세요." class="answerTextarea" name="answer"></textarea>
 		</div>
+		<input type="hidden" name="dailyQuestionSeq" value="${familyQuestion.dailyQuestionSeq}" />
+		<input type="hidden" name="questionOrder" value="${questionOrder}"/>
+		<input type="hidden" name="familySeq" value="${familySeq}"/>
+		
 		</form>
 		
 		<span class="characterCount">0/100</span>

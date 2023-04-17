@@ -13,6 +13,7 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -62,7 +63,22 @@ public class DailyQuestionController {
 	    return "dailyquestion/dailyAnswerForm";
 	}
 	
-	
+	@PostMapping("/dailyquestion/dayanswer")
+	public String submitDailyAnswer(@ModelAttribute DailyAnswerModel dailyAnswer, @RequestParam("questionOrder") int questionOrder, HttpSession session) {
+	    // 세션에서 유저 아이디와 가족 번호를 가져옵니다.
+	    String userId = (String) session.getAttribute("userId");
+	    int familySeq = (int) session.getAttribute("famSeq");
+	    
+	    // 답변을 DB에 저장합니다.
+	    dailyAnswer.setUserId(userId);
+	    dailyAnswer.setFamilySeq(familySeq);
+	    dailyAnswerService.saveDailyAnswer(dailyAnswer);
+
+	    // 해당 질문에 대한 정보를 모델에 담아서 dailyDay.jsp를 렌더링합니다.
+	    int dailyQuestionSeq = dailyAnswer.getDailyQuestionSeq();
+	    return "redirect:/dailyquestion/familybylist?dailyQuestionSeq=" + dailyQuestionSeq + "&familySeq=" + familySeq + "&questionOrder=" + questionOrder;
+	}
+
 	
 	//가족 질문 가져오기
 	@GetMapping("/dailyquestion/dailylist")
@@ -190,6 +206,8 @@ public class DailyQuestionController {
             for (String loginUserId : userIds) {
             	 messagingTemplate.convertAndSendToUser(loginUserId, "/queue/alarm", alarm);
             }
+            
+            
 	    } else {
 	    	FamilyQuestionModel todayFamilyQuestion = familyQuestionService.todayFamilyQuestion(familySeq);
 	    	session.setAttribute("todayFamilyQuestion", todayFamilyQuestion);

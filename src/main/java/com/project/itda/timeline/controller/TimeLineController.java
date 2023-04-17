@@ -81,20 +81,19 @@ public class TimeLineController {
 	//게시글 수정 페이지
 	@GetMapping("/familypost/updatepost")
 	public String updatePost(@RequestParam("postSeq")int postSeq, Model model) {
-		TimeLineModel postOne = timelineService.getContent(postSeq);
-		
-		model.addAttribute("postOne", postOne);
-		
-		return "timeline/updatePost;";
+	    TimeLineModel postOne = timelineService.getContent(postSeq);
+	    System.out.println("update" + postOne.getFamilySeq());
+	    model.addAttribute("postOne", postOne);
+	    
+	    return "timeline/updatePost";
 	}
-	
 	
 	//게시글 수정 액션
 	@PostMapping("/familypost/updateaction")
 	public String updatePostAction(TimeLineModel timeLineModel, MultipartFile file) throws Exception {
-		
+		int postSeq = timeLineModel.getPostSeq();
 		timelineService.updatePost(timeLineModel, file);
-		return "redirect:/timeline/postView";
+		return "redirect:/familypost/postcontent?postSeq="+postSeq;
 	}
 	
 	//게시글 삭제 액션

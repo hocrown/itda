@@ -75,13 +75,6 @@
 			        </c:forEach>
 			        
 			        
-			 
-		        
-<!-- 		        <div class="modalBox detailDisNone"> 		       	 -->
-<%-- 			        <div class="btnBox"><a class="modifyBtn" href="/familypost/updatepost?postSeq=${timeline.postSeq}">수정하기</a></div> --%>
-<%-- 			        <div class="btnBox"><a class="deleteBtn" href="/familypost/deleteaction?postSeq=${timeline.postSeq }">삭제하기</a></div> --%>
-<!-- 			        <div class="btnBox detailCancelBtn">취소</div> -->
-<!-- 		        </div> -->
 		        
 		        <!-- 모달 창 -->
 		        <div class="detailDeleteBox">

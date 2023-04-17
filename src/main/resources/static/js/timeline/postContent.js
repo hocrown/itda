@@ -19,23 +19,9 @@ $(document).ready(function(){
 	});
 	
 	$('.detailModifyText').on('click', function(){
-		const postSeq =  document.getElementById('postSeq').value;
-    	console.log(postSeq);
-    	$.ajax({
-      		url: '/familypost/updatepost',
-      		method: 'POST',
-      		data: {
-		        postSeq: postSeq
-      		},
-      	complete: function(xhr, status) {
-	        if (status === 'success') {
-          	location.href = "../timeline/updatePost";
-        	}
-	      },
-      	error: function(xhr, status, error) {
-	        console.error(error);
-      	}
-    	});
+    const postSeq =  document.getElementById('postSeq').value;
+    console.log(postSeq);
+    window.location.href = `/familypost/updatepost?postSeq=${postSeq}`;
 	});
 	
 	

@@ -43,7 +43,7 @@
 			update TIMELINE set 
 				content = #{content},
 				filepath = #{filepath},
-				filename = #{filename},
+				filename = #{filename}
 				
 				where postSeq = #{postSeq}
 	</update>

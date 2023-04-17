@@ -375,6 +375,16 @@ font-family: 'Bookk Myungjo';
 	color: #E16646;
 }
 
+
+.detailModifyText {
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 20px;
+	color: #E16646;
+}
+
 .detailDeleteBox {
 	position: fixed; /* 화면을 기준으로 위치 지정 */
 	left: 0; /* 왼쪽 정렬 */
@@ -390,7 +400,7 @@ font-family: 'Bookk Myungjo';
 
 .detailDeleteBox.active {
 	transform: translateY(0%); /* active 클래스가 추가되면 위로 이동시킴 */
-	bottom: 0; /* bottom 속성 값 변경 */
+	bottom: 62px; /* bottom 속성 값 변경 */
 }
 
 

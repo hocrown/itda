@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/css/user/myFamInfo.css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="/js/myInfo.js"></script>
+<script type="text/javascript" src="/js/myFamInfo.js"></script>
 </head>
 <body>
 	<div class="layout">
@@ -18,6 +18,7 @@
 		</div>
 		
 		<div>
+			<input type="file" id="famProfileInput" style="display:none;">
 			<img src="../../image/dummyImg.jpg" class="fam-profile">
 		</div>
 		
@@ -29,13 +30,13 @@
 		</div>
 		
 		<div class="fam-member-container">    
-		    <c:forEach items="${familyMember}" var="member" varStatus="status">
-		        <div class="fam-member-box">
+        	<c:forEach items="${familyMember}" var="member" varStatus="status">
+            	<div class="fam-member-box">
 		            <img src="data:image/png;base64,${profileImage[status.index]}" class="fam-member-img">
 		            <div class="fam-member-name-area">
-		                <span>${member.targetNickName}</span>
-		                <img src="../../image/textEditBtnImg.png" class="fam-member-name-edit-btn">
-		            </div>
+                   		<span id="famMemberName${member.userId}">${member.targetNickName}</span>
+                   		<img src="../../image/textEditBtnImg.png" class="fam-member-name-edit-btn" data-userid="${member.userId}">
+                	</div>
 		            <div class="fam-member-name-area2">
 		                <span>${member.userName}</span>
 		                <span class="fam-member-birth">${member.userBirth}</span>

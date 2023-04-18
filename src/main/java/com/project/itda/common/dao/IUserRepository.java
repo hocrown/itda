@@ -37,5 +37,9 @@ public interface IUserRepository {
 	List<UserModel> getFamilyMembersWithNickName(UserModel loginUser);
 	
 	String getFamCode(int familySeq);
+	void updateFamilyProfile(FamilyModel family);
+	void updateFamilyNickName(NickNameModel nickName);
+	NickNameModel getNickname(String userId, String targetUserId);
+	void insertNickname(NickNameModel newNickname);
 	
 }

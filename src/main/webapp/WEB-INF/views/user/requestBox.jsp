@@ -52,7 +52,6 @@
 		  <div class="modal-content">
 		    <div class="modal-deleteText"><p id="messageText"></p></div>
 		    <div class="modal-btn-box">
-		    	<button class="btn-cancel-area">취소</button>
 		    	<button class="btn-delete-area">확인</button>
 		    </div>
 		  </div>

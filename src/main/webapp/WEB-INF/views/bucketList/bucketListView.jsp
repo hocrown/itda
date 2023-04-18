@@ -30,9 +30,9 @@
 					<div class="bordermy" style="height: 30px;"></div>
 				</div>
 				
-				<c:forEach items="${myFam }" var="fam" varStatus="status">
-					<div data-member-id="${fam.userId }" class="testbox">
-						<button id="sticker${status.index }" class="testspan">${fam.userName }</button>
+				<c:forEach items="${myFam}" var="fam" varStatus="status">
+					<div data-member-id="${fam.userId}" class="testbox">
+						<button id="sticker${status.index}" class="testspan">${fam.userName }</button>
 						<div class="bordermy" style="height: 30px;"></div>
 					</div>
 				</c:forEach>

@@ -30,4 +30,9 @@ public interface IUserService {
 	List<UserModel> getFamilyMembersWithNickName(UserModel loginUser);
 	
 	String getFamCode(int familySeq);
+	void updateFamilyProfile(FamilyModel family);
+	boolean updateFamilyNickName(String targetUserId, String targetNickName, String userId);
+	NickNameModel getNickName(String userId, String targetUserId);
+	void insertNickname(NickNameModel newNickname);
+	
 }

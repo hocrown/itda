@@ -16,6 +16,7 @@ $(document).ready(function() {
 	    $("#commonSmallEllipse").addClass("radioClickEllipse");
 	});
  
+
   // 최대 글자수
   var maxLength = 40;
   
@@ -42,9 +43,7 @@ $(document).ready(function() {
 	$(".apply-btn").click(function() {
 	  var question = $("input[name='question']").val();
 	  var typeValue = $("input[name='type']:checked").val();
-	  console.log(question);
-	  console.log(typeValue);
-	  
+
 	  var data = {
 	    question: question,
 	    type: typeValue
@@ -56,14 +55,10 @@ $(document).ready(function() {
 	    data: JSON.stringify(data),
 	    contentType: "application/json; charset=utf-8",
 	    success: function(response) {
-	    	console.log(response);
 			$("#messageText").text(response);
       		$('.modal').css('display', 'block');
-      		$(".modal .btn-delete-area button").click(function() {
-        		window.location.href = "/user/mypage";
-      		});
-      		$('.btn-cancel-area').on('click', function() {
-    			$('.modal').css('display', 'none');
+  			$('.btn-delete-area').on('click', function() {
+			$('.modal').css('display', 'none');
 			});
 	    },
 	    error: function(error) {

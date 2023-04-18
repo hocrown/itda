@@ -16,6 +16,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
@@ -26,9 +28,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.itda.common.model.FamilyModel;
 import com.project.itda.common.model.NickNameModel;
 import com.project.itda.common.model.UserModel;
 import com.project.itda.common.service.IUserService;
@@ -264,6 +268,20 @@ public class UserController {
 	    }
 	}
 
+	private byte[] getDefaultFamilyImage() {
+		try {
+	        File file = new File("src/main/resources/static/image/profile.png");
+	        FileInputStream fis = new FileInputStream(file);
+	        byte[] imageData = new byte[(int) file.length()];
+	        fis.read(imageData);
+	        fis.close();
+	        return imageData;
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        return new byte[0];
+	    }
+	}
+	
 	@GetMapping("/user/myfaminfo")
 	public String myFamInfo(HttpSession session, Model model) {
 	    UserModel loginUser = (UserModel) session.getAttribute("loginUser");
@@ -355,6 +373,70 @@ public class UserController {
 	        return "fail";
 	    }
 	}
+	
+	 // 가족 프로필 이미지 업로드
+    @PostMapping("/user/updateFamilyProfile")
+    @ResponseBody
+    public Map<String, Object> updateFamilyProfile(@RequestPart("profileImage") MultipartFile profileImage, HttpSession session) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+        	String userId = (String) session.getAttribute("userId");
+            FamilyModel family = userService.getFamilyByUserId(userId);
+
+            if (profileImage != null && !profileImage.isEmpty()) {
+                String filename = profileImage.getOriginalFilename();
+                family.setFamilyFileName(filename);
+                family.setFamilyFileData(profileImage.getBytes());
+            } else if (family.getFamilyFileData() != null && family.getFamilyFileData().length > 0) {
+                family.setFamilyFileName(family.getFamilyFileName());
+                family.setFamilyFileData(family.getFamilyFileData());
+            } else {
+                family.setFamilyFileName("defaultProfile.png");
+                family.setFamilyFileData(getDefaultFamilyImage());
+            }
+
+            userService.updateFamilyProfile(family);
+
+            response.put("success", true);
+            response.put("imageUrl", family.getFamilyFileName());
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.put("success", false);
+            response.put("imageUrl", "");
+        }
+        return response;
+    }
+	
+    // 가족 멤버 닉네임 수정
+    @PostMapping("/user/updateFamilyMemberNickname")
+    @ResponseBody
+    public Map<String, Object> updateFamilyMemberNickname(@RequestParam("targetUserId") String targetUserId, @RequestParam("targetNickName") String targetNickName, HttpSession session) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            UserModel loginUser = (UserModel) session.getAttribute("loginUser");
+
+            if (loginUser.getUserId().equals(targetUserId)) {
+                loginUser.setNickName(targetNickName);
+                userService.updateUserInfo(loginUser);
+            } else {
+            	String userId = (String) session.getAttribute("userId");
+                boolean success = userService.updateFamilyNickName(targetUserId, targetNickName, userId);
+                if (!success) {
+                    response.put("success", false);
+                    response.put("message", "닉네임 수정에 실패했습니다.");
+                    return response;
+                }
+            }
+
+            response.put("success", true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.put("success", false);
+            response.put("message", "닉네임 수정 중 오류가 발생했습니다");
+        }
+        return response;
+    }
+	
 	
 	
 	@RequestMapping("/user/logout")

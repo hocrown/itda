@@ -1,5 +1,10 @@
 package com.project.itda.timeline.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.itda.common.model.FamilyModel;
 import com.project.itda.common.model.UserModel;
 import com.project.itda.common.service.IUserService;
 import com.project.itda.timeline.model.TimeLineModel;
@@ -34,13 +40,73 @@ public class TimeLineController {
 	@Autowired
 	IUserService userService;
 	
+	
+	private byte[] getDefaultFamilyImage() {
+		try {
+	        File file = new File("src/main/resources/static/image/familyDefaultBanner.png");
+	        FileInputStream fis = new FileInputStream(file);
+	        byte[] imageData = new byte[(int) file.length()];
+	        fis.read(imageData);
+	        fis.close();
+	        return imageData;
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        return new byte[0];
+	    }
+	}
+	
+	private String getDefaultProfileImage() {
+	    try {
+	        File file = new File("src/main/resources/static/image/profile.png");
+	        FileInputStream fis = new FileInputStream(file);
+	        byte[] imageData = new byte[(int) file.length()];
+	        fis.read(imageData);
+	        fis.close();
+	        return Base64.getEncoder().encodeToString(imageData);
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        return "";
+	    }
+	}
+	
 	//게시글 전체 목록
 	@GetMapping("/familypost")
 	public String familyPost(Model model, HttpSession session) {
+		UserModel loginUser = (UserModel) session.getAttribute("loginUser");
 		int familySeq = (int) session.getAttribute("famSeq"); //세션으로부터 familySeq를 받아온다.
 		List<TimeLineModel> post = timelineService.getPostList(familySeq); //받아온 해당 familySeq를 요청하여 가족 게시글을 post에 담는다.
-		model.addAttribute("post", post); //담겨진 리스트를 postView.jsp에서 post라는 이름으로 사용할 수 있게한다.
+	    FamilyModel family = userService.getFamilyByUserId(loginUser.getUserId());
+	    List<UserModel> familyMember = userService.getFamilyMembersWithNickName(loginUser);
 		
+	    List<String> encodedProfileImages = new ArrayList<>();
+	    String defaultProfileImage = getDefaultProfileImage();
+	    for (UserModel member : familyMember) {
+	        byte[] imageData = member.getUserImageData();
+	        String encodedImageData;
+	        if (imageData != null) {
+	            encodedImageData = Base64.getEncoder().encodeToString(imageData);
+	        } else {
+	            encodedImageData = defaultProfileImage;
+	        }
+	        encodedProfileImages.add(encodedImageData);
+	    }
+	    
+	    byte[] fileData = family.getFamilyFileData();
+		String base64ImageData;
+		if (fileData != null) {
+		    base64ImageData = Base64.getEncoder().encodeToString(fileData);
+		} else {
+		    byte[] defaultImageData = getDefaultFamilyImage();
+		    base64ImageData = Base64.getEncoder().encodeToString(defaultImageData);
+		}
+		int familyCount = userService.countFamilyMember(familySeq);
+		
+		model.addAttribute("familyCount", familyCount);
+		model.addAttribute("familyMember", familyMember);
+		model.addAttribute("family", family);
+		model.addAttribute("famImage", base64ImageData);	//가족 배너 이미지
+		model.addAttribute("profileImage", encodedProfileImages);
+		model.addAttribute("post", post); //담겨진 리스트를 postView.jsp에서 post라는 이름으로 사용할 수 있게한다.
 		return "timeline/postView";
 	}
 	

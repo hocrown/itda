@@ -20,44 +20,61 @@
 	</div>
 	
 	<div class="postBanner">	
-			<img src="../image/timeline/mainpicture.png" class="timelineMainImg">
+			<img src="data:image/png;base64,${famImage}" class="timelineMainImg">
 			<img src="../image/timeline/mainpictureBlind.png" class="blindImg">
-			<img src="../image/timeline/profileBox.png" class="profile">
+    		<input type="file" id="famProfileInput" style="display:none;">
 	</div>
 
+	<div class="fam-name-area">
+		  <div class="fam-name">
+		    <c:choose>
+		      <c:when test="${not empty family.familyName}">
+		        <span>${family.familyName}</span>
+		        <img src="../../image/textEditBtnImg.png" class="fam-name-edit-btn">
+		      </c:when>
+		      <c:otherwise>
+		             <c:forEach items="${familyMember}" var="member">
+				     	<c:if test="${member.userId == family.familyOwner}">
+				        	<span>${member.userName}의 가족</span>
+				        </c:if>
+				      </c:forEach>
+		      </c:otherwise>
+		    </c:choose>
+		  </div>
+		  <span class="member-text">멤버 ${familyCount}</span>
+		</div>
 	<div class="allPostLayout">
 		<c:forEach var="timeline" items="${post}">
 		
-		<div class="postLayout">
-			
-			<div class="postInfo">
-		 		<img src="../image/timeline/profile.png" class="profileImg">
-		 		<div class="writter">${timeline.userName}</div>
-		 		<div class="createDate">등록일 <fmt:formatDate value="${timeline.createDate}" pattern="yyyy년 MM월 dd일"/></div>
-			</div>
+			<div class="postLayout">
 				
-				
+				<div class="postInfo">
+			 		<img src="data:image/png;base64,${profileImage[status.index]}" class="fam-member-img">
+			 		<div class="writter">${timeline.userName}</div>
+			 		<div class="createDate">등록일 <fmt:formatDate value="${timeline.createDate}" pattern="yyyy년 MM월 dd일"/></div>
+				</div>
+					
 				<div class="postContent">
-				<a href="/familypost/postcontent?postSeq=${timeline.postSeq}">
-					<div class="postContentText">${timeline.content}</div>
-					<img src="..${timeline.filepath}" class="userPic">
+					<a href="/familypost/postcontent?postSeq=${timeline.postSeq}">
+						<div class="postContentText">${timeline.content}</div>
+						<img src="..${timeline.filepath}" class="userPic">
 					</a>
-
+	
 					<div class="replyCountBox">
 				   	  <img src="../image/bucket/replyCountImg.png" class="replyCountImg">
 				   	  <span class="replyCountText">${timeline.replyCount}</span>
 					</div>
-				</a>
-				</div>
+					</div>
 				
 				
-
-		<c:set var="loopCount" value="0" />
-		    <c:forEach items="${reply}" var="reply" varStatus="status">
-				<c:if test="${status.last}">
-						<c:set var="loopCount" value="${status.index + 1}" />
-				</c:if>
-			</c:forEach>
+			
+					<c:set var="loopCount" value="0" />
+					    <c:forEach items="${reply}" var="reply" varStatus="status">
+							<c:if test="${status.last}">
+									<c:set var="loopCount" value="${status.index + 1}" />
+							</c:if>
+						</c:forEach>
+			</div>
 		</c:forEach>	
 	</div>
 </div>

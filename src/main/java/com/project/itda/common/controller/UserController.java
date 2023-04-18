@@ -270,7 +270,7 @@ public class UserController {
 
 	private byte[] getDefaultFamilyImage() {
 		try {
-	        File file = new File("src/main/resources/static/image/profile.png");
+	        File file = new File("src/main/resources/static/image/familyDefaultBanner.png");
 	        FileInputStream fis = new FileInputStream(file);
 	        byte[] imageData = new byte[(int) file.length()];
 	        fis.read(imageData);
@@ -299,16 +299,31 @@ public class UserController {
 	        }
 	        encodedProfileImages.add(encodedImageData);
 	    }
+	    int familySeq = loginUser.getFamilySeq();
 	    
-	    String famCode = userService.getFamCode(loginUser.getFamilySeq());
+	    String famCode = userService.getFamCode(familySeq);
 	    
+	    int familyCount = userService.countFamilyMember(familySeq);
+	    FamilyModel family = userService.getFamilyByUserId(loginUser.getUserId());
+	    
+		byte[] fileData = family.getFamilyFileData();
+		String base64ImageData;
+		if (fileData != null) {
+		    base64ImageData = Base64.getEncoder().encodeToString(fileData);
+		} else {
+		    byte[] defaultImageData = getDefaultFamilyImage();
+		    base64ImageData = Base64.getEncoder().encodeToString(defaultImageData);
+		}
+		
+	    model.addAttribute("family", family);
+	    model.addAttribute("famImage", base64ImageData);
 	    model.addAttribute("famCode", famCode);
 	    model.addAttribute("familyMember", familyMember);
 	    model.addAttribute("profileImage", encodedProfileImages);
+	    model.addAttribute("familyCount", familyCount);
 	        
 	    return "user/myFamInfo";
 	}
-	
 	
 	@GetMapping("/user/requestbox")
 	public String requestBox() {
@@ -322,9 +337,7 @@ public class UserController {
 		UserModel loginuser = (UserModel) session.getAttribute("loginUser");
 		int familySeq = loginuser.getFamilySeq();
 		String userId = loginuser.getUserId();
-		System.out.println(requestQuestion.getType());
 		int visible = requestQuestion.getType().equals("family") ? 1 : 0;
-		System.out.println(visible);
 		requestQuestion.setVisible(visible);
 		requestQuestion.setWriter(userId);
 		requestQuestion.setFamilySeq(familySeq);
@@ -396,9 +409,9 @@ public class UserController {
             }
 
             userService.updateFamilyProfile(family);
-
+            
             response.put("success", true);
-            response.put("imageUrl", family.getFamilyFileName());
+            response.put("imageUrl", family.getFamilyFileData());
         } catch (Exception e) {
             e.printStackTrace();
             response.put("success", false);

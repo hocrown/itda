@@ -18,17 +18,36 @@
 		</div>
 		
 		<div>
-			<input type="file" id="famProfileInput" style="display:none;">
-			<img src="../../image/dummyImg.jpg" class="fam-profile">
+			<c:choose>
+		  		<c:when test="${not empty family.familyFileData}">
+		    		<input type="file" id="famProfileInput" style="display:none;">
+		    		<img src="data:image/png;base64,${famImage}" class="fam-profile">
+		  		</c:when>
+			  	<c:otherwise>
+			    	<input type="file" id="famProfileInput" style="display:none;">
+			    	<img src="../../image/dummyImg.jpg" class="fam-profile">
+			  	</c:otherwise>
+			  	</c:choose>
 		</div>
 		
 		<div class="fam-name-area">
-			<div class="fam-name">
-				<span>박주주의 가족</span><img src="../../image/textEditBtnImg.png" class="fam-name-edit-btn">
-			</div>
-			<span class="member-text">멤버 4</span>
+		  <div class="fam-name">
+		    <c:choose>
+		      <c:when test="${not empty family.familyName}">
+		        <span>${family.familyName}</span>
+		        <img src="../../image/textEditBtnImg.png" class="fam-name-edit-btn">
+		      </c:when>
+		      <c:otherwise>
+		             <c:forEach items="${familyMember}" var="member">
+				     	<c:if test="${member.userId == family.familyOwner}">
+				        	<span>${member.userName}의 가족</span>
+				        </c:if>
+				      </c:forEach>
+		      </c:otherwise>
+		    </c:choose>
+		  </div>
+		  <span class="member-text">멤버 ${familyCount}</span>
 		</div>
-		
 		<div class="fam-member-container">    
         	<c:forEach items="${familyMember}" var="member" varStatus="status">
             	<div class="fam-member-box">

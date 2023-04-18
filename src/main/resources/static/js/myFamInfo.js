@@ -24,7 +24,7 @@ $(document).ready(function() {
             contentType: false,
             success: function(response) {
                 // 서버에서 반환된 이미지 URL을 사용해 프리뷰 업데이트
-                $('.fam-profile').attr('src', response.imageUrl);
+                $('.fam-profile').attr('src', 'data:image/png;base64,' + response.imageUrl);
             },
             error: function(err) {
                 console.error(err);

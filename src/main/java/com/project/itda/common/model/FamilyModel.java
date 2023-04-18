@@ -10,4 +10,5 @@ public class FamilyModel {
 	private String familyOwner;
 	private String familyFileName;
 	private byte[] familyFileData;
+	private String familyName;
 }

@@ -10,5 +10,5 @@ public class DailyQuestionModel {
 	private String type;
 	private int familySeq;
 	private int visible;
-	private String writer;
+	private String userId;
 }

@@ -40,6 +40,6 @@ public class DailyQuestionService implements IDailyQuestionService {
 
 	@Override
 	public void insertQuestion(DailyQuestionModel dailyQuestion) {
-		dailyQuestionRepository.insertQuestion();
+		dailyQuestionRepository.insertQuestion(dailyQuestion);
 	}
 }

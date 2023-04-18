@@ -21,7 +21,7 @@
 		<span class="request-intro-text">하루 일기에서 '이런'<br>질문이 나왔으면 좋겠어요.</span>
 		<span class="request-descript-text">여기 <잇다 질문통>을 통해 제시해주세요. <br>잇다가 대신 물어봐 드릴게요!</span>
 		<div class="request-input-box"><input name="question" class="request-input" spellcheck="false"></div>
-		<span class="request-text-count">0/20</span>
+		<span class="request-text-count">0/40</span>
 		
 		<span class="typeText">공개 범위</span>
 		

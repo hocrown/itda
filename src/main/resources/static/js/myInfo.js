@@ -107,7 +107,7 @@ $(document).ready(function() {
       var phone = $(".myInfoPhone").val();
       var email = $(".myInfoEmail").val();
       var file = $('#fileInput')[0].files[0];
-	  var selfNickName = $('.myInfoNicknameText').val();
+	  var nickName = $('.myInfoNicknameText').val();
       var formData = new FormData();
 
       // FormData 객체 생성
@@ -118,7 +118,7 @@ $(document).ready(function() {
       formData.append('userPhone', phone);
       formData.append('email', email);
       formData.append('file', file);
-      formData.append('selfNickName', selfNickName);
+      formData.append('nickName', nickName);
 
       // Ajax를 사용하여 정보 전송
       $.ajax({

@@ -14,5 +14,5 @@ public interface IDailyQuestionRepository {
 
 	DailyQuestionModel getRandomQuestion(int familySeq, String todayStr);
 	List<DailyQuestionModel> getAllQuestion();
-	void insertQuestion();
+	void insertQuestion(DailyQuestionModel dailyQuestion);
 }

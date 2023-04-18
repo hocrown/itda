@@ -17,7 +17,7 @@ $(document).ready(function() {
 	});
  
   // 최대 글자수
-  var maxLength = 20;
+  var maxLength = 40;
   
   // input 태그에 입력값이 변경될 때마다 호출되는 함수
   $(".request-input").on("input", function() {

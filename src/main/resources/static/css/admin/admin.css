@@ -199,6 +199,12 @@ th {
 	font-size: 1.2em;
 }
 
+.question-insert-btn{
+	position: absolute;
+	right: 6em;
+	border: 0;
+}
+
 .question-delete-btn{
 	position: absolute;
 	right: 1em;
@@ -237,4 +243,61 @@ th {
 	margin-top: 50px;
 	display: inline-block;
 	position: relative;
+}
+
+.insert-question-modal{
+	width: 500px;
+	height: 200px;
+	text-align: center;
+	font-family: 'Bookk Myungjo';
+	background-color: #ffffff;
+	position: fixed;
+	top: 20%;
+	left: 43%;
+	border-radius: 30px;
+	display: none;
+
+}
+
+.insert-question-text{
+	margin-top: 25px;
+	font-size: 20px;
+	margin-bottom: 25px;
+}
+
+.insert-question-input{
+	width: 80%;
+	padding: 7px;
+}
+
+.question-modal-insert-btn{
+	margin-left: 15px;
+}
+
+.modal-black{
+	position: fixed;
+	top:0;
+	left: 0;
+	width:100vw;
+	height: 100vw;
+	background-color: black;
+	opacity: 0.5;
+	display: none;
+}
+	
+.modal-btn-group{
+	margin-top: 20px;
+	letter-spacing: 0.06em;
+}
+
+.question-modal-cancel-btn{
+	
+}
+
+.nextGroupBtn{
+	cursor: pointer;
+}
+
+.prevGroupBtn{
+	cursor: pointer;
 }

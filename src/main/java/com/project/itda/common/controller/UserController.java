@@ -326,7 +326,7 @@ public class UserController {
 		int visible = requestQuestion.getType().equals("family") ? 1 : 0;
 		System.out.println(visible);
 		requestQuestion.setVisible(visible);
-		requestQuestion.setUserId(userId);
+		requestQuestion.setWriter(userId);
 		requestQuestion.setFamilySeq(familySeq);
 		
 		dailyService.insertQuestion(requestQuestion);

@@ -159,8 +159,14 @@
 		      response.forEach(bucket => {
 		        const { bucketSeq,/*  filepath, */ fileData ,title, finishDate } = bucket; // bucket 객체에서 bucketSeq, bucketListImg, bucketListTitle 속성 값을 가져옵니다.
 		        	
-		          const bucketImgSrc = fileData;
-		      //  const bucketImgSrc = filepath ? filepath : '/image/itdaLogo.png';
+		      //    const bucketImgSrc = fileData;
+		        if (fileData === null) {
+		        	const bucketImgSrc = '<img src="../image/itdaLogo.png" style="width: 100%; height: 155px;>';
+		        } else {
+		        	const bucketImgSrc = '<img src="data:image/png;base64,`+fileData+`" style="width: 100%; height: 155px;">';
+		        }
+		        
+		          const bucketImgSrc = fileData ? fileData : '../image/itdaLogo.png';
 		        const finishDateObj = finishDate ? new Date(finishDate) : null;
 		        function formatDate(date) {
 		        	  const year = date.getFullYear();
@@ -173,8 +179,7 @@
 		        	const formattedFinishDate = formatDate(finishDateObj);
 		        output += `
 		        	<a href="/bucket/bucketdetail?bucketSeq=`+bucketSeq+`">
-					<img src="data:image/png;base64,`+bucketImgSrc+`"
-					style="width: 100%; height: 155px; margin-bottom: 5px; filter: grayscale(85%);">
+					<img src="data:image/png;base64,`+bucketImgSrc+`" style="width: 100%; height: 155px; margin-bottom: 5px; filter: grayscale(85%);">
 					<div style="position: relative;">
 						<img src="../image/bucket/chkLine.png" style="width: 100%">
 						<img src="../image/bucket/successStamp2.png"

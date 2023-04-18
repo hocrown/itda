@@ -29,7 +29,7 @@
     <insert id="insertQuestion" parameterType="com.project.itda.dailyquestion.model.DailyQuestionModel">
     	<![CDATA[
     		INSERT INTO dailyQuestion(dailyQuestionSeq, QUESTION, TYPE, FAMILYSEQ, VISIBLE, WRITER)
-    		VALUES (dailyQuestionseq.nextval, #{question, jdbcType=CLOB}, #{type}, #{familySeq}, #{visible}, #{userId})
+    		VALUES (dailyQuestionseq.nextval, #{question, jdbcType=CLOB}, #{type}, #{familySeq}, #{visible}, #{writer})
     	]]>
     </insert> 
     

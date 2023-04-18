@@ -26,7 +26,7 @@
 				
 		
 				<div class="testbox selectedTestbox">
-					<a href="/bucket/bucketview"><div class="homeBtn"><img src="../image/bucket/homeBtn.png" class="homeImg"></div></a>
+					<div class="homeBtn"><img src="../image/bucket/homeBtn.png" class="homeImg"></div>
 					<div class="bordermy" style="height: 30px;"></div>
 				</div>
 				

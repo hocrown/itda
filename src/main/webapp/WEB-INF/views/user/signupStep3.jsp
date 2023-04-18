@@ -21,8 +21,9 @@
 		<span class="giveContentText">콘텐츠를 추천해드리고 싶어요.</span>
 
 		<span class="addressText">주소</span>
-		<input type="hidden" class="notes" id="address_kakao">
-		<input type="text" class="notes" name="address_detail">
+		<input type="hidden" id="address_kakao">
+		<span class="address_output"></span>
+		<input type="text" class="notes" name="address_detail" spellcheck="false">
 		<img class="addressBar" src="../image/underline.png">
 		<button class="addressBtn" id="searchBtn">주소 찾기</button>
 		

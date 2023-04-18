@@ -124,7 +124,7 @@
 	text-align: left;
 	border: none;
 	outline: none;
-	background-color: #F8F8F5;
+	background: none;
 	color: #979797;
 }
 
@@ -144,7 +144,7 @@
 	text-align: left;
 	border: none;
 	outline: none;
-	background-color: #F8F8F5;
+	background: none;
 	color: #979797;
 }
 
@@ -198,7 +198,19 @@
 	
 }
 
-.alert {
+.alert-id {
+	position: absolute;
+	top: 474px;
+
+  width: 100%;
+  text-align: center;
+  color: red;
+}
+
+.alert-pw {
+	position: absolute;
+	top: 570px;
+
   width: 100%;
   text-align: center;
   color: red;

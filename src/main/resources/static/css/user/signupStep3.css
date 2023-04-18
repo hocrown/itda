@@ -139,8 +139,15 @@ border-radius: 20px;
 	text-align: left;
 	border: none;
 	outline: none;
-	background-color: #F8F8F5;
+	background: none;
 	color: #979797;
+}
+
+.address_output{
+	position: absolute;
+	left: 95px;
+	top: 328px;
+		color: #979797;
 }
 
 .notes1 {
@@ -159,7 +166,7 @@ border-radius: 20px;
 	text-align: center;
 	border: none;
 	outline: none;
-	background-color: #F8F8F5;
+	background: none;
 	color: #979797;
 }
 
@@ -179,7 +186,7 @@ border-radius: 20px;
 	text-align: center;
 	border: none;
 	outline: none;
-	background-color: #F8F8F5;
+	background: none;
 	color: #979797;
 }
 
@@ -199,7 +206,7 @@ border-radius: 20px;
 	text-align: center;
 	border: none;
 	outline: none;
-	background-color: #F8F8F5;
+	background: none;
 	color: #979797;
 }
 
@@ -328,7 +335,7 @@ top: 592px;
 	text-align: left;
 	border: none;
 	outline: none;
-	background-color: #F8F8F5;
+	background: none;
 	color: #979797;
 }
 

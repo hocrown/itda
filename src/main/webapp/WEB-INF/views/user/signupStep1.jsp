@@ -30,7 +30,9 @@
 		<img class="pwdBar" src="../image/underline.png">
 		<button class="eye" title="비밀번호 표시/숨기기"><i class="far fa-eye"></i></button>
 		
-		<div class="alert"></div>
+		<div class="alert-id">ㅁㄴㅇ</div>
+		
+		<div class="alert-pw">ㅁㄴㅇ</div>
 		
 		<button class="nextBtn">다음</button>
 

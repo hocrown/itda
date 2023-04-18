@@ -50,6 +50,20 @@ public class AdminController {
 		return questions;
 	}
 	
+	//하루질문 등록 액션
+	@PostMapping("/insertQuestion")
+	public String insertQuestionAction(DailyQuestionModel dailyQuestionModel) {
+		
+		dailyQuestionModel.setType("common");
+		dailyQuestionModel.setVisible(1);
+		dailyQuestionModel.setWriter("ITDA");
+		
+		dailyQuestionService.insertQuestion(dailyQuestionModel);
+		System.out.println("Updating question with ID: " + dailyQuestionModel.getDailyQuestionSeq() + " and new text: " + dailyQuestionModel.getQuestion());
+		  
+		return "redirect:/admin/questionmanagementlist";
+	}
+	
 	//하루질문 내용 수정 액션
 	@PostMapping("/updateQuestion")
 	public String updateQuestionAction(DailyQuestionModel dailyQuestionModel) {

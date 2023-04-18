@@ -1,5 +1,7 @@
 package com.project.itda.bucketlist.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -138,24 +140,52 @@ public class bucketListController {
 
 		return "bucketList/addBucket";
 	}
+	
+	private byte[] getDefaultBucketImage() {
+		try {
+	        File file = new File("src/main/resources/static/image/itdaLogo.png");
+	        FileInputStream fis = new FileInputStream(file);
+	        byte[] imageData = new byte[(int) file.length()];
+	        fis.read(imageData);
+	        fis.close();
+	        return imageData;
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        return new byte[0];
+	    }
+	}
 
 	// 버킷리스트 등록 액션
 	@PostMapping("/bucket/addbucketaction")
 	public String addFamilyBucketAction(HttpSession session, BucketListModel bucketListModel) throws IOException {
-
+		
 		String userId = (String) session.getAttribute("userId");
 		int famSeq = (int) session.getAttribute("famSeq");
 
-		bucketListModel.setUserId(userId);
-		bucketListModel.setFamilySeq(famSeq);
+		try {
+			bucketListModel.setUserId(userId);
+			bucketListModel.setFamilySeq(famSeq);
+			
+			
+			MultipartFile mfile = bucketListModel.getFile();
+			
+			if(mfile !=null && !mfile.isEmpty()) {
+				bucketListModel.setFileName(mfile.getOriginalFilename());
+				bucketListModel.setFileData(mfile.getBytes());
 
-		MultipartFile mfile = bucketListModel.getFile();
+			} else if(bucketListModel.getFileData() != null && bucketListModel.getFileData().length>0) {
+				bucketListModel.setFileData(bucketListModel.getFileData());
+				bucketListModel.setFileName(bucketListModel.getFileName());
+			} else {
+				bucketListModel.setFileData(getDefaultBucketImage());
+				bucketListModel.setFileName("dafaultBucketImage.png");
+			}
 
-		bucketListModel.setFileName(mfile.getOriginalFilename());
-		bucketListModel.setFileData(mfile.getBytes());
-
-		bucketlistService.addBucketList(bucketListModel);
-
+			bucketlistService.addBucketList(bucketListModel);
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "redirect:/bucket/bucketview";
 	}
 
@@ -180,12 +210,12 @@ public class bucketListController {
 			bucketlistService.updateBucketTwo(bucketListModel);
 			// mfile 처리 작업 수행...
 		} else {
+			// mfile이 null인 경우 처리 작업 수행 (예: 기존 파일 유지)
 			bucketListModel.setFileName(mfile.getOriginalFilename());
 			bucketListModel.setFileData(mfile.getBytes());
 
 			bucketlistService.updateBucket(bucketListModel);
 
-			// mfile이 null인 경우 처리 작업 수행 (예: 기존 파일 유지)
 		}
 
 		return "redirect:/bucket/bucketview";

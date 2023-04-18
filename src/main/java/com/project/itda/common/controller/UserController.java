@@ -223,13 +223,31 @@ public class UserController {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
 		String dateDot = localDate.format(formatter);
 		   
-		byte[] fileData = loginUser.getUserImageData();
-	    String base64ImageData = Base64.getEncoder().encodeToString(fileData);
+		 byte[] fileData = loginUser.getUserImageData();
+		    if (fileData == null) {
+		        fileData = getDefaultPrivateProfileImage();
+		    }
+		    String base64ImageData = Base64.getEncoder().encodeToString(fileData);
+	    
 		
         model.addAttribute("dateDot", dateDot);
 		model.addAttribute("loginUser", loginUser);
 		model.addAttribute("base64ImageData", base64ImageData);
 		return "user/myInfo";
+	}
+	
+	private byte[] getDefaultPrivateProfileImage() {
+		try {
+	        File file = new File("src/main/resources/static/image/profile.png");
+	        FileInputStream fis = new FileInputStream(file);
+	        byte[] imageData = new byte[(int) file.length()];
+	        fis.read(imageData);
+	        fis.close();
+	        return imageData;
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        return new byte[0];
+	    }
 	}
 	
 	private String getDefaultProfileImage() {
@@ -284,15 +302,14 @@ public class UserController {
 	@PostMapping("/user/requestquestion")
 	public String requestQuestion(HttpSession session, @RequestBody DailyQuestionModel requestQuestion) {
 		UserModel loginuser = (UserModel) session.getAttribute("loginUser");
-		String userName = loginuser.getUserName();
 		int familySeq = loginuser.getFamilySeq();
 		String userId = loginuser.getUserId();
+		System.out.println(requestQuestion.getType());
 		int visible = requestQuestion.getType().equals("family") ? 1 : 0;
-		
+		System.out.println(visible);
 		requestQuestion.setVisible(visible);
-		requestQuestion.setWriter(userName);
+		requestQuestion.setUserId(userId);
 		requestQuestion.setFamilySeq(familySeq);
-		requestQuestion.setWriter(userId);
 		
 		dailyService.insertQuestion(requestQuestion);
 		
@@ -302,32 +319,40 @@ public class UserController {
 	
 	@PostMapping("/user/updateUserInfo")
 	@ResponseBody
-	public String updateUserInfo(String userPw, String userAddress, String userAddressDetail, 
-			String userPhone, String email, String nickName, MultipartFile file, HttpSession session) {
+	public String updateUserInfo(String userPw, String userAddress, String userAddressDetail,
+	        String userPhone, String email, String nickName, MultipartFile file, HttpSession session) {
 	    try {
-	      UserModel user = (UserModel) session.getAttribute("loginUser");
-	      user.setUserPw(userPw);
-	      user.setEmail(email);
-	      user.setUserAddress(userAddress);
-	      user.setUserAddressDetail(userAddressDetail);
-	      user.setUserPhone(userPhone);
-	      user.setNickName(nickName);
-	      if (file != null && !file.isEmpty()) {
-	    	    String filename = file.getOriginalFilename();
-	    	    user.setUserImageName(filename);
-	    	    user.setUserImageData(file.getBytes());
-	    	} else {
+	        UserModel user = (UserModel) session.getAttribute("loginUser");
+	        user.setUserPw(userPw);
+	        user.setEmail(email);
+	        user.setUserAddress(userAddress);
+	        user.setUserAddressDetail(userAddressDetail);
+	        user.setUserPhone(userPhone);
+	        user.setNickName(nickName);
 
-	    	}
-	      
-	      userService.updateUserInfo(user);
-	      
-	      return "success";
-	      
+	       
+	        
+	        if (file != null && !file.isEmpty()) {
+	            String filename = file.getOriginalFilename();
+	            user.setUserImageName(filename);
+	            user.setUserImageData(file.getBytes());
+	        } else if (user.getUserImageData() != null && user.getUserImageData().length > 0) {
+	            // 이미지를 업데이트하지 않는 경우, 기존의 이미지 파일 이름과 데이터를 사용합니다.
+	            user.setUserImageName(user.getUserImageName());
+	            user.setUserImageData(user.getUserImageData());
+	        } else {
+	            // 기존 이미지가 없는 경우 기본 이미지를 사용합니다.
+	            user.setUserImageName("defaultProfile.png");
+	            user.setUserImageData(getDefaultPrivateProfileImage());
+	        }
+
+	        userService.updateUserInfo(user);
+
+	        return "success";
 	    } catch (Exception e) {
-	      e.printStackTrace();
-	      
-	      return "fail";
+	        e.printStackTrace();
+
+	        return "fail";
 	    }
 	}
 	

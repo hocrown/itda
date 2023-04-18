@@ -24,12 +24,6 @@ public class HomeController {
 		return "mainImg";
 	}
 	
-	ResponseEntity<byte[]> getImg(){
-		HttpHeaders header=null;
-		byte[] data = null;
-		return new ResponseEntity<byte[]>(data,header,HttpStatus.ACCEPTED);
-	}
-	
 	@GetMapping("/mainlist")
 	public String mainList(Model model) {
 		

@@ -64,7 +64,7 @@
 	</select>
 	
 	<select id="selectFamilyMembers" parameterType="int" resultType="com.project.itda.common.model.UserModel">
-    SELECT * FROM itdaUser WHERE familySeq = #{familySeq} order by userAge DESC;
+    SELECT * FROM itdaUser WHERE familySeq = #{familySeq} order by userAge DESC
 	</select>
   	
  	<select id="getFamilyMembersWithNickName" parameterType="com.project.itda.common.model.UserModel" resultType="com.project.itda.common.model.UserModel">

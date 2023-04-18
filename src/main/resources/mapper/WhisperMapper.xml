@@ -5,8 +5,8 @@
 
 	<insert id="insertWhisper" parameterType="com.project.itda.whisper.model.WhisperModel">
 		<![CDATA[
-			INSERT INTO WHISPER (whisperSeq, sender, receiver, sendDate, message, whisperType, visible, RESERVEDATE, SENDERNICKNAME)
-			VALUES (whisperSeq.nextval, #{sender}, #{receiver}, SYSDATE, #{message}, #{whisperType}, #{visible}, #{reserveDate}, #{senderNickname})
+			INSERT INTO WHISPER (whisperSeq, sender, receiver, sendDate, message, whisperType, visible, RESERVEDATE, SENDERNICKNAME, checked)
+			VALUES (whisperSeq.nextval, #{sender}, #{receiver}, SYSDATE, #{message}, #{whisperType}, #{visible}, #{reserveDate}, #{senderNickname}, 0)
 		]]>
 	</insert>
 	

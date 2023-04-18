@@ -41,7 +41,7 @@ $(document).ready(function() {
         }
     });
 
-    $('.whisperWriteForm').on("submit", function(event) {
+    $('.writeform-send').on("click", function(event) {
         event.preventDefault();
 
 		

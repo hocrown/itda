@@ -107,6 +107,16 @@ a {
 	transform: rotate(-30deg);
 }
 
+.writeform-send {
+	position: absolute;
+	right: 5%;
+	width: 22px;
+	height: 22px;
+	width: 22px;
+	top: 25%;
+	transform: rotate(-30deg);
+}
+
 .send2 {
 	position: absolute;
 	right: 5%;

@@ -18,16 +18,8 @@
 		</div>
 		
 		<div>
-			<c:choose>
-		  		<c:when test="${not empty family.familyFileData}">
-		    		<input type="file" id="famProfileInput" style="display:none;">
-		    		<img src="data:image/png;base64,${famImage}" class="fam-profile">
-		  		</c:when>
-			  	<c:otherwise>
-			    	<input type="file" id="famProfileInput" style="display:none;">
-			    	<img src="../../image/dummyImg.jpg" class="fam-profile">
-			  	</c:otherwise>
-			  	</c:choose>
+    		<input type="file" id="famProfileInput" style="display:none;">
+    		<img src="data:image/png;base64,${famImage}" class="fam-profile">
 		</div>
 		
 		<div class="fam-name-area">

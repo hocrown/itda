@@ -287,12 +287,11 @@ color: #DE2F2F;
 }
 
 .btn-delete-area {
-	position: absolute;
-	left: 50%;
-	width: 50%;
+	width: 100%;
 	height: 100%;
 	align-items: center;
 	justify-content: center;
+	border-bottom-left-radius: 15px;
 	border-bottom-right-radius: 15px;
 	font-family: 'Bookk Myungjo';
 	font-size: 18px;

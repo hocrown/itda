@@ -28,4 +28,7 @@ public interface ITimeLineRepository {
 	//게시글 삭제
 	void deletePost(int postSeq);
 	
+	//댓글 작성
+	void insertReply(TimeLineReplyModel reply);
+	
 }//end class

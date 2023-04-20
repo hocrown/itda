@@ -51,7 +51,7 @@
 						        		</form>
 						        	</div>
 							        <div class="userNameText">${reply.userName }</div>
-							        <div class="replyContentsText replyContentsTextz${status.index }">${reply.replyContent}</div>
+							        <div class="replyContentText replyContentTextz${status.index }">${reply.replyContent}</div>
 							        
 							        <form action="/familypost/updatereplyaction" method="post" id="modifyReplyForm${status.index }" class="editReplyForm modifyReplyFormz${status.index }">
 							        	<input class="replyInput" type="text" name="replyContent" value="${reply.replyContent}" spellcheck="false">
@@ -101,7 +101,7 @@
 	<form action="/familypost/insertreplyaction" method="post" class="addReplyForm">
 	<div class="inputReplyBox">
 		<input type="hidden" name="postSeq" value="${timeline.postSeq }">
-		<input name="replyContents" type="text" placeholder="댓글을 남겨주세요." class="inputReply">
+		<input name="replyContent" type="text" placeholder="댓글을 남겨주세요." class="inputReply">
 		<input class="replyAddImg" type="image" src="../image/bucket/replyAddImg.png" alt="완료" onclick="document.getElementById('addReplyForm').submit();">
 	</div>
 	</form>
@@ -123,13 +123,13 @@
 		  
 		  for (let i = 0; i < jsLoopCount; i++) {
 			   $('#replyModifyBtnz'+i+'').on('click', function(){
-				   $('.replyContentsTextz'+i+'').addClass('detailDisNone');
+				   $('.replyContentTextz'+i+'').addClass('detailDisNone');
 				   $('.modifyReplyFormz'+i+'').addClass('show');
 				   $('.replyEachModal'+i+'').removeClass('show');				   
 			   });
 	   
 			   $('.modifyReplyCancelBtnz'+i+'').on('click', function(){
-				   $('.replyContentsTextz'+i+'').removeClass('detailDisNone');
+				   $('.replyContentTextz'+i+'').removeClass('detailDisNone');
 				   $('.modifyReplyFormz'+i+'').removeClass('show');
 
 			   });

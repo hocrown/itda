@@ -72,42 +72,39 @@ public class TimeLineController {
 	//게시글 전체 목록
 	@GetMapping("/familypost")
 	public String familyPost(Model model, HttpSession session) {
-		UserModel loginUser = (UserModel) session.getAttribute("loginUser");
-		int familySeq = (int) session.getAttribute("famSeq"); //세션으로부터 familySeq를 받아온다.
-		List<TimeLineModel> post = timelineService.getPostList(familySeq); //받아온 해당 familySeq를 요청하여 가족 게시글을 post에 담는다.
+	    UserModel loginUser = (UserModel) session.getAttribute("loginUser");
+	    int familySeq = (int) session.getAttribute("famSeq"); //세션으로부터 familySeq를 받아온다.
+	    List<TimeLineModel> post = timelineService.getPostList(familySeq); //받아온 해당 familySeq를 요청하여 가족 게시글을 post에 담는다.
 	    FamilyModel family = userService.getFamilyByUserId(loginUser.getUserId());
 	    List<UserModel> familyMember = userService.getFamilyMembersWithNickName(loginUser);
-		
-	    List<String> encodedProfileImages = new ArrayList<>();
 	    String defaultProfileImage = getDefaultProfileImage();
+	    
 	    for (UserModel member : familyMember) {
 	        byte[] imageData = member.getUserImageData();
-	        String encodedImageData;
 	        if (imageData != null) {
-	            encodedImageData = Base64.getEncoder().encodeToString(imageData);
+	            member.setEncodedImage(Base64.getEncoder().encodeToString(imageData));
 	        } else {
-	            encodedImageData = defaultProfileImage;
+	            member.setEncodedImage(defaultProfileImage);
 	        }
-	        encodedProfileImages.add(encodedImageData);
 	    }
-	    
+
 	    byte[] fileData = family.getFamilyFileData();
-		String base64ImageData;
-		if (fileData != null) {
-		    base64ImageData = Base64.getEncoder().encodeToString(fileData);
-		} else {
-		    byte[] defaultImageData = getDefaultFamilyImage();
-		    base64ImageData = Base64.getEncoder().encodeToString(defaultImageData);
-		}
-		int familyCount = userService.countFamilyMember(familySeq);
-		
-		model.addAttribute("familyCount", familyCount);
-		model.addAttribute("familyMember", familyMember);
-		model.addAttribute("family", family);
-		model.addAttribute("famImage", base64ImageData);	//가족 배너 이미지
-		model.addAttribute("profileImage", encodedProfileImages);
-		model.addAttribute("post", post); //담겨진 리스트를 postView.jsp에서 post라는 이름으로 사용할 수 있게한다.
-		return "timeline/postView";
+	    String base64ImageData;
+	    if (fileData != null) {
+	        base64ImageData = Base64.getEncoder().encodeToString(fileData);
+	    } else {
+	        byte[] defaultImageData = getDefaultFamilyImage();
+	        base64ImageData = Base64.getEncoder().encodeToString(defaultImageData);
+	    }
+	    int familyCount = userService.countFamilyMember(familySeq);
+	    
+	    model.addAttribute("familyCount", familyCount);
+	    model.addAttribute("familyMember", familyMember);
+	    model.addAttribute("family", family);
+	    model.addAttribute("famImage", base64ImageData);    //가족 배너 이미지
+	    model.addAttribute("profileImage", defaultProfileImage);
+	    model.addAttribute("post", post); //담겨진 리스트를 postView.jsp에서 post라는 이름으로 사용할 수 있게한다.
+	    return "timeline/postView";
 	}
 	
 	
@@ -182,7 +179,7 @@ public class TimeLineController {
 		timeLineReplyModel.setUserName(userName);
 		timelineReplyService.insertReply(timeLineReplyModel);
 		
-		return "redirect:/timeline/content?postSeq=" + postSeq;
+		return "redirect:/familypost/postcontent?postSeq=" + postSeq;
 	}
 		
 	@PostMapping("/familypost/updatereplyaction")

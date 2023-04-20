@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	
+<mapper namespace="com.project.itda.timeline.dao.ITimeLineReplyRepository">
+
+	<select id="getReply"
+		resultType="com.project.itda.timeline.model.TimeLineReplyModel">
+		SELECT u.userName, r.replySeq, r.postSeq, r.replyDate, r.replyContent, r.userId
+		FROM reply r JOIN itdauser u
+		on r.userId = u.userId
+		WHERE postSeq = #{postSeq}
+		ORDER BY r.createDate DESC
+	</select>
+	
+	<insert id="insertReply" parameterType="com.project.itda.timeline.model.TimeLineReplyModel">
+		INSERT INTO TIMELINEREPLY (replySeq, postSeq, replyDate, replyContent, userId)
+			VALUES (replySeq.NEXTVAL, #{postSeq}, SYSDATE, #{replyContent}, #{userId})
+	</insert>
+	
+	<update id="updateReply"
+		parameterType="com.project.itda.timeline.model.TimeLineReplyModel">
+		<![CDATA[
+		update TIMELINEREPLY set 
+		    replyContent = #{replyContent, jdbcType=CLOB}
+		    WHERE replySeq = #{replySeq}
+		]]>
+	</update>
+	
+	<delete id="deleteReply">
+		delete from TIMELINEREPLY
+		where replySeq = #{replySeq}
+	</delete>
+	
+	<select id="countPostOneReply" parameterType="int" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*)
+			FROM TIMELINEREPLY
+			WHERE postSeq = #{postSeq}
+		]]>
+	</select>
+	
+	
+	
+</mapper>

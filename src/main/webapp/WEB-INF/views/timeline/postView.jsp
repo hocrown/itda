@@ -49,9 +49,20 @@
 			<div class="postLayout">
 				
 				<div class="postInfo">
-			 		<img src="data:image/png;base64,${profileImage[status.index]}" class="fam-member-img">
-			 		<div class="writter">${timeline.userName}</div>
-			 		<div class="createDate">등록일 <fmt:formatDate value="${timeline.createDate}" pattern="yyyy년 MM월 dd일"/></div>
+ 					<c:forEach items="${familyMember}" var="member">
+				 	   <c:if test="${member.userId == timeline.userId}">
+					        <c:choose>
+					            <c:when test="${not empty member.userImageData}">
+					                <img src="data:image/png;base64,${member.encodedImage}" class="fam-member-img">
+					            </c:when>
+					            <c:otherwise>
+					                <img src="${defaultProfileImage}" class="fam-member-img">
+					            </c:otherwise>
+					        </c:choose>
+				        <div class="writter">${timeline.userName}</div>
+				        <div class="createDate">등록일 <fmt:formatDate value="${timeline.createDate}" pattern="yyyy년 MM월 dd일"/></div>
+					    </c:if>
+					</c:forEach>
 				</div>
 					
 				<div class="postContent">

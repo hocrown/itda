@@ -20,7 +20,7 @@ top: 63px;
 }
 
 .insertContentareaBox{
-	height: 470px;
+	height: 503px;
 	text-align: center;
 	display: flex;
 	align-items: center;
@@ -47,17 +47,46 @@ top: 63px;
 	resize: none;
 }
 
-.addImgBox{
-	width: 143.99px;
-	height: 26.61px;
-	left: 22px;
-	top: 811px;
+
+.addImgBox {
+  position: relative;
 }
 
-.addImgImg{
-position: absolute;
-width: 143.99px;
-height: 26.61px;
-left: 22px;
-top: 748px;
+.addImgImg {
+  position: absolute;
+  top: 45%;
+  left: 33%;
+  height: 24px;
+  cursor: pointer;
+}
+
+.innerAddImgBox {
+	position: relative;
+	display: inline-block;
+    top: 10%;
+    width: 100%;
+    min-height: 290px;
+    background: rgba(177, 125, 90, 0.06);
+    border-radius: 20px;
+}
+
+#file {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.innerAddImgBox label {
+  cursor: pointer;
+}
+
+.innerAddImgBox input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
 }

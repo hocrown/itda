@@ -28,6 +28,8 @@ public class UserModel {
 	private String nickName;
 	private String targetNickName;
 	
+	private String encodedImage;
+	
 	private MultipartFile file;
 	private byte[] userImageData;
 	private String userImageName;

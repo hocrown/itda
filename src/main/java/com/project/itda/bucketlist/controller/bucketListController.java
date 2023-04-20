@@ -76,10 +76,8 @@ public class bucketListController {
 	@GetMapping("/bucket/bucketlistz")
 	@ResponseBody
 	public List<BucketListModel> getBucketListByUserId(@RequestParam(required = false) String userId) {
-		System.out.println(userId);
 		// userId에 대한 bucketList를 가져옴
 		List<BucketListModel> bucketList = bucketlistService.getPersonalBucket(userId);
-		System.out.println(bucketList);
 		return bucketList;
 	}
 

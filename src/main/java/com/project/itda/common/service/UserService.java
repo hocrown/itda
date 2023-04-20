@@ -103,4 +103,48 @@ public class UserService implements IUserService {
 	public String getFamCode(int familySeq) {
 		return userRepository.getFamCode(familySeq);
 	}
+
+	@Override
+	public void updateFamilyProfile(FamilyModel family) {
+		userRepository.updateFamilyProfile(family);
+	}
+
+	@Override
+	public boolean updateFamilyNickName(String targetUserId, String targetNickName, String userId) {
+		 try {
+		        // Check if a row with userId and targetUserId already exists in the NICKNAME table
+		        NickNameModel existingNickname = userRepository.getNickname(userId, targetUserId);
+
+		        if (existingNickname != null) {
+		            // If it exists, update the targetNickName column in that row
+		            existingNickname.setTargetNickName(targetNickName);
+		           userRepository.updateFamilyNickName(existingNickname);
+		        } else {
+		            // If it doesn't exist, insert a new row with userId, targetUserId, and targetNickName values
+		            NickNameModel newNickname = new NickNameModel();
+		            newNickname.setUserId(userId);
+		            newNickname.setTargetUserId(targetUserId);
+		            newNickname.setTargetNickName(targetNickName);
+		            userRepository.insertNickname(newNickname);
+		        }
+
+		        return true;
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		        return false;
+		    }
+		
+	}
+
+	@Override
+	public NickNameModel getNickName(String userId, String targetUserId) {
+		NickNameModel nickName = userRepository.getNickname(userId, targetUserId);
+		return nickName;
+	}
+
+	@Override
+	public void insertNickname(NickNameModel newNickname) {
+		userRepository.insertNickname(newNickname);
+	}
+	
 }

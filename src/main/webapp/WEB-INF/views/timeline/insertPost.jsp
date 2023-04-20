@@ -22,10 +22,13 @@
 						<textarea class="insertContentarea" name="content" spellcheck="false" placeholder="내용을 입력해 주세요."></textarea>
 					</div>
 				
-			
-					<div class="addImgBox">
-					<div><input type="file" name="file"><img src="../image/timeline/addPicture.png" class="addImgImg"></div>
-					</div>
+				<div class="addImgBox">
+				  <div class="innerAddImgBox">
+				    <img src="../image/timeline/addPicture.png" class="addImgImg" id="addImgPreview">
+				    <input type="file" name="file" id="addImgInput" style="display:none;">
+				  </div>
+				</div>
+					
 				</form>
 	</div>
 </body>

@@ -96,13 +96,16 @@
     	]]>
   	</update>
   	
+  	<select id="getNickname" parameterType="com.project.itda.common.model.NickNameModel" resultType="com.project.itda.common.model.NickNameModel">
+  		SELECT * FROM NICKNAME
+  		WHERE userId=#{userId} AND targetUserId=#{targetUserId} 
+  	</select>
 	
 	<update id="updateFamilyNickName" parameterType="com.project.itda.common.model.NickNameModel">
 		<![CDATA[
 			UPDATE NICKNAME SET 
-			targetUserId = #{targetUserID},
 			targetNickName = #{targetNickName}
-			WHERE userId = #{userId}
+			WHERE userId = #{userId} AND targetUserId = #{targetUserId}
 		]]>
 	</update>
 	
@@ -113,5 +116,17 @@
 			IN ( select userId FROM ITDAUSER WHERE familySeq = #{familySeq})
 		]]>
 	</select>
+	
+	<update id="updateFamilyProfile" parameterType="com.project.itda.common.model.FamilyModel">
+		UPDATE FAMILY SET
+		FAMILYFILEDATA = #{familyFileData},
+		FAMILYFILENAME = #{familyFileName}
+		where familySeq = #{familySeq}
+	</update>
+	
+	<insert id="insertNickname" parameterType="com.project.itda.common.model.NickNameModel">
+		INSERT INTO NICKNAME(NICKNAMESEQ, USERID, TARGETUSERID, TARGETNICKNAME)
+		VALUES(nicknameSeq.nextval, #{userId}, #{targetUserId}, #{targetNickName})
+	</insert>
 	
 </mapper>

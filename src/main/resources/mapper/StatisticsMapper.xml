@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.itda.admin.dao.IStatisticsRepository">
+	
+	<select id="selectJoinCount" resultType="com.project.itda.admin.model.JoinCountModel">
+		SELECT 
+		  EXTRACT(YEAR FROM JOINDATE) || '-' || LPAD(EXTRACT(MONTH FROM JOINDATE), 2, '0') AS joinyearmonth,
+		  COUNT(*) AS numofmembers
+		FROM 
+		  itdauser
+		GROUP BY 
+		  EXTRACT(YEAR FROM JOINDATE) || '-' || LPAD(EXTRACT(MONTH FROM JOINDATE), 2, '0')
+		ORDER BY
+		  joinyearmonth
+
+	</select>
+	
+    <insert id="insertVisitor" parameterType="String">
+    	INSERT INTO VISITOR (VISITORSEQ, userId, visitDate)
+    	VALUES (visitorSeq.nextval, #{userId}, SYSDATE)
+    </insert>
+    
+    <select id="getWeeklyVisitors" resultType="java.util.Map">
+		SELECT COUNT(*) AS COUNT, TRUNC(VISITDATE) AS VISITDATE FROM VISITOR
+		WHERE VISITDATE >= TRUNC(SYSDATE - INTERVAL '6' DAY)
+		GROUP BY TRUNC(VISITDATE)
+		ORDER BY TRUNC(VISITDATE) ASC
+	</select>
+
+</mapper>

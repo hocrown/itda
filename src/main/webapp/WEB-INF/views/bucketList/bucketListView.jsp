@@ -7,8 +7,7 @@
 <head>
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css"
-	href="../css/bucket/bucketListView.css">
+<link rel="stylesheet" type="text/css" href="../css/bucket/bucketListView.css">
 <script type="text/javascript" src="/js/bucketlist/bucketListView.js"></script>
 </head>
 <body>
@@ -26,7 +25,7 @@
 				
 		
 				<div class="testbox selectedTestbox">
-					<div class="homeBtn"><img src="../image/bucket/homeBtn.png" class="homeImg"></div>
+					<a href="/bucket/bucketview"><div class="homeBtn"><img src="../image/bucket/homeBtn.png" class="homeImg"></div></a>
 					<div class="bordermy" style="height: 30px;"></div>
 				</div>
 				
@@ -212,6 +211,8 @@
 		    }
 		  });
 		}
+		
+		
 	</script>
 
 

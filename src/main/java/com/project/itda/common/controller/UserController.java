@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.itda.admin.service.IStatisticsService;
 import com.project.itda.common.model.NickNameModel;
 import com.project.itda.common.model.UserModel;
 import com.project.itda.common.service.IUserService;
@@ -48,9 +49,12 @@ public class UserController {
 	@Autowired
 	IDailyQuestionService dailyService;
 	
+	@Autowired
+	IStatisticsService statisticsService;
+	
 	@GetMapping("/user/login")
 	public String login(Model model) {
-
+		
 		return "user/login";
 	}
 
@@ -62,11 +66,12 @@ public class UserController {
 		try {
 			UserModel loginUser = userService.selectUser(user.getUserId(), user.getUserPw());
 			if (loginUser != null && loginUser.getUserId() != null) {
+				
 				session.setAttribute("userId", loginUser.getUserId());
 				session.setAttribute("loginUser", loginUser);
 				session.setAttribute("famSeq", loginUser.getFamilySeq());
 	            String loginUserId = loginUser.getUserId();
-
+	            statisticsService.insertVisitor(loginUserId);
 	            dailyQuestionController.getDailyQuestion(loginUserId, session);
 	            
 				map.put("result", "success");

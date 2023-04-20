@@ -15,7 +15,7 @@
 		INSERT INTO 
 			itdauser (userId, familySeq, userPw, userName, userAge, userGender, userAddress, userAddressDetail, userPhone, approve, userBirth, email, nickname) 
 		VALUES 
-			(#{userId}, #{familySeq}, #{userPw}, #{userName}, #{userAge}, #{userGender}, #{userAddress}, #{userAddressDetail}, #{userPhone}, #{approve}, #{userBirth}, #{email} #{nickName})
+			(#{userId}, #{familySeq}, #{userPw}, #{userName}, #{userAge}, #{userGender}, #{userAddress}, #{userAddressDetail}, #{userPhone}, #{approve}, #{userBirth}, #{email}, #{nickName})
 	]]>
 	</insert>
 	

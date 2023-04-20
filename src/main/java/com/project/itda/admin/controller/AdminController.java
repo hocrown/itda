@@ -107,12 +107,6 @@ public class AdminController {
 		return "admin/newsManagementList";
 	}
 	
-	//통계 페이지
-	@GetMapping("/admin/statistics")
-	public String adminStatistics(Model model, HttpSession session) {
-		
-		
-		return "admin/statistics";
-	}	
+
 	
 }

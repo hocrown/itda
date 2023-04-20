@@ -34,7 +34,10 @@
 				<div>
 					<div style="display: inline-block;" id="pagination"></div>
 				</div>
-				<input type="text" id="searchInput" placeholder="검색어를 입력하세요"> <button id="searchButton">검색</button>
+				<div class="search-box" style="text-align: center;">
+					<input type="text" id="searchInput" placeholder="검색어를 입력하세요" class="form-control"> 
+					<button id="searchButton" class="btn btn-primary">검색</button>
+				</div>
 					<button class="btn btn-primary question-insert-btn">추가</button>
 					<button class="btn btn-danger question-delete-btn">삭제</button>
 				
@@ -92,7 +95,6 @@
 		  $("#navi-questionManagement").addClass("navi-selected");
 		});
 		
-		$('.navi-questionList').html('>  질문 목록');
 	
 		
 	</script>

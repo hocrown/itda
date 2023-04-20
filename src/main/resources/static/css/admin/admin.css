@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 body {
+	font-family: 'KoPubWorldDotum';
 	margin: 0;
 	padding: 0;
 }
@@ -75,8 +76,8 @@ body {
 	left: 0;
 	box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
 	width: 300px;
-	background: #FFFFFF;
-}
+	background: #F2EDE4;
+	}
 
 .navi-hover{
 	min-width:300px; width:65px; position:relative;
@@ -96,15 +97,14 @@ body {
 	position: relative;
 	height: 65px;
 	left: 20px;
-	font-family: 'Bookk Myungjo';
-	font-style: normal;
-	font-weight: 300;
+	font-family: 'KoPubWorldDotum';
+	font-weight: 500;
 	font-size: 16px;
 	color: #2A221D;
 }
 
 .logoAdminText {
-	font-family: 'Bookk Myungjo';
+	font-family: 'KoPubWorldDotum';
 	font-style: normal;
 	font-weight: 300;
 	font-size: 30px;
@@ -131,7 +131,7 @@ body {
 	position: fixed;
 	top:0;
 	height: 85px;
-	background: rgba(255, 255, 255, 0.3);
+	background: #FFFFFF;
 	font-size: 14px;
 	text-align: right;
 	display: flex;
@@ -149,11 +149,23 @@ body {
 	text-align: center;
 }
 
+.questionListContainer{
+	margin-top: 50px;
+	display: inline-block;
+	position: relative;
+	background-color: white;
+	padding-bottom: 3em;
+	padding-right: 3em;
+	padding-left: 3em;
+	padding-top: 3em;
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 .detailItemText{
 	margin-bottom: 10px;
 	position: relative;
 	left: 140px;
-	font-family: 'Bookk Myungjo';
+	font-family: 'KoPubWorldDotum';
 	font-style: normal;
 	font-weight: 300;
 	font-size: 15px;
@@ -163,10 +175,10 @@ body {
 
 .questionListText{
 	position: absolute;
-	top:0;
-	left:0;
+	top:2em;
+	left:1.5em;
 	display: inline-block;
-	font-family: 'Bookk Myungjo';
+	font-family: 'KoPubWorldDotum';
 	font-style: normal;
 	font-weight: 700;
 	font-size: 2em;
@@ -179,7 +191,7 @@ body {
 	width: 65vw !important;
 	margin-top: 6%;
 	margin-bottom: 2%;
-	font-family: 'Bookk Myungjo';
+	font-family: 'KoPubWorldDotum';
 	font-style: normal;
 	border-bottom: 1px solid #ddd;
 	
@@ -190,7 +202,7 @@ th {
 	font-size: 16px;
 }
 .pageBtn{
-	font-family: 'Bookk Myungjo';
+	font-family: 'KoPubWorldDotum';
 	font-style: normal;
 	padding: 5px;
 	text-decoration: underline;
@@ -201,13 +213,15 @@ th {
 
 .question-insert-btn{
 	position: absolute;
-	right: 6em;
+	right: 8em;
+	bottom: 4em;
 	border: 0;
 }
 
 .question-delete-btn{
 	position: absolute;
-	right: 1em;
+	right: 3em;
+	bottom: 4em;
 	border: 0;
 }
 
@@ -239,17 +253,13 @@ th {
 	width: 40em;	
 }
 
-.questionListContainer{
-	margin-top: 50px;
-	display: inline-block;
-	position: relative;
-}
+
 
 .insert-question-modal{
 	width: 500px;
 	height: 200px;
 	text-align: center;
-	font-family: 'Bookk Myungjo';
+	font-family: 'KoPubWorldDotum';
 	background-color: #ffffff;
 	position: fixed;
 	top: 20%;
@@ -301,3 +311,30 @@ th {
 .prevGroupBtn{
 	cursor: pointer;
 }
+
+.search-box{
+	text-align: center;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.form-control{
+	width: 30% !important;
+	display: inline-block !important;
+}
+
+.btn-primary{
+	background-image: none !important;
+	background-color: #F2E0D5 !important;
+	color: #000000 !important;
+	border: none !important;
+}
+
+.btn-danger{
+	background-image: none !important;
+	background-color: #D9CDBF !important;
+	color: #000000 !important;
+	border: none !important;
+}
+
+

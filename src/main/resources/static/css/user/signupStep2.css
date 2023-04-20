@@ -121,7 +121,7 @@
 	text-align: left;
 	border: none;
 	outline: none;
-	background-color: #F8F8F5;
+	background: none;
 	color: #979797;
 }
 input[type="number"]::-webkit-outer-spin-button,
@@ -146,7 +146,7 @@ input[type="number"]::-webkit-inner-spin-button {
 	text-align: center;
 	border: none;
 	outline: none;
-	background-color: #F8F8F5;
+	background: none;
 	color: #979797;
 }
 
@@ -166,7 +166,7 @@ input[type="number"]::-webkit-inner-spin-button {
 	text-align: center;
 	border: none;
 	outline: none;
-	background-color: #F8F8F5;
+	background: none;
 	color: #979797;
 }
 
@@ -186,7 +186,7 @@ input[type="number"]::-webkit-inner-spin-button {
 	text-align: center;
 	border: none;
 	outline: none;
-	background-color: #F8F8F5;
+	background: none;
 	color: #979797;
 }
 

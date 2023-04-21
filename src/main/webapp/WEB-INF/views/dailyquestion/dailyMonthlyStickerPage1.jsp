@@ -6,6 +6,7 @@
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/css/dailyquestion/dailyMonthlyStickerPage1.css">
+<link rel="stylesheet" type="text/css" href="/css/dailyquestion/sticker.css">
 <script type="text/javascript" src="/js/dailyquestion/dailyMonthly.js"></script>
 
 </head>
@@ -25,7 +26,28 @@
 			<img class="monthlyPageVector2" src="/image/monthlyPageVector.png">
 
 		<img class="monthlyPageLine2" src="/image/monthlyPageLine.png">
+		<div class="stickerContainer">
+		<img src="/image/monthly/backImg04.png" style="position:fixed; top:0;">
+
+		</div>
+		
 	</div>
+	
+	
+	<script>
+		
+		const imageURL = "/image/monthly/sticker04.png";
+		const stickerContainer = document.querySelector('.stickerContainer');
+		
+	
+		for(let i=1 ; i<=10 ; i++) {	
+			const newImage = document.createElement('img');
+			newImage.src = imageURL;
+			newImage.className = "sticker04-" + i;
+			stickerContainer.appendChild(newImage);
+		}
+	
+	</script>
 	
 	
 </body>

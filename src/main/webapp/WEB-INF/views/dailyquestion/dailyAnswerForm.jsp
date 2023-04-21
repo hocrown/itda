@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/dailyquestion/dailyAnswer.css">
 <script type="text/javascript" src="/js/dailyquestion/dailyAnswerForm.js"></script>
-
 </head>
 <body>
 
@@ -16,7 +15,7 @@
 		<form id="answer-form" action="/dailyquestion/dayanswer" method="POST">
 		<div class="headBox"><img class="vector" src="../image/vector.png">
 			하루를 잇다
-		<input type="image" src="../image/finishBtn.png" class="finishBtn" alt="완료" onclick="submitForm()">
+		<input type="image" src="../image/finishBtn.png" class="finishBtn" alt="완료">
 		</div>
 		
 		
@@ -31,7 +30,6 @@
 		<input type="hidden" name="dailyQuestionSeq" value="${familyQuestion.dailyQuestionSeq}" />
 		<input type="hidden" name="questionOrder" value="${questionOrder}"/>
 		<input type="hidden" name="familySeq" value="${familySeq}"/>
-		
 		</form>
 		
 		<span class="characterCount">0/100</span>

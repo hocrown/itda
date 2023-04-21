@@ -20,7 +20,6 @@ public class HomeController {
 	
 	@GetMapping("/mainimg")
 	public String mainImg(Model model) {
-		HttpHeaders header = new HttpHeaders(); 
 		return "mainImg";
 	}
 	

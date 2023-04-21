@@ -16,18 +16,22 @@
 		<form id="answer-form" action="/dailyquestion/answer" method="POST">
 		<div class="headBox"><img class="vector" src="../image/vector.png">
 			하루를 잇다
-		<input type="image" src="../image/finishBtn.png" class="finishBtn" alt="완료" onclick="submitForm()">
+		<input type="image" src="../image/finishBtn.png" class="finishBtn" alt="완료">
 		</div>
 		
 		
 		<span class="question2">${todayFamilyQuestion.question}</span>
-		<span class="numberOfQuestion2">#${todayFamilyQuestion.dailyQuestionSeq}번째 질문</span>
+		<span class="numberOfQuestion2">#${todayFamilyQuestion.questionOrder}번째 질문</span>
 		<span class="questionDate2"><fmt:formatDate value="${todayFamilyQuestion.askedDate}" pattern="yyyy.MM.dd"/></span>
 		
 	
 		<div class="answerBox">
 			<textarea spellcheck="false" placeholder="답변을 입력해주세요." class="answerTextarea" name="answer"></textarea>
 		</div>
+		<input type="hidden" name="dailyQuestionSeq" value="${todayFamilyQuestion.dailyQuestionSeq}" />
+		<input type="hidden" name="questionOrder" value="${todayFamilyQuestion.questionOrder}"/>
+		<input type="hidden" name="familySeq" value="${famSeq}"/>
+		
 		</form>
 		
 		<span class="characterCount">0/100</span>

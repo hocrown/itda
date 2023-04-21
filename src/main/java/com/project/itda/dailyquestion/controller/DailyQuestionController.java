@@ -166,7 +166,7 @@ public class DailyQuestionController {
 	    model.addAttribute("answeredCount", answeredCount);
 	    model.addAttribute("familyMemberCount", familyMemberCount);
 	    model.addAttribute("dailyAnswer", dailyAnswer);
-
+	    
 	    return "dailyquestion/dailyMain";
 	}
 
@@ -196,7 +196,9 @@ public class DailyQuestionController {
 	        familyQuestion.setAnswer("N");
 	        familyQuestion.setAskedDate(new Date());
 	        familyQuestionService.insert(familyQuestion);
+	        
 	        FamilyQuestionModel todayFamilyQuestion = familyQuestionService.todayFamilyQuestion(familySeq);
+	        
 	        session.setAttribute("todayFamilyQuestion", todayFamilyQuestion);
 	        
 	        //웹소켓 활용 알림 메시지 전송

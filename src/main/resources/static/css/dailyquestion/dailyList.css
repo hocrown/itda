@@ -36,5 +36,10 @@
 }
 
 .listNum {
-	width:25px;
+	width:40px;
+	margin-right: 10px;
+}
+
+.allAnswered{
+	margin-left:10px;
 }

@@ -45,6 +45,7 @@ public class AlarmController {
 	public String alarmList(HttpSession session, Model model) {
 		String userId = (String) session.getAttribute("userId");
 		List<AlarmModel> alarmList =alarmService.getAlarmList(userId);
+		System.out.println(alarmList);
 		model.addAttribute("alarmList", alarmList);
 		return "alarmList";
 	}

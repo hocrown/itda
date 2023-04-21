@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .inboxText {
-	position: relative;
+	position: absolute;
 	width: 162px;
 	height: 39px;
 	left: 30px;
@@ -17,179 +17,140 @@
 }
 
 .whisperInboxListToggle {
-	position: relative;
+	position: absolute;
 	width: 32px;
 	height: 32px;
 	left: 320px;
 	top: 103px;
 }
 
-.dateLine1 {
+.whisperContainer{
 	position: relative;
+	top: 120px;
+	
+}
+
+.whisperBox{
+	position: relative;
+	
+}
+
+.dateBox{
+	position: relative;
+	margin-bottom: 25px;
+	display: inline-block;
+}
+
+.dateLine1 {
+	position: absolute;
 	width: 137px;
-	height: px;
 	left: 15px;
-	top: 11em;
+	top: 0;
 	border: 1px solid #BBB3AB;
 }
 
 .dateLine2 {
-	position: relative;
+	position: absolute;
 	width: 137px;
-	height: 0px;
 	left: 238px;
-	top: 162px;
+	top: 0;
 	border: 1px solid #BBB3AB;
 }
 
 .inboxListDate {
-	position: relative;
+	position: absolute;
 	left: 164px;
-	top: 172px;
+	top: -7px;
 	font-family: 'Bookk Myungjo';
-	font-style: normal;
-	font-weight: 300;
 	font-size: 13px;
-	line-height: 13px;
-	display: flex;
-	align-items: center;
-	text-align: center;
 	color: #9D9690;
 }
 
-.inBoxList{
+.inboxList{
 	position: relative;
+	font-family: 'Bookk Myungjo';
+	margin-bottom: 25px;
+	
 }
 
 .cardFrame {
-	position: relative;
 	width: 307px;
 	height: 139px;
-	left: 43px;
-	top: 207px;
+	margin-left: 43px;
 }
 
 .toPersonText {
-	position: relative;
-	height: 33px;
+	position: absolute;
 	left: 63px;
-	top: 8em;
-	font-family: 'Bookk Myungjo';
-	font-style: normal;
-	font-weight: 300;
-	font-size: 9px;
-	line-height: 9px;
-	display: flex;
-	align-items: center;
+	top: 1em;
+	font-size: 12px;
 	color: #2A221D;
 }
 
 .toPersonName {
-	position: relative;
-	width: 103px;
-	height: 33px;
+	position: absolute;
 	left: 63px;
-	top: 4em;
+	top: 2.3em;
 	font-family: 'Bookk Myungjo';
-	font-style: normal;
-	font-weight: 300;
 	font-size: 15px;
-	line-height: 15px;
-	display: flex;
-	align-items: center;
 	color: #2A221D;
 }
 
 .toPersonLine {
-	position: relative;
+	position: absolute;
 	width: 112px;
-	height: 0px;
 	left: 63px;
-	top: 3.5em;
+	top: 4em;
 	border: 1px solid #BBB3AB;
 }
 
 .sendDateText {
-	position: relative;
-	width: 52px;
-	height: 19px;
-	left: 238px;
+	position: absolute;
+	left: 243px;
 	top: 1em;
-	font-family: 'Bookk Myungjo';
-	font-style: normal;
-	font-weight: 300;
-	font-size: 10px;
-	line-height: 10px;
-	display: flex;
-	align-items: center;
-	text-align: center;
+	font-size: 11px;
 	letter-spacing: 0.05em;
 	color: #9D9690;
 }
 
 .sendDate {
-	position: relative;
-	width: 49px;
-	height: 0em;
+	position: absolute;
 	left: 283px;
-	top: 0em;
-	font-family: 'Bookk Myungjo';
-	font-style: normal;
-	font-weight: 300;
-	font-size: 10px;
-	line-height: 10px;
-	display: flex;
-	align-items: center;
-	text-align: right;
+	top: 1em;
+	font-size: 11px;
 	color: #9D9690;
 }
 
 .inboxCardStamp {
-	position: relative;
+	position: absolute;
 	width: 63px;
 	height: 4em;
 	left: 271px;
-	top: -0.5em;
+	top: 2em;
 }
 
 .fromPersonText {
-	position: relative;
-	width: 63px;
-	height: 33px;
+	position: absolute;
 	left: 219px;
-	top: -2em;
-	font-family: 'Bookk Myungjo';
-	font-style: normal;
-	font-weight: 300;
-	font-size: 9px;
-	line-height: 9px;
-	display: flex;
-	align-items: center;
+	top: 6em;
+	font-size: 12px;
 	color: #2A221D;
 }
 
 .fromPersonName {
-	position: relative;
-	width: 83px;
-	height: 33px;
+	position: absolute;
 	left: 219px;
-	top: -2em;
-	font-family: 'Bookk Myungjo';
-	font-style: normal;
-	font-weight: 300;
+	top: 6em;
 	font-size: 15px;
-	line-height: 15px;
-	display: flex;
-	align-items: center;
 	color: #2A221D;
 }
 
 .fromPersonLine {
-	position: relative;
+	position: absolute;
 	width: 112px;
 	height: 0em;
 	left: 219px;
-	top: -2em;
+	top: 8em;
 	border: 1px solid #BBB3AB;
 }
 

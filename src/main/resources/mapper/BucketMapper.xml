@@ -43,8 +43,8 @@
 	
 	<insert id="insertBucket"
 		parameterType="com.project.itda.bucketlist.model.BucketListModel">
-			INSERT INTO BUCKETLIST (bucketSeq ,userId, regDate, title, contents, goalDate, type, familySeq, visible, finishDate, fileName, fileData)
-               VALUES (bucketSeq.NEXTVAL, #{userId}, SYSDATE, #{title}, #{contents}, NULL, #{type}, #{familySeq}, 'y', NULL, #{fileName}, #{fileData})
+			INSERT INTO BUCKETLIST (bucketSeq ,userId, regDate, title, contents, type, familySeq, visible, finishDate, fileName, fileData)
+               VALUES (bucketSeq.NEXTVAL, #{userId}, SYSDATE, #{title}, #{contents}, #{type}, #{familySeq}, 'y', NULL, #{fileName}, #{fileData})
 	</insert>
 	
 	<update id="updateBucket"

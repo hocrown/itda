@@ -6,8 +6,8 @@
   
   	<insert id="insertAlarm" parameterType="com.project.itda.common.model.AlarmModel">
     	<![CDATA[
-    	INSERT INTO alarm (alarmSeq,receiver, alarm_date, checked, message)
-    	VALUES (alarmSeq.nextval,#{userId}, #{alarmDate}, #{checked}, #{message})
+    	INSERT INTO alarm (alarmSeq,receiver, alarm_date, checked, message, type)
+    	VALUES (alarmSeq.nextval,#{userId}, #{alarmDate}, #{checked}, #{message}, #{type})
     	]]>
 	</insert>
 
@@ -19,4 +19,11 @@
 			ORDER BY ALARM_DATE DESC
 		]]>
 	</select>
+	
+	<update id="updateChecked" parameterType="String">
+		UPDATE ALARM 
+		SET checked = 1
+		WHERE RECEIVER = #{userId}
+	</update>
+	
 </mapper>

@@ -19,7 +19,7 @@
 		</div>
 		<div class="postLayout">
 				<div class="postInfo">
-			 		<img src="../image/timeline/profile.png" class="profileImg">
+	                <img src="data:image/png;base64,${writer.encodedImage}" class="fam-member-img">
 			 		<div class="writter">${timeline.userName}</div>
 			 		<div class="createDate">등록일 <fmt:formatDate value="${timeline.createDate}" pattern="yyyy년 MM월 dd일"/></div>
 				</div>

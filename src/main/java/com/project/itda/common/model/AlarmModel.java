@@ -11,5 +11,6 @@ public class AlarmModel {
 	private Date alarmDate;
 	private int checked;
 	private String message;
+	private String type;
 
 }

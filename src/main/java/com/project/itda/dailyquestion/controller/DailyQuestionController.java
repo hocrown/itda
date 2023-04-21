@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.itda.common.AccessDeniedException;
 import com.project.itda.common.CheckAuth;
 import com.project.itda.common.model.FamilyModel;
 import com.project.itda.common.model.UserModel;
@@ -84,9 +85,14 @@ public class DailyQuestionController {
 	@GetMapping("/dailyquestion/dailylist")
 	public String dailyList(Model model, HttpSession session) {
 		
-		//로그인 유저인지 검증
-		CheckAuth.checkLogin(session);
-				
+	    try {
+	        CheckAuth.checkLogin(session);
+	    } catch (AccessDeniedException ex) {
+	        // 로그인하지 않은 경우 로그인 페이지로 이동
+	        return "redirect:/error";
+	    }
+	    
+	    
 		int familySeq = (Integer) session.getAttribute("famSeq");
 		List<FamilyQuestionModel> familyQuestions =  familyQuestionService.getQuestionListByFamilySeq(familySeq);
 		
@@ -122,8 +128,6 @@ public class DailyQuestionController {
 	    if (dailyAnswer == null) {
 	    	
 	    }
-	    
-	    
 	    //출력할 내용들 모델에 담음.
 	    model.addAttribute("questionOrder",questionOrder);
 	    model.addAttribute("dailyAnswer", dailyAnswer);
@@ -217,7 +221,7 @@ public class DailyQuestionController {
     }
 
 	@PostMapping("/dailyquestion/answer")
-    public String saveDailyAnswer(DailyAnswerModel dailyAnswer, @RequestParam("dailyQuestionSeq") int dailyQuestionSeq, HttpSession session) {
+    public String saveDailyAnswer(DailyAnswerModel dailyAnswer, @RequestParam("dailyQuestionSeq") int dailyQuestionSeq, @RequestParam("questionOrder") int questionOrder, HttpSession session) {
     	
     	String userId = (String) session.getAttribute("userId");
     	int familySeq = (int) session.getAttribute("famSeq");
@@ -225,14 +229,16 @@ public class DailyQuestionController {
     	dailyAnswer.setUserId(userId);
     	dailyAnswer.setDailyQuestionSeq(dailyQuestionSeq);
         dailyAnswerService.saveDailyAnswer(dailyAnswer);
+        
+        
+        
         return "redirect:/dailymain";
     }
     
     //가족 질문 월별로 모아보는 메소드
     @GetMapping("/dailyquestion/monthly")
     public String monthlyFamilyQuestion(DailyAnswerModel dailyAnswer, HttpSession session) {
-    	return "dailyquestion/dailyMonthlyStickerPage1";
+    	return "dailyquestion/dailyMonthlyPage";
     }
     
-
 }

@@ -146,5 +146,11 @@ public class UserService implements IUserService {
 	public void insertNickname(NickNameModel newNickname) {
 		userRepository.insertNickname(newNickname);
 	}
+
+	@Override
+	public UserModel getUserInfoByUserId(String userId) {
+		UserModel writer = userRepository.getUserInfoByUserId(userId);
+		return writer;
+	}
 	
 }

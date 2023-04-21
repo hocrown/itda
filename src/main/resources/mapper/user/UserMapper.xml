@@ -129,4 +129,10 @@
 		VALUES(nicknameSeq.nextval, #{userId}, #{targetUserId}, #{targetNickName})
 	</insert>
 	
+	<select id="getUserInfoByUserId" parameterType="String" resultType="com.project.itda.common.model.UserModel">
+		SELECT * 
+		FROM ITDAUSER
+		WHERE userId = #{userId}
+	</select>
+	
 </mapper>

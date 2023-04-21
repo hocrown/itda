@@ -5,7 +5,7 @@
 <head>
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/css/dailyquestion/dailyMonthlyStickerPage1.css">
+<link rel="stylesheet" type="text/css" href="/css/dailyquestion/dailyMonthlyPage.css">
 <link rel="stylesheet" type="text/css" href="/css/dailyquestion/sticker.css">
 <script type="text/javascript" src="/js/dailyquestion/dailyMonthly.js"></script>
 

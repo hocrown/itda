@@ -40,7 +40,7 @@
 		
 		<span class="fromText">보내는 사람</span>
 		
-		<input type="text" class="fromInput" placeholder="${myName}" spellcheck="false">
+		<input type="text" class="fromInput" placeholder="${myName}" spellcheck="false" value="${myName}">
 		
 		<span class="sendOption">전달 옵션</span>
 		<div class="directOptionEllipse" data-option="direct"></div><span class="directOptionText">전송 즉시 전달돼요</span>

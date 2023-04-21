@@ -5,6 +5,7 @@
 <html>
 <head>
 <%@ include file="head.jsp"%>
+<link rel="stylesheet" type="text/css" href="css/alarmList.css">
 <title>Insert title here</title>
 <script type="text/javascript" src="/js/alarmList.js"></script>
 
@@ -12,21 +13,27 @@
 <body>
 	<div class="layout">
 		<div class="headBox"><img class="vector" src="../image/vector.png">
-		<span class="alarmHeadText">알람</span>
-		<img class="bell" src="/image/bell.png">
-		<img class="alarmMark" src="/image/alarmMark.png">
-		<img class="myImg" src="/image/myImg.png">		
+			<span class="alarmHeadText">잇다</span>
+			<img class="bell" src="/image/bell.png">
+			<img class="alarmMark" src="/image/alarmMark.png">
+			<img class="myImg" src="/image/myImg.png">		
 		</div>
-	</div>
-
-	<div class="alarmList">
-		<c:forEach var="alarm" items="${alarmList}">
-			<div class="alarmListContainer">
-		        <div class="alarmListBox">
-		    	     <img class="listNum" src="/image/listNum/.png">
-				</div>
+	
+		<div class="alarmText">알림</div>
+		
+			<div class="alarmList">
+				<div style="min-height: 5px; max-height: 5px;"></div>
+				<c:forEach var="alarm" items="${alarmList}">
+					
+				        <div class="alarmListBox">
+				    	     <img class="alarmImg" src="/image/bell.png">
+				    	     <span class="alarmMessage">${alarm.message }</span>
+				    	     <span class="alarmWhen">1시간 전</span>
+						</div>
+					
+				</c:forEach>
 			</div>
-		</c:forEach>
+	
 	</div>
 
 </body>

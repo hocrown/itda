@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+.alarmText {
+	position: absolute;
+	left: 30px;
+	top: 90px;
+	font-family: 'Bookk Myungjo';
+	font-size: 25px;
+	color: #2A221D;
+}
+
+.alarmList{
+	position: relative;
+	width: 360.07px;
+	height: 680px;
+	left: 17px;
+	top: 93px;
+	white-space: nowrap;
+	overflow-y: auto;
+	font-family: 'Bookk Myungjo';
+	background: rgba(177, 125, 90, 0.08);
+	border-radius: 20px;
+}
+
+.alarmListBox{
+	position: relative;
+	height: 68px;
+}
+
+.alarmListBox::after {
+  content: "";
+  position: absolute;
+  left: 4%; /* 좌우 중앙에 위치시키려면 전체 너비의 10%를 왼쪽 여백으로 설정하세요. */
+  bottom: 0;
+  width: 92%; /* border-bottom 길이를 80%로 설정하세요. */
+  height: 0;
+  border-bottom: 1px solid rgba(200, 198, 197, 1); /* 원하는 border-bottom 스타일을 적용하세요. */
+}
+
+.alarmImg{
+	position: absolute;
+	top: 20px;
+	left: 16px;
+	width: 24px;
+	height: 24px;
+	
+}
+
+.alarmMessage{
+	position: absolute;
+	left: 56px;
+	top: 13px;
+	color: black;
+}
+
+.alarmWhen {
+	position: absolute;
+	left: 56px;
+	top: 35px;
+	color: rgba(157, 150, 144, 1);
+}

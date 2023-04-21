@@ -19,31 +19,43 @@
     </div>
 
     <span class="inboxText">속마음 보관함</span>
-
+	
     <img src="/image/listToggle.png" class="whisperInboxListToggle">
-    <c:forEach var="entry" items="${whisperByDate}">
-        <div class="dateLine1"></div>
-        <div class="inboxListDate"><fmt:formatDate value="${entry.key}" pattern="yyyy.MM.dd"/></div>
-        <div class="dateLine2"></div>
+    
+    <div class="whisperContainer">
+	    <c:forEach var="entry" items="${whisperByDate}" varStatus="status">
+			<div class="whisperBox">
+				
+				<div class="dateBox">
+			        <div class="dateLine1"></div>
+			        <div class="inboxListDate"><fmt:formatDate value="${entry.key}" pattern="yyyy.MM.dd"/></div>
+			        <div class="dateLine2"></div>
+				</div>
+		        
+		        <c:forEach var="whisper" items="${entry.value}">
+			        <a href="/whisper/detail/${whisper.whisperSeq}">
+				        <div class="inboxList">
+				        
+				            <img src="/image/whisperCardImg.png" class="cardFrame">
+				        
+				            <span class="toPersonText">받는 사람</span>
+				            <span class="toPersonName">${whisper.receiver}</span>
+				            <div class="toPersonLine"></div>
+				            <span class="sendDateText">발신일</span>
+				            <span class="sendDate"><fmt:formatDate value="${whisper.sendDate}" pattern="yyyy.MM.dd"/></span>
+				            <img src="../image/whisperCardStamp.png" class="inboxCardStamp">
+				            <span class="fromPersonText">보내는 사람</span>
+				            <span class="fromPersonName">${whisper.senderNickname}</span>
+				            <div class="fromPersonLine"></div>
 
-        <c:forEach var="whisper" items="${entry.value}">
-        <div class="inboxList" style="height:200px" >
-        <a href="/whisper/detail/${whisper.whisperSeq}">
-            <img src="/image/whisperCardImg.png" class="cardFrame">
-        </a>
-            <span class="toPersonText">받는 사람</span>
-            <span class="toPersonName">${whisper.receiver}</span>
-            <div class="toPersonLine"></div>
-            <span class="sendDateText">발신일</span>
-            <span class="sendDate"><fmt:formatDate value="${whisper.sendDate}" pattern="yyyy.MM.dd"/></span>
-            <img src="../image/whisperCardStamp.png" class="inboxCardStamp">
-            <span class="fromPersonText">보내는 사람</span>
-            <span class="fromPersonName">${whisper.senderNickname}</span>
-            <div class="fromPersonLine"></div>
-        </div>
-        </c:forEach>
-        
-    </c:forEach>
+				        </div>
+			        </a>
+		        </c:forEach>
+	        
+	        </div>
+	    </c:forEach>
+    </div>
+    
 	<div class="dummy"></div>
 </div>
 </body>

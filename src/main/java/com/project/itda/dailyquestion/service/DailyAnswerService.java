@@ -46,8 +46,8 @@ public class DailyAnswerService implements IDailyAnswerService {
 
 	@Override
 	public int countCompletedQuestion(int year, int month, int familySeq) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = dailyAnswerRepository.countCompletedQuestion(year, month, familySeq);
+		return result;
 	}
 
 }

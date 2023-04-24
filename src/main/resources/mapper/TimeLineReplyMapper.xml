@@ -5,13 +5,13 @@
 	
 <mapper namespace="com.project.itda.timeline.dao.ITimeLineReplyRepository">
 
-	<select id="getReply"
+	<select id="getReplyList"
 		resultType="com.project.itda.timeline.model.TimeLineReplyModel">
 		SELECT u.userName, r.replySeq, r.postSeq, r.replyDate, r.replyContent, r.userId
-		FROM reply r JOIN itdauser u
+		FROM TIMELINEREPLY r JOIN itdauser u
 		on r.userId = u.userId
 		WHERE postSeq = #{postSeq}
-		ORDER BY r.createDate DESC
+		ORDER BY r.replyDate DESC
 	</select>
 	
 	<insert id="insertReply" parameterType="com.project.itda.timeline.model.TimeLineReplyModel">

@@ -1,47 +1,52 @@
 @charset "UTF-8";
+
 #previewImage[src="#"] {
-  display: none;
+	display: none;
 }
 
-.gobackbtn{
-   position: absolute;
-   width: 20px;
-   height: 20px;
-   left: 15px;
-   top: 22px;
+.gobackbtn {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 15px;
+	top: 22px;
 }
 
-.addImgBox{
-width: 393px;
-height: 187px;
-text-align:center;
-background: #F4F4F4;
+.postUpdateText {
+	font-family: 'Bookk Myungjo';
+	font-size: 25px;
+	margin-top: 20px;
+	margin-left: 30px;
+	margin-bottom: 30px;
+}
+
+.addImgBox {
+	width: 393px;
+	min-height: 187px;
+	text-align: center;
+	background: #F4F4F4;
+	display: inline-block;
 }
 
 .addImgImg{
-	margin-top:17%;
-	margin-bottom: 7px;
+	display: inline-block;
 }
 
-.insertContentareaBox{
-	height: 470px;
-	background: #FFFFFF;
+.insertContentareaBox {
+	height:500px;
 	text-align: center;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background-image: url("../../image/timeline/postWriteBackImg.png");
 }
 
-.insertContentarea{
+.insertContentarea {
 	width: 90%;
-	height: 90%;
+	height: 99%;
 	font-family: 'Bookk Myungjo';
-	font-style: normal;
-	font-weight: 300;
-	font-size: 15px;
-	line-height: 22px;
-	display: flex;
-	align-items: center;
+	font-size: 16px;
+	line-height: 41px;
 	letter-spacing: 0.05em;
 	color: #2A221D;
 	outline: none;

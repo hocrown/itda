@@ -15,22 +15,29 @@
 		<form class="updatePostForm" action="/familypost/updateaction" method="post" enctype="multipart/form-data">
 			<div class="headBox">
 				<img src="../image/vector.png" class="gobackbtn">
+				일상을 잇다
 				<input class="finishBtn" type="image" src="../image/finishBtn.png" alt="완료" onclick="document.getElementById('insertContentarea').submit();">
 			</div>
+			
 			<input type="hidden" name="postSeq" value="${postOne.postSeq }">
 			
+			<div class="postUpdateText">타임라인 수정하기</div>
+			
+	
+			
+			<div id="fileArea" class="addImgBox">
+				<input type="file" id="fileInput" name="file" style="display: none;">
+				<img src="data:image/png;base64,${base64ImageData}" style="width: 100%; margin-bottom: 5px;" alt="Preview" id="previewImage" class="addImgImg" />
+			</div>
 			
 			<div class="insertContentareaBox">
 				<textarea class="insertContentarea" name="content" spellcheck="false">${postOne.content}</textarea>
 			</div>
 			
-			<div id="fileArea" class="addImgBox">
-				<input style="display: none;" type="file" name="file" id="fileInput"><img src="${postOne.filepath }" alt="Preview" id="previewImage" class="addImgImg">
-			</div>
+			
 			
 		</form>
 
-		<div style="height: 50px;"></div>
 		
 	</div>	
 	

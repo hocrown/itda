@@ -1,43 +1,45 @@
 @charset "UTF-8";
+
 #previewImage[src="#"] {
-  display: none;
+	display: none;
 }
 
-.gobackbtn{
-   position: absolute;
-   width: 20px;
-   height: 20px;
-   left: 15px;
-   top: 22px;
+.gobackbtn {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 15px;
+	top: 22px;
 }
 
-.insertPostForm{
-position: absolute;
-width: 393px;
-height: 541px;
-left: 1.08px;
-top: 63px;
+.insertPostForm {
+	width: 393px;
+	height: 541px;
 }
 
-.insertContentareaBox{
-	height: 503px;
+.postWriteText {
+	font-family: 'Bookk Myungjo';
+	font-size: 25px;
+	margin-top: 20px;
+	margin-left: 30px;
+	margin-bottom: 30px;
+}
+
+.insertContentareaBox {
+	height:493px;
 	text-align: center;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-image: url("../../image/timeline/postbackground.png");
+	background-image: url("../../image/timeline/postWriteBackImg.png");
 }
 
-.insertContentarea{
+.insertContentarea {
 	width: 90%;
-	height: 92%;
+	height: 99%;
 	font-family: 'Bookk Myungjo';
-	font-style: normal;
-	font-weight: 300;
-	font-size: 15px;
-	line-height: 22px;
-	display: flex;
-	align-items: center;
+	font-size: 16px;
+	line-height: 41px;
 	letter-spacing: 0.05em;
 	color: #2A221D;
 	outline: none;
@@ -47,46 +49,53 @@ top: 63px;
 	resize: none;
 }
 
-
 .addImgBox {
-  position: relative;
+	position: relative;
+	width: 393px;
+	margin-top: 50px;
+	min-height: 187px;
+	text-align: center;
+	background: rgba(177, 125, 90, 0.06);
+	border-radius: 20px;
 }
 
 .addImgImg {
-  position: absolute;
-  top: 45%;
-  left: 33%;
-  height: 24px;
-  cursor: pointer;
+	width: 100%;
+	height: 100%;
 }
 
-.innerAddImgBox {
-	position: relative;
-	display: inline-block;
-    top: 10%;
-    width: 100%;
-    min-height: 290px;
-    background: rgba(177, 125, 90, 0.06);
-    border-radius: 20px;
+.imgAddPlzText {
+	position: absolute;
+	top: 40%;
+	left: 34%;
+	font-family: 'Bookk Myungjo';
+	margin-top: 0px;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	align-items: center;
+	text-align: center;
+	color: #9D9690;
 }
+
 
 #file {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  cursor: pointer;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	cursor: pointer;
 }
 
 .innerAddImgBox label {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .innerAddImgBox input[type="file"] {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
 }

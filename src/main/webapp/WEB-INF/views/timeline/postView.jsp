@@ -56,7 +56,7 @@
 					                <img src="data:image/png;base64,${member.encodedImage}" class="fam-member-img">
 					            </c:when>
 					            <c:otherwise>
-					                <img src="${defaultProfileImage}" class="fam-member-img">
+					                <img src="data:image/png;base64,${member.encodedImage}" class="fam-member-img">
 					            </c:otherwise>
 					        </c:choose>
 				        <div class="writter">${timeline.userName}</div>
@@ -64,11 +64,11 @@
 					    </c:if>
 					</c:forEach>
 				</div>
-					
+				
 				<div class="postContent">
 					<a href="/familypost/postcontent?postSeq=${timeline.postSeq}">
 						<div class="postContentText">${timeline.content}</div>
-						<img src="..${timeline.filepath}" class="userPic">
+						<img src="data:image/png;base64,${timeline.encodedFileData}" class="userPic">
 					</a>
 	
 					<div class="replyCountBox">
@@ -86,6 +86,7 @@
 							</c:if>
 						</c:forEach>
 			</div>
+			<div style="min-height: 15px;"></div>
 		</c:forEach>	
 	</div>
 </div>

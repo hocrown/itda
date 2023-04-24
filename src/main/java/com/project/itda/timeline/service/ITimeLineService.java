@@ -25,10 +25,13 @@ public interface ITimeLineService {
 	TimeLineModel getContent(int postSeq);
 	
 	//게시글 추가
-	void insertPost(TimeLineModel timeLineModel, MultipartFile file) throws Exception;
+	void insertPost(TimeLineModel timeLineModel);
 	
 	//게시글 수정
-	void updatePost(TimeLineModel timeLineModel, MultipartFile file) throws Exception;
+	void updatePost(TimeLineModel timeLineModel);
+	
+	//게시글 수정
+	void updatePostTwo(TimeLineModel timeLineModel);
 	
 	//게시글 삭제
 	void deletePost(int postSeq);

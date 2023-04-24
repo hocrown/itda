@@ -17,8 +17,8 @@ public class TimeLineReplyService implements ITimeLineReplyService {
 	
 	@Override
 	public List<TimeLineReplyModel> getReplyList(int postSeq) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return timeLineReplyRepository.getReplyList(postSeq);
 	}
 	
 	@Override

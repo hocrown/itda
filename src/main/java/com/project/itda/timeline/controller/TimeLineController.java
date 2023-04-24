@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.itda.bucketlist.model.BucketListModel;
 import com.project.itda.common.model.FamilyModel;
 import com.project.itda.common.model.UserModel;
 import com.project.itda.common.service.IUserService;
@@ -79,6 +80,17 @@ public class TimeLineController {
 	    List<UserModel> familyMember = userService.getFamilyMembersWithNickName(loginUser);
 	    String defaultProfileImage = getDefaultProfileImage();
 	    
+	    // 이미지 데이터를 Base64로 인코딩하여 저장할 리스트 생성
+ 		List<String> postImageDataList = new ArrayList<>();
+
+ 		// 버킷리스트의 각 항목에 대해 이미지 데이터를 Base64로 인코딩하고 리스트에 추가
+ 		for (TimeLineModel postOne : post) {
+ 			byte[] fileData = postOne.getFileData();
+ 			String postImageData = Base64.getEncoder().encodeToString(fileData);
+ 			postImageDataList.add(postImageData);
+ 			postOne.setEncodedFileData(postImageData);
+ 		}
+ 	
 	    for (UserModel member : familyMember) {
 	        byte[] imageData = member.getUserImageData();
 	        if (imageData != null) {
@@ -104,6 +116,7 @@ public class TimeLineController {
 	    model.addAttribute("famImage", base64ImageData);    //가족 배너 이미지
 	    model.addAttribute("profileImage", defaultProfileImage);
 	    model.addAttribute("post", post); //담겨진 리스트를 postView.jsp에서 post라는 이름으로 사용할 수 있게한다.
+	    model.addAttribute("postImageDataList", postImageDataList);
 	    return "timeline/postView";
 	}
 	
@@ -112,9 +125,17 @@ public class TimeLineController {
 	@GetMapping("/familypost/postcontent")
 	public String familyPostContent(Model model, HttpSession session, @RequestParam("postSeq") int postSeq) {
 		TimeLineModel content = timelineService.getContent(postSeq); //이전 페이지에서 클릭한 게시글의 Seq를 요청하여 해당 게시글에 대한 내용을 담는다.
+		
+		byte[] fileData = content.getFileData();
+		String base64ImageData = Base64.getEncoder().encodeToString(fileData);
+		
+		
 		List<TimeLineReplyModel> reply = timelineReplyService.getReplyList(postSeq); //해당 포스트에린 댓글들의 정보를 담아둠
+		
+		model.addAttribute("base64ImageData", base64ImageData);
 		model.addAttribute("timeline", content); //content라는 이름으로 전송
 		model.addAttribute("reply", reply); //reply라는 이름으로 전송
+		System.out.println(reply);
 
 		return "timeline/postContent";
 	}
@@ -126,18 +147,52 @@ public class TimeLineController {
 		return "timeline/insertPost";
 	}
 	
+	private byte[] getDefaultPostImage() {
+		try {
+	        File file = new File("src/main/resources/static/image/itdaLogo.png");
+	        FileInputStream fis = new FileInputStream(file);
+	        byte[] imageData = new byte[(int) file.length()];
+	        fis.read(imageData);
+	        fis.close();
+	        return imageData;
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        return new byte[0];
+	    }
+	}
+	
 	
 	//게시글 추가 액션
 	@PostMapping("/familypost/insertaction")
-	public String insertPostAction(HttpSession session, TimeLineModel timelineModel, MultipartFile file) throws Exception {
+	public String insertPostAction(HttpSession session, TimeLineModel timelineModel) throws Exception {
 
 		String userId = (String) session.getAttribute("userId");
 		int famSeq = (int) session.getAttribute("famSeq");
+		
+		try {
+			timelineModel.setUserId(userId);
+			timelineModel.setFamilySeq(famSeq);
+			
+			
+			MultipartFile mfile = timelineModel.getFile();
+			
+			if(mfile !=null && !mfile.isEmpty()) {
+				timelineModel.setFileName(mfile.getOriginalFilename());
+				timelineModel.setFileData(mfile.getBytes());
 
-		timelineModel.setUserId(userId);
-		timelineModel.setFamilySeq(famSeq);
+			} else if(timelineModel.getFileData() != null && timelineModel.getFileData().length>0) {
+				timelineModel.setFileData(timelineModel.getFileData());
+				timelineModel.setFileName(timelineModel.getFileName());
+			} else {
+				timelineModel.setFileData(getDefaultPostImage());
+				timelineModel.setFileName("dafaultBucketImage.png");
+			}
 
-		timelineService.insertPost(timelineModel, file);
+			timelineService.insertPost(timelineModel);
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "redirect:/familypost";
 	}
 	
@@ -145,19 +200,38 @@ public class TimeLineController {
 	@GetMapping("/familypost/updatepost")
 	public String updatePost(@RequestParam("postSeq")int postSeq, Model model) {
 	    TimeLineModel postOne = timelineService.getContent(postSeq);
-	    System.out.println("update" + postOne.getFamilySeq());
+	    byte[] fileData = postOne.getFileData();
+	    String base64ImageData = Base64.getEncoder().encodeToString(fileData);
 	    model.addAttribute("postOne", postOne);
+		model.addAttribute("base64ImageData", base64ImageData);
 	    
 	    return "timeline/updatePost";
 	}
 	
+
+	
 	//게시글 수정 액션
 	@PostMapping("/familypost/updateaction")
-	public String updatePostAction(TimeLineModel timeLineModel, MultipartFile file) throws Exception {
+	public String updatePostAction(TimeLineModel timeLineModel) throws Exception {
+		
+		MultipartFile mfile = timeLineModel.getFile();
+		if (mfile.isEmpty()) {
+			timelineService.updatePostTwo(timeLineModel);
+			// mfile 처리 작업 수행...
+		} else {
+			// mfile이 null인 경우 처리 작업 수행 (예: 기존 파일 유지)
+			timeLineModel.setFileName(mfile.getOriginalFilename());
+			timeLineModel.setFileData(mfile.getBytes());
+			
+			timelineService.updatePost(timeLineModel);
+
+		}
 		int postSeq = timeLineModel.getPostSeq();
-		timelineService.updatePost(timeLineModel, file);
+		
+		
 		return "redirect:/familypost/postcontent?postSeq="+postSeq;
 	}
+	
 	
 	//게시글 삭제 액션
 	@GetMapping("/familypost/deleteaction")
@@ -186,7 +260,7 @@ public class TimeLineController {
 	public String updateReplyAction(TimeLineReplyModel timeLineReplyModel, @RequestParam("postSeq") int postSeq) {
 		timelineReplyService.updateReply(timeLineReplyModel);
 		
-		return "redirect:/timeline/content?postSeq=" + postSeq;
+		return "redirect:/familypost/postcontent?postSeq=" + postSeq;
 	}
 	
 	@PostMapping("/familypost/deletereplyaction")

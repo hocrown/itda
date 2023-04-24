@@ -55,7 +55,8 @@
 			
 			
 			<div id="fileArea" class="addImgBox">
-				<input style="display: none;" type="file" name="file" id="fileInput"><img src="#" alt="Preview" id="previewImage" class="addImgImg">
+				<input style="display: none;" type="file" name="file" id="fileInput">
+				<img src="#" alt="Preview" id="previewImage" class="addImgImg">
 				<span class="imgAddPlzText">연상되는 사진을 추가해주세요.</span>
 			</div>
 			

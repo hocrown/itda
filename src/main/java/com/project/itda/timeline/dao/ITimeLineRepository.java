@@ -25,6 +25,9 @@ public interface ITimeLineRepository {
 	//게시글 수정
 	void updatePost(TimeLineModel timeLineModel);
 	
+	//게시글 수정
+	void updatePostTwo(TimeLineModel timeLineModel);
+	
 	//게시글 삭제
 	void deletePost(int postSeq);
 	

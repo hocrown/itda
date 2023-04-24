@@ -52,7 +52,7 @@
 
 .addBucketTextareaBox {
 	background-image: url("../../image/bucket/bucketContentBackImg.png");
-	height:350px;
+	height: 400px;
 	text-align: center;
 	display: flex;
 	align-items: center;

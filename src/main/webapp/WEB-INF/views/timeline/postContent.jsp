@@ -15,6 +15,7 @@
 <div class="layout">
 		<div class="headBox">
 			<img src="../image/vector.png" class="gobackbtn">
+			일상을 잇다
 			<img src="../image/ellipsis.png" class="detailEllipsis">
 		</div>
 		<div class="postLayout">
@@ -24,27 +25,27 @@
 			 		<div class="createDate">등록일 <fmt:formatDate value="${timeline.createDate}" pattern="yyyy년 MM월 dd일"/></div>
 				</div>
 				<div class="postContent">
-					<img src="..${timeline.filepath}" style="width:100%; min-height: 250px;">
+						<img src="data:image/png;base64,${base64ImageData}" style="width:100%; min-height: 100px;">
 					<div class="postContentText">${timeline.content}</div>
 						
 					<div class="replyCountBox">
-					<img src="../image/bucket/replyCountImg.png" class="replyCountImg">
-					<span class="replyCountText">${timeline.replyCount}</span>
+						<img src="../image/bucket/replyCountImg.png" class="replyCountImg">
+						<span class="replyCountText">${timeline.replyCount}</span>
+					</div>
 				</div>
-		</div>
-</div>
+		
 		<c:set var="loopCount" value="0" />
-		        
+		        <div style="border-top: solid 1px; border-color: #FFC3C3;">
 			        <c:forEach items="${reply}" var="reply" varStatus="status">
 				        <div>
 				        	<div style="position: relative; padding-bottom: 20px; border-bottom: solid 1px; border-color: #ADADAD;">
-					        		<img src="../image/timeline/profile.png" style="position: absolute; top:20px; left:10px;">
+					        		<img src="../image/bucket/profileDummy.png" style="position: absolute; top:20px; left:10px;">
 						        <div class="replyTextBox">
 						        	<img src="../image/bucket/replyEllipsis.png" class="replyEllipsis replyEachEllipsis${status.index }">
 						        	<div class="replyModal replyEachModal${status.index }">
 						        		<div class="replyModalBtn reMoBtn" id="replyModifyBtnz${status.index }">수정</div>
 						        		<form action="/familypost/deletereplyaction" id="deleteReplyForm${status.index }" method="post">
-						        			<input type="hidden" name="replySeq" value="${reply.replyseq }">
+						        			<input type="hidden" name="replySeq" value="${reply.replySeq }">
 						        			<input type="hidden" name="postSeq" value="${reply.postSeq}">
 						        			
 							        		<div onclick="document.getElementById('deleteReplyForm${status.index }').submit();" class="replyModalBtn" style="color: #E16646;">삭제</div>
@@ -64,7 +65,7 @@
 							        	</div>
 							        </form>
 							        
-							        <div class="replyRegDateText"><fmt:formatDate value="${reply.regDate}" pattern="yyyy년 MM월 dd일 a hh:mm"/></div>
+							        <div class="replyRegDateText"><fmt:formatDate value="${reply.replyDate}" pattern="yyyy년 MM월 dd일 a hh:mm"/></div>
 							        <div style="height: 8px;"></div>
 							        </div>
 					        </div>
@@ -73,13 +74,14 @@
 						  <c:set var="loopCount" value="${status.index + 1}" />
 						</c:if>
 			        </c:forEach>
+			       </div>
 			        
 			        
 		        
 		        <!-- 모달 창 -->
 		        <div class="detailDeleteBox">
-					<div class="detailModifyText">수정하기</div>
-					<span class="detailDeleteText">삭제하기</span>
+					<div class="btnBox except1 detailModifyText">수정하기</div>
+					<span class="btnBox detailDeleteText">삭제하기</span>
 					<input type="hidden" id="postSeq" value="${timeline.postSeq}">
 				</div>
         		
@@ -94,9 +96,8 @@
 				    </div>
 				  </div>
 				</div>
-
+			</div>
 		</div>
-	</div>
 	
 	<form action="/familypost/insertreplyaction" method="post" class="addReplyForm">
 	<div class="inputReplyBox">

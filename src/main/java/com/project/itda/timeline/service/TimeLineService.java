@@ -30,37 +30,21 @@ public class TimeLineService implements ITimeLineService {
 	}
 
 	@Override
-	public void insertPost(TimeLineModel timeLineModel, MultipartFile file) throws Exception {
+	public void insertPost(TimeLineModel timeLineModel){
 
-		String prjPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
-		
-		UUID uuid = UUID.randomUUID();
-		
-		String fileName = uuid + "_" + file.getOriginalFilename();
-		
-		File saveFile = new File(prjPath, fileName);
-			
-		file.transferTo(saveFile);
-		timeLineModel.setFilename(fileName);
-		timeLineModel.setFilepath("/files/" + fileName);
 		timeLineRepository.insertPost(timeLineModel);
 	}
 
 	@Override
-	public void updatePost(TimeLineModel timeLineModel, MultipartFile file) throws Exception {
-		String prjPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
-		
-		UUID uuid = UUID.randomUUID();
-
-		String fileName = uuid + "_" + file.getOriginalFilename();
-		
-		File saveFile = new File(prjPath, fileName);
-		
-		file.transferTo(saveFile);
-		timeLineModel.setFilename(fileName);
-		timeLineModel.setFilepath("/files/" + fileName);
+	public void updatePost(TimeLineModel timeLineModel) {
 
 		timeLineRepository.updatePost(timeLineModel);
+	}
+	
+	@Override
+	public void updatePostTwo(TimeLineModel timeLineModel) {
+
+		timeLineRepository.updatePostTwo(timeLineModel);
 	}
 	
 	

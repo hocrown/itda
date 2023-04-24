@@ -137,7 +137,9 @@
 	    loadData(userId); 
 	});
 		function loadData(userId) {
-
+			if(userId == null){
+				return
+			}
 		  $.ajax({
 		    type: 'GET',
 		    url: '/bucket/bucketlistz',

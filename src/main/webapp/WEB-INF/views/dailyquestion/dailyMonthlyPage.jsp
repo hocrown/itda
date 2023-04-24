@@ -22,8 +22,8 @@
 		<img class="monthlyPageLine" src="/image/monthlyPageLine.png">
 			<div class="yearText">2023</div>
 			<span class="monthText">4월</span>
-			<img class="monthlyPageVector" src="/image/monthlyPageVector.png">
-			<img class="monthlyPageVector2" src="/image/monthlyPageVector.png">
+			<img class="monthlyPageVector prevMonth" src="/image/monthlyPageVector.png">
+			<img class="monthlyPageVector nextMonth" src="/image/monthlyPageVector.png">
 
 		<img class="monthlyPageLine2" src="/image/monthlyPageLine.png">
 		<div class="stickerContainer">

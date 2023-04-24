@@ -238,6 +238,7 @@ public class DailyQuestionController {
     //가족 질문 월별로 모아보는 메소드
     @GetMapping("/dailyquestion/monthly")
     public String monthlyFamilyQuestion(DailyAnswerModel dailyAnswer, HttpSession session) {
+    	
     	return "dailyquestion/dailyMonthlyPage";
     }
     

@@ -34,16 +34,24 @@
 	
 	<insert id="insertPost"  
 		parameterType="com.project.itda.timeline.model.TimeLineModel">
-			INSERT INTO TIMELINE (postSeq, userId, createDate, content, familySeq, filename, filepath, visible)
-               VALUES (postSeq.NEXTVAL, #{userId}, SYSDATE, #{content}, #{familySeq}, #{filename}, #{filepath},1)
+			INSERT INTO TIMELINE (postSeq, userId, createDate, content, familySeq, fileName, fileData, visible)
+               VALUES (postSeq.NEXTVAL, #{userId}, SYSDATE, #{content}, #{familySeq}, #{fileName}, #{fileData},1)
 	</insert>
 	
 	<update id="updatePost"
 		parameterType="com.project.itda.timeline.model.TimeLineModel">
 			update TIMELINE set 
 				content = #{content},
-				filepath = #{filepath},
-				filename = #{filename}
+				fileData = #{fileData},
+				fileName = #{fileName}
+				
+				where postSeq = #{postSeq}
+	</update>
+	
+	<update id="updatePostTwo"
+		parameterType="com.project.itda.timeline.model.TimeLineModel">
+			update TIMELINE set 
+				content = #{content}
 				
 				where postSeq = #{postSeq}
 	</update>

@@ -11,10 +11,12 @@
 	<div class="layout">
 		<div class="headBox" onclick="history.back()">
 			<img src="/image/vector.png" class="vector">
-			마음을 잇다
+			Error
 		</div>
 	    <div class="error-message">
     	    <span class="error-messageText">${errorMessage}</span>
+    	    
+    	    <a href="/user/login"><button class="login-move-btn btn">로그인 페이지로</button></a>
     	</div>
 </div>
 </body>

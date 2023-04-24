@@ -16,7 +16,7 @@
 <body>
 	<div class="adminLoginLayout">
 		<div class="adminContainer">
-			<img class="adminLogo" src="../image/itdaLogo.png">
+			<img class="adminLogo" src="../image/itdaLogo.png" style="width: 317px; height: 148px;">
 			<form>
 				<div>
 					<div class="adminIdPwdText">아이디</div><br>

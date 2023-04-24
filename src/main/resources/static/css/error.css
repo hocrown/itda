@@ -3,6 +3,7 @@
 
 .layout {
 	min-width: 100%;
+	max-wdith: 393.33px;
 	min-height: 851.33px;
 	background-image: url("/image/itdaBackImg.png");
 }
@@ -25,3 +26,17 @@
 	color: #6C4A32;
 }
 
+
+.login-move-btn{
+	background-color: #B17D5A;
+	color: #FFFFFF;
+	position: absolute;
+	top: 60%;
+    left: 50%;
+    font-family: 'Bookk Myungjo';
+    transform: translate(-50%, -50%);
+    font-size:22px;
+    border-radius: 15px;
+    padding: 10px;
+	
+}

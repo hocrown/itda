@@ -62,10 +62,12 @@
       success: function (data) {
         stickerContainer.empty();
 		backgroundImg.attr('src', `/image/monthly/backImg${String(month).padStart(2, '0')}.png`);
+		backgroundImg.addClass('imgScale');
         for (let i = 1; i <= data.stickersCount; i++) {
           const newImage = $('<img>');
-          newImage.attr('src', `/image/monthly/sticker${String(month).padStart(2, '0')}.png`);
+          newImage.attr('src', `../../image/monthly/sticker${String(month).padStart(2, '0')}.png`);
           newImage.addClass(`sticker${String(month).padStart(2, '0')}-${i}`);
+
           stickerContainer.append(newImage);
         }
       },

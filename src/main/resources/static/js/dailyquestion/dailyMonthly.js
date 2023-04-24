@@ -9,6 +9,7 @@
 	const prevMonthBtn = $('#prevMonth');
 	const nextMonthBtn = $('#nextMonth');
 	const monthText = $('.monthText');
+	const yearText = $('.yearText');
 	const stickerContainer = $('.stickerContainer .backgroundImg');
 	const backgroundImg = $('.layout img[src^="/image/monthly/backImg"]');
 
@@ -21,8 +22,8 @@
 	changeMonthData(currentYear, currentMonth);
 	
 
-	  prevMonthBtn.on('click', function () {
-	  if (currentMonth === 1) {
+	prevMonthBtn.on('click', function () {
+		 if (currentMonth === 1) {
 	    if (currentYear > 1) {
 	      currentYear--;
 	      currentMonth = 12;
@@ -34,9 +35,9 @@
 	  }
 	  changeMonthData(currentYear, currentMonth);
 	});
-	
+
 	nextMonthBtn.on('click', function () {
-	  if (currentMonth === 12) {
+		 if (currentMonth === 12) {
 	    currentYear++;
 	    currentMonth = 1;
 	  } else {
@@ -47,9 +48,9 @@
 	
 	
   function changeMonthData(year, month) {
+	yearText.text(`${year}`);
     monthText.text(`${month}월`);
-
-    console.log(month);
+	changeStickerStylesheet(month);
 
     $.ajax({
       url: `/monthly/getmonth`,
@@ -61,6 +62,7 @@
 	  },
       success: function (data) {
         stickerContainer.empty();
+        console.log(data.stickersCount);
 		backgroundImg.attr('src', `/image/monthly/backImg${String(month).padStart(2, '0')}.png`);
         for (let i = 1; i <= data.stickersCount; i++) {
           const newImage = $('<img>');
@@ -74,6 +76,11 @@
       },
     });
   }
+  
+  	function changeStickerStylesheet(month) {
+  	const stickerStylesheet = document.getElementById('stickerStylesheet');
+  	stickerStylesheet.href = `/css/dailyquestion/sticker/sticker${month}.css`;
+	}
 });
 
 

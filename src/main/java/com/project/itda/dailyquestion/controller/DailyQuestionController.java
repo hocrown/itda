@@ -240,8 +240,14 @@ public class DailyQuestionController {
     
     //가족 질문 월별로 모아보는 메소드
     @GetMapping("/dailyquestion/monthly")
-    public String monthlyFamilyQuestion(DailyAnswerModel dailyAnswer, HttpSession session) {
-    	
+    public String monthlyFamilyQuestion(DailyAnswerModel dailyAnswer, HttpSession session, Model model) {
+        LocalDate currentDate = LocalDate.now();
+        int currentYear = currentDate.getYear();
+        int currentMonth = currentDate.getMonthValue();
+
+        model.addAttribute("currentYear", currentYear);
+        model.addAttribute("currentMonth", currentMonth);
+        
     	return "dailyquestion/dailyMonthlyPage";
     }
     
@@ -250,9 +256,9 @@ public class DailyQuestionController {
     public Map<String, Integer> getMonthData(@RequestParam("year") int year, @RequestParam("month") int month, HttpSession session) {
         
     	int familySeq = (int) session.getAttribute("famSeq");
-    	
+    	System.out.println(year + "년도" + month + "월" + familySeq);
     	int stickersCount = dailyAnswerService.countCompletedQuestion(year, month, familySeq);
-
+    	System.out.println(stickersCount);
         Map<String, Integer> response = new HashMap<>();
         response.put("stickersCount", stickersCount);
         return response;

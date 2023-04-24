@@ -25,7 +25,7 @@
 			 		<div class="createDate">등록일 <fmt:formatDate value="${timeline.createDate}" pattern="yyyy년 MM월 dd일"/></div>
 				</div>
 				<div class="postContent">
-						<img src="data:image/png;base64,${base64ImageData}" style="width:100%; min-height: 100px;">
+						<img src="data:image/png;base64,${timeline.encodedFileData}" style="width:100%; min-height: 100px;">
 					<div class="postContentText">${timeline.content}</div>
 						
 					<div class="replyCountBox">

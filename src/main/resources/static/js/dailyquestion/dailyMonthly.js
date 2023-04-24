@@ -6,10 +6,15 @@
     location.href = "/dailymain";	
 	});
 	
+	const newImagez = $('<img>');
+          newImagez.attr('src', `/image/monthly/sticker03.png`);
+        	newImagez.addClass(`sticker04-1`);
+        	$('.stickerContainer').append(newImagez);
+	
 	const prevMonthBtn = $('#prevMonth');
 	const nextMonthBtn = $('#nextMonth');
 	const monthText = $('.monthText');
-	const stickerContainer = $('.stickerContainer .backgroundImg');
+	const stickerContainer = $('.stickerContainer.backgroundImg');
 	const backgroundImg = $('.layout img[src^="/image/monthly/backImg"]');
 
 	const currentDate = new Date();
@@ -63,13 +68,15 @@
         stickerContainer.empty();
 		backgroundImg.attr('src', `/image/monthly/backImg${String(month).padStart(2, '0')}.png`);
 		backgroundImg.addClass('imgScale');
+		console.log(data.stickersCount);
         for (let i = 1; i <= data.stickersCount; i++) {
           const newImage = $('<img>');
-          newImage.attr('src', `../../image/monthly/sticker${String(month).padStart(2, '0')}.png`);
+          newImage.attr('src', `/image/monthly/sticker${String(month).padStart(2, '0')}.png`);
           newImage.addClass(`sticker${String(month).padStart(2, '0')}-${i}`);
-
+          
           stickerContainer.append(newImage);
         }
+        
       },
       error: function (err) {
         console.error('Error fetching data:', err);

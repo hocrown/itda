@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+
+.imgScale{
+	width:393.33px;
+	height: 851.33px;
+}
+
 .monthly{
 	z-index: 2;
 }

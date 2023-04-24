@@ -44,4 +44,10 @@ public class DailyAnswerService implements IDailyAnswerService {
 		return myAnswer;
 	}
 
+	@Override
+	public int countCompletedQuestion(int year, int month, int familySeq) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

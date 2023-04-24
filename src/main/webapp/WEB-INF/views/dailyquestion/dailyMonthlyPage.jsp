@@ -13,7 +13,7 @@
 <body>
 
 	<div class="layout">
-		<div class="headBox"><img class="vector" src="/image/vector.png">
+		<div class="headBox monthly"><img class="vector" src="/image/vector.png">
 			하루를 잇다
 		</div>
 		
@@ -22,8 +22,8 @@
 		<img class="monthlyPageLine" src="/image/monthlyPageLine.png">
 			<div class="yearText">2023</div>
 			<span class="monthText">4월</span>
-			<img class="monthlyPageVector prevMonth" src="/image/monthlyPageVector.png">
-			<img class="monthlyPageVector nextMonth" src="/image/monthlyPageVector.png">
+			<img id="prevMonth" class="monthlyPageVector prevMonth" src="/image/monthlyPageVector.png">
+			<img id="nextMonth" class="monthlyPageVector nextMonth" src="/image/monthlyPageVector.png">
 
 		<img class="monthlyPageLine2" src="/image/monthlyPageLine.png">
 		<div class="stickerContainer">
@@ -32,23 +32,6 @@
 		</div>
 		
 	</div>
-	
-	
-	<script>
-		
-		const imageURL = "/image/monthly/sticker04.png";
-		const stickerContainer = document.querySelector('.stickerContainer');
-		
-	
-		for(let i=1 ; i<=10 ; i++) {	
-			const newImage = document.createElement('img');
-			newImage.src = imageURL;
-			newImage.className = "sticker04-" + i;
-			stickerContainer.appendChild(newImage);
-		}
-	
-	</script>
-	
 	
 </body>
 </html>

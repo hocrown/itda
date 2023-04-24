@@ -54,4 +54,26 @@
 		]]>
 	</select>
 	
+	
+	<select id="countCompletedQuestion" parameterType="map" resultType="int">
+		<![CDATA[
+		    WITH questionSeqs AS (
+		    SELECT FQ.DAILYQUESTIONSEQ
+		    FROM FAMILYQUESTION FQ
+		    WHERE EXTRACT(YEAR FROM FQ.ASKEDDATE) = #{year} AND EXTRACT(MONTH FROM FQ.ASKEDDATE) = #{month}
+		    AND FAMILYSEQ = #{familySeq}
+		)
+		SELECT COUNT(*) AS completed_questions
+		FROM questionSeqs
+		WHERE (
+		    SELECT COUNT(DISTINCT DA.USERID)
+		    FROM DAILYANSWER DA
+		    WHERE DA.DAILYQUESTIONSEQ = questionSeqs.DAILYQUESTIONSEQ
+		) = (
+		    SELECT COUNT(*)
+		    FROM ITDAUSER U
+		    WHERE U.FAMILYSEQ = #{familySeq}
+		)
+		]]>
+	</select>
 </mapper>

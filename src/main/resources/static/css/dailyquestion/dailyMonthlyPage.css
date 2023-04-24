@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.monthly{
+	z-index: 2;
+}
+
 .putTogetherText {
 	position: absolute;
 	width: 301px;
@@ -43,6 +47,10 @@
 	top: 224px;
 }
 
+.prevMonth{
+	z-index: 1;
+}
+
 .nextMonth{
 	position: absolute;
 	width: 10px;
@@ -50,6 +58,7 @@
 	left: 345px;
 	top: 224px;
 	transform: rotate(-180deg);
+	z-index: 1;
 }
 
 .yearText {

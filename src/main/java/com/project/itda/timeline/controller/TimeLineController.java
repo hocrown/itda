@@ -125,14 +125,14 @@ public class TimeLineController {
 	@GetMapping("/familypost/postcontent")
 	public String familyPostContent(Model model, HttpSession session, @RequestParam("postSeq") int postSeq) {
 		
-		byte[] fileData = content.getFileData();
-		String base64ImageData = Base64.getEncoder().encodeToString(fileData);
+		
 		TimeLineModel content = timelineService.getContent(postSeq); //이전 페이지에서 클릭한 게시글의 Seq를 요청하여 해당 게시글에 대한 내용을 담는다.
 		String userId = content.getUserId();
 		UserModel writer = userService.getUserInfoByUserId(userId);
 		List<TimeLineReplyModel> reply = timelineReplyService.getReplyList(postSeq); //해당 포스트에 달린 댓글들의 정보를 담아둠
 		String defaultProfileImage = getDefaultProfileImage();
-		
+		byte[] fileData = content.getFileData();
+		String base64ImageData = Base64.getEncoder().encodeToString(fileData);
 		byte[] imageData = writer.getUserImageData();
         if (imageData != null) {
             writer.setEncodedImage(Base64.getEncoder().encodeToString(imageData));

@@ -18,5 +18,7 @@ public interface IDailyAnswerService {
 	int countAnsweredFamilyMember(@Param("familySeq") int familySeq, @Param("dailyQuestionSeq") int dailyQuestionSeq);
 	
 	DailyAnswerModel getMyAnswer(String userId, int dailyQuestionSeq);
+	
+	int countCompletedQuestion(int year, int month, int familySeq);
 
 }

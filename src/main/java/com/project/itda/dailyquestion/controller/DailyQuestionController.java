@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.itda.common.AccessDeniedException;
 import com.project.itda.common.CheckAuth;
@@ -240,6 +243,19 @@ public class DailyQuestionController {
     public String monthlyFamilyQuestion(DailyAnswerModel dailyAnswer, HttpSession session) {
     	
     	return "dailyquestion/dailyMonthlyPage";
+    }
+    
+    @PostMapping("/monthly/getmonth")
+    @ResponseBody
+    public Map<String, Integer> getMonthData(@RequestParam("year") int year, @RequestParam("month") int month, HttpSession session) {
+        
+    	int familySeq = (int) session.getAttribute("famSeq");
+    	
+    	int stickersCount = dailyAnswerService.countCompletedQuestion(year, month, familySeq);
+
+        Map<String, Integer> response = new HashMap<>();
+        response.put("stickersCount", stickersCount);
+        return response;
     }
     
 }

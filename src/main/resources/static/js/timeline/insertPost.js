@@ -65,6 +65,21 @@ $(document).ready(function(){
 		  $('#previewImage').on('error', function() {
 		    $('.imgAddPlzText').show();
 		  });
+	$('.writebtn').on('click',function(){
+		
 
+  var form = document.getElementById('insertPostForm');
+  
+  // 입력 필드의 유효성 검사 수행
+  if (form.checkValidity()) {
+    // 모든 입력 필드가 유효한 경우, 폼 제출
+    form.submit();
+  } else {
+    // 유효하지 않은 입력 필드가 있는 경우, 사용자에게 알림
+    alert('모든 필수 입력 필드를 입력해주세요.');
+    // 이벤트 발생시 유효성 검사 메시지 표시
+    form.reportValidity();
+  }
+	});  
   
 });

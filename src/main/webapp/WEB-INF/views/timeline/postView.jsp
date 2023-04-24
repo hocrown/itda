@@ -45,7 +45,7 @@
 		</div>
 	<div class="allPostLayout">
 		<c:forEach var="timeline" items="${post}">
-		
+		<c:if test="${timeline.visible == 1 }">
 			<div class="postLayout">
 				
 				<div class="postInfo">
@@ -87,6 +87,7 @@
 						</c:forEach>
 			</div>
 			<div style="min-height: 15px;"></div>
+			</c:if>
 		</c:forEach>	
 	</div>
 </div>

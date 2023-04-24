@@ -8,21 +8,21 @@ a {
 	border: 0.5px solid #e4e4e4;
 	position: absolute;
 	width: 50px;
-    height: 50px;
-    border-radius: 50px;
+	height: 50px;
+	border-radius: 50px;
 	left: 16px;
 	top: 13px;
-}   
-
-.gobackbtn{
-   position: absolute;
-   width: 20px;
-   height: 20px;
-   left: 15px;
-   top: 22px;
 }
 
-.detailEllipsis{
+.gobackbtn {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 15px;
+	top: 22px;
+}
+
+.detailEllipsis {
 	position: absolute;
 	width: 23px;
 	height: 23px;
@@ -30,69 +30,62 @@ a {
 	top: 20px;
 }
 
-
-.postLayout{
-   position: absolute;
-   width: 393px;
-   min-height: 300px;
-   left: 0px;
-   top: 63px;
-   background-image: url("../../image/timeline/postbackground.png");
+.postLayout {
+	position: absolute;
+	width: 393px;
+	min-height: 300px;
+	left: 0px;
+	top: 63px;
+	background-image: url("../../image/timeline/postbackground.png");
 }
 
-
-.postInfo{
-   position: relative;
-   width: 393px;
-   height: 77px;
-   left: 0px;
-   top: 0px;
+.postInfo {
+	position: relative;
+	width: 393px;
+	height: 77px;
+	left: 0px;
+	top: 0px;
 }
 
-.profileImg{
-   position: absolute;
-   width: 48px;
-   height: 48px;
-   left: 22px;
-   top: 16px;
+.profileImg {
+	position: absolute;
+	width: 48px;
+	height: 48px;
+	left: 22px;
+	top: 16px;
 }
 
-.writter{
-   position: absolute;
-   width: 114px;
-   height: 27px;
-   left: 80px;
-   top: 16px;
-   
-   font-family: 'Bookk Myungjo';
-   font-style: normal;
-   font-weight: 700;
-   font-size: 16px;
-   line-height: 16px;
-   display: flex;
-   align-items: center;
-   letter-spacing: 0.05em;
-   
-   color: #2A221D;
+.writter {
+	position: absolute;
+	width: 114px;
+	height: 27px;
+	left: 80px;
+	top: 16px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.05em;
+	color: #2A221D;
 }
 
-.createDate{
-   position: absolute;
-   width: 181px;
-   height: 24px;
-   left: 80px;
-   top: 37px;
-   
-   font-family: 'Bookk Myungjo';
-   font-style: normal;
-   font-weight: 300;
-   font-size: 15px;
-   line-height: 15px;
-   display: flex;
-   align-items: center;
-   
-   color: #9D9690;   
-   
+.createDate {
+	position: absolute;
+	width: 181px;
+	height: 24px;
+	left: 80px;
+	top: 37px;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 15px;
+	display: flex;
+	align-items: center;
+	color: #9D9690;
 }
 
 .postContent {
@@ -114,35 +107,35 @@ a {
 	display: flex-start;
 	align-items: center;
 	letter-spacing: 0.05em;
-   
 	color: #2A221D;
 }
 
-.userPic{
-	width:100%;
+.userPic {
+	width: 100%;
 	margin-top: 4%;
 	min-height: 250px;
 }
 
 .replyCountBox {
 	height: 50px;
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 	margin-left: 22px;
 	margin-top: -2%;
 }
 
 .replyCountImg {
+	
 }
 
 .replyCountText {
-   position: absolute;
-   left: 15%;
-   font-family: 'Bookk Myungjo';
-   font-style: normal;
-   font-weight: 300;
-   font-size: 15px;
-   color: #9D9690;
+	position: absolute;
+	left: 15%;
+	font-family: 'Bookk Myungjo';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 15px;
+	color: #9D9690;
 }
 
 .bucketReplyContainer {
@@ -207,7 +200,6 @@ a {
 	position: relative;
 	left: 10px;
 	box-sizing: border-box;
-	background: rgba(255, 255, 255, 0.2);
 	border: 4px solid rgba(177, 125, 90, 0.2);
 	border-radius: 20px;
 	width: 316.08px;
@@ -258,7 +250,6 @@ a {
 	padding-left: 15px;
 	padding-right: 15px;
 	padding-bottom: 15px;
-	
 	filter: grayscale(90%);
 }
 
@@ -295,13 +286,11 @@ a {
 	border-color: #FFC3C3;
 }
 
-.show{
+.show {
 	display: block !important;
-	
-	
 }
 
-.replyInput{
+.replyInput {
 	padding: 0px;
 	background: none;
 	width: 290px;
@@ -313,43 +302,44 @@ a {
 	color: #2A221D;
 	border: none;
 	outline: none;
-	border-bottom: solid 2px;	
+	border-bottom: solid 2px;
 }
-.modifyReplyBtnBox{
+
+.modifyReplyBtnBox {
 	margin-top: 5px;
 	width: 290px;
 	text-align: right;
-	
 }
 
-.modifyReplyCancelBtn{
+.modifyReplyCancelBtn {
 	width: 50px;
 	height: 35px;
-	border:none;
-	outline:none;
-background: rgba(177, 125, 90, 0.15);
-border-radius: 20px;	
-font-family: 'Bookk Myungjo';
+	border: none;
+	outline: none;
+	background: rgba(177, 125, 90, 0.15);
+	border-radius: 20px;
+	font-family: 'Bookk Myungjo';
 	font-style: normal;
 	font-weight: 300;
 	font-size: 13px;
 	letter-spacing: 0.05em;
 }
 
-.modifyReplyModifyBtn{
+.modifyReplyModifyBtn {
 	width: 50px;
 	height: 35px;
-	border:none;
-	outline:none;
-background: rgba(177, 125, 90, 0.15);
-border-radius: 20px;	
-font-family: 'Bookk Myungjo';
+	border: none;
+	outline: none;
+	background: rgba(177, 125, 90, 0.15);
+	border-radius: 20px;
+	font-family: 'Bookk Myungjo';
 	font-style: normal;
 	font-weight: 300;
 	font-size: 13px;
 	letter-spacing: 0.05em;
 }
-.editReplyForm{
+
+.editReplyForm {
 	display: none;
 }
 
@@ -365,9 +355,7 @@ font-family: 'Bookk Myungjo';
 	color: #2A221D;
 }
 
-
 /* 모달 창 스타일 */
-
 .detailDeleteBox {
 	justify-content: center;
 	align-items: center;
@@ -384,14 +372,13 @@ font-family: 'Bookk Myungjo';
 	color: #E16646;
 }
 
-
 .detailModifyText {
 	font-family: 'Bookk Myungjo';
 	font-size: 20px;
 	color: #E16646;
 }
 
-.btnBox{
+.btnBox {
 	height: 70px;
 	display: flex;
 	justify-content: center;
@@ -402,8 +389,8 @@ font-family: 'Bookk Myungjo';
 	border-color: #FFC3C3;
 }
 
-.except1{
-	border:none !important;
+.except1 {
+	border: none !important;
 }
 
 .detailDeleteBox {
@@ -419,14 +406,12 @@ font-family: 'Bookk Myungjo';
 	transition: transform 0.3s, bottom 0.3s;
 	/* transform, bottom 속성이 변할 때 애니메이션 효과 적용 */
 	border-radius: 30px 30px 0 0; /* 상단 모서리만 둥글게 */
-	
 }
 
 .detailDeleteBox.active {
 	transform: translateY(0%); /* active 클래스가 추가되면 위로 이동시킴 */
 	bottom: 62px; /* bottom 속성 값 변경 */
 }
-
 
 .modal {
 	display: none;
@@ -454,7 +439,8 @@ font-family: 'Bookk Myungjo';
 }
 
 .modal-deleteText {
-	margin-top: 36px; text-align : center;
+	margin-top: 36px;
+	text-align: center;
 	display: inline-block;
 	font-family: 'Bookk Myungjo';
 	font-style: normal;
@@ -491,7 +477,8 @@ font-family: 'Bookk Myungjo';
 
 .modal-btn-box {
 	position: absolute;
-	border-top: solid 1px #DCDAD9; bottom : 0;
+	border-top: solid 1px #DCDAD9;
+	bottom: 0;
 	width: 100%;
 	height: 47px;
 	bottom: 0;
@@ -509,7 +496,8 @@ font-family: 'Bookk Myungjo';
 	font-size: 18px;
 	background-color: #fefefe;
 	border: none;
-	border-right: solid 1px #DCDAD9; color : #2A221D;
+	border-right: solid 1px #DCDAD9;
+	color: #2A221D;
 	border-bottom-left-radius: 15px;
 	color: #2A221D
 }
@@ -529,4 +517,14 @@ font-family: 'Bookk Myungjo';
 	color: #E16646;
 }
 
+.blank-div {
+	min-height: 67px;
+	background-image: url("../../image/backImgVol2.png");
+}
 
+.reply-bbox {
+	border-top: solid 1px;
+	border-color: #FFC3C3;
+	background-image: url("../../image/backImgVol2.png");
+	
+}

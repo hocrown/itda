@@ -42,4 +42,6 @@ public interface IUserRepository {
 	NickNameModel getNickname(String userId, String targetUserId);
 	void insertNickname(NickNameModel newNickname);
 	
+	UserModel getUserInfoByUserId(String userId);
+	
 }

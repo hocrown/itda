@@ -13,4 +13,5 @@ public interface IAlarmRepository {
 
 	void insertAlarm(AlarmModel alarm);
 	List<AlarmModel> getAlarmList(String userId);
+	void updateChecked(String userId);
 }

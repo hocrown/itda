@@ -17,23 +17,32 @@
 		</div>
 		<div class="questionListContainer">
 		    <c:forEach items="${familyQuestions}" var="familyQuestion">
-		        <div class="questionListBox">
-		         <img class="listNum" src="../image/listNum/${familyQuestion.questionOrder}.png" alt="${familyQuestion.questionOrder}">
-        		<a href="/dailyquestion/familybylist?dailyQuestionSeq=${familyQuestion.dailyQuestionSeq}&amp;familySeq=${familyQuestion.familySeq}&amp;questionOrder=${familyQuestion.questionOrder}" class="questionTextOfList" style="text-decoration:none">
-	            ${familyQuestion.question}
-	            </a>
-				<span class="finishCount">
-				    <c:choose>
-				        <c:when test="${familyQuestion.allAnswered}">
-				            <img src="../image/familyClearImg.png" alt="checked">  <!-- 두 수가 일치할 경우 이미지 출력 -->
-				        </c:when>
-				        <c:otherwise>
-				            ${familyQuestion.answeredCount}/${familyQuestion.familyMemberCount}  <!-- 두 수가 일치하지 않을 경우 텍스트 출력 -->
-				        </c:otherwise>
-				    </c:choose>
-				</span>
-		        </div>
-		    </c:forEach>
+			    <div class="questionListBox">
+			        <img class="listNum" src="../image/listNum/${familyQuestion.questionOrder}.png" alt="${familyQuestion.questionOrder}">
+			        <c:choose>
+			            <c:when test="${familyQuestion.allAnswered}">
+			                <a href="/dailyquestion/familybylist?dailyQuestionSeq=${familyQuestion.dailyQuestionSeq}&amp;familySeq=${familyQuestion.familySeq}&amp;questionOrder=${familyQuestion.questionOrder}" class="questionTextOfList" style="text-decoration:none">
+			                    ${familyQuestion.question}
+			                </a>
+			            </c:when>
+			            <c:otherwise>
+			                <a href="/dailyquestion/familybylist?dailyQuestionSeq=${familyQuestion.dailyQuestionSeq}&amp;familySeq=${familyQuestion.familySeq}&amp;questionOrder=${familyQuestion.questionOrder}" class="questionTextOfList" style="text-decoration:none; color:#80808080">
+			                    ${familyQuestion.question}
+			                </a>
+			            </c:otherwise>
+			        </c:choose>
+			        <span class="finishCount">
+			            <c:choose>
+			                <c:when test="${familyQuestion.allAnswered}">
+			                    <img src="../image/familyClearImg.png" alt="checked" class="allAnswered">
+			                </c:when>
+			                <c:otherwise>
+<%-- 			                    ${familyQuestion.answeredCount}/${familyQuestion.familyMemberCount} --%>
+			                </c:otherwise>
+			            </c:choose>
+			        </span>
+			    </div>
+			</c:forEach>
 		</div>
 	</div>
 

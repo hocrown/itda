@@ -35,4 +35,5 @@ public interface IUserService {
 	NickNameModel getNickName(String userId, String targetUserId);
 	void insertNickname(NickNameModel newNickname);
 	
+	UserModel getUserInfoByUserId(String userId);
 }

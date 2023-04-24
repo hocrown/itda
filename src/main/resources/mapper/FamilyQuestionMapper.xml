@@ -22,15 +22,49 @@
 	
 	<select id="todayFamilyQuestion" parameterType="int" resultType="com.project.itda.dailyquestion.model.FamilyQuestionModel">
 		<![CDATA[
-		SELECT fq.*, dq.question
-		FROM familyQuestion fq
-		INNER JOIN dailyQuestion dq
-		ON fq.dailyQuestionSeq = dq.dailyQuestionSeq
-		WHERE fq.familySeq = #{familySeq}
-		AND TRUNC(fq.askedDate) = TRUNC(SYSDATE)
-		AND dq.VISIBLE = 1
+          SELECT 
+			    dq.dailyQuestionSeq,
+			    dq.question, 
+			    fq.askedDate,
+			    questionOrder
+			FROM dailyQuestion dq
+			JOIN (
+			    SELECT 
+			        familySeq, 
+			        dailyQuestionSeq, 
+			        askedDate, 
+			        ROW_NUMBER() OVER (PARTITION BY familySeq ORDER BY askedDate) AS questionOrder
+			    FROM familyQuestion 
+			    WHERE familySeq = #{familySeq}
+			) fq ON dq.dailyQuestionSeq = fq.dailyQuestionSeq
+            WHERE TRUNC(fq.askedDate) = TRUNC(SYSDATE)
+            AND dq.VISIBLE =1
+			ORDER BY fq.askedDate DESC
 		]]>
 	</select>
+	
+	<select id="todayFamilyQuestionWithQuestionOrder" parameterType="int" resultType="com.project.itda.dailyquestion.model.FamilyQuestionModel">
+		<![CDATA[
+		      SELECT 
+			    dq.dailyQuestionSeq,
+			    dq.question, 
+			    fq.askedDate,
+			    questionOrder
+			FROM dailyQuestion dq
+			JOIN (
+			    SELECT 
+			        familySeq, 
+			        dailyQuestionSeq, 
+			        askedDate, 
+			        ROW_NUMBER() OVER (PARTITION BY familySeq ORDER BY askedDate) AS questionOrder
+			    FROM familyQuestion 
+			    WHERE familySeq = #{familySeq}
+			) fq ON dq.dailyQuestionSeq = fq.dailyQuestionSeq
+            WHERE TRUNC(fq.askedDate) = TRUNC(SYSDATE)
+			ORDER BY fq.askedDate DESC;
+		]]>
+	</select>
+	
 	
 	 <select id="getQuestionByFamilySeq" parameterType="int" resultType="com.project.itda.dailyquestion.model.FamilyQuestionModel">
 	    <![CDATA[

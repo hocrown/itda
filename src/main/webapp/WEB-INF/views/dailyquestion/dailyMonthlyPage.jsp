@@ -5,7 +5,7 @@
 <head>
 <%@ include file="../head.jsp"%>
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/css/dailyquestion/dailyMonthlyStickerPage1.css">
+<link rel="stylesheet" type="text/css" href="/css/dailyquestion/dailyMonthlyPage.css">
 <link rel="stylesheet" type="text/css" href="/css/dailyquestion/sticker.css">
 <script type="text/javascript" src="/js/dailyquestion/dailyMonthly.js"></script>
 
@@ -22,8 +22,8 @@
 		<img class="monthlyPageLine" src="/image/monthlyPageLine.png">
 			<div class="yearText">2023</div>
 			<span class="monthText">4월</span>
-			<img class="monthlyPageVector" src="/image/monthlyPageVector.png">
-			<img class="monthlyPageVector2" src="/image/monthlyPageVector.png">
+			<img class="monthlyPageVector prevMonth" src="/image/monthlyPageVector.png">
+			<img class="monthlyPageVector nextMonth" src="/image/monthlyPageVector.png">
 
 		<img class="monthlyPageLine2" src="/image/monthlyPageLine.png">
 		<div class="stickerContainer">

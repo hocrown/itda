@@ -124,19 +124,25 @@ public class TimeLineController {
 	//게시글 상세 정보
 	@GetMapping("/familypost/postcontent")
 	public String familyPostContent(Model model, HttpSession session, @RequestParam("postSeq") int postSeq) {
+		
 		TimeLineModel content = timelineService.getContent(postSeq); //이전 페이지에서 클릭한 게시글의 Seq를 요청하여 해당 게시글에 대한 내용을 담는다.
+		String userId = content.getUserId();
+		UserModel writer = userService.getUserInfoByUserId(userId);
+		List<TimeLineReplyModel> reply = timelineReplyService.getReplyList(postSeq); //해당 포스트에 달린 댓글들의 정보를 담아둠
+		String defaultProfileImage = getDefaultProfileImage();
 		
-		byte[] fileData = content.getFileData();
-		String base64ImageData = Base64.getEncoder().encodeToString(fileData);
+		byte[] imageData = writer.getUserImageData();
+        if (imageData != null) {
+            writer.setEncodedImage(Base64.getEncoder().encodeToString(imageData));
+        } else {
+            writer.setEncodedImage(defaultProfileImage);
+        }
 		
 		
-		List<TimeLineReplyModel> reply = timelineReplyService.getReplyList(postSeq); //해당 포스트에린 댓글들의 정보를 담아둠
-		
-		model.addAttribute("base64ImageData", base64ImageData);
 		model.addAttribute("timeline", content); //content라는 이름으로 전송
 		model.addAttribute("reply", reply); //reply라는 이름으로 전송
-		System.out.println(reply);
-
+		model.addAttribute("writer", writer);
+		model.addAttribute("profileImage", defaultProfileImage);
 		return "timeline/postContent";
 	}
 	

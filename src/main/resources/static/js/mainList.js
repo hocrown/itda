@@ -21,7 +21,7 @@ $(document).ready(function(){
 		window.location.href="/whisper/main";
 	});
 	
-	$(".alarmMark").click(function(){
+	$(".bell").click(function(){
 		window.location.href="/alarmlist";
 	});
 	

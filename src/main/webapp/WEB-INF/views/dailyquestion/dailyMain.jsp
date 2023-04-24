@@ -46,18 +46,19 @@
 		<c:forEach items="${familyAnswers}" var="answer">
 		<c:if test="${answer.userId != sessionScope.userId}">
 			<div class="memberAnswerBox">
-			    <span class="memberText">${answer.userName}</span>
-				<c:choose>
-					<c:when test="${answer.answer != null}">
-						<span class="answerContents">${answer.answer}</span>
-					</c:when>
-					<c:otherwise>
-					<span class="answerContents">아직 응답하지 않았어요.</span>
-					<div style="text-align: center; margin-top: 20px;">
-					    <button class="kokBtn" data-user-id="${answer.userId}">콕 찌르기!</button>
-					</div>
-					</c:otherwise>
-				</c:choose>
+			    <c:choose>
+	                <c:when test="${answer.answer != null}">
+		            <span class="memberText" style="color: #2A221D;">${answer.userName}</span>
+	                    <span class="answerContents" style="color: #2A221D;">${answer.answer}</span>
+	                </c:when>
+	                <c:otherwise>
+		            <span class="memberText">${answer.userName}</span>
+	                    <span class="answerContents">아직 응답하지 않았어요.</span>
+	                    <div style="text-align: center; margin-top: 20px;">
+	                        <button class="kokBtn" data-user-id="${answer.userId}">콕 찌르기!</button>
+	                    </div>
+	                </c:otherwise>
+	            </c:choose>
 			</div>
 		</c:if>
 		</c:forEach>

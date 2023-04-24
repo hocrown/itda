@@ -24,5 +24,10 @@ public class AlarmService implements IAlarmService {
 		List<AlarmModel> alarmList = alarmRepository.getAlarmList(userId);
 		return alarmList;
 	}
-	
+
+	@Override
+	public void updateChecked(String userId) {
+		alarmRepository.updateChecked(userId);
+	}
+
 }

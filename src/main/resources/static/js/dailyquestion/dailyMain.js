@@ -31,7 +31,8 @@ $(document).ready(function() {
             userId: userId,
             alarmDate: currentDate,
             checked: 0,
-            message: message
+            message: message,
+            type: 'kok'
         };
 
         $.ajax({

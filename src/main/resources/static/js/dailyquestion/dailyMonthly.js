@@ -10,7 +10,7 @@
 	const nextMonthBtn = $('#nextMonth');
 	const monthText = $('.monthText');
 	const yearText = $('.yearText');
-	const stickerContainer = $('.stickerContainer .backgroundImg');
+	const stickerContainer = $('.stickerContainer .stickers');
 	const backgroundImg = $('.layout img[src^="/image/monthly/backImg"]');
 
 	const currentDate = new Date();
@@ -60,19 +60,20 @@
 		  year: year,
 		  month: month
 	  },
-      success: function (data) {
-        stickerContainer.empty();
-        console.log(data.stickersCount);
-		backgroundImg.attr('src', `/image/monthly/backImg${String(month).padStart(2, '0')}.png`);
-		backgroundImg.addClass('imgScale');
-        for (let i = 1; i <= data.stickersCount; i++) {
-          const newImage = $('<img>');
-          newImage.attr('src', `../../image/monthly/sticker${String(month).padStart(2, '0')}.png`);
-          newImage.addClass(`sticker${String(month).padStart(2, '0')}-${i}`);
+    success: function (data) {
+      stickerContainer.empty();
+      console.log(data.stickersCount);
+      backgroundImg.attr('src', `/image/monthly/backImg${String(month).padStart(2, '0')}.png`);
+      backgroundImg.addClass('imgScale');
+      for (let i = 1; i <= data.stickersCount; i++) {
+        const newImage = $('<img>');
+        newImage.attr('src', `/image/monthly/sticker${String(month).padStart(2, '0')}.png`);
+        newImage.addClass(`sticker${String(month).padStart(2, '0')}-${i}`);
+        newImage.addClass(`stickerImgScale`);
 
-          stickerContainer.append(newImage);
-        }
-      },
+        stickerContainer.append(newImage);
+      }
+    },
       error: function (err) {
         console.error('Error fetching data:', err);
       },

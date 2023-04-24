@@ -27,4 +27,5 @@ public interface IFamilyQuestionRepository {
 	FamilyQuestionModel familyDailyQuestionByQuestionOrder(@Param("familySeq") int familySeq, @Param("questionOrder") int questionOrder);
 	
 	
+	
 }

@@ -137,12 +137,16 @@ public class TimeLineController {
         } else {
             writer.setEncodedImage(defaultProfileImage);
         }
+        
+        byte[] fileData = content.getFileData();
+		String base64ImageData = Base64.getEncoder().encodeToString(fileData);
 		
 		
 		model.addAttribute("timeline", content); //content라는 이름으로 전송
 		model.addAttribute("reply", reply); //reply라는 이름으로 전송
 		model.addAttribute("writer", writer);
 		model.addAttribute("profileImage", defaultProfileImage);
+		model.addAttribute("image", base64ImageData);
 		return "timeline/postContent";
 	}
 	
@@ -240,11 +244,11 @@ public class TimeLineController {
 	
 	
 	//게시글 삭제 액션
-	@GetMapping("/familypost/deleteaction")
+	@PostMapping("/familypost/deleteaction")
 	public String deletePostAction(@RequestParam("postSeq")int postSeq) {
 		timelineService.deletePost(postSeq);
 	
-		return "redirect:/timeline/postView";
+		return "redirect:/familypost";
 	}
 	
 	//댓글 등록 액션
@@ -270,10 +274,10 @@ public class TimeLineController {
 	}
 	
 	@PostMapping("/familypost/deletereplyaction")
-	public String deleteReplyAction(int postReplySeq, @RequestParam("postSeq") int postSeq) {
-		timelineReplyService.deleteReply(postReplySeq);
+	public String deleteReplyAction(int replySeq, @RequestParam("postSeq") int postSeq) {
+		timelineReplyService.deleteReply(replySeq);
 		
-		return "redirect:/timeline/content?postSeq=" + postSeq;
+		return "redirect:/familypost/postcontent?postSeq=" + postSeq;
 	}
 
 }

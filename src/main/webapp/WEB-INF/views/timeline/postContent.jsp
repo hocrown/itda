@@ -25,7 +25,7 @@
 			 		<div class="createDate">등록일 <fmt:formatDate value="${timeline.createDate}" pattern="yyyy년 MM월 dd일"/></div>
 				</div>
 				<div class="postContent">
-						<img src="data:image/png;base64,${base64ImageData}" style="width:100%; min-height: 100px;">
+						<img src="data:image/png;base64,${image}" style="width:100%; min-height: 100px;">
 					<div class="postContentText">${timeline.content}</div>
 						
 					<div class="replyCountBox">
@@ -35,7 +35,7 @@
 				</div>
 		
 		<c:set var="loopCount" value="0" />
-		        <div style="border-top: solid 1px; border-color: #FFC3C3;">
+		        <div class="reply-bbox" >
 			        <c:forEach items="${reply}" var="reply" varStatus="status">
 				        <div>
 				        	<div style="position: relative; padding-bottom: 20px; border-bottom: solid 1px; border-color: #ADADAD;">
@@ -95,8 +95,12 @@
 				    	<button class="btn-delete-area">삭제</button>
 				    </div>
 				  </div>
+			
 				</div>
+					<div class="blank-div" ></div>
+			
 			</div>
+			
 		</div>
 	
 	<form action="/familypost/insertreplyaction" method="post" class="addReplyForm">

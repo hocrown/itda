@@ -30,12 +30,13 @@
 					</div>
 					
 					<div class="insertContentareaBox">
-						<textarea class="insertContentarea" name="content" spellcheck="false" placeholder="내용을 입력해 주세요."></textarea>
+						<textarea class="insertContentarea" name="content" spellcheck="false" required placeholder="내용을 입력해 주세요."></textarea>
 					</div>
 					
 				</div>	
 				
 				</form>
 	</div>
+	
 </body>
 </html>

@@ -35,10 +35,8 @@ $(document).ready(function(){
     	$('.modal').css('display', 'none');
 	});
 
-	// 삭제 버튼 클릭 시 postSeq 값 전달하고 whisperInboximg 페이지로 이동
   	$('.btn-delete-area').on('click', function() {
     	const postSeq =  document.getElementById('postSeq').value;
-    	console.log(whisperSeq);
     	$.ajax({
       		url: '/familypost/deleteaction',
       		method: 'POST',

@@ -59,7 +59,7 @@
 	<update id="deletePost"
 		parameterType="com.project.itda.timeline.model.TimeLineModel">
 		update
-		TIMELINE set VISIBLE = 'n'
+		TIMELINE set VISIBLE = 0
 		WHERE POSTSEQ = #{postSeq}
 	</update>
 	

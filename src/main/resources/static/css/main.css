@@ -11,6 +11,7 @@ a {
 	width: 393.33px;
 	min-height: 851.33px;
 	background-image: url("../../image/itdaBackImg.png");
+	background-repeat: repeat-y;
 }
 
 .headBox {

@@ -12,7 +12,7 @@
 	const nextMonthBtn = $('#nextMonth');
 	const monthText = $('.monthText');
 	const yearText = $('.yearText');
-	const stickerContainer = $('.stickerContainer .stickers');
+	const stickerContainer = $('.stickerContainer');
 	const backgroundImg = $('.layout img[src^="/image/monthly/backImg"]');
 
 	const currentDate = new Date();
@@ -62,7 +62,7 @@
 		  year: year,
 		  month: month
 	  },
-    success: function (data) {
+     success: function (data) {
       stickerContainer.empty();
       console.log(data.stickersCount);
       backgroundImg.attr('src', `/image/monthly/backImg${String(month).padStart(2, '0')}.png`);

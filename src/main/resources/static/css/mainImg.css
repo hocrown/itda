@@ -88,3 +88,13 @@
 	letter-spacing: 0.06em;
 	color: gray;
 }
+
+
+.mainTimeLine, .mainBucketList, .mainDailyQuestion, .mainWhisper {
+  transition: all 0.3s ease-in-out;
+}
+
+.mainTimeLine:hover, .mainBucketList:hover, .mainDailyQuestion:hover, .mainWhisper:hover {
+  transform: scale(1.1); 
+  cursor: pointer;
+}

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="../head.jsp"%>
+<%@ include file="../noErrorHead.jsp"%>
 <title>잇다</title>
 <link rel="stylesheet" type="text/css" href="../css/user/signupStep3.css">
 

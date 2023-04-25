@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="../head.jsp"%>
+<%@ include file="../noErrorHead.jsp"%>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/user/signupStep2.css">
 <script type="text/javascript" src="/js/signupStep2.js"></script>

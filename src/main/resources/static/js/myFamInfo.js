@@ -71,4 +71,43 @@ $(document).ready(function() {
 	        });
     	});
     });
+    
+    $(".fam-name-edit-btn").click(function(){
+        var familySeq = $(this).data('familySeq');
+        var currentName = $("#familyName").text();
+        
+        var inputField = $("<input>")
+                .attr("type", "text")
+                .attr("id", "editFamilyName")
+                .attr("value", currentName);
+        
+        $("#fammilyName").replaceWith(inputField);
+        
+        $("#editFamilyName").focusout(function() {
+			var updatedName = $("#editFamilyName").val();
+	        // 서버에 변경된 닉네임 업데이트 요청
+	        $.ajax({
+	            url: '/user/updateFamilyName',
+	            type: 'POST',
+	            data: {
+	                targetFamilySeq: familySeq,
+	                targetFamilyName: familyName
+	            },
+	            success: function(response) {
+	                if (response.success) {
+	                    var nameSpan = $("<span>")
+	                            .attr("id", "familyName")
+	                            .text(updatedName);
+	                    $("#editFamilyName").replaceWith(nameSpan);
+	                } else {
+	                    alert('가족 이름 업데이트에 실패했습니다.');
+	                }
+	            },
+	            error: function(err) {
+	                console.error(err);
+	                alert('가족 이름 업데이트에 실패했습니다.');
+	            }
+	        });
+    	});
+    });
 });

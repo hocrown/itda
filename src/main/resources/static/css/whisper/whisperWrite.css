@@ -255,15 +255,9 @@ select option[value=""][disabled] {
 	color: #2A221D;
 }
 
-.picker-xy{
-	position: absolute;
-	width: 200px;
-	height: 33px;
-	text-align: center;
-	left: 63px;
-	top: 745px;
-	font-family: 'Bookk Myungjo';
-	font-weight: 300;
-	align-items: center;
-	color: #2A221D;
+
+.datepicker{
+	position: relative;	
+	top: 750px;
+    left: 63px;
 }

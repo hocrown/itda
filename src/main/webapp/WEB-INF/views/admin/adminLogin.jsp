@@ -11,24 +11,23 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css">
 	<script src="//code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/js/admin/adminLogin.js"></script>
 	<title>관리자 페이지</title>
 </head>
 <body>
 	<div class="adminLoginLayout">
 		<div class="adminContainer">
 			<img class="adminLogo" src="../image/itdaLogo.png" style="width: 317px; height: 148px;">
-			<form>
 				<div>
 					<div class="adminIdPwdText">아이디</div><br>
-					<input class="adminIdPwdInput" spellcheck="false">
+					<input id="userId" class="adminIdPwdInput" spellcheck="false">
 				</div>
 				
 				<div style="margin-top: 30px;">
 					<div class="adminIdPwdText">비밀번호</div><br>
-					<input class="adminIdPwdInput" spellcheck="false" type="password">
+					<input id="userPw" class="adminIdPwdInput" spellcheck="false" type="password">
 				</div>
-				<button type="submit" class="adminLoginBtn">로그인</button>
-			</form>
+				<button type="button" class="adminLoginBtn">로그인</button>
 			
 		</div>
 	</div>

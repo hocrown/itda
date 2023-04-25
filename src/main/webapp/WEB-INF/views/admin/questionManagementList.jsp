@@ -7,6 +7,7 @@
 <html>
 <head>
 <%@ include file="adminHead.jsp"%>
+
 	<title>하루 질문 관리</title>
 </head>
 <body>

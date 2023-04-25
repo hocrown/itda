@@ -337,4 +337,11 @@ th {
 	border: none !important;
 }
 
+.adminInfo{
+	padding-right:10px;
+}
+
+.logout{
+	padding-right: 50px;
+}
 

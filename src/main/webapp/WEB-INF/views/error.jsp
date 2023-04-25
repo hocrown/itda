@@ -4,8 +4,8 @@
 <head>
     <title>Error</title>
     <meta charset="UTF-8">
-    <%@ include file="head.jsp"%>
 	<link rel="stylesheet" type="text/css" href="/css/error.css">
+<%@ include file="noErrorHead.jsp"%>
 </head>
 <body>
 	<div class="layout">

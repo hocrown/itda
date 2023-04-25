@@ -26,13 +26,14 @@
 		  <div class="fam-name">
 		    <c:choose>
 		      <c:when test="${not empty family.familyName}">
-		        <span>${family.familyName}</span>
-		        <img src="../../image/textEditBtnImg.png" class="fam-name-edit-btn">
+		        <span id="familyName">${family.familyName}</span>
+		        <img src="/image/textEditBtnImg.png" class="fam-name-edit-btn" data-familySeq="${family.familySeq}" alt="수정">
 		      </c:when>
 		      <c:otherwise>
 		             <c:forEach items="${familyMember}" var="member">
 				     	<c:if test="${member.userId == family.familyOwner}">
-				        	<span>${member.userName}의 가족</span>
+				        	<span id="familyName">${member.userName}의 가족</span>
+				        	<img src="/image/textEditBtnImg.png" class="fam-name-edit-btn" data-familySeq="${family.familySeq}" alt="수정">
 				        </c:if>
 				      </c:forEach>
 		      </c:otherwise>

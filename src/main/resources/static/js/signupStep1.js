@@ -47,10 +47,11 @@ $(document).ready(function() {
 	      success: function(response) {
 	        if (response.result === "fail") {
 	          $(".idText").addClass("invalid"); // 빨간색 글씨로 변경
-	          $(".alert").text("이미 사용 중인 아이디입니다.").show();
+	          $(".alert-id").text("이미 사용 중인 아이디입니다.").show();
 	          validId = false;
 	        } else {
 	          validId = true;
+	          $(".alert-id").hide(); // 유효성 검사 실패 문구 숨기기
 	        }
 	        enableNextBtn();
 	      },
@@ -60,7 +61,7 @@ $(document).ready(function() {
 	    });
 	  } else {
 	    $(".idText").addClass("invalid"); // 빨간색 글씨로 변경
-	    $(".alert").text("아이디는 6글자 이상 입력하세요.").show();
+	    $(".alert-id").text("아이디는 6글자 이상 입력하세요.").show();
 	    validId = false;
 	    enableNextBtn();
 	  }
@@ -72,12 +73,12 @@ $(document).ready(function() {
 	  if (regex.test(userPw)) { // 정규식에 맞는다면
 	    validPw = true;
 	    $(".pwdText").removeClass("invalid"); // 글씨색을 초기 상태로 변경
-	    $(".alert").hide(); // 유효성 검사 실패 문구 숨기기
+	    $(".alert-pw").hide(); // 유효성 검사 실패 문구 숨기기
 	    enableNextBtn();
 	  } else {
 	    validPw = false;
 	    $(".pwdText").addClass("invalid"); // 빨간색 글씨로 변경
-	    $(".alert").text("비밀번호는 8자 이상, 영문자와 숫자, 특수문자를 조합하여 입력하세요.").show();
+	    $(".alert-pw").text("비밀번호는 8자 이상, 영문자와 숫자, 특수문자를 조합하여 입력하세요.").show();
 	    enableNextBtn();
 	  }
 	});

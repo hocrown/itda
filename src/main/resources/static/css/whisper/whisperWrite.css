@@ -254,3 +254,10 @@ select option[value=""][disabled] {
 	align-items: center;
 	color: #2A221D;
 }
+
+
+.datepicker{
+	position: relative;	
+	top: 750px;
+    left: 63px;
+}

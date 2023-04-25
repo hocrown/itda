@@ -1,6 +1,15 @@
 /**
  * 
  */
+// 이미지 hover 시 src 속성 변경 함수
+function changeToGif(element, newSrc) {
+  element.src = newSrc;
+}
+
+// 이미지 hover 종료 시 src 속성 변경 함수
+function changeToPng(element, originalSrc) {
+  element.src = originalSrc;
+}
 $(document).ready(function(){
     $(".mainImgToggle").click(function(){
             window.location.href = "/mainlist";

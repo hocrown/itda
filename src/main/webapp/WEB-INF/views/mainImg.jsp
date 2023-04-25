@@ -19,10 +19,10 @@
 		
 		<img class="mainBackground" src="/image/mainBackground.png">
 		
-		<img class="mainTimeLine"	src="/image/mainTimeLine.png">
-		<img class="mainBucketList" src="/image/mainBucketList.png">
-		<img class="mainDailyQuestion" src="/image/mainDailyQuestion.png">
-		<img class="mainWhisper" src="/image/mainWhisper.png">
+		<img class="mainTimeLine"	src="/image/mainTimeLine.png" onmouseover="changeToGif(this, '/image/mainTimeLine.gif')" onmouseout="changeToPng(this, '/image/mainTimeLine.png')">
+		<img class="mainBucketList" src="/image/mainBucketList.png" onmouseover="changeToGif(this, '/image/mainBucketList.gif')" onmouseout="changeToPng(this, '/image/mainBucketList.png')">
+		<img class="mainDailyQuestion" src="/image/mainDailyQuestion.png" onmouseover="changeToGif(this, '/image/mainDailyQuestion.gif')" onmouseout="changeToPng(this, '/image/mainDailyQuestion.png')">
+		<img class="mainWhisper" src="/image/mainWhisper.png" onmouseover="changeToGif(this, '/image/mainWhisper.gif')" onmouseout="changeToPng(this, '/image/mainWhisper.png')">
 		
 		<img class="mainImgToggle" src="/image/imgToggle.png">
 

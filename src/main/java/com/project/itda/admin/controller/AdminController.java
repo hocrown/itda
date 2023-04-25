@@ -1,6 +1,8 @@
 package com.project.itda.admin.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.itda.admin.service.IAdminService;
+import com.project.itda.common.model.UserModel;
+import com.project.itda.common.service.IUserService;
 import com.project.itda.dailyquestion.model.DailyQuestionModel;
 import com.project.itda.dailyquestion.service.IDailyQuestionService;
 
@@ -25,6 +29,9 @@ public class AdminController {
 	@Autowired
 	IAdminService adminService;
 	
+	@Autowired
+	IUserService userService;
+	
 	//로그인 페이지
 	@GetMapping("/admin/login")
 	public String adminLogin(Model model, HttpSession session) {
@@ -32,6 +39,30 @@ public class AdminController {
 		
 		return "admin/adminLogin";
 	}
+	
+	//로그인 액션
+	@PostMapping("/admin/login")
+	@ResponseBody
+	public Map<String, Object> adminLoginAction(@RequestBody UserModel user, Model model, HttpSession session) {
+		Map<String, Object> map = new HashMap<>();
+		
+		try {
+			UserModel loginUser = userService.selectUser(user.getUserId(), user.getUserPw());
+			if (loginUser != null && loginUser.getUserId() != null) {
+				session.setAttribute("userId", loginUser.getUserId());
+				session.setAttribute("loginUser", loginUser);
+				
+				map.put("result", "success");
+			} else {
+				map.put("result", "fail");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			map.put("result", "error");
+		}
+		return map;
+	}
+	
 	
 	//질문목록 페이지
 	@GetMapping("/admin/questionmanagementlist")
@@ -46,7 +77,6 @@ public class AdminController {
 	@ResponseBody
 	public List<DailyQuestionModel> getQuestions() {
 		List<DailyQuestionModel> questions = dailyQuestionService.getAllQuestion();
-		System.out.println(questions);
 		return questions;
 	}
 	

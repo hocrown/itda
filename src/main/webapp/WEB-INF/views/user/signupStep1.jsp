@@ -3,9 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="../head.jsp"%>
+<%@ include file="../noErrorHead.jsp"%>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/user/signupStep1.css">
+<script type="text/javascript" src="/js/signupStep1.js"></script>
 </head>
 <body>
 	<div class="layout">
@@ -30,17 +31,14 @@
 		<img class="pwdBar" src="../image/underline.png">
 		<button class="eye" title="비밀번호 표시/숨기기"><i class="far fa-eye"></i></button>
 		
-		<div class="alert-id">ㅁㄴㅇ</div>
+		<div class="alert-id"></div>
 		
-		<div class="alert-pw">ㅁㄴㅇ</div>
+		<div class="alert-pw"></div>
 		
 		<button class="nextBtn">다음</button>
 
 	</div>
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-    <!-- signupStep1.js 스크립트 추가 -->
-    <script type="text/javascript" src="/js/signupStep1.js"></script>
 
 </body>
 </html>

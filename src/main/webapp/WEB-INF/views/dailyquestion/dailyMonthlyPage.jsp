@@ -26,10 +26,8 @@
 			<img id="nextMonth" class="monthlyPageVector nextMonth" src="/image/monthlyPageVector.png">
 
 		<img class="monthlyPageLine2" src="/image/monthlyPageLine.png">
-		<div class="stickerContainer">
-		<div class="stickers">
 		<img src="/image/monthly/backImg${currentMonth}.png" style="position:fixed; top:0;">
-		</div>
+		<div class="stickerContainer">
 		</div>
 		
 	</div>

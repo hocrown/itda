@@ -11,11 +11,6 @@
 				</div>
 
 			</div>
-			<!-- <div style="border-bottom: solid 1px;">
-				<div id="navi-newsManagement" class="navi-hover">
-					<div class="navi-item item-text">잇다소식 관리<img class="adminVector" src="../image/vector.png"></div>
-				</div>
-			</div> -->
 			<div style="border-bottom: solid 1px;">
 				<div id="navi-statistics" class="navi-hover">
 					<div class="navi-item item-text">통계 관리<img class="adminVector" src="../image/vector.png"></div>
@@ -23,22 +18,8 @@
 			</div>
 		</div>
 		
-		<div class="top-bar"><span style="margin-right: 5%;">안녕하세요! admin1234 님</span></div>
+		<div class="top-bar"><span class="adminInfo">안녕하세요! admin1234 님</span>
+		<img class="logout" src="/image/logout.png">
+		</div>
 		
-		<script>
-		$(".navi-questionList").click(function(){
-		    location.href = "/admin/questionmanagementlist";	
-		});
-		$("#navi-questionManagement").click(function(){
-		    location.href = "/admin/questionmanagementlist";	
-		});
-		$(".navi-requestedList").click(function(){
-		    location.href = "/admin/requestedquestionlist";	
-		});
-		$("#navi-newsManagement").click(function(){
-		    location.href = "/admin/newsmanagementlist";	
-		});
-		$("#navi-statistics").click(function(){
-		    location.href = "/admin/statistics";	
-		});
-		</script>
+<script type="text/javascript" src="/js/admin/adminNavi.js"></script>

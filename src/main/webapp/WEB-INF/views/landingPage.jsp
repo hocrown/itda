@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="head.jsp"%>
+<%@ include file="noErrorHead.jsp"%>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/landingPage.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

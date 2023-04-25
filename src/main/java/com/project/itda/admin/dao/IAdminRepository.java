@@ -14,5 +14,4 @@ public interface IAdminRepository {
 	void updateQuestion(DailyQuestionModel dailyQuestionModel);
 	void updateStatus(DailyQuestionModel dailyQuestionModel);
 	int deleteQuestions(@Param("dailyQuestionSeqs") List<Integer> dailyQuestionSeqs);
-	
 }

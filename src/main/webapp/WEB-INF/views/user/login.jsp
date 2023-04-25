@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="../head.jsp"%>
+<%@ include file="../noErrorHead.jsp"%>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/user/login.css">
 <script type="text/javascript" src="/js/login.js"></script>
@@ -25,7 +25,6 @@
 		<img class="pwdBar" src="../image/underline.png">
 		<button class="eye" title="비밀번호 표시/숨기기"><i class="far fa-eye"></i></button>
 		<button type="submit" class="loginBtn">로그인</button>
-		</form>
 		
 		
 		<button class="signupBtn" onclick="location.href='/user/signupfamcode'">회원가입</button>

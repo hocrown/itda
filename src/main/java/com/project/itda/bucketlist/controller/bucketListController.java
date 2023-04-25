@@ -97,12 +97,14 @@ public class bucketListController {
 		// 세션에서 가족 시퀀스 번호를 가져옴
 		int familySeq = (int) session.getAttribute("famSeq");
 		int writerFamilySeq = bucketOne.getFamilySeq();
-
+		String loginUser = (String) session.getAttribute("userId");
 		// 로그인한 사용자가 접근할 수 있는 버킷리스트인지 확인
 		CheckAuth.checkFamilyMember(session, writerFamilySeq);
 
 		// 선택한 버킷리스트에 달린 댓글 정보를 가져옴
 		List<BucketReplyModel> reply = bucketlistService.getBucketReply(bucketSeq);
+		
+		model.addAttribute("loginUser", loginUser);
 
 		// bucketOne을 모델에 추가
 		model.addAttribute("bucketOne", bucketOne);

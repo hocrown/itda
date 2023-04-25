@@ -6,10 +6,7 @@
     location.href = "/dailymain";	
 	});
 	
-	const newImagez = $('<img>');
-          newImagez.attr('src', `/image/monthly/sticker03.png`);
-        	newImagez.addClass(`sticker04-1`);
-        	$('.stickerContainer').append(newImagez);
+	
 	
 	const prevMonthBtn = $('#prevMonth');
 	const nextMonthBtn = $('#nextMonth');

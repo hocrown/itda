@@ -17,7 +17,9 @@
 		<div class="headBox">
 			<img src="../image/vector.png" class="vector">
 			소망을 잇다
+			<c:if test="${bucketOne.userId eq loginUser }">
 			<img src="../image/ellipsis.png" class="bucketDetailEllipsis">
+			</c:if>
 		</div>	
 		
 		<div class="layoutz">

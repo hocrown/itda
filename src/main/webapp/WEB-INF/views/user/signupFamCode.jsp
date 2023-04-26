@@ -22,7 +22,7 @@
 		
 		<span class="famCodeText">가족초대코드</span>
 		<input type="text" class="notes" value="${famCode}">
-		<img class="codeBar" src="../image/underline.png">
+		<img class="codeBar" src="/image/underline.png">
 		<button class="createBtn">생성하기</button>
 		
 		<button class="nextBtn">다음</button>

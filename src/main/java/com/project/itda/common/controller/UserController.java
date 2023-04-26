@@ -188,6 +188,7 @@ public class UserController {
 			// insertFamily 메소드로 family 테이블에 데이터를 입력합니다.
 			String userId = user.getUserId();
 			String famCode = user.getFamCode();
+			System.out.println(famCode);
 			// 가족그룹의 생성자인지 검증
 			if ("yes".equals(user.getApprove())) {
 				userService.insertFamily(userId, famCode);

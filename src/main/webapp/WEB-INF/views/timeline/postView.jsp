@@ -59,7 +59,7 @@
 					                <img src="data:image/png;base64,${member.encodedImage}" class="fam-member-img">
 					            </c:otherwise>
 					        </c:choose>
-				        <div class="writter">${timeline.userName}</div>
+				        <div class="writter">${member.targetNickName}</div>
 				        <div class="createDate">등록일 <fmt:formatDate value="${timeline.createDate}" pattern="yyyy년 MM월 dd일"/></div>
 					    </c:if>
 					</c:forEach>

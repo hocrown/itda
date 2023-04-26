@@ -18,6 +18,7 @@ $(document).ready(function() {
     changeYear: true,
     changeMonth: true,
     yearRange: "1900:+0",
+    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
     onSelect: function(dateText, inst) {
       var date = $(this).datepicker('getDate');
       var year = date.getFullYear();

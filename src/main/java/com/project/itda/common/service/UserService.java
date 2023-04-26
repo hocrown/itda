@@ -28,8 +28,8 @@ public class UserService implements IUserService {
 
 	@Override
 	public int selectFamilySeq(String famCode) {
-		Integer familySeq = userRepository.selectFamilySeq(famCode);
-		return familySeq != null ? familySeq : 0;
+		int familySeq = userRepository.selectFamilySeq(famCode);
+		return familySeq;
 	}
 
 	@Override

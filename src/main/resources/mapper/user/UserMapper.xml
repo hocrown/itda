@@ -78,7 +78,7 @@
     u.FAMILYSEQ = #{familySeq}
 	ORDER BY
     CASE WHEN u.USERID = #{userId} THEN 1 ELSE 0 END,
-    u.USERAGE
+    u.USERAGE DESC
 	</select>
   	
   	<select id="getFamilyUserIds" parameterType="int" resultType="java.lang.String">

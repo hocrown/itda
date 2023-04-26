@@ -9,6 +9,7 @@
 		select * from BUCKETLIST
 		where FAMILYSEQ = #{familySeq}
 		and TYPE = 'Family'
+		and visible = 'y'
 		order by regDate DESC
 	</select>
 	
@@ -30,6 +31,7 @@
 		select * from BUCKETLIST
 		where USERID = #{userId}
 		and TYPE = 'Personal'
+		and visible = 'y'
 	</select>
 	
 	<select id="getBucketReply"
@@ -101,9 +103,5 @@
 		where BUCKETREPLYSEQ=#{bucketReplySeq}
 	</delete>
 	
-	<!-- /////////////////////////////////////////////////// -->
-	
-	
-		
 	
 </mapper>

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="head.jsp"%>
+<%@ include file="noErrorHead.jsp"%>
 <style>
   .carousel-container {
     position: relative;

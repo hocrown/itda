@@ -17,13 +17,21 @@ $(document).ready(function() {
       return false; // 버튼 클릭 이벤트 취소
     }
     sessionStorage.setItem("famCode", codeValue);
+    console.log(codeValue);
     location.href = "/user/signupstep1"; // 다음 페이지로 이동
+    
   });
   
-  $(".headBox img").click(function(){
+	$(".headBox img").click(function(){
 	sessionStorage.clear();
     location.href = "/user/login";
-});
+	});
+
+  // 추가된 부분
+  var famCodeValue = $(".notes").val();
+  if (famCodeValue !== "") {
+    sessionStorage.setItem("famCode", famCodeValue);
+  }
 });
 
 function generateCode() {

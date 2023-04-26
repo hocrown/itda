@@ -1,12 +1,23 @@
 $(document).ready(function() {
-
+	  var MAX_LENGTH = 200; // 최대 글자 수
+	  
+	  // textarea에 입력 이벤트 등록
+	  $('.whisperTextarea').on('input', function() {
+	    var length = $(this).val().length;
+	    $('.whisperCharacterCount').text(length + '/' + MAX_LENGTH);
+	    
+	    // 최대 글자 수를 초과하면 입력을 막음
+	    if(length > MAX_LENGTH) {
+	      $(this).val($(this).val().substring(0, MAX_LENGTH));
+	    }
+	  });
     // 전달 옵션 클릭 이벤트 처리
     $('.directOptionEllipse, .bombOptionEllipse, .reservationOptionEllipse').on('click', function() {
         // 모든 옵션의 배경색을 원래대로 되돌림
         $('.directOptionEllipse, .bombOptionEllipse, .reservationOptionEllipse').css('background', 'rgba(176, 151, 144, 0.4)');
 
         // 선택한 옵션의 배경색을 변경
-        $(this).css('background', 'rgba(180, 151, 144, 0.7)');
+        $(this).css('background', 'rgba(180, 151, 144, 1)');
 
         // 선택한 옵션에 따라 input 값 변경
         const selectedOption = $(this).data('option');

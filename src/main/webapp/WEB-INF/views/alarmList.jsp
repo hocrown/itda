@@ -15,8 +15,6 @@
 		<div class="headBox"><img class="vector" src="../image/vector.png">
 			<span class="alarmHeadText">잇다</span>
 			<img class="bell" src="/image/bell.png">
-			<img class="alarmMark" src="/image/alarmMark.png">
-			<img class="myImg" src="/image/myImg.png">		
 		</div>
 	
 		<div class="alarmText">알림</div>

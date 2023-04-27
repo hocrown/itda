@@ -39,6 +39,7 @@ div {
 .fam-name-edit-btn {
 	margin-left: 4px;
 	vertical-align: middle;
+	z-index : 1;
 }
 
 .fam-member-container {

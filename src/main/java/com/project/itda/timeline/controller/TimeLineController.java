@@ -130,8 +130,11 @@ public class TimeLineController {
 		String userId = content.getUserId();
 		UserModel writer = userService.getUserInfoByUserId(userId);
 		List<TimeLineReplyModel> reply = timelineReplyService.getReplyList(postSeq); //해당 포스트에 달린 댓글들의 정보를 담아둠
+		String loginUser = (String) session.getAttribute("userId");
+		
 		String defaultProfileImage = getDefaultProfileImage();
 		byte[] imageData = writer.getUserImageData();
+		
         if (imageData != null) {
             writer.setEncodedImage(Base64.getEncoder().encodeToString(imageData));
         } else {
@@ -147,6 +150,7 @@ public class TimeLineController {
 		model.addAttribute("writer", writer);
 		model.addAttribute("profileImage", defaultProfileImage);
 		model.addAttribute("image", base64ImageData);
+		model.addAttribute("loginUser", loginUser);
 		return "timeline/postContent";
 	}
 	

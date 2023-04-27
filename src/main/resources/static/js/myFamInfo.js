@@ -81,7 +81,7 @@ $(document).ready(function() {
                 .attr("id", "editFamilyName")
                 .attr("value", currentName);
         
-        $("#fammilyName").replaceWith(inputField);
+        $("#familyName").replaceWith(inputField);
         
         $("#editFamilyName").focusout(function() {
 			var updatedName = $("#editFamilyName").val();
@@ -90,8 +90,8 @@ $(document).ready(function() {
 	            url: '/user/updateFamilyName',
 	            type: 'POST',
 	            data: {
-	                targetFamilySeq: familySeq,
-	                targetFamilyName: familyName
+	                familySeq: familySeq,
+	                familyName: familyName
 	            },
 	            success: function(response) {
 	                if (response.success) {

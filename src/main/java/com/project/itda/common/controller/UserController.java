@@ -456,6 +456,21 @@ public class UserController {
         return response;
     }
 	
+    
+    //가족 이름 수정
+    @PostMapping("/user/updateFamilyName")
+    @ResponseBody
+    public Map<String, Object> updateFamilyName(@RequestParam("familySeq") int familySeq, @RequestParam("familyName") String familyName){
+    	Map<String, Object> response = new HashMap<>();
+    	try {
+    		userService.updateFamilyName(familySeq, familyName);
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    		response.put("success", false);
+    		response.put("message", "닉네임 수정 중 오류가 발생했습니다.");
+    	}
+		return response;
+    }
 	
 	
 	@RequestMapping("/user/logout")

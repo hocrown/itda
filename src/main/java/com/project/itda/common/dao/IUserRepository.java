@@ -44,4 +44,10 @@ public interface IUserRepository {
 	
 	UserModel getUserInfoByUserId(String userId);
 	
+	String getFamilyName(int familySeq);
+	void updateFamilyName(int familySeq, String familyName);
+	void insertFamilyName(int familySeq, String familyName);
+	
+	
+	
 }

@@ -135,4 +135,22 @@
 		WHERE userId = #{userId}
 	</select>
 	
+	<select id="getFamilyName" parameterType="int" resultType="String">
+		SELECT FAMILYNAME
+		FROM FAMILY
+		WHERE familySeq = #{familySeq}
+	</select>
+	
+	<insert id="insertFamilyName" parameterType="map">
+		INSERT INTO FAMILY (FAMILYNAME)
+		VALUES (#{familyName})
+		WHERE FAMILYSEQ = #{familySeq}
+	</insert>
+	
+	<update id="updateFamilyName" parameterType="map">
+		UPDATE FAMILY
+		SET familyName = #{familyName}
+		WHERE FAMILYSEQ = #{familySeq}
+	</update>
+	
 </mapper>

@@ -112,15 +112,12 @@ public class UserService implements IUserService {
 	@Override
 	public boolean updateFamilyNickName(String targetUserId, String targetNickName, String userId) {
 		 try {
-		        // Check if a row with userId and targetUserId already exists in the NICKNAME table
 		        NickNameModel existingNickname = userRepository.getNickname(userId, targetUserId);
 
 		        if (existingNickname != null) {
-		            // If it exists, update the targetNickName column in that row
 		            existingNickname.setTargetNickName(targetNickName);
 		           userRepository.updateFamilyNickName(existingNickname);
 		        } else {
-		            // If it doesn't exist, insert a new row with userId, targetUserId, and targetNickName values
 		            NickNameModel newNickname = new NickNameModel();
 		            newNickname.setUserId(userId);
 		            newNickname.setTargetUserId(targetUserId);
@@ -151,6 +148,21 @@ public class UserService implements IUserService {
 	public UserModel getUserInfoByUserId(String userId) {
 		UserModel writer = userRepository.getUserInfoByUserId(userId);
 		return writer;
+	}
+
+	@Override
+	public void updateFamilyName(int familySeq, String familyName) {
+		try {
+			String existingFamilyName = userRepository.getFamilyName(familySeq);
+			
+			if(existingFamilyName != null) {
+				userRepository.updateFamilyName(familySeq, familyName);
+			} else {
+				userRepository.insertFamilyName(familySeq, familyName);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

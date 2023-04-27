@@ -16,7 +16,9 @@
 		<div class="headBox">
 			<img src="../image/vector.png" class="gobackbtn">
 			일상을 잇다
+			<c:if test="${writer.userId eq loginUser }">
 			<img src="../image/ellipsis.png" class="detailEllipsis">
+			</c:if>
 		</div>
 		<div class="postLayout">
 				<div class="postInfo">

@@ -36,4 +36,5 @@ public interface IUserService {
 	void insertNickname(NickNameModel newNickname);
 	
 	UserModel getUserInfoByUserId(String userId);
+	void updateFamilyName(int targetFamilySeq, String targetFamilyName);
 }

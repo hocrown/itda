@@ -153,13 +153,7 @@ public class UserService implements IUserService {
 	@Override
 	public void updateFamilyName(int familySeq, String familyName) {
 		try {
-			String existingFamilyName = userRepository.getFamilyName(familySeq);
-			
-			if(existingFamilyName != null) {
-				userRepository.updateFamilyName(familySeq, familyName);
-			} else {
-				userRepository.insertFamilyName(familySeq, familyName);
-			}
+			userRepository.updateFamilyName(familySeq, familyName);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

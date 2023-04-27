@@ -1,5 +1,8 @@
 package com.project.itda;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,8 +12,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.function.ServerRequest.Headers;
 
+import com.project.itda.common.model.UserModel;
+import com.project.itda.common.service.IAlarmService;
+
 @Controller
 public class HomeController {
+	
+	@Autowired
+	IAlarmService alarmService;
 
 	@GetMapping("/landing")
 	public String landingPage() {
@@ -53,13 +62,18 @@ public class HomeController {
 	}
 	
 	@GetMapping("/mainimg")
-	public String mainImg(Model model) {
+	public String mainImg(Model model, HttpSession session) {
+		UserModel loginUser = (UserModel) session.getAttribute("loginUser");
+		int uncheckedAlarmCount = alarmService.getUncheckedAlarmCount(loginUser.getUserId());
+        model.addAttribute("uncheckedAlarmCount", uncheckedAlarmCount);
 		return "mainImg";
 	}
 	
 	@GetMapping("/mainlist")
-	public String mainList(Model model) {
-		
+	public String mainList(Model model, HttpSession session) {
+		UserModel loginUser = (UserModel) session.getAttribute("loginUser");
+		int uncheckedAlarmCount = alarmService.getUncheckedAlarmCount(loginUser.getUserId());
+        model.addAttribute("uncheckedAlarmCount", uncheckedAlarmCount);
 		return "mainList";
 	}
 	

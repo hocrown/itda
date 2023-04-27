@@ -141,12 +141,6 @@
 		WHERE familySeq = #{familySeq}
 	</select>
 	
-	<insert id="insertFamilyName" parameterType="map">
-		INSERT INTO FAMILY (FAMILYNAME)
-		VALUES (#{familyName})
-		WHERE FAMILYSEQ = #{familySeq}
-	</insert>
-	
 	<update id="updateFamilyName" parameterType="map">
 		UPDATE FAMILY
 		SET familyName = #{familyName}

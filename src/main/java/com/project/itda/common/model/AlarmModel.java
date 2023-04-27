@@ -1,6 +1,7 @@
 package com.project.itda.common.model;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 import lombok.Data;
 
@@ -13,4 +14,5 @@ public class AlarmModel {
 	private String message;
 	private String type;
 
+	private LocalDateTime alarmDateTime;
 }

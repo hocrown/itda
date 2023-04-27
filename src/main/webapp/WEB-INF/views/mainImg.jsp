@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +13,14 @@
 	<div class="layout">
 		<div class="headBox">
 			잇 다
-			<img class="bell" src="/image/bell.png">
-			<img class="alarmMark hidden" src="/image/alarmMark.png">
+			<c:choose>
+			    <c:when test="${uncheckedAlarmCount > 0}">
+			        <img class="bell" src="/image/bellNotChecked.png">
+			    </c:when>
+			    <c:otherwise>
+			        <img class="bell" src="/image/bell.png">
+			    </c:otherwise>
+			</c:choose>
 			<img class="myImg" src="/image/myImg.png">		
 		</div>
 		

@@ -23,7 +23,12 @@ import com.project.itda.common.dao.IUserRepository;
 import com.project.itda.common.model.UserModel;
 import com.project.itda.whisper.service.IWhisperService;
 import com.project.itda.whisper.model.WhisperModel;
-
+/**
+ * 
+ * @author 윤준호
+ * @since 2023-04-03
+ *
+ */
 @Controller
 public class WhisperController {
 	
@@ -39,7 +44,6 @@ public class WhisperController {
 		String userId = (String) session.getAttribute("userId");
 		List<WhisperModel> whisperList = whisperService.getWhisperList(userId);
 		model.addAttribute("whisperList", whisperList);
-		System.out.println(whisperList.size());
 		
 		return "whisper/whisperInboxImg";
 	}
@@ -54,19 +58,31 @@ public class WhisperController {
 	    	    .collect(Collectors.groupingBy(w -> w.getSendDate()));
 
 	    model.addAttribute("whisperByDate", whisperByDate);
-		System.out.println(whisperList.size());
-		System.out.println(whisperByDate.size());
 		
 		return "whisper/whisperInboxList";	
 	}
 	
+	/**
+	 * 
+	 * @param whisperSeq 식별하기 위한 식별자
+	 * @param model
+	 * @return whisper 내용
+	 * 
+	 * 속마음 상세보기 메서드.
+	 * type이 'bomb' 인 경우, 확인할 시 deleteWhipser를 통해 삭제하도록 한다.
+	 */
 	@GetMapping("/whisper/detail/{whisperSeq}")
 	public String whisperDetail(@PathVariable("whisperSeq") int whisperSeq, Model model) {
 		WhisperModel whisperDetail = whisperService.getWhisperDetail(whisperSeq);
-		whisperService.checkWhisper(whisperSeq);
+	    if (whisperDetail != null && "bomb".equals(whisperDetail.getWhisperType())) {
+	        whisperService.deleteWhisper(whisperSeq);
+	    } else {
+	        whisperService.checkWhisper(whisperSeq);
+	    }
 		model.addAttribute("whisper", whisperDetail);
 		return "whisper/whisperDetail";
 	}
+	
 	
 	@GetMapping("/whisper/outbox")
 	public String whisperOutbox(HttpSession session, Model model) {
@@ -106,6 +122,19 @@ public class WhisperController {
 		return "whisper/whisperInboxImg";
 	}
 	
+	/**
+	 * 
+	 * @param receiver 메세지 수신자
+	 * @param message 전달 메세지
+	 * @param option 전달 옵션
+	 * @param senderNickname 메세지 발신자
+	 * @param date 메세지 전송 날짜
+	 * @param whisper 모델 객체
+	 * @param session
+	 * @return
+	 * 
+	 * 메세지 작성 메서드. 각 타입별로 visible을 설정하고 예약 메세지의 경우 0 으로 설정하여, 오라클 job scheduler를 통해 지정 날짜에 visible이 1로 변하게 된다.
+	 */
 	@ResponseBody
 	@PostMapping("/whisper/send")
 	public Map<String, Object> sendWhisper(@RequestParam String receiver, @RequestParam String message, 

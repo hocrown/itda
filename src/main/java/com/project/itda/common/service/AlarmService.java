@@ -30,4 +30,10 @@ public class AlarmService implements IAlarmService {
 		alarmRepository.updateChecked(userId);
 	}
 
+	@Override
+	public int getUncheckedAlarmCount(String userId) {
+		Integer alarmCount = alarmRepository.getUncheckedAlarmCount(userId);
+		return (alarmCount != null) ? alarmCount : 0;
+	}
+
 }

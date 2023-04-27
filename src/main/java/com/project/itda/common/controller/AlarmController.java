@@ -1,5 +1,6 @@
 package com.project.itda.common.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -48,8 +49,10 @@ public class AlarmController {
 	public String alarmList(HttpSession session, Model model) {
 		String userId = (String) session.getAttribute("userId");
 		List<AlarmModel> alarmList =alarmService.getAlarmList(userId);
-		alarmService.updateChecked(userId);
 		model.addAttribute("alarmList", alarmList);
+		model.addAttribute("currentTime", LocalDateTime.now());
+		alarmService.updateChecked(userId);
+		
 		return "alarmList";
 	}
     

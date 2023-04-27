@@ -36,6 +36,7 @@ import com.project.itda.admin.service.IStatisticsService;
 import com.project.itda.common.model.FamilyModel;
 import com.project.itda.common.model.NickNameModel;
 import com.project.itda.common.model.UserModel;
+import com.project.itda.common.service.IAlarmService;
 import com.project.itda.common.service.IUserService;
 import com.project.itda.dailyquestion.controller.DailyQuestionController;
 import com.project.itda.dailyquestion.model.DailyQuestionModel;
@@ -46,6 +47,9 @@ public class UserController {
 
 	@Autowired
 	IUserService userService;
+	
+	@Autowired
+	IAlarmService alarmService;
 	
 	@Autowired
 	DailyQuestionController dailyQuestionController;
@@ -77,7 +81,8 @@ public class UserController {
 	            String loginUserId = loginUser.getUserId();
 	            statisticsService.insertVisitor(loginUserId);
 	            dailyQuestionController.getDailyQuestion(loginUserId, session);
-	            
+	            int uncheckedAlarmCount = alarmService.getUncheckedAlarmCount(loginUserId);
+	            model.addAttribute("uncheckedAlarmCount", uncheckedAlarmCount);
 				map.put("result", "success");
 			} else {
 				map.put("result", "fail");
@@ -188,7 +193,6 @@ public class UserController {
 			// insertFamily 메소드로 family 테이블에 데이터를 입력합니다.
 			String userId = user.getUserId();
 			String famCode = user.getFamCode();
-			System.out.println(famCode);
 			// 가족그룹의 생성자인지 검증
 			if ("yes".equals(user.getApprove())) {
 				userService.insertFamily(userId, famCode);
@@ -300,7 +304,7 @@ public class UserController {
 	        String encodedImageData;
 	        if (imageData != null) {
 	            encodedImageData = Base64.getEncoder().encodeToString(imageData);
-	        } else {
+	        } else {	
 	            encodedImageData = defaultProfileImage;
 	        }
 	        encodedProfileImages.add(encodedImageData);
@@ -464,6 +468,7 @@ public class UserController {
     	Map<String, Object> response = new HashMap<>();
     	try {
     		userService.updateFamilyName(familySeq, familyName);
+    		response.put("success", true);
     	} catch (Exception e) {
     		e.printStackTrace();
     		response.put("success", false);

@@ -26,4 +26,8 @@
 		WHERE RECEIVER = #{userId}
 	</update>
 	
+	<select id="getUncheckedAlarmCount" parameterType="String" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM alarm WHERE receiver = #{userId} AND checked = 0
+	</select>
+	
 </mapper>
